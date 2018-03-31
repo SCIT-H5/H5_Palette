@@ -33,7 +33,7 @@
 	<div class="centerdiv">
 	<h2>[ 로그인 ]</h2>
 
-	<form id="loginForm" action="login" method="post" onSubmit="return formCheck();">
+	<form id="loginForm" action="loginForm" method="post" onSubmit="return formCheck();">
 		<table>
 			<tr>
 				<td>ID</td>
