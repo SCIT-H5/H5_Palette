@@ -37,6 +37,7 @@ public class LoginController {
 	 * 	@param model Model객체
 	 * 	@param session HttpSession객체
 	 */
+	@RequestMapping(value="loginForm", method=RequestMethod.POST)
 	public String LoginForm(String userId, String userPw, 
 			Model model, HttpSession session){
 		
