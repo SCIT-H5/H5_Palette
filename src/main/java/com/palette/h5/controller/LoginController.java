@@ -51,7 +51,7 @@ public class LoginController {
 		}
 		else {
 			model.addAttribute("errorMsg", "ID 또는 비밀번호가 틀립니다.");
-			return "customer/loginForm";
+			return "userinfo/loginForm";
 		}
 	}
 }

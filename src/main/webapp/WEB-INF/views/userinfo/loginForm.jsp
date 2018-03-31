@@ -25,6 +25,7 @@
 	function goJoinForm(){
 		
 	}
+	
 	</script>
 </head>
 <body>
@@ -54,8 +55,6 @@
 				<td colspan="2" class="center white">
 					<input type="submit" value="로그인" />
 				</td>
-			</tr>
-			<tr>
 				<td colspan="2" class="center white">
 					<input type="button" value="회원가입" onclick="goJoinForm()" />
 				</td>

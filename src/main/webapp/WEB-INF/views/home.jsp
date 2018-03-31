@@ -14,7 +14,7 @@
 </h1>
 
 <ul>
-	<li><a href="customer/login">로그인</a>
+	<li><a href="userinfo/login">로그인</a>
 </ul>
 </body>
 </html>
