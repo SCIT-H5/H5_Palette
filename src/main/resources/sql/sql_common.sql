@@ -3,27 +3,27 @@
 -- userinfo Table Create SQL
 CREATE TABLE userinfo
 (
-    userId       VARCHAR2(20)     NOT NULL, 
-    userPw       VARCHAR2(20)     NOT NULL, 
-    userName     VARCHAR2(20)     NOT NULL, 
-    userEmail    VARCHAR2(100)    NOT NULL, 
-    CONSTRAINT USERINFO_PK PRIMARY KEY (userId)
+    id          VARCHAR2(20)     NOT NULL, 
+    password    VARCHAR2(20)     NOT NULL, 
+    name        VARCHAR2(20)     NOT NULL, 
+    email       VARCHAR2(100)    NOT NULL, 
+    CONSTRAINT USERINFO_PK PRIMARY KEY (id)
 )
 /
 
 COMMENT ON TABLE userinfo IS '유저 회원가입 테이블'
 /
 
-COMMENT ON COLUMN userinfo.userId IS '유저아이디'
+COMMENT ON COLUMN userinfo.id IS '유저아이디'
 /
 
-COMMENT ON COLUMN userinfo.userPw IS '유저패스워드'
+COMMENT ON COLUMN userinfo.password IS '유저패스워드'
 /
 
-COMMENT ON COLUMN userinfo.userName IS '유저이름'
+COMMENT ON COLUMN userinfo.name IS '유저이름'
 /
 
-COMMENT ON COLUMN userinfo.userEmail IS '유저이메일'
+COMMENT ON COLUMN userinfo.email IS '유저이메일'
 /
 
 
@@ -74,7 +74,7 @@ COMMENT ON COLUMN cert_project.proTitle IS '프로젝트명'
 
 ALTER TABLE cert_project
     ADD CONSTRAINT FK_cert_project_proId_userinfo FOREIGN KEY (proId)
-        REFERENCES userinfo (userId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -108,8 +108,8 @@ COMMENT ON COLUMN swot.swotT IS '위기'
 /
 
 ALTER TABLE swot
-    ADD CONSTRAINT FK_swot_swotId_userinfo_userId FOREIGN KEY (swotId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_swot_swotId_userinfo_id FOREIGN KEY (swotId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -143,8 +143,8 @@ COMMENT ON COLUMN history.hisContent IS '내용'
 /
 
 ALTER TABLE history
-    ADD CONSTRAINT FK_history_hisId_userinfo_user FOREIGN KEY (hisId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_history_hisId_userinfo_id FOREIGN KEY (hisId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -175,7 +175,7 @@ COMMENT ON COLUMN personality.persContent IS '내용'
 
 ALTER TABLE personality
     ADD CONSTRAINT FK_personality_persId_userinfo FOREIGN KEY (persId)
-        REFERENCES userinfo (userId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -235,8 +235,8 @@ COMMENT ON COLUMN cert_grad.gradSavedfile IS '첨부파일명 (실제 저장된 
 /
 
 ALTER TABLE cert_grad
-    ADD CONSTRAINT FK_cert_grad_gradId_userinfo_u FOREIGN KEY (gradId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_cert_grad_gradId_userinfo_i FOREIGN KEY (gradId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -263,7 +263,7 @@ COMMENT ON COLUMN cert_scholarship.schSavedfile IS '첨부파일명 (실제 저�
 
 ALTER TABLE cert_scholarship
     ADD CONSTRAINT FK_cert_scholarship_schId_user FOREIGN KEY (schId)
-        REFERENCES userinfo (userId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -325,8 +325,8 @@ COMMENT ON COLUMN cert_lect.lectEtc IS '비고'
 /
 
 ALTER TABLE cert_lect
-    ADD CONSTRAINT FK_cert_lect_lectId_userinfo_u FOREIGN KEY (lectId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_cert_lect_lectId_userinfo_i FOREIGN KEY (lectId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -432,7 +432,7 @@ COMMENT ON COLUMN cert_certificate.certSavedfile IS '첨부파일명 (실제 저
 
 ALTER TABLE cert_certificate
     ADD CONSTRAINT FK_cert_certificate_certId_use FOREIGN KEY (certId)
-        REFERENCES userinfo (userId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -478,8 +478,8 @@ COMMENT ON COLUMN skill.skillContent IS '스킬설명'
 /
 
 ALTER TABLE skill
-    ADD CONSTRAINT FK_skill_skillId_userinfo_user FOREIGN KEY (skillId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_skill_skillId_userinfo_id FOREIGN KEY (skillId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -549,8 +549,8 @@ COMMENT ON COLUMN activity.actURL IS '첨부파일URL'
 /
 
 ALTER TABLE activity
-    ADD CONSTRAINT FK_activity_actId_userinfo_use FOREIGN KEY (actId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_activity_actId_userinfo_id FOREIGN KEY (actId)
+        REFERENCES userinfo (id)
 /
 
 
@@ -596,8 +596,8 @@ COMMENT ON COLUMN portfolio.portSavedfile IS '첨부파일명(실제 저장된 �
 /
 
 ALTER TABLE portfolio
-    ADD CONSTRAINT FK_portfolio_portId_userinfo_u FOREIGN KEY (portId)
-        REFERENCES userinfo (userId)
+    ADD CONSTRAINT FK_portfolio_portId_userinfo_i FOREIGN KEY (portId)
+        REFERENCES userinfo (id)
 /
 
 

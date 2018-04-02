@@ -13,7 +13,7 @@
 		from 
 			userinfo
 		where
-			userId = #{userId}
+			id = #{id}
 		
 	</select>
 	
@@ -26,7 +26,7 @@
 		from 
 			userinfo
 		where
-			userEmail = #{userEmail}
+			email = #{email}
 		
 	</select>
 	
@@ -35,15 +35,15 @@
 	<insert id="join" parameterType="userinfo">
 		
 		insert into userinfo(
-			userId
-			,userPw
-			,userName
-			,userEmail
+			id
+			,password
+			,name
+			,email
 		) values (
-			#{userId}
-			,#{userPw}
-			,#{userName}
-			,#{userEmail}
+			#{id}
+			,#{password}
+			,#{name}
+			,#{email}
 		)		
 		
 	</insert>

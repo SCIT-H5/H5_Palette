@@ -24,6 +24,7 @@ public class UserinfoController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserinfoController.class);
 
+	
 	/**
 	 * 로그인 폼 보기
 	 */
@@ -31,6 +32,7 @@ public class UserinfoController {
 	public String login() {
 		return "userinfo/memberLogin";
 	}
+	
 	
 	/**
 	 * 	로그인 처리
@@ -40,20 +42,20 @@ public class UserinfoController {
 	 * 	@param session HttpSession객체
 	 */
 	@RequestMapping(value="loginForm", method=RequestMethod.POST)
-	public String loginForm(String userId, String userPw, 
+	public String loginForm(String id, String password, 
 			Model model, HttpSession session){
 		
 		logger.info("로그인 폼 이동 완료");
 		
-		Userinfo user = userDao.getUserinfoById(userId);
+		Userinfo user = userDao.getUserinfoById(id);
 		
-		if (user != null && user.getUserPw().equals(userPw)) {
+		if (user != null && user.getPassword().equals(password)) {
 			
-			session.setAttribute("loginId", user.getUserId());
+			session.setAttribute("loginId", user.getId());
 			
 			logger.info("로그인 완료, 세션에 아이디 저장");
 			
-			return "redirect:common/main";
+			return "redirect:../common/main";
 		}
 		
 		else {
@@ -66,6 +68,7 @@ public class UserinfoController {
 		}
 	}
 	
+	
 	/**
 	 * 회원가입 폼 보기
 	 */
@@ -73,6 +76,7 @@ public class UserinfoController {
 	public String join() {
 		return "userinfo/memberJoin";
 	}
+	
 	
 	/**
 	 * 회원 가입 정보를 받아 데이터베이스에 저장
@@ -95,14 +99,14 @@ public class UserinfoController {
 
 	/**
 	 * 해당 아이디가 중복인지 아닌지 확인
-	 * @param userId
+	 * @param id
 	 * @param response
 	 */
-	@RequestMapping (value = "checkIdDuplicate", method = RequestMethod.GET)
+	@RequestMapping (value = "checkId", method = RequestMethod.GET)
 	@ResponseBody
-	public void checkIdDuplicate(String userId, HttpServletResponse response) {
+	public void checkId(String id, HttpServletResponse response) {
 		
-		if (userDao.getUserinfoById(userId) == null) {
+		if (userDao.getUserinfoById(id) == null) {
 			response.setStatus(HttpServletResponse.SC_OK);
 			
 		} else {
@@ -113,14 +117,14 @@ public class UserinfoController {
 	
 	/**
 	 * 해당 이메일이 중복인지 아닌지 확인
-	 * @param userId
+	 * @param email
 	 * @param response
 	 */
-	@RequestMapping (value = "checkEmailDuplicate", method = RequestMethod.GET)
+	@RequestMapping (value = "checkEmail", method = RequestMethod.GET)
 	@ResponseBody
-	public void checkEmailDuplicate(String userEmail, HttpServletResponse response) {
+	public void checkEmail(String email, HttpServletResponse response) {
 		
-		if (userDao.getUserinfoByEmail(userEmail) == null) {
+		if (userDao.getUserinfoByEmail(email) == null) {
 			response.setStatus(HttpServletResponse.SC_OK);
 			
 		} else {

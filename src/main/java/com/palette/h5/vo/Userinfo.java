@@ -2,61 +2,68 @@ package com.palette.h5.vo;
 
 public class Userinfo {
 
-	String userId;
-	String userPw;
-	String userName;
-	String userEmail;
+	String id;
+	String password;
+	String name;
+	String email;
 	
+	/**
+	 *   Constructor
+	 */
 	public Userinfo() {
 		super();
 	}
 
-	public Userinfo(String userId, String userPw, String userName, String userEmail) {
+	public Userinfo(String id, String password, String name, String email) {
 		super();
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.userEmail = userEmail;
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.email = email;
 	}
 
+	/**
+	 *   toString()
+	 */
 	@Override
 	public String toString() {
-		return "Userinfo [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail="
-				+ userEmail + "]";
+		return "Userinfo [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
 
-	public String getUserId() {
-		return userId;
+	/**
+	 *   Getters & Setters
+	 */
+	public String getId() {
+		return id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getUserPw() {
-		return userPw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	
+
 	
 }

@@ -14,17 +14,17 @@ public class UserinfoDAO {
 	
 	/**
 	 * 	ID로 회원정보 검색
-	 * 	@param id 검색할 아이디
-	 * 	@return 검색된 회원정보. 없으면 null.
+	 * 	@param id
+	 * 	@return userinfo
 	 */
-	public Userinfo getUserinfoById(String userId){
+	public Userinfo getUserinfoById(String id){
 		
 		UserinfoMapper mapper = session.getMapper(UserinfoMapper.class);
 					
 		Userinfo result = null;
 		
 		try {
-			result = mapper.getUserinfoById(userId);
+			result = mapper.getUserinfoById(id);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,17 +35,17 @@ public class UserinfoDAO {
 
 	/**
 	 * 이메일이 일치하는 회원 정보를 받아온다.
-	 * @param userId
+	 * @param id
 	 * @return userinfo
 	 */
-	public Userinfo getUserinfoByEmail(String userEmail) {
+	public Userinfo getUserinfoByEmail(String email) {
 		
 		UserinfoMapper mapper = session.getMapper(UserinfoMapper.class);
 		
 		Userinfo result = null;
 		
 		try {
-			result = mapper.getUserinfoByEmail(userEmail);
+			result = mapper.getUserinfoByEmail(email);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
