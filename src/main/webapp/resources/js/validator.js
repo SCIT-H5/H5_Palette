@@ -36,7 +36,7 @@
     this.$element.find('[data-match]').each(function () {
       var $this  = $(this)
       var target = $this.attr('data-match')
-
+      
       $(target).on('input.bs.validator', function (e) {
         getValue($this) && $this.trigger('input.bs.validator')
       })
@@ -202,8 +202,8 @@
         	  } else if (error == 'Length Required') {
         		  errors.push('사용중인 이메일입니다.' || error);
         	  }         	  
-        	  //errors.push(getErrorMessage('remote') || error)
-        	  })
+        	  
+          })
           
           .always(function () { deferred.resolve(errors)})
       })

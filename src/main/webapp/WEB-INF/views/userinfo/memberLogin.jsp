@@ -24,10 +24,10 @@
 		
 		//로그인 폼 검사
 		function formCheck() {
-			var userId = document.getElementById('userId');
-			var userPw = document.getElementById('userPw');
+			var id = document.getElementById('id');
+			var password = document.getElementById('password');
 			
-			if (userId.value == '' || userPw.value == '') {
+			if (id.value == '' || password.value == '') {
 				alert('ID와 비밀번호를 입력하세요.');
 				return false;
 			}
@@ -48,22 +48,18 @@
 					<form id="loginForm" action="loginForm" method="post" onSubmit="return formCheck();">
 					
 						<div class="form-group has-feedback">
-							<label for="inputId" class="sr-only">아이디</label> 
-							<input type="text" id="userId" name="id" data-remote="checkIdDuplicate"
-								class="form-control" placeholder="아이디" pattern="^[_A-z0-9]{1,}$"
-								required>								
+							<label for="inputId" class="sr-only">아이디</label>
+							<input type="text" id="id" name="id" class="form-control" placeholder="아이디" />
 						</div>
 						
 						<div class="form-group has-feedback">
 							<label for="inputPassword" class="sr-only">비밀번호</label>
-							<input type="password" id="userPw" name="password" pattern="^[_A-z0-9]{1,}$" 
-								class="form-control" placeholder="비밀번호" 
-								required>
+							<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" />
 						</div>
 							
 						<div class="form-group">
-							<input type="submit" value="로그인" />
-							<input type="button" value="회원가입" onclick="sign_in()" />
+							<input type="submit" class="btn btn-lg btn-primary" value="로그인" />
+							<input type="button" class="btn btn-lg btn-primary" value="회원가입" onclick="sign_in()" />
 						</div>
 					</form>		
 				</div>

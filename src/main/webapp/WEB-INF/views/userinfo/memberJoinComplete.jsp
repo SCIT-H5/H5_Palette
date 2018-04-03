@@ -21,15 +21,15 @@
 		
 	</head>
 	<body>
-		<c:set var="myContextPath" value="${pageContext.request.contextPath}"/>
 		
 		<div class="site-wrapper">
 			<div class="site-wrapper-inner">
 				<div class="cover-container">
 					<div class="inner cover">
 						<h1 class="cover-heading">회원 가입을 축하드립니다.</h1>
+						<br>
 						
-						<a href="${myContextPath}" class="btn btn-lg btn-primary">
+						<a href="login" class="btn btn-lg btn-primary">
 							로그인
 						</a>
 						

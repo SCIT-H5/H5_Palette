@@ -1,8 +1,8 @@
 /**
- * Javascript for join.jsp
+ * Javascript for memberJoin.jsp
  */
 $(function () {
-	$('#signin-form').attr('action', 'join');
+	$('#signin-form').attr('action', 'joinForm');
 	$('#signin-form').attr('method', 'post');
 });
 
