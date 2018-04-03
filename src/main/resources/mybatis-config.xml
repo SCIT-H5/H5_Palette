@@ -5,8 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.palette.h5.vo.Userinfo" alias="userinfo"/>
+		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot"/>
+		<typeAlias type="com.palette.h5.ego.vo.History" alias="history"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml"/>
+		<mapper resource="mapper/egoMapper.xml"/>
 	</mappers>
 </configuration>

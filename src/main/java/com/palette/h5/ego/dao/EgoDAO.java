@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 public class EgoDAO {
 	
 	
+	
+	
 
 	
 }
