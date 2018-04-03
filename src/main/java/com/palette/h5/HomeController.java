@@ -24,6 +24,13 @@ public class HomeController {
 		return "home";
 	}
 	
-	
+	/**
+	 *	로그인 완료 후 메인 페이지로 
+	 */
+	@RequestMapping(value = "common/main", method = RequestMethod.GET)
+	public String main(){
+		
+		return "common/main";
+	}
 	
 }
