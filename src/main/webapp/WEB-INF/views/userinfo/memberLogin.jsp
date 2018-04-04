@@ -32,7 +32,7 @@
 				return false;
 			}
 			return true;
-		}
+		}		
 		
 	</script>
 	
@@ -57,10 +57,15 @@
 							<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" />
 						</div>
 							
+						<div class="form-group has-feedback">
+							${errorMsg}
+						</div>	
+							
 						<div class="form-group">
 							<input type="submit" class="btn btn-lg btn-primary" value="로그인" />
 							<input type="button" class="btn btn-lg btn-primary" value="회원가입" onclick="sign_in()" />
 						</div>
+												
 					</form>		
 				</div>
 			</div>
