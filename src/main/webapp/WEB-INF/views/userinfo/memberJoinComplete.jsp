@@ -29,7 +29,7 @@
 						<h1 class="cover-heading">회원 가입을 축하드립니다.</h1>
 						<br>
 						
-						<a href="login" class="btn btn-lg btn-primary">
+						<a href="login_register" class="btn btn-lg btn-primary">
 							로그인
 						</a>
 						

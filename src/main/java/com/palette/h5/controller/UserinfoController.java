@@ -24,13 +24,21 @@ public class UserinfoController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserinfoController.class);
 
-	
 	/**
 	 * 로그인 폼 보기
 	 */
-	@RequestMapping (value="login", method=RequestMethod.GET)
-	public String login() {
-		return "userinfo/memberLogin";
+	@RequestMapping (value="login_register", method=RequestMethod.GET)
+	public String login(HttpSession session) {
+		
+		if (session.getAttribute("loginId") == null) {
+			
+			return "userinfo/login_register";
+			
+		} else {
+			
+			return "redirect:../common/main";
+		}
+		
 	}
 	
 	
@@ -42,14 +50,14 @@ public class UserinfoController {
 	 * 	@param session HttpSession객체
 	 */
 	@RequestMapping(value="loginForm", method=RequestMethod.POST)
-	public String loginForm(String id, String password, 
+	public String loginForm(String userId, String userPw, 
 			Model model, HttpSession session){
 		
 		logger.info("로그인 폼 이동 완료");
 		
-		Userinfo user = userDao.getUserinfoById(id);
+		Userinfo user = userDao.getUserinfoById(userId);
 		
-		if (user != null && user.getPassword().equals(password)) {
+		if (user != null && user.getPassword().equals(userPw)) {
 			
 			session.setAttribute("loginId", user.getId());
 			
@@ -64,20 +72,10 @@ public class UserinfoController {
 			
 			logger.info("로그인 실패");
 			
-			return "userinfo/memberLogin";
+			return "userinfo/login_register";
 		}
 	}
-	
-	
-	
-	/**
-	 * 회원가입 폼 보기
-	 */
-	@RequestMapping (value="join", method=RequestMethod.GET)
-	public String join() {
-		return "userinfo/memberJoin";
-	}
-	
+		
 	
 	/**
 	 * 회원 가입 정보를 받아 데이터베이스에 저장
@@ -85,10 +83,9 @@ public class UserinfoController {
 	 */
 	@RequestMapping(value="joinForm", method=RequestMethod.POST)
 	public String joinForm(Userinfo userinfo){
-		
-		logger.info("회원가입 폼 이동 완료");
-		
+				
 		if (userDao.join(userinfo) == 1) {
+			logger.info("회원가입 완료");
 			return "userinfo/memberJoinComplete";
 			
 		} else {
