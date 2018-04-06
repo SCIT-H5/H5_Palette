@@ -19,6 +19,13 @@ public class EgoController {
 	@Autowired
 	EgoDAO dao;
 	
+	@RequestMapping(value="certCertificateReadForm",method=RequestMethod.GET)
+	public String test(){
+		
+		return "ego/certCertificateReadForm";
+	}
+}	
+/*	
 	// swot 기본 글 읽기
 	@RequestMapping(value="swotRead",method=RequestMethod.GET)
 	public String swotRead(Model model){
@@ -90,3 +97,4 @@ public class EgoController {
 	}
 
 }
+*/

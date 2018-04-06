@@ -122,7 +122,7 @@
 	        			<a href="ego/certScholarshipReadForm">장학 내역</a>
 	        		</li>
 	        		<li>
-	        			<a href="ego/certCertificate">자격 증명</a>
+	        			<a href="ego/certCertificateReadForm">자격 증명</a>
 	        		</li>
 	        		<li>
 	        			<a href="ego/certProjectReadForm">프로젝트 리스트</a>

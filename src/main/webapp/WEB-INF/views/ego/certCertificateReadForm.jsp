@@ -20,7 +20,7 @@
 				
 				$.ajax({
 					type:"POST",						
-					url:"fileupload",				
+					url:"../fileupload",				
 					data:formData,
 					processData: false,
 				    contentType: false,
@@ -41,15 +41,15 @@
 </head>
 <body>
 
-	<form action="file_upload" method="get">
 	
-		<div id="imgDiv"></div>
+	
+	<div id="imgDiv"></div>
+	
+	<input type="file" id="upload" name="file-data">	
+	
+	<input type="button" id="imgBtn" value="전송">
 		
-		<input type="file" id="upload" name="file-data">	
-		
-		<input type="button" id="imgBtn" value="전송">
-		
-	</form>
+	
 
 </body>
 </html>

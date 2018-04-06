@@ -8,7 +8,23 @@
 	<!-- Swot분석 입력 -->
 
 
-
+	<!-- 파일 저장 -->
+	<insert id="file_management" parameterType="file">
+		insert into file_management (
+			file_id
+			<if test="originalFileName != null and savedFileName != null">
+			, originalFileName
+			, savedFileName
+			</if>
+		)
+		values (
+			file_management_SEQ.nextval
+			<if test="originalFileName != null and savedFileName != null">
+			, #{originalFileName}
+			, #{savedFileName}
+			</if>
+		)
+	</insert>
 
 
 
