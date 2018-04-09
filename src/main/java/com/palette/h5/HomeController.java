@@ -33,7 +33,7 @@ public class HomeController {
 	EgoDAO egoDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	final String uploadPath = "/resources/file_uploaded";	//파일 업로드 경로
+	final String uploadPath = "/H5_Palette/src/main/webapp/resources/file_uploaded";	//파일 업로드 경로
 	
 	/**
 	 *  Home 화면으로
@@ -53,38 +53,7 @@ public class HomeController {
 		
 		return "main";
 	}
-	
-	/*@ResponseBody
-	@RequestMapping(value="fileupload", method = RequestMethod.POST)
-	public String fileupload(MultipartHttpServletRequest request) {
 		
-        Iterator<String> itr =  request.getFileNames();
-        String fullpath = "";
-        
-        if(itr.hasNext()) {
-        	
-            MultipartFile mpf = request.getFile(itr.next());
-            System.out.println(request.getServletContext().getRealPath("/resources/img/user_upload"));
-            
-            try {
-                System.out.println("file length : " + mpf.getBytes().length);
-                System.out.println("file name : " + mpf.getOriginalFilename());
-        		if (!mpf.isEmpty()) {
-        			String savedfile = FileService.saveFile(mpf, request.getServletContext().getRealPath("/resources/img/user_upload"));
-        			fullpath =  "../resources/img/user_upload/" + savedfile;
-        		}
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-            System.out.println(fullpath);
-            return fullpath;
-        } else {
-            return fullpath;
-        }
-    }*/
-	
-	
 
 	/**
 	 * 	파일업로드
@@ -92,6 +61,7 @@ public class HomeController {
 	@ResponseBody
 	@RequestMapping(value="fileupload", method = RequestMethod.POST)
 	public FileManagement fileupload(MultipartHttpServletRequest request, HttpServletResponse response) {
+		
         Iterator<String> itr =  request.getFileNames();
         FileManagement fileManagement = new FileManagement();
         if(itr.hasNext()) {
@@ -110,6 +80,7 @@ public class HomeController {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
             }
+            System.out.println(fileManagement);
             return fileManagement;
         } else {
             return fileManagement;

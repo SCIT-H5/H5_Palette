@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 		$(function(){
 			
-			$("#imgBtn").on("click",function(){
+			$("#imgBtn_up").on("click",function(){
 				
 				var formData = new FormData();
 				formData.append("file",$("#upload")[0].files[0]);
@@ -24,13 +24,13 @@
 					data:formData,
 					processData: false,
 				    contentType: false,
-					dataType:"text",				
+					dataType:"json",				
 					success:function(data){	
 						console.log(data);
 						$("#imgDiv").empty();
-						$("#imgDiv").html('<img alt="" src="'+data+'">');
+						$("#imgDiv").html('<img alt="" src="../download?origin='+data.originalFileName+'&saved='+data.savedFileName+'">');
 					},
-					error: function(e){			
+					error: function(e){
 						console.log(e);
 					}
 				});
@@ -40,16 +40,14 @@
 	</script>
 </head>
 <body>
-
 	
 	
 	<div id="imgDiv"></div>
 	
 	<input type="file" id="upload" name="file-data">	
 	
-	<input type="button" id="imgBtn" value="전송">
+	<input type="button" id="imgBtn_up" value="업로드">
 		
-	
 
 </body>
 </html>

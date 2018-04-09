@@ -4,35 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script> 
-		$(document).ready(function(){
-		    $("#selfSub").click(function(){
-		        $("#selfAnalysisSubmenu").slideDown("slow");
-		    });
-		});
-		
-		$(document).ready(function(){
-		    $("#qualSub").click(function(){
-		        $("#qualSubmenu").slideDown("slow");
-		    });
-		});
-		
-	</script>
-	<style> 
-		#selfSub, #selfAnalysisSubmenu, #qualSub, #qualSubmenu {
-		    padding: 5px;
-		    text-align: center;
-		    background-color: #e5eecc;
-		    border: solid 1px #c3c3c3;
-		}
-		
-		#selfAnalysisSubmenu, #qualSubmenu {
-		    padding: 50px;
-		    display: none;
-		}
-	</style>
-
+	<!-- jQuery -->
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
+	
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
+	
+	
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -63,72 +41,68 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">PALETTE!</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
-	      <div class="collapse navbar-collapse" id="navbarResponsive">
-	          <ul class="navbar-nav ml-auto">
+	      <div class="collapse navbar-collapse drop_down" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger" href="../">Home</a>
+	              <a tabindex="-1" class="nav-link js-scroll-trigger" href="../">Home</a>
 	            </li>
-	            <li class="nav-item">
-<!-- 	            <a class="nav-link js-scroll-trigger" href="#ego">Self-Analysis</a> -->
-					<div class="nav-link" id="selfSub">Self-Analysis</div>
+	            <li class="nav-item" class="drop_down_submenu">
+ 				  <a tabindex="-1" class="nav-link js-scroll-trigger" class="drop_down_multi" href="ego/swotReadForm">Self-Analysis</a>
+ 				  
+ 				  <!-- 자아 분석 SubMenu dropDown -->
+ 				  <ul class="drop_down_menu">
+		        	<li>
+		        		<a tabindex="-1" href="ego/swotReadForm">SWOT Analysis</a>
+		        	</li>
+		        	<li>
+		        		<a tabindex="-1" href="ego/historyReadForm">My History</a>
+		        	</li>
+		        	<li>
+		        		<a tabindex="-1" href="ego/personalityReadForm">Personality Profile</a>
+		        	</li>
+		        	<li class="drop_down_submenu">
+		        		<a tabindex="-1" href="ego/qualification" class="drop_down_multi_p">Qualification</a>
+		        		
+		        		<!-- 자격 사항 SubMenu dropDown -->		        		
+		        		<ul class="drop_down_menu">
+			        		<li>
+			        			<a tabindex="-1" href="ego/certGradReadForm" class="drop_down_q">졸업 증명</a>
+			        		</li>
+			        		<li>
+			        			<a tabindex="-1" href="ego/certLectReadForm">이수 과목</a>
+			        		</li>
+			        		<li>
+			        			<a tabindex="-1" href="ego/certScholarshipReadForm">장학 내역</a>
+			        		</li>
+			        		<li>
+			        			<a tabindex="-1" href="ego/certCertificateReadForm">자격 증명</a>
+			        		</li>
+			        		<li>
+			        			<a tabindex="-1" href="ego/certProjectReadForm">프로젝트 리스트</a>
+			        		</li>
+			        	</ul>		        		
+		        		
+		        	</li>
+		        	<li>
+		        		<a tabindex="-1" href="ego/skillReadForm">My Skill</a>
+		        	</li>
+		        	<li>
+		        		<a tabindex="-1" href="ego/activityReadForm">Activity</a>
+		        	</li>
+	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a class="nav-link" href="#new_port">New Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="#new_port">New Portfolio</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a class="nav-link" href="#view_port">My Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="#view_port">My Portfolio</a>
 	            </li>  
 	          </ul>
-	        </div>
-	        
-	        <!-- 자아분석_SubMenu slowDown -->
-	        <div id="selfAnalysisSubmenu">
-	        	<ul>
-		        	<li>
-		        		<a href="ego/swotReadForm">SWOT Analysis</a>
-		        	</li>
-		        	<li>
-		        		<a href="ego/historyReadForm">My History</a>
-		        	</li>
-		        	<li>
-		        		<a href="ego/personalityReadForm">Personality Profile</a>
-		        	</li>
-		        	<li>
-		        		<div id="qualSub">Qualification</div>
-		        	</li>
-		        	<li>
-		        		<a href="skillReadForm">My Skill</a>
-		        	</li>
-		        	<li>
-		        		<a href="activityReadForm">Activity</a>
-		        	</li>
-	        	</ul>
-	        </div>
-	        
-	        <!-- 자격 사항_SubMenu slowDown -->
-	        <div id="qualSubmenu">
-	        	<ul>
-	        		<li>
-	        			<a href="ego/certGradReadForm">졸업 증명</a>
-	        		</li>
-	        		<li>
-	        			<a href="ego/certLectReadForm">이수 과목</a>
-	        		</li>
-	        		<li>
-	        			<a href="ego/certScholarshipReadForm">장학 내역</a>
-	        		</li>
-	        		<li>
-	        			<a href="ego/certCertificateReadForm">자격 증명</a>
-	        		</li>
-	        		<li>
-	        			<a href="ego/certProjectReadForm">프로젝트 리스트</a>
-	        		</li>
-	        	</ul>
-	        </div>
+	        </div>        
 	        
         <div class="collapse navbar-collapse" id="navbarResponsive">
          	<ul class="navbar-nav ml-auto">
@@ -144,6 +118,12 @@
       </div>
           
     </nav>
+    
+    
+	<script>
+		
+	</script>
+	
     
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
