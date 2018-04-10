@@ -14,10 +14,10 @@
     <title>Palette !</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
 	
     <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.css">
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
 		
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
     
   </head>
@@ -73,7 +73,7 @@
 		            <hr>
 		          </div>
 		          <div class="col-lg-8 mx-auto">
-		            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">START!</a>
+		            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">About</a>
 		          </div>
 		        </div>
 		      </div>
@@ -121,16 +121,16 @@
         
 
     <!-- Bootstrap core JavaScript -->
-    <script src="<c:url value='/resources/vendor/jquery/jquery.min.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
+    <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="<c:url value='/resources/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/scrollreveal/scrollreveal.min.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/magnific-popup/jquery.magnific-popup.min.js'/>"></script>
+    <script src="<c:url value='/resources/vendor/jquery-easing/jquery.easing.js'/>"></script>
+    <script src="<c:url value='/resources/vendor/scrollreveal/scrollreveal.js'/>"></script>
+    <script src="<c:url value='/resources/vendor/magnific-popup/jquery.magnific-popup.js'/>"></script>
     
     <!-- Custom scripts for this template -->
-    <script src="<c:url value='/resources/js/creative.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/creative.js'/>"></script>
     <script src="<c:url value='/resources/js/main_page.js'/>"></script>
     
 

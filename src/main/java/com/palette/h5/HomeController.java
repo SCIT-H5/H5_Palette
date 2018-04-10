@@ -59,8 +59,8 @@ public class HomeController {
 	 * 	파일업로드
 	 */
 	@ResponseBody
-	@RequestMapping(value="fileupload", method = RequestMethod.POST)
-	public FileManagement fileupload(MultipartHttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="fileupload_certificate", method = RequestMethod.POST)
+	public FileManagement fileupload_certificate(MultipartHttpServletRequest request, HttpServletResponse response) {
 		
         Iterator<String> itr =  request.getFileNames();
         FileManagement fileManagement = new FileManagement();
@@ -71,7 +71,7 @@ public class HomeController {
                 System.out.println("file length : " + mpf.getBytes().length);
                 System.out.println("file name : " + mpf.getOriginalFilename());
         		if (!mpf.isEmpty()) {
-        			String savedfile = FileService.saveFile(mpf, uploadPath);
+        			String savedfile = FileService.saveFile(mpf, uploadPath + "/ego_cert");
         			fileManagement.setOriginalFileName(mpf.getOriginalFilename());
         			fileManagement.setSavedFileName(savedfile);
         			egoDao.file_management(fileManagement);
@@ -115,5 +115,5 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}		
 }

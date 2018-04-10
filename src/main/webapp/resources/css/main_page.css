@@ -146,10 +146,6 @@
     margin-top: -1px;
 }
 
-.drop_down_q:hover {
-	background-color: #fff;
-}
-
 .drop_down_submenu .drop_down_menu li:hover{
 	background-color: #fff;
 }
