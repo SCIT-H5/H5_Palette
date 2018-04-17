@@ -5,42 +5,8 @@
 
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
-	<!-- Swot |  -->
-	
-	<!-- History | 해당 id로 저장되어있는 전체 데이터 출력 -->
-<!-- 	<select id="selectHistory" parameterType="string" resultType="">
-		select *
-			from history
-		where id=${id}
-	</select> -->
-	
-	<!-- History | 등록된 year들만 가져오기 -->
-<!-- 	<select id="selectYearList" parameterType="string" >
-		select hisDate
-			from history
-		where id=${id}
-	</select> -->
-	
-	
-	<!-- History | 새로운 데이터 추가  -->
-	<insert id="insertHistoryOne" parameterType="History">
-	
-	</insert>
+	<!-- Swot분석 입력 -->
 
-	<!-- History | 데이터 수정 -->
-	<update id="updateHistoryOne">
-		update
-			HistoryOne
-			
-	</update>
-
-	<!-- History | 데이터 삭제 -->
-	<delete id="deleteHistoryOne">
-		
-	
-	</delete>
-	
-	
 
 	<!-- 파일 저장 -->
 	<insert id="file_management" parameterType="file">

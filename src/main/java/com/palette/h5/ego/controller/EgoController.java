@@ -1,5 +1,7 @@
 package com.palette.h5.ego.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,80 @@ public class EgoController {
 	
 	@RequestMapping(value="certCertificateReadForm",method=RequestMethod.GET)
 	public String test(){
-		
+				
 		return "ego/certCertificateReadForm";
 	}
+	
+	// history page로 이동 (userId는 session값으로 넣음)
+	@RequestMapping(value="historyReadForm", method=RequestMethod.GET)
+	public String historyReadForm(Model model, HttpSession session){
+		
+		logger.info("CON | historyReadForm로 이동 시작 ");
+		
+/*		String s
+		
+		ArrayList<History> list = dao.selectHistoryAll(id);
+		
+		for()*/
+		
+		
+		logger.info("CON | historyReadForm로 이동 종료 ");
+		return "";
+	}
+	
+	// history WriteForm으로 이동
+	@RequestMapping(value="historyWriteForm", method=RequestMethod.POST)
+	public String historyWriteForm(){
+		
+		logger.info("CON | history 글쓰기 폼으로 이동 시작");
+		
+		logger.info("CON | history 글쓰기 폼으로 이동 종료");
+		return "ego/history/historyWriteForm";
+	}
+	
+	// history 추가
+	@RequestMapping(value="historyWrite", method=RequestMethod.POST)
+	public String historyWrite(){
+		
+		logger.info("CON | history 글쓰기 시작");
+		
+		
+		
+		
+		logger.info("CON | history 글쓰기 종료");
+		return "redirect:historyReadForm";
+	}
+	
+	// history updateForm으로 이동
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public String historyUpdateForm(){
+		
+		logger.info("CON | history 수정 폼으로 이동 시작");
+		logger.info("CON | history 수정 폼으로 이동 종료 ");
+		return ""; 
+	}
+	
+	
+	// history 수정
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public String historyUpdate(){
+		
+		logger.info("CON | history 수정 시작");
+		logger.info("CON | history 수정 종료 ");
+		return ""; 
+	}
+	
+	// history 삭제
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String historyDelete(){
+		
+		logger.info("CON | history 삭제 시작");
+		logger.info("CON | history 삭제 종료 ");
+		return ""; 
+	}
+	
+	
+	
 }	
 /*	
 	// swot 기본 글 읽기
@@ -90,6 +163,7 @@ public class EgoController {
 	
 	
 	// swot 글 리셋
+	@RequestMapping(value="", method=RequestMethod.POST)
 	public String swotReset(){
 		
 		
@@ -98,3 +172,8 @@ public class EgoController {
 
 }
 */
+
+	
+
+
+
