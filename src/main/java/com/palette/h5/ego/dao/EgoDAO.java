@@ -126,11 +126,12 @@ public class EgoDAO {
 		
 		return result;
 	}
+	
 	//프로젝트 리스트 작성
 	public void projectWrite_One(CertProject CertProject){
 		System.out.println("다오에 넘어온 값 "+CertProject);
 		
-		EgoMapper mapper = session.getMapper(EgoMapper.class);
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		
 		try {
 			
@@ -146,7 +147,7 @@ public class EgoDAO {
 	public ArrayList<CertProject> projectList(String proId){
 		ArrayList<CertProject> list = null;
 		
-		EgoMapper mapper = session.getMapper(EgoMapper.class);
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		System.out.println("다오의 아이디 "+proId);
 		try {
 			
@@ -163,7 +164,7 @@ public class EgoDAO {
 	public CertProject projectdetail_One(int proNum){
 		CertProject result = null;
 		
-		EgoMapper mapper = session.getMapper(EgoMapper.class);
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		System.out.println("다오의 아이디 "+proNum);
 		try {
 			
@@ -179,7 +180,7 @@ public class EgoDAO {
 		public CertProjectDetail projecDetail_one_one(int proNum){
 			CertProjectDetail result = null;
 			
-			EgoMapper mapper = session.getMapper(EgoMapper.class);
+			EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 			System.out.println("다오의 아이디 "+proNum);
 			try {
 				
@@ -197,7 +198,7 @@ public class EgoDAO {
 		
 		System.out.println("다오에 넘어온 값 "+CertProjectDetail);
 		
-		EgoMapper mapper = session.getMapper(EgoMapper.class);
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		
 		try {
 			
