@@ -38,7 +38,7 @@
 		<script type="text/javascript">
 		
 			function form_signin() {
-				var userId = document.getElementById('userIid');
+				var userId = document.getElementById('userId');
 				var userPw = document.getElementById('userPw');
 				
 				if (userId.value == '' || userPw.value == '') {

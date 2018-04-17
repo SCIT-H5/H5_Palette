@@ -52,6 +52,24 @@ public class EgoDAO {
 		logger.info("DAO | history 연도List 가져오기 종료");
 		return yearList;
 	}
+	
+	// HISTORY | 특정 hisNo에 해당하는 데이터 가져오기
+	public History selectHistoryOne(History history){
+		
+		logger.info("DAO | history 특정 hisNo의 데이터 가져오기 시작");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		History hisOne = null;
+		
+		try{
+			hisOne = mapper.selectHistoryOne(history);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | history 특정 hisNo의 데이터 가져오기 종료");
+		return hisOne;
+	}
+	
 		
 	// HISTORY | 데이터 추가하기
 	public int historyAddOne(History history){
