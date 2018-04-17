@@ -187,7 +187,7 @@
 	<!-- Navigation -->
     <%@include file="/WEB-INF/views/navi.jsp"%> 	
 	<header id="bg-primary" style="height:70px; background-color: black;"></header>   	
-     
+	     
     <form action="fileupload_certificate" method="post" enctype="multipart/form-data">
 				
 		<!-- 업로드한 이미지가 나오는 부분 -->
@@ -204,6 +204,7 @@
 				<div class="imgs_wrap" style="float: left; width: 320px; margin-bottom: 30px;"> 
 					<img id="img" src="" width="400px">						
 				</div>							
+    			
 		    </div>
 		    
 		    <!-- 미리보기 선택시 확대된 이미지가 보이는 부분 -->
