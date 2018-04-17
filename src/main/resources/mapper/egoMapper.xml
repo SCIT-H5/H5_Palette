@@ -7,34 +7,35 @@
 
 	<!-- Swot분석 입력 -->
 	
-	<!-- HISTORY | history 전체 데이터 가져오기 -->
+	<!-- HISTORY | HISTORY 전체 데이터 가져오기-->
 	<select id="historyDataAll" parameterType="string" resultType="history">
-		select 
+		select
 			hisId
 			,hisDate
 			,hisPeriod
 			,hisTitle
 			,hisContent
 			,hisNo
-		from 
-			history
-		where
-			hisId = #{hisId} 
-	</select>
-	
-	<!-- HISTORY | history 전체 연도list 가져오기 -->
-	<select id="historyYearList" parameterType="string" resultType="string">
-		select
-			hisDate
 		from
 			history
 		where hisId = #{hisId}
 	</select>
 	
-	<!-- HISTORY | history 등록하기 -->
+	<!-- HISTORY | HISTORY 연도List 가져오기-->
+	<select id="historyYearList" parameterType="string" resultType="string">
+		select
+			hisDate
+		from
+			history
+		where
+			hisId = #{hisId}
+	</select>
+	
+	<!-- HISTORY | HISTORY 데이터 추가하기-->
 	<insert id="historyAddOne" parameterType="history">
 		insert into
-			history(
+			history
+			(
 				hisId
 				,hisDate
 				,hisPeriod
@@ -42,17 +43,35 @@
 				,hisContent
 				,hisNo
 			) values (
-			
+				#{hisId}
+				,#{hisDate}
+				,#{hisPeriod}
+				,#{hisTitle}
+				,#{hisContent}
+				,history_seq.nextval
 			)
 	</insert>
 	
-	<!-- HISTORY | history 수정하기 -->
+	<!-- HISTORY | HISTORY 데이터 수정하기-->
+	<update id="historyUpdateOne" parameterType="history">
+		update
+			history
+		set
+			hisPeriod = #{hisPeriod}
+			,hisTitle = #{hisTitle}
+			,hisContent = #{hisContent}
+		where
+			hisId = #{hisId} and hisNo = #{hisNo}
+	</update>
 	
-	<!-- HISTORY | history 삭제하기 -->
+	<!-- HISTORY | HISTORY 데이터 삭제하기-->
+	<delete id="historyDeleteOne" parameterType="history">
+		delete
+			history
+		where
+			hisId=#{hisId} and hisNo=#{hisNo}
+	</delete>
 	
-	
-
-
 	<!-- 파일 저장 -->
 	<insert id="file_management" parameterType="file">
 		insert into file_management (
