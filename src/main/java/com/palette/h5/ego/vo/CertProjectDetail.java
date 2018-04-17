@@ -2,7 +2,7 @@ package com.palette.h5.ego.vo;
 
 public class CertProjectDetail {
 	
-	public String proDetailNum;
+	public int proDetailNum;
 	public String proDetailTitle;
 	public String proDetailDate;
 	public String proDetailEdu;
@@ -15,7 +15,7 @@ public class CertProjectDetail {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CertProjectDetail(String proDetailNum, String proDetailTitle, String proDetailDate, String proDetailEdu,
+	public CertProjectDetail(int proDetailNum, String proDetailTitle, String proDetailDate, String proDetailEdu,
 			String proDetailContent, String proDetailOriginalfile, String proDetailSavedfile) {
 		super();
 		this.proDetailNum = proDetailNum;
@@ -27,11 +27,11 @@ public class CertProjectDetail {
 		this.proDetailSavedfile = proDetailSavedfile;
 	}
 
-	public String getProDetailNum() {
+	public int getProDetailNum() {
 		return proDetailNum;
 	}
 
-	public void setProDetailNum(String proDetailNum) {
+	public void setProDetailNum(int proDetailNum) {
 		this.proDetailNum = proDetailNum;
 	}
 
