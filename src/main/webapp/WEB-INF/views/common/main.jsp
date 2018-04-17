@@ -89,7 +89,7 @@
 	        <div id="selfAnalysisSubmenu">
 	        	<ul>
 		        	<li>
-		        		<a href="ego/swotReadForm">SWOT Analysis</a>
+		        		<a href="../ego/swotRead">SWOT Analysis</a>
 		        	</li>
 		        	<li>
 		        		<a href="ego/historyReadForm">My History</a>
