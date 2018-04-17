@@ -103,10 +103,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          	<ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}#mypage">My Page</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}#mypage">My Page</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>
 	            </li>
             </ul>
         </div> 

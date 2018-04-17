@@ -46,6 +46,16 @@ public class HomeController {
 	}
 	
 	/**
+	 *  Demo 화면으로
+	 */
+	@RequestMapping(value = "demo", method = RequestMethod.GET)
+	public String demo(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "demo";
+	}
+	
+	/**
 	 *	로그인 완료 후 메인 페이지로 
 	 */
 	@RequestMapping(value = "main", method = RequestMethod.GET)
@@ -59,8 +69,8 @@ public class HomeController {
 	 * 	파일업로드
 	 */
 	@ResponseBody
-	@RequestMapping(value="fileupload_certificate", method = RequestMethod.POST)
-	public FileManagement fileupload_certificate(MultipartHttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="certificate", method = RequestMethod.POST)
+	public FileManagement certificate(MultipartHttpServletRequest request, HttpServletResponse response) {
 		
         Iterator<String> itr =  request.getFileNames();
         FileManagement fileManagement = new FileManagement();
