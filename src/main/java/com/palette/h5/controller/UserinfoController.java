@@ -36,7 +36,7 @@ public class UserinfoController {
 			
 		} else {
 			
-			return "redirect:../main";
+			return "redirect:/common/main";
 		}
 		
 	}
@@ -63,7 +63,7 @@ public class UserinfoController {
 			
 			logger.info("로그인 완료, 세션에 아이디 저장");
 			
-			return "redirect:../main";
+			return "redirect:/common/main";
 		}
 		
 		else {

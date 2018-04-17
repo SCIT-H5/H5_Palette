@@ -6,6 +6,51 @@
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
 	<!-- Swot분석 입력 -->
+	
+	<!-- HISTORY | history 전체 데이터 가져오기 -->
+	<select id="historyDataAll" parameterType="string" resultType="history">
+		select 
+			hisId
+			,hisDate
+			,hisPeriod
+			,hisTitle
+			,hisContent
+			,hisNo
+		from 
+			history
+		where
+			hisId = #{hisId} 
+	</select>
+	
+	<!-- HISTORY | history 전체 연도list 가져오기 -->
+	<select id="historyYearList" parameterType="string" resultType="string">
+		select
+			hisDate
+		from
+			history
+		where hisId = #{hisId}
+	</select>
+	
+	<!-- HISTORY | history 등록하기 -->
+	<insert id="historyAddOne" parameterType="history">
+		insert into
+			history(
+				hisId
+				,hisDate
+				,hisPeriod
+				,hisTitle
+				,hisContent
+				,hisNo
+			) values (
+			
+			)
+	</insert>
+	
+	<!-- HISTORY | history 수정하기 -->
+	
+	<!-- HISTORY | history 삭제하기 -->
+	
+	
 
 
 	<!-- 파일 저장 -->

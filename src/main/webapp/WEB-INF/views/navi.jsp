@@ -52,7 +52,11 @@
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
 		        	<li>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/views/navi.jsp
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swotReadForm">SWOT Analysis</a>
+=======
+		        		<a href="../ego/swotRead">SWOT Analysis</a>
+>>>>>>> 4-4훈모브런치:src/main/webapp/WEB-INF/views/common/main.jsp
 		        	</li>
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/historyReadForm">My History</a>
