@@ -90,6 +90,80 @@
 		)
 	</insert>
 
-
-
+	<!-- 프로젝트 리스트 입력 -->
+	<insert id="projectWrite_One" parameterType="CertProject" >
+	
+		insert into cert_project(
+			proNum
+			, proId
+			, proTerm
+			, proEdu
+			, proTitle
+		)
+		values(
+			cert_project_SEQ.nextval
+			, #{proId}
+			, #{proTerm}
+			, #{proEdu}
+			, #{proTitle}
+			)
+	
+	</insert>
+	
+	<!-- 프로젝트 리스트 출력 -->
+	<select id="projectList" parameterType="String" resultType="CertProject">
+	select
+	* 
+	from 
+	cert_project 
+	where 
+	proId = #{proId}
+	</select>
+	
+ 	<!-- 프로젝트 디테일 글 하나 출력 -->
+ 	<select id="projectdetail_One" parameterType="int" resultType="CertProject">
+ 	select
+	* 
+	from 
+	cert_project 
+	where 
+	proNum = #{proNum}
+ 	</select>
+ 	
+ 	<!-- 프로젝트 디테일 글 수정 (입력)-->
+ 	<insert id="projecDetailtWrite" parameterType="CertProjectDetail">
+ 	
+ 	insert into cert_project_detail(
+			proDetailNum
+			, proDetailTitle
+			, proDetailDate
+			, proDetailEdu
+			, proDetailContent
+			<if test="proDetailOriginalfile != null and proDetailSavedfile != null">
+			,proDetailOriginalfile
+			,proDetailSavedfile
+			</if>
+		)
+		values(
+			#{proDetailNum}
+			, #{proDetailTitle}
+			, #{proDetailDate}
+			, #{proDetailEdu}
+			, #{proDetailContent}
+			<if test="proDetailOriginalfile != null and proDetailSavedfile != null">
+			,#{proDetailOriginalfile}
+			,#{proDetailSavedfile}
+			</if>
+			)
+ 	</insert>
+ 	
+ 	<!-- 프로젝트 디테일 글 수정 (입력) 출력-->
+ 	<select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
+ 	select
+ 	*
+ 	from
+ 	cert_project_detail
+ 	where
+ 	proDetailNum = #{proDetailNum}
+ 	</select>
 </mapper>
