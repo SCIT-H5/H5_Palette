@@ -23,23 +23,23 @@
 	
 	
 	<!-- History | 새로운 데이터 추가  -->
-<!-- 	<insert id="insertHistoryOne" parameterType="History">
+	<insert id="insertHistoryOne" parameterType="History">
 	
 	</insert>
- -->
+
 	<!-- History | 데이터 수정 -->
-<!-- 	<update id="updateHistoryOne">
+	<update id="updateHistoryOne">
 		update
 			HistoryOne
 			
 	</update>
- -->
+
 	<!-- History | 데이터 삭제 -->
-<!-- 	<delete id="deleteHistoryOne">
+	<delete id="deleteHistoryOne">
 		
 	
 	</delete>
- -->	
+	
 	
 
 	<!-- 파일 저장 -->
