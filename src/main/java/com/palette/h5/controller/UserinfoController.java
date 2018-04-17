@@ -36,11 +36,7 @@ public class UserinfoController {
 			
 		} else {
 			
-<<<<<<< HEAD
 			return "redirect:../main";
-=======
-			return "redirect:/common/main";
->>>>>>> 4-4훈모브런치
 		}
 		
 	}
@@ -67,11 +63,7 @@ public class UserinfoController {
 			
 			logger.info("로그인 완료, 세션에 아이디 저장");
 			
-<<<<<<< HEAD
 			return "redirect:../main";
-=======
-			return "redirect:/common/main";
->>>>>>> 4-4훈모브런치
 		}
 		
 		else {
