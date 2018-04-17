@@ -36,7 +36,7 @@ public class UserinfoController {
 			
 		} else {
 			
-			return "redirect:/common/main";
+			return "redirect:/main";
 		}
 		
 	}
