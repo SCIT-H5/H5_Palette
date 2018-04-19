@@ -59,8 +59,13 @@ public class EgoController {
     	
     	
     	ArrayList<History> hisAll = dao.historyDataAll(hisId);
+    	ArrayList<String> classplus = new ArrayList<>();
+    	classplus.add("is-hidden timeline-item");
+    	classplus.add("is-hidden timeline-item inverted");
     	
     	model.addAttribute("hisAll", hisAll);
+    	model.addAttribute("classname", classplus);
+    	
     	
 //    	if(hisAll == null){
 //    		logger.info("CON | historyReadForm로 이동 실패");
