@@ -78,7 +78,7 @@ public class EgoController {
     
    
     // history WriteForm으로 이동
-    @RequestMapping(value="historyWriteForm", method=RequestMethod.POST)
+    @RequestMapping(value="/history/historyWriteForm", method=RequestMethod.GET)
     public String historyWriteForm(){
    
     	logger.info("CON | history 글쓰기 폼으로 이동 시작");
@@ -88,7 +88,7 @@ public class EgoController {
     }
         
     // history 데이터 등록
-    @RequestMapping(value="historyWrite", method=RequestMethod.POST)
+    @RequestMapping(value="/history/historyWrite", method=RequestMethod.POST)
     public String historyWrite(History history, Model model){
    
     	logger.info("CON | history 글쓰기 시작");
@@ -105,9 +105,10 @@ public class EgoController {
     	logger.info("CON | history 글쓰기 종료");
     	return "redirect:historyReadForm";
     }
-/*   
+  
+    
     // history updateForm으로 이동
-    @RequestMapping(value="historyUpdateForm", method=RequestMethod.POST)
+    @RequestMapping(value="/history/historyUpdateForm", method=RequestMethod.POST)
     public String historyUpdateForm(History history, HttpSession session, Model model){
     	// 여기서 매개변수 History history는 hisNo와 hisId를 제공
     		
@@ -139,15 +140,29 @@ public class EgoController {
     }
    
     // history 삭제
-    @RequestMapping(value="", method=RequestMethod.GET)
-    public String historyDelete(){
+    @RequestMapping(value="historyDeleteOne", method=RequestMethod.GET)
+    public String historyDelete(int hisNo, HttpSession session){
    
     	logger.info("CON | history 삭제 시작");
-    	logger.info("CON | history 삭제 종료 ");
-    	return "";
+ 
+    	String hisId = (String) session.getAttribute("loginId");
+    	History delHistory = new History();
+    	delHistory.setHisNo(hisNo);
+    	delHistory.setHisId(hisId);
+    	
+    	int result = dao.historyDeleteOne(delHistory);
+    	
+    	if(result !=1){
+			//삭제 실패
+			logger.info("글 삭제 실패");
+			return "redirect:";
+		}
+    	
+    	logger.info("CON | history 삭제 종료");
+    	return "redirect:/history/historyReadForm";
     }
 
-  */  
+
     
     
     

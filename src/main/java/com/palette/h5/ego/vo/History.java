@@ -7,19 +7,21 @@ public class History {
 	private String hisPeriod;
 	private String hisTitle;
 	private String hisContent;
+	private int hisNo;
 	
 	public History() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public History(String hisId, String hisDate, String hisPeriod, String hisTitle, String hisContent) {
+	public History(String hisId, String hisDate, String hisPeriod, String hisTitle, String hisContent, int hisNo) {
 		super();
 		this.hisId = hisId;
 		this.hisDate = hisDate;
 		this.hisPeriod = hisPeriod;
 		this.hisTitle = hisTitle;
 		this.hisContent = hisContent;
+		this.hisNo = hisNo;
 	}
 
 	public String getHisId() {
@@ -62,10 +64,18 @@ public class History {
 		this.hisContent = hisContent;
 	}
 
+	public int getHisNo() {
+		return hisNo;
+	}
+
+	public void setHisNo(int hisNo) {
+		this.hisNo = hisNo;
+	}
+
 	@Override
 	public String toString() {
 		return "History [hisId=" + hisId + ", hisDate=" + hisDate + ", hisPeriod=" + hisPeriod + ", hisTitle="
-				+ hisTitle + ", hisContent=" + hisContent + "]";
+				+ hisTitle + ", hisContent=" + hisContent + ", hisNo=" + hisNo + "]";
 	}
-
+	
 }

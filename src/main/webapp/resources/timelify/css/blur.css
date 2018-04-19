@@ -1,19 +1,18 @@
 @CHARSET "UTF-8";
-@import "compass/css3";
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,400,700);
 
 $normal-img:"https://lh4.googleusercontent.com/-3eBjuQpOGFw/U47yh_-OycI/AAAAAAAAI2U/uaU5pK49N1w/s1600/normal.jpg";
 $blurred-img:"https://lh3.googleusercontent.com/-m8TxQMObg6c/U474EWu7Y9I/AAAAAAAAI2k/xkRGoIEC1iU/s1600/blur.jpg";
 
-body{
+/* body{
 	background-image:url($normal-img);
 	background-repeat:no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 
 	font-family:Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
-}
+} */
 .blurred-bg{
 
 	background-image:url($blurred-img);
@@ -30,7 +29,7 @@ body{
 }
 .box{
 	width:500px;
-	height:300px;
+	height:500px;
   left:-webkit-calc( 50% - 250px );
   top:20%;
 	position:absolute;

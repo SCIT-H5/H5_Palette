@@ -58,7 +58,7 @@
 <body>
 
 	<div>
-		<form action="historyWrite" method="post" onsubmit="return formCheck();">
+		<form action="/history/historyWrite" method="post" onsubmit="return formCheck();">
 			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.userId }">
 			<table>
 				<tr>
@@ -76,13 +76,13 @@
 				<tr>
 					<th>CONTENT</th>
 					<td>
-						<textarea rows="1" cols="60" name="hisContent" id="thisContent"></textarea>
+						<textarea rows="1" cols="" name="hisContent" id="thisContent"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>PERIOD</th>
 					<td>
-						<input type="text" name="hisTitle" id="hisTitle">
+						<input type="text" name="hisPeriod" id="hisPeriod">
 					</td>
 				</tr>
 			</table>
