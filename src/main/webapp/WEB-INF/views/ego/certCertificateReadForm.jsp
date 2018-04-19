@@ -222,18 +222,18 @@
 		
 	<div id="wrapper">
 
-			<div id="footer_1">
-				<div class="left text-white">
-					<p>This is <strong class="text-red">Palette</strong>, a responsive portfolio site template by <a href="/h5/#contact">H5_Palette</a><br /></p>
-				</div>
-				<div class="right text-white">					
-					<ul class="copyright">
-						<li>&copy; Palette</li><li>Design: <a href="/h5/#contact">H5_Palette</a></li>
-					</ul>
-				</div>
+		<div id="footer_1">
+			<div class="left text-white">
+				<p>This is <strong class="text-red">Palette</strong>, a responsive portfolio site template by <a href="/h5/#contact">H5_Palette</a><br /></p>
 			</div>
-
+			<div class="right text-white">					
+				<ul class="copyright">
+					<li>&copy; Palette</li><li>Design: <a href="/h5/#contact">H5_Palette</a></li>
+				</ul>
+			</div>
 		</div>
+
+	</div>
 			
 	<!-- Bootstrap core JavaScript -->
 	    <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>

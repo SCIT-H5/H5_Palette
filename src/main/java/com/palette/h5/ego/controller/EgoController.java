@@ -24,10 +24,9 @@ public class EgoController {
 		
 		return "ego/certCertificateReadForm";
 	}
-}	
-/*	
+	
 	// swot 기본 글 읽기
-	@RequestMapping(value="swotRead",method=RequestMethod.GET)
+	@RequestMapping(value="swotReadForm",method=RequestMethod.GET)
 	public String swotRead(Model model){
 		
 		logger.info("CON | 글 읽기 시작");
@@ -35,9 +34,9 @@ public class EgoController {
 		// swotRead 페이지에서 글작성버튼 생성여부 판단 
 		
 		logger.info("CON | 글 읽기 종료");
-		return "ego/swotRead";
+		return "ego/swot/swotReadForm";
 	}
-	
+	/*
 	// swot 글 작성 폼 이동
 	@RequestMapping(value="swotWriteForm", method=RequestMethod.GET)
 	public String swotWriteForm(){
@@ -95,6 +94,5 @@ public class EgoController {
 		
 		return "redirect:swotRead";
 	}
-
-}
 */
+}
