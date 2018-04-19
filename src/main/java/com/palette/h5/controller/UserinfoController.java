@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.vo.Userinfo;
 
-@RequestMapping("userinfo")
 @Controller
+@RequestMapping("userinfo")
 public class UserinfoController {
 	
 	@Autowired
