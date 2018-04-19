@@ -53,6 +53,42 @@ public class EgoDAO {
 		return yearList;
 	}
 	
+	// HISTORY | 해당 year별로 데이터들 불러오기
+	public ArrayList<History> historyDataPerYear(History history){
+		
+		logger.info("DAO | history 해당 year별로 데이터들 불러오기 시작");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		ArrayList<History> dataPerYear = null;
+		
+		try{
+			dataPerYear = mapper.historyDataPerYear(history);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | history 해당 year별로 데이터들 불러오기 종료");
+		return dataPerYear;
+	}
+	
+	
+	// HISTORY | 연도별 데이터 수 세기
+	public ArrayList<History> countDataPerYear(History history){
+		
+		logger.info("DAO | history 연도별 데이터 수 세기 시작");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		ArrayList<History> countPY = null;
+		
+		try{
+			countPY = mapper.countDataPerYear(history);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | history 연도별 데이터 수 세기 종료");
+		return countPY;
+	}
+	
+	
 	// HISTORY | 특정 hisNo에 해당하는 데이터 가져오기
 	public History selectHistoryOne(History history){
 		

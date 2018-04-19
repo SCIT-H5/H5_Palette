@@ -1,6 +1,7 @@
 package com.palette.h5.ego.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Personality;
 
 @Controller
 @RequestMapping(value = "ego")
@@ -24,19 +26,38 @@ public class EgoController {
    @Autowired
    EgoDAO dao;
 
-      @RequestMapping(value="certCertificateReadForm",method=RequestMethod.GET)
-      public String test() {
+   @RequestMapping(value="certCertificateReadForm",method=RequestMethod.GET)
+   public String test() {
 
       return "ego/certCertificateReadForm";
    }
 
+   
     // history page로 이동 (userId는 session값으로 넣음)
     @RequestMapping(value="/history/historyReadForm", method=RequestMethod.GET)
     public String historyReadForm(Model model, HttpSession session){
    
     	logger.info("CON | historyReadForm로 이동 시작 ");
    
-    	String hisId = (String) session.getAttribute("userId");
+    	String hisId = (String) session.getAttribute("loginId");
+    	
+    	/*ArrayList<String> yearList = dao.historyYearList(hisId);
+    	
+    	ArrayList<History> dataPerYear = new ArrayList<>();
+    	
+        	
+        	History historyDPY = new History();
+        	historyDPY.setHisId(hisId);
+        	//historyDPY.setHisDate(year);
+        	
+        	dataPerYear = dao.historyDataPerYear(historyDPY);
+        	System.out.println(dataPerYear);
+    
+    	
+    	model.addAttribute("dataPerYear", dataPerYear);
+    	model.addAttribute("yearList", yearList);*/
+    	
+    	
     	ArrayList<History> hisAll = dao.historyDataAll(hisId);
     	
     	model.addAttribute("hisAll", hisAll);
@@ -49,6 +70,7 @@ public class EgoController {
     	logger.info("CON | historyReadForm로 이동 종료 ");
     	return "ego/history/historyReadForm";
     }
+    
    
     // history WriteForm으로 이동
     @RequestMapping(value="historyWriteForm", method=RequestMethod.POST)
@@ -59,8 +81,8 @@ public class EgoController {
     	logger.info("CON | history 글쓰기 폼으로 이동 종료");
     	return "ego/history/historyWriteForm";
     }
-   
-    // history 추가
+        
+    // history 데이터 등록
     @RequestMapping(value="historyWrite", method=RequestMethod.POST)
     public String historyWrite(History history, Model model){
    
@@ -78,7 +100,7 @@ public class EgoController {
     	logger.info("CON | history 글쓰기 종료");
     	return "redirect:historyReadForm";
     }
-   
+/*   
     // history updateForm으로 이동
     @RequestMapping(value="historyUpdateForm", method=RequestMethod.POST)
     public String historyUpdateForm(History history, HttpSession session, Model model){
@@ -87,7 +109,6 @@ public class EgoController {
     	logger.info("CON | history 수정 폼으로 이동 시작");
     	
     	String hisId = (String) session.getAttribute("userId");
-    	History hisOne = dao.selectHistoryOne(history);
     	
     	
     	
@@ -121,6 +142,11 @@ public class EgoController {
     	return "";
     }
 
+  */  
+    
+    
+    
+    
    // swot 기본 글 읽기
    // @RequestMapping(value="swotRead",method=RequestMethod.GET)
    // public String swotRead(HttpSession session){
@@ -226,26 +252,26 @@ public class EgoController {
    // return "redirect:swotRead";
    // }
 
-   // //personality 읽기
-   // @RequestMapping(value="personalityRead", method=RequestMethod.GET)
-   // public String personalityRead(HttpSession session){
-   // logger1.info("CON | 성격분석 읽기 시작");
-   //
-   // //세선에서 아이디를 받아올 변수
-   // String id = (String)session.getAttribute("loginId");
-   //
-   // Personality readPersonality = egoDao.readpersonality(id);
-   //
-   // if (readPersonality == null) {
-   // logger.info("SWOT분석을 읽어온 데이터가 없습니다.");
-   // } else {
-   // logger.info("SWOT분석을 읽어온 데이터가 있습니다.");
-   // }
-   //
-   // session.setAttribute("personalitylist", readPersonality);
-   //
-   // logger1.info("CON | 성격분석 읽기 종료");
-   // return "ego/personality/personalityReadForm";
-   // }
+    //personality 읽기
+    @RequestMapping(value="personalityRead", method=RequestMethod.GET)
+    public String personalityRead(HttpSession session){
+    	logger.info("CON | 성격분석 읽기 시작");
+   
+    	//세선에서 아이디를 받아올 변수
+    	String id = (String)session.getAttribute("loginId");
+   
+    	//Personality readPersonality = dao.readpersonality(id);
+   
+	    /*if (readPersonality == null) {
+	    	logger.info("SWOT분석을 읽어온 데이터가 없습니다.");
+	    } else {
+	    	logger.info("SWOT분석을 읽어온 데이터가 있습니다.");
+	    }*/
+   
+    	//session.setAttribute("personalitylist", readPersonality);
+   
+    	logger.info("CON | 성격분석 읽기 종료");
+    	return "ego/personality/personalityReadForm";
+    }
 
 }

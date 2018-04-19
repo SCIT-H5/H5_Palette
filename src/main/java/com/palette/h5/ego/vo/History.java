@@ -2,32 +2,32 @@ package com.palette.h5.ego.vo;
 
 public class History {
 	
-	private String hidId;
+	private String hisId;
 	private String hisDate;
-	private String hisPeroid;
+	private String hisPeriod;
 	private String hisTitle;
 	private String hisContent;
-
+	
 	public History() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public History(String hidId, String hisDate, String hisPeroid, String hisTitle, String hisContent) {
+	public History(String hisId, String hisDate, String hisPeriod, String hisTitle, String hisContent) {
 		super();
-		this.hidId = hidId;
+		this.hisId = hisId;
 		this.hisDate = hisDate;
-		this.hisPeroid = hisPeroid;
+		this.hisPeriod = hisPeriod;
 		this.hisTitle = hisTitle;
 		this.hisContent = hisContent;
 	}
 
-	public String getHidId() {
-		return hidId;
+	public String getHisId() {
+		return hisId;
 	}
 
-	public void setHidId(String hidId) {
-		this.hidId = hidId;
+	public void setHisId(String hisId) {
+		this.hisId = hisId;
 	}
 
 	public String getHisDate() {
@@ -38,12 +38,12 @@ public class History {
 		this.hisDate = hisDate;
 	}
 
-	public String getHisPeroid() {
-		return hisPeroid;
+	public String getHisPeriod() {
+		return hisPeriod;
 	}
 
-	public void setHisPeroid(String hisPeroid) {
-		this.hisPeroid = hisPeroid;
+	public void setHisPeriod(String hisPeriod) {
+		this.hisPeriod = hisPeriod;
 	}
 
 	public String getHisTitle() {
@@ -64,8 +64,8 @@ public class History {
 
 	@Override
 	public String toString() {
-		return "History [hidId=" + hidId + ", hisDate=" + hisDate + ", hisPeroid=" + hisPeroid + ", hisTitle="
+		return "History [hisId=" + hisId + ", hisDate=" + hisDate + ", hisPeriod=" + hisPeriod + ", hisTitle="
 				+ hisTitle + ", hisContent=" + hisContent + "]";
 	}
-	
+
 }

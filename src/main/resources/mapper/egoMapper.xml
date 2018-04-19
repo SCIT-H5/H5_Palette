@@ -19,7 +19,9 @@
 		from
 			history
 		where hisId = #{hisId}
+		order by hisDate asc
 	</select>
+
 	
 	<!-- HISTORY | HISTORY 데이터중의 특정 hisNo의 데이터만 가져오기 -->
 	<select id="selectHistoryOne" parameterType="history" resultType="history">
@@ -36,15 +38,42 @@
 	</select>
 	
 	
-	<!-- HISTORY | HISTORY 연도List 가져오기-->
+	<!-- HISTORY | HISTORY 연도List 가져오기(중복X)-->
 	<select id="historyYearList" parameterType="string" resultType="string">
-		select
+		select distinct
 			hisDate
 		from
 			history
 		where
 			hisId = #{hisId}
+		order by hisDate asc
 	</select>
+	
+	
+	<!-- HISTORY | HISTORY 해당 year의 데이터들 불러오기 -->
+	<select id="historyDataPerYear" parameterType="history" resultType="history">
+		select
+			hisId
+			,hisDate
+			,hisPeriod
+			,hisTitle
+			,hisContent
+			,hisNo
+		from 
+			history
+		where
+			hisId = #{hisId} and hisDate = #{hisDate}
+	</select>
+	
+	
+	<!-- HISTORY | HISTORY 연도별 데이터 수 세기 -->
+	<select id="countDataPerYear" parameterType="history" resultType="int">
+		select count(*) as "countPerYear"
+			from history
+		where
+			hisId = #{hisId} and hisDate = #{hisDate}	
+	</select>
+	
 	
 	<!-- HISTORY | HISTORY 데이터 추가하기-->
 	<insert id="historyAddOne" parameterType="history">
@@ -66,6 +95,9 @@
 				,history_seq.nextval
 			)
 	</insert>
+	
+	<!-- HISTORY | HISTORY 카운트 뽑아내기 -->
+	
 	
 	<!-- HISTORY | HISTORY 데이터 수정하기-->
 	<update id="historyUpdateOne" parameterType="history">
