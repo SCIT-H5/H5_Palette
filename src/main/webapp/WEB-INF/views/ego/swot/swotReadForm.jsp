@@ -113,96 +113,96 @@
     </header>   
     
     <section id="contact">
-    <div class="container" id="swottable">
-    
-	<!-- Strength -->		
-	<div class="table100 ver2 m-b-110">
-		<div class="table100-head">
-			<table>
-				<thead>
-					<tr class="row100 head" id="flip1">
-						<th class="cell100 column1">Strength</th>						
-					</tr>
-				</thead>
-			</table>	
+	    <div class="container" id="swottable">
+	    
+			<!-- Strength -->		
+			<div class="table100 ver2 m-b-110">
+				<div class="table100-head">
+					<table>
+						<thead>
+							<tr class="row100 head" id="flip1">
+								<th class="cell100 column1">Strength</th>						
+							</tr>
+						</thead>
+					</table>	
+				</div>
+				<div class="table100-body js-pscroll">	
+					<table>	
+						<tbody>
+							<tr class="row100 body" id="panel1">
+								<td class="cell100 column1" id="swot1" contenteditable='true'>내부환경의 강점</td>				
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+			</div>
+			
+			<!-- Weakness -->
+			<div class="table100 ver2 m-b-110">	
+				<div class="table100-head">	
+					<table>
+						<thead>		
+							<tr class="row100 head" id="flip2">
+								<th class="cell100 column1">Weakness</th>						
+							</tr>
+						</thead>
+					</table>	
+				</div>
+				<div class="table100-body js-pscroll">
+					<table>
+						<thead>
+							<tr class="row100 body" id="panel2">			
+								<td class="cell100 column1" id="swot2" contenteditable='true'>내부환경의 약점</td>				
+							</tr>
+						</thead>
+					</table>
+				</div>	
+			</div>
+			
+			<!-- Opportunity -->
+			<div class="table100 ver2 m-b-110">	
+				<div class="table100-head">
+					<table>
+						<thead>
+							<tr class="row100 head" id="flip3">
+					        	<th class="cell100 column1">Opportunity</th>
+					      	</tr>
+					    </thead>
+					</table>
+		      	</div>
+		      	<div class="table100-body js-pscroll">
+		      		<table>
+						<thead>
+						    <tr class="row100 body" id="panel3">
+								<td class="cell100 column1" id="swot3" contenteditable='true'>외부 환경에서 비롯된 기회</td>				
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Threat -->
+			<div class="table100 ver2 m-b-110">		
+				<div class="table100-head">
+					<table>
+						<thead>
+							<tr class="row100 head" id="flip4">
+					        	<th class="cell100 column1">Threat</th>
+					      	</tr>
+					    </thead>
+					</table>
+		      	</div>
+		      	<div class="table100-body js-pscroll">
+		      		<table>
+						<thead>
+						    <tr class="row100 body" id="panel4">
+								<td class="cell100 column1" id="swot4" contenteditable='true'>외부 환경에서 비롯된 위협</td>				
+							</tr>		
+						</thead>
+					</table>							
+				</div>
+			</div>
 		</div>
-		<div class="table100-body js-pscroll">	
-			<table>	
-				<tbody>
-					<tr class="row100 body" id="panel1">
-						<td class="cell100 column1" id="swot1" contenteditable='true'>내부환경의 강점</td>				
-					</tr>
-				</tbody>
-			</table>
-		</div>	
-	</div>
-	
-	<!-- Weakness -->
-	<div class="table100 ver2 m-b-110">	
-		<div class="table100-head">	
-			<table>
-				<thead>		
-					<tr class="row100 head" id="flip2">
-						<th class="cell100 column1">Weakness</th>						
-					</tr>
-				</thead>
-			</table>	
-		</div>
-		<div class="table100-body js-pscroll">
-			<table>
-				<thead>
-					<tr class="row100 body" id="panel2">			
-						<td class="cell100 column1" id="swot2" contenteditable='true'>내부환경의 약점</td>				
-					</tr>
-				</thead>
-			</table>
-		</div>	
-	</div>
-	
-	<!-- Opportunity -->
-	<div class="table100 ver2 m-b-110">	
-		<div class="table100-head">
-			<table>
-				<thead>
-					<tr class="row100 head" id="flip3">
-			        	<th class="cell100 column1">Opportunity</th>
-			      	</tr>
-			    </thead>
-			</table>
-      	</div>
-      	<div class="table100-body js-pscroll">
-      		<table>
-				<thead>
-				    <tr class="row100 body" id="panel3">
-						<td class="cell100 column1" id="swot3" contenteditable='true'>외부 환경에서 비롯된 기회</td>				
-					</tr>
-				</thead>
-			</table>
-		</div>
-	</div>
-	
-	<!-- Threat -->
-	<div class="table100 ver2 m-b-110">		
-		<div class="table100-head">
-			<table>
-				<thead>
-					<tr class="row100 head" id="flip4">
-			        	<th class="cell100 column1">Threat</th>
-			      	</tr>
-			    </thead>
-			</table>
-      	</div>
-      	<div class="table100-body js-pscroll">
-      		<table>
-				<thead>
-				    <tr class="row100 body" id="panel4">
-						<td class="cell100 column1" id="swot4" contenteditable='true'>외부 환경에서 비롯된 위협</td>				
-					</tr>		
-				</thead>
-			</table>							
-		</div>
-	</div>
-	</div>
 	</section>
 	
 	
