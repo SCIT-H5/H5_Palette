@@ -72,8 +72,8 @@ public class HomeController {
 	@RequestMapping(value="certificate", method = RequestMethod.POST)
 	public FileManagement certificate(MultipartHttpServletRequest request, HttpServletResponse response) {
 		
-        Iterator<String> itr =  request.getFileNames();
-        FileManagement fileManagement = new FileManagement();
+        Iterator<String> itr =  request.getFileNames(); //파일의 이름을 받아옴
+        FileManagement fileManagement = new FileManagement(); //파일매니지먼트 자료형 생성
         if(itr.hasNext()) {
             MultipartFile mpf = request.getFile(itr.next());
             System.out.println(mpf.getOriginalFilename() +" uploaded!");

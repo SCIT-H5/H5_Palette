@@ -74,60 +74,87 @@
 	<script type="text/javascript">	
 	
 		// 이미지 정보들을 담을 배열
-		var sel_files = [];
-		var firstImg = true;
+		var sel_files = []; //파일 저장될 배열
+		var firstImg = true; //첫이미지
 		var index = 0;
 		
 		$(document).ready(function() {
-			$("#input_imgs").on("change", handleImgFileSelect);			
+			$("#input_imgs").on("change", handleImgFileSelect); //이미지가 변경되었을때 handleImgFileSelect 실행
 		});
 		
+		/* 
 		function fileUploadAction() {
 			console.log("fileUpLoadAction");
 			$("#input_imgs").trigger('click');
-		}
+		} */
 			
-		function handleImgFileSelect(e) {
+		function handleImgFileSelect(e) { //파일 업데이트를 하면 object가 e값으로 들어온다.
+			
+			//console.log(e);
+			//alert(e);
 			
 			// 이미지 정보들을 초기화
 			sel_files = [];
-			
-			if(firstImg == true){
+
+			/* 
+			if(firstImg == true){ //첫번째 이미지가 참일때 .imgs_wrap을 비운다.
 				$(".imgs_wrap").empty();
 				firstImg = false;
 			};
-			var files = e.target.files; //alert찍어보니 배열이 나옴 {"0":{},"1":{},"2":{}} ...
-			var filesArr = Array.prototype.slice.call(files); 
-
+			 */
+			
+			var files = e.target.files; //alert찍어보니 배열이 나옴 {"0":{},"1":{},"2":{}} ... 파일 인스턴스를 검색하는 이벤트
+										//변경된 파일 인스턴스를 가져옴
+			
+			//console.log(files);
+			//alert("파일" + files);
+			
+			var filesArr = Array.prototype.slice.call(files);  //변경되서 날라온 파일을 어레이형으로 불러오기위한 설정
+			
+			//console.log(filesArr);
+			//alert("파일리스트" + filesArr);
 			
 			filesArr[index];
 			
+			//console.log(filesArr[index]);
+			
 			
 			filesArr.forEach(function(f) {
-				//alert(index);
-				if(!f.type.match("image.*")) {
-					
+				//console.log(f); //지금까지 출력된 filesArr[index]
+				
+				//5.	type:"image/jpeg
+				if(!f.type.match("image.*")) { //만약 타입이 이미지랑 매칭
 					alert("이미지 파일만 가능합니다.");
 					return;
-				};			
+				};
+				
+				//이미지가 올라갈시 코맨트를 숨김
 				$("#comment").hide();
+				
+				//배열에다가 file값 삽입
 				sel_files.push(f);
+				
+				//리더변수 FileReader()선언
 				var reader = new FileReader();
+				
+				//FileReader.onload속성에는 load이벤트가 발생하면 readAsArrayBuffer , readAsBinaryString , readAsDataURL 또는 readAsText 로 읽은 내용을 읽을 수 있는 이벤트 핸들러가 포함되어 있습니다.
 				reader.onload = function(e) {
 					var src = e.target.result;
+					console.log(src);
 					
 					var html = "<div class='imgPreview'><a href=\"javascript:void(0)\"   onclick=\"moveToDiv(\'"   + src + "\'" +"," +  index + ")\" id=\"img_id_" + index + "\"><img style='width : 200px;' src=\"" + e.target.result + 
 								"\" data-file='" + f.name + "' class='selProductFile' title='설렉트 된 이미지들'></a></div>";
 					$(".imgs_wrap").append(html);
-					index++;				 
+					//인덱스 번호 증가
+					index++;
 				};
-			
-				reader.readAsDataURL(f);		
-				
-			});
-		}
 
-		function moveToDiv(src, index){
+				reader.readAsDataURL(f);
+				 
+			});
+		} //end to handleImgFileSelect
+
+		function moveToDiv(src, index){ //이미지 프리뷰
 				
 			$(".selectedImg img").attr("src", src);
 			 
