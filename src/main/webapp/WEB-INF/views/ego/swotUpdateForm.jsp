@@ -7,6 +7,39 @@
 <title>자아분석 - SWOT UPDATE PAGE</title>
 </head>
 <body>
+<script type="text/javascript">
+$(document).ready(function(){
+	  $("#button_q").on("click", function(){
+		  var complete = $('#swotUpdate');
+		  complete.submit();
+	  });
+	}); 
+</script>
+<!-- 수정 시작 -->
+<form action="swotUpdate" method="post" id="swotUpdate" name="swotUpdate">
 
+<table>
+	<tr>
+		<td>Strength (강점)</td>
+		<th><input type="text" id="writeUpdate_s" name="swotS" value="${sessionScope.swotlist.swotS}" ></th>
+	</tr>
+	<tr>
+		<td>Weakness (약점)</td>
+		<th><input type="text" id="writeUpdate_w" name="swotW" value="${sessionScope.swotlist.swotW}"" ></th>
+	</tr>
+	<tr>
+		<td>Opportunity (기회)</td>
+		<th><input type="text" id="writeUpdate_o" name="swotO" value="${sessionScope.swotlist.swotO}"" ></th>
+	</tr>
+	<tr>
+		<td>Threat (위협)</td>
+		<th><input type="text" id="writeUpdate_t" name="swotT"  value="${sessionScope.swotlist.swotT}"" ></th>
+	</tr>
+</table>
+
+
+<input type="submit" id="button_q" value="수정완료 " >
+</form>
+ 
 </body>
 </html>

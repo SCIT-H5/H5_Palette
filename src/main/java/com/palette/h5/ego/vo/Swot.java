@@ -64,8 +64,8 @@ public class Swot {
 
 	@Override
 	public String toString() {
-		return "Swot [swotId=" + swotId + ", swotS=" + swotS + ", swotW=" + swotW + ", swotO=" + swotO + ", swotT="
-				+ swotT + "]";
+		return "swotId=" + swotId + ", swotS=" + swotS + ", swotW=" + swotW + ", swotO=" + swotO + ", swotT="
+				+ swotT;
 	}
 	
 }
