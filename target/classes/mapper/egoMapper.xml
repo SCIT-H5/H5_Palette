@@ -5,7 +5,56 @@
 
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
-	<!-- Swot분석 입력 -->
+	<!-- Swot분석 글 출력 -->
+	<select id="readswot" parameterType="string" resultType="swot">
+	select
+	*
+	from
+	swot
+	where
+	swotId = #{swotId}
+	</select>
+	
+	<!-- Swot분석 글 작성 -->
+	<insert id="writeswot" parameterType="swot">
+	insert into
+			swot
+			(
+				swotId
+				,swotS
+				,swotW
+				,swotO
+				,swotT
+			) values (
+				#{swotId}
+				,#{swotS}
+				,#{swotW}
+				,#{swotO}
+				,#{swotT}
+			)
+	</insert>
+	<!-- Swot분석 글 수정 -->
+	<update id="updateswot" parameterType="swot">
+	update 
+	swot
+	set
+	swotS=#{swotS}
+	,swotW=#{swotW}
+	,swotO=#{swotO}
+	,swotT=#{swotT}
+	where
+	swotId = #{swotId}
+	
+	</update>
+	
+	<!-- Swot분석 글 삭제 -->
+	<delete id="deleteswot" parameterType="string">
+	delete
+	from
+	swot
+	where
+	swotId = #{swotId}
+	</delete>
 	
 	<!-- HISTORY | HISTORY 전체 데이터 가져오기-->
 	<select id="historyDataAll" parameterType="string" resultType="history">

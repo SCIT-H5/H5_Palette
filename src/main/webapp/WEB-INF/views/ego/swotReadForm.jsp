@@ -65,9 +65,42 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
-function write(){
-   window.open('www.daum.net','','width=500,height=500');
+function writeForm(){
+	
+	
+ /* 	$(document).ready(function(){
+		  $("#button_1").on("click", function(){
+		    window.open("swotWriteForm", "swot_Write", "top=150,left=150,width=1000,height=300");
+		    $("#swotWrite").submit();
+		  });
+		}); */ 
+ 	
+/* var form_in = window.open("swotWriteForm","writeForm","top=150,left=150,width=1000,height=300");
+var frm = document.swotWrite;
+	
+form_in.onload=function(){
+		
+		form_in.submit();
+	}
+	
+	
+   	frm.action="swotWrite";
+   	frm.target="swotWrite";
+   	frm.method="post";
+   	frm.submit(); */
+	window.open("swotWriteForm","writeForm","top=150,left=150,width=1000,height=300");
+   	
 }
+
+
+function editForm(){
+	   window.open("swotUpdateForm","UpdateForm","top=150,left=150,width=1000,height=300");
+	}
+	
+function deleteForm(loginId){
+	location.href="deleteswot";
+	
+}	
 </script>
 
 <title>자아분석 - SWOT READ PAGE</title>
@@ -142,44 +175,84 @@ function write(){
       </div>
    </div>
    <p></p>
-   -------------------------------------------------------------------------------------------
+   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    <p></p>
 
    <!-- 스왓분석 작성란 -->
+   
    <div class="divTable" id="swottable">
       <div class="divTableBody">
+      
          <div class="divTableRow" id="flip1">
             <div class="divTableCell">S 강점</div>
          </div>
          <div class="divTableRow" id="panel1">
-            <div class="divTableCell" id=swot1>aaa</div>
+         
+            <div class="divTableCell" id=swot1>${swotlist.swotS}</div>
+        
+         
+          
          </div>
          <div class="divTableRow" id="flip2">
             <div class="divTableCell">W 약점</div>
          </div>
          <div class="divTableRow" id="panel2">
-            <div class="divTableCell" id=swot2></div>
+            <div class="divTableCell" id=swot2>${swotlist.swotW}</div>
+             
+              
          </div>
          <div class="divTableRow" id="flip3">
             <div class="divTableCell">O 기회</div>
          </div>
          <div class="divTableRow" id="panel3">
-            <div class="divTableCell" id=swot3></div>
+            <div class="divTableCell" id=swot3>${swotlist.swotO}</div>
+            
+             
          </div>
          <div class="divTableRow" id="flip4">
             <div class="divTableCell">T 위협</div>
          </div>
          <div class="divTableRow" id="panel4">
-            <div class="divTableCell" id=swot4></div>
+            <div class="divTableCell" id=swot4>${swotlist.swotT}</div>
+             
+            
          </div>
       </div>
    </div>
-   
+ <!-- 폼 작성 하는 곳(히든) -->
+<form action="swotWrite" method="post" id="swotWrite" name="swotWrite" target="swot_Write">
+
+<table>
+	<tr>
+		
+		<th><input type="hidden" id="swotS" name="swotS" value="" placeholder="강점을 입력하시오"></th>
+	</tr>
+	<tr>
+		
+		<th><input type="hidden" id="swotW" name="swotW" value="" placeholder="약점을 입력하시오"></th>
+	</tr>
+	<tr>
+		
+		<th><input  type="hidden" id="swotO" name="swotO" value="" placeholder="기회를 입력하시오"></th>
+	</tr>
+	<tr>
+		
+		<th><input type="hidden" id="swotT" name="swotT" value="" placeholder="위협을 입력하시오"></th>
+	</tr>
+</table>
+
+
+
+</form> 
    
    <!-- 공백시 쓰기버튼 -->
-   <div id="toggle">
-      <button value="userid" onclick="write()"> 입력 </button>
-   </div>
+  	<c:if test="${sessionScope.swotlist == null}">
+  	  <input type="button" id="button_1" value="입력하기" onclick="writeForm()">
+  	</c:if> 
+  	<c:if test="${sessionScope.swotlist != null}">
+     <input type="button" id="button_2" value="수정하기" onclick="editForm()">
+  	  <input type="button" id="button_3" value="삭제하기" onclick="deleteForm()">
+      </c:if>
 
 
 </body>

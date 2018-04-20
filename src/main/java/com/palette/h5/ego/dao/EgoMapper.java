@@ -3,6 +3,7 @@ package com.palette.h5.ego.dao;
 import java.util.ArrayList;
 
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.vo.FileManagement;
@@ -35,5 +36,17 @@ public interface EgoMapper {
 	void projecDetailtWrite(CertProjectDetail CertProjectDetail);
 	//프로젝트 디테일 글 하나 출력(프로젝트 디테일 테이블에서)
 	CertProjectDetail projecDetail_one_one(int proDetailNum);
+	
+	//swot분석 글 출력
+	Swot readswot(String swotId);
+	
+	//swot분석 글 작성
+	int writeswot(Swot swot);
+	
+	//swot분석 글 수정
+	int updateswot(Swot swot);
+	
+	//swot분석 글 삭제
+	int deleteswot(String swotId);
 	
 }
