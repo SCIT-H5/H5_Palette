@@ -215,4 +215,20 @@
  	where
  	proDetailNum = #{proDetailNum}
  	</select>
+ 	
+ 	<!-- 자격증명 작성 -->
+ 	<insert id="certificateWrite" parameterType="Map">
+ 		insert
+ 		into
+ 		CERT_CERTIFICATE
+ 		(
+ 		CERTID,
+ 		CERTJSON
+ 		)
+ 		values
+ 		(
+ 		#{certId},
+ 		#{cert_Json}
+ 		)
+ 	</insert>
 </mapper>

@@ -1,6 +1,7 @@
 package com.palette.h5.ego.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.Swot;
@@ -48,5 +49,8 @@ public interface EgoMapper {
 	
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
+
+	//certification write
+	public int certificateWrite(HashMap<String, String> certficateMap);
 	
 }
