@@ -223,12 +223,34 @@
  		CERT_CERTIFICATE
  		(
  		CERTID,
- 		CERTJSON
+ 		CERTJSON,
+ 		CERTHTML
  		)
  		values
  		(
  		#{certId},
- 		#{cert_Json}
+ 		#{certjson},
+ 		#{certhtml}
  		)
  	</insert>
+ 	
+ 	<!-- 자격증명 읽기 -->
+ 	<select id="certificateRead" parameterType="string" resultType="certificate">
+ 	select
+ 	*
+ 	from
+ 	CERT_CERTIFICATE
+ 	where
+ 	CERTID = #{certId}
+ 	</select>
+ 	
+ 	<!-- 자격증명 업데이트 -->
+ 	<update id="certificateUpdate" parameterType="string">
+ 	update CERT_CERTIFICATE
+ 	set
+ 	CERTJSON = #{certjson},
+ 	CERTHTML = #{certhtml}
+ 	where
+ 	CERTID = #{certId}
+ 	</update>
 </mapper>

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 
@@ -121,6 +122,43 @@ public class EgoCertDAO {
 		}
 		
 		logger.info("자격증명 작성 종료");
+		return result;
+	}
+
+	public CertCertificate certificateRead(String certId) {
+		// TODO Auto-generated method stub
+		logger.info("자격증명 읽기 시작");
+		
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		CertCertificate certficatevalue = null;
+
+		try {
+			certficatevalue = mapper.certificateRead(certId);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		logger.info("자격증명 읽기 시작");
+		return certficatevalue;
+	}
+
+	public int certificateUpdate(HashMap<String, String> certficateMap) {
+		// TODO Auto-generated method stub
+		logger.info("자격증명 업데이트 시작");
+		
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		int result=0;
+		
+		try {
+			result = mapper.certificateUpdate(certficateMap);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		logger.info("자격증명 업데이트 종료");
 		return result;
 	}
 

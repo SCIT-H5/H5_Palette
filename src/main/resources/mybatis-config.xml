@@ -10,6 +10,7 @@
 		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertProjectDetail" alias="CertProjectDetail"/>
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml"/>

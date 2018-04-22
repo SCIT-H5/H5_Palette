@@ -10,12 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.ego.dao.EgoCertDAO;
+import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 
@@ -37,24 +38,56 @@ public class EgoCertController {
 		return "ego/cert/certCertificateReadForm";
 	}
 	
+	
 	//자격증명 데이터 쓰기
+	@ResponseBody
 	@RequestMapping(value="certificateWrite", method = RequestMethod.POST)
-	public void certificateWrite(@RequestBody String datatable, HttpSession session){
+	public void certificateWrite(String tablehtml, String datatable, HttpSession session){
 		logger.info("자격증명 데이터 쓰기");
+		
+		logger.info(tablehtml);
+		logger.info(datatable);
 		
 		String certId = (String) session.getAttribute("loginId"); //세션의 아이디 가져오기
 		
 		HashMap<String, String> certficateMap = new HashMap<String, String>();
 		
 		certficateMap.put("certId", certId);
-		certficateMap.put("cert_Json", datatable);
+		certficateMap.put("certhtml", tablehtml);
+		certficateMap.put("certjson", datatable);
 		
+		CertCertificate certficatevalue = dao.certificateRead(certId);
+
 		int result = 0;
 		
-		result = dao.certificateWrite(certficateMap);
 		
-		System.out.println(datatable);
+		if(certficatevalue == null){
+		//db에 값이 없을때 insert
+			result = dao.certificateWrite(certficateMap);
+		} else{
+		//db에 값이 있을때 update
+			result = dao.certificateUpdate(certficateMap);
+		}
+//		System.out.println(datatable);
 		logger.info("자격증명 데이터쓰기 종료");
+	}
+	
+	//자격증 데이터 가져오기
+	@ResponseBody
+	@RequestMapping(value="certificateRead", method = RequestMethod.POST)
+	public CertCertificate certificateRead(HttpSession session){
+		logger.info("자격증명 데이터 불러오기 시작");
+		
+		String certId = (String) session.getAttribute("loginId"); //세션의 아이디 가져오기
+		
+		CertCertificate certficatevalue;
+		
+		certficatevalue = dao.certificateRead(certId);
+		
+		logger.info("반환값" + certficatevalue);
+		
+		logger.info("자격증명 데이터 불러오기 종료");
+		return certficatevalue;
 	}
 	
 	
@@ -150,9 +183,8 @@ public class EgoCertController {
 		System.out.println("넘어온 작성된 디테일 값 : " + CertProjectDetail);
 
 		dao.projecDetailtWrite(CertProjectDetail);
-
+		
 		logger.info("프로젝트 디테일 작성 완료");
-
 		return "redirect:certProjectReadForm";
 	}
 

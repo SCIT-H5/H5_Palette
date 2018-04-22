@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.Swot;
+import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.vo.FileManagement;
@@ -52,5 +53,11 @@ public interface EgoMapper {
 
 	//certification write
 	public int certificateWrite(HashMap<String, String> certficateMap);
+
+	//certification read
+	public CertCertificate certificateRead(String certId);
+
+	//certification update
+	public int certificateUpdate(HashMap<String, String> certficateMap);
 	
 }
