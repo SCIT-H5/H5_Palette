@@ -189,7 +189,7 @@ public class EgoDAO {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
+
 	
 	//swot분석 글 보기
 	public Swot readswot(String swotId){
@@ -289,6 +289,4 @@ public class EgoDAO {
 	}
 
 	
-=======
->>>>>>> 4-23도훈프로젝트
 }

@@ -16,13 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.CertProject;
-<<<<<<< HEAD
-import com.palette.h5.ego.vo.CertProjectDetail;
+
+
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
-=======
+
 import com.palette.h5.ego.vo.History;
->>>>>>> 4-23도훈프로젝트
+
 
 @Controller
 @RequestMapping(value = "ego")
@@ -40,7 +40,7 @@ public class EgoController {
 	}
 
 	// swot 기본 글 읽기
-<<<<<<< HEAD
+
 	@RequestMapping(value = "swotReadForm", method = RequestMethod.GET)
 	public String swotRead(HttpSession session) {
 
@@ -158,7 +158,7 @@ public class EgoController {
 
 		return "redirect:swotReadForm";
 	}
-=======
+
 	   @RequestMapping(value="/swot/swotReadForm",method=RequestMethod.GET)
 	   public String swotRead(Model model){
 	      
@@ -169,7 +169,7 @@ public class EgoController {
 	      logger.info("CON | 글 읽기 종료");
 	      return "ego/swot/swotReadForm";
 	   }
->>>>>>> 4-23도훈프로젝트
+
 
 	@RequestMapping(value = "certProjectReadForm", method = RequestMethod.GET)
 	public String projectRead(HttpSession session, Model model, CertProject CertProject) {

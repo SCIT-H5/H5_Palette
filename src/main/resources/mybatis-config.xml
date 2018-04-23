@@ -9,11 +9,10 @@
 		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot"/>
 		<typeAlias type="com.palette.h5.ego.vo.History" alias="history"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject"/>
-<<<<<<< HEAD
-		<typeAlias type="com.palette.h5.ego.vo.CertProjectDetail" alias="CertProjectDetail"/>
+
+		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>
-=======
->>>>>>> 4-23도훈프로젝트
+
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
 	</typeAliases>
 	<mappers>

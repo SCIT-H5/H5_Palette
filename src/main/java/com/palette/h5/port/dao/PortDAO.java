@@ -1,4 +1,4 @@
-package com.palette.h5.dao;
+package com.palette.h5.port.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Repository;
 import com.palette.h5.vo.Portfolio;
 
 @Repository
-public class PortfolioDAO {
+public class PortDAO {
 	
 	@Autowired
 	SqlSession session;
 	
-	private static final Logger logger = LoggerFactory.getLogger(PortfolioDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(PortDAO.class);
 	
 	public int portSave(Portfolio portfolio){
 		logger.info("DAO | 포트폴리오 저장 시작");
-		PortfolioMapper mapper = session.getMapper(PortfolioMapper.class);
+		PortMapper mapper = session.getMapper(PortMapper.class);
 		
 		int result = 0;
 		
@@ -34,7 +34,7 @@ public class PortfolioDAO {
 	
 	public Portfolio portSelectOne(Portfolio portfolio){
 		logger.info("DAO | 포트폴리오 하나 불러오기 시작");
-		PortfolioMapper mapper = session.getMapper(PortfolioMapper.class);
+		PortMapper mapper = session.getMapper(PortMapper.class);
 		
 		Portfolio port = null;
 		

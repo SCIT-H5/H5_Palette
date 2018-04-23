@@ -199,16 +199,15 @@
 			proId = #{proId}
 	</update>
  	
-<<<<<<< HEAD
  	<!-- 프로젝트 디테일 글 수정 (입력) 출력-->
- 	<select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
+ 	<!-- <select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
  	select
  	*
  	from
  	cert_project_detail
  	where
  	proDetailNum = #{proDetailNum}
- 	</select>
+ 	</select> -->
  	
  	<select id="personalityList" resultType="PersonalityList">
  		select 
@@ -216,6 +215,5 @@
  		from
  			personality_list
  	</select>
-=======
->>>>>>> 4-23도훈프로젝트
+
 </mapper>
