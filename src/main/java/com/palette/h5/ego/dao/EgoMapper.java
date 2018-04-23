@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.CertProject;
-import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.vo.FileManagement;
 
 public interface EgoMapper {
@@ -31,9 +30,7 @@ public interface EgoMapper {
 	ArrayList<CertProject> projectList(String proId);
 	//프로젝트 디테일 글 하나 출력(프로젝트 테이블에서)
 	CertProject projectdetail_One(int proNum);
-	//프로젝트 디테일 글 수정 / 작성
-	void projecDetailtWrite(CertProjectDetail CertProjectDetail);
-	//프로젝트 디테일 글 하나 출력(프로젝트 디테일 테이블에서)
-	CertProjectDetail projecDetail_one_one(int proDetailNum);
+	//프로젝트 수정
+	void projectUpdate(CertProject certProject);
 	
 }

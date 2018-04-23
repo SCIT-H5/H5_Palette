@@ -45,15 +45,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	/**
-	 *  Demo 화면으로
-	 */
-	@RequestMapping(value = "demo", method = RequestMethod.GET)
-	public String demo(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		return "demo";
-	}
+	
 	
 	/**
 	 *	로그인 완료 후 메인 페이지로 

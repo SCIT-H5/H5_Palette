@@ -1,71 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>           
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>    
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<link rel="stylesheet" type="text/css" href="resources/timelify/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="resources/timelify/css/style.css">
-	<link rel="stylesheet" type="text/css" href="resources/timelify/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="resources/timelify/css/timelify.css">
-	
-	<script type="text/javascript" src="resources/timelify/js/jquery.timelify.js"></script>
-	<script type="text/javascript" src="resources/timelify/js/jquery.js"></script>
-	
-	<script type="text/javascript">
-	
-	
-	
-	</script>
-	
-	<title> History Read Page </title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/timelify/js/jquery.timelify.js" />" ></script>
+   <script type="text/javascript">
+      $(function() {
+         $('.timeline').timelify({
+             animRight: "fadeInRight",
+             animCenter: "zoomIn"
+         });
+         
+      });
+      
+   </script>
+   
+   <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
+   
+   <!-- Custom styles for this template -->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
+   
+   
+   <!-- Timelify animation 적용 -->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/animate.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/font-awesome.min.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/style.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/timelify.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/blur.css">
+   
+   <title>history Read Form</title>
 </head>
+
 <body>
-	<!-- 메인 내용 컨텐트 안에서 최상단 메뉴 bar -->
-	<div id="upperBar">
-		<ul>
-			<c:choose>
-			<!-- history에 기존에 입력한 데이터가 없는경우 : Start Write 버튼 뜨기 : 화면 중앙에! 추후 CSS 적용 필요 -->
-				<c:when test="${param == null }">
-					<a href="historyWriteForm"><button class="button" style="vertical-align:middle"><span>START</span></button></a>
-				</c:when>
-			<!-- history 기존 데이터가 있는 경우 : 상단메뉴로만 표시! -->
-				<c:otherwise>
-					<!-- historyWriteForm으로 이동 : Controller단에서 처음/추가입력 여부 판단해주기 -->
-					<a href="historyWriteForm"><button class="button" style="vertical-align:middle"><span>추가하기</span></button></a>
-				</c:otherwise>
-			</c:choose>	
-		</ul>
-	</div>
-	
-	<!-- 해당 userId가 들고 있는 history 전체 정보 출력 & year부분 if조건문 처리 -->
-	<div id="mainView" class="timeline">
-	
-		<!-- h2태그에서는 year이 할당되게 해야한다 -->
-		
-		
-		<h2></h2>
-			<ul class="timeline-items">
-				<li class="is-hidden time-line-item">
-					<h3></h3>
-					<hr>
-					<p></p>
-					<hr>
-					<time></time>				
-				</li>
-			</ul>	
-			
-				
-	</div>
+   
+   <c:if test="${hisAll eq null }">
+      <div class="container">
+         <h1> |  MY HISTORY  | </h1>
+         <h1> 나의 연혁 관리 페이지</h1>
+         <p><a href="/historyWriteForm" target="_blank">나의 연혁 작성하러 가기</a></p>
+      </div>
+   </c:if>
 
+   <div class="timeline">
+   
+       <c:if test="${hisAll ne null }">
+          <c:forEach items="${hisAll }" var="his" varStatus="loopStat">
+             <c:set var="prevYear" value="${hisAll[loopStat.index-1].hisDate }"/>
+             <c:set var="nextYear" value="${hisAll[loopStat.index].hisDate }"/>
+             <c:if test="${prevYear != nextYear}">
+                <c:out value="${hisAll[loopStat.index].hisDate }" />
+                <h2>${hisAll[loopStat.index].hisDate }</h2>
+                <%-- <h2>${year.hisDate }</h2> --%>
+             </c:if>
+                  <ul class="timeline-items">
+                     <c:if test="${loopStat.index%2 == 0 }">
+                        <li class="is-hidden timeline-item inverted">
+                     </c:if>
+                     <c:if test="${loopStat.index%2 != 0 }">
+                        <li class="is-hidden timeline-item">
+                     </c:if>
+                        <h3>${his.hisTitle }</h3>
+                        <hr>
+                        <p>${his.hisContent }</p>
+                        <hr>
+                        <time>${his.hisPeriod }</time>
+                     </li>
+                  </ul> 
+          </c:forEach>
+       </c:if>
+   </div>
 
-	
-		
-	
+   	<!-- Bootstrap core JavaScript -->
+  	<script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
+   	<script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>
 
+	<!-- Custom scripts for this template -->
+	<script src="<c:url value='/resources/js/creative.js'/>"></script>
 	
-
 </body>
 </html>
