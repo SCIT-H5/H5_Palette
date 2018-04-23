@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.palette.h5.ego.vo.CertProject;
-import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
@@ -150,11 +149,10 @@ public class EgoDAO {
 		ArrayList<CertProject> list = null;
 		
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-		System.out.println("다오의 아이디 "+proId);
+		
 		try {
 			
 			list = mapper.projectList(proId);
-			System.out.println("들어갔다온 후 "+list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -178,38 +176,20 @@ public class EgoDAO {
 		
 		return result;
 	}
-	//프로젝트 디테일 글 하나 출력( CertProjectDetail 테이블로 부터)
-		public CertProjectDetail projecDetail_one_one(int proNum){
-			CertProjectDetail result = null;
-			
-			EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-			System.out.println("다오의 아이디 "+proNum);
-			try {
-				
-				result = mapper.projecDetail_one_one(proNum);
-				System.out.println("들어갔다온 후 "+result);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			return result;
-		}
 	
-	//프로젝트 디테일 글 수정 / 작성
-	public void projecDetailtWrite(CertProjectDetail CertProjectDetail){
-		
-		System.out.println("다오에 넘어온 값 "+CertProjectDetail);
+	public void projectUpdate(CertProject certProject){
 		
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		
 		try {
 			
-			mapper.projecDetailtWrite(CertProjectDetail);
+			mapper.projectUpdate(certProject);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 	//swot분석 글 보기
 	public Swot readswot(String swotId){
@@ -309,4 +289,6 @@ public class EgoDAO {
 	}
 
 	
+=======
+>>>>>>> 4-23도훈프로젝트
 }

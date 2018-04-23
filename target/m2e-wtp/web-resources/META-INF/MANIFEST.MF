@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: SCIT
+=======
+Built-By: sec
+>>>>>>> 4-23도훈프로젝트
 Build-Jdk: 1.8.0_144
 Created-By: Maven Integration for Eclipse
 

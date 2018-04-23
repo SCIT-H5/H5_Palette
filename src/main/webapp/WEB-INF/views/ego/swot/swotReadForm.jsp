@@ -17,15 +17,10 @@
 	<!-- Table_Fixed_Header CSS -->
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
-	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.css">
-	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/animate/animate.css">
-	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/select2/select2.css">
-	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
-	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
 	<!--===============================================================================================-->
@@ -33,66 +28,11 @@
 	<!-- Plugin CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 	
-	<!-- slide toggle -->
-	<script>
-	
-		$(document).ready(function(){
-		   if ($("#swot1").text() || $("#swot2").text() || $("#swot3").text() || $("#swot4").text()) {
-		      for (var i = 1; i < 5; i++) {
-		         if ($("#swot" + i).text()) {
-		             $("#flip" + i).show();
-		             $("#panel" + i).slideToggle("slow");
-		         }
-		         else if(!$("#swot" + i).text()){
-		            $("#flip" + i).hide();
-		            $("#panel" + i).hide();
-		         }
-		      }
-		      
-		      $("#toggle").hide();
-		   }
-		   else{
-		      console.log("전부 비어있는값입니다.");
-		      $("#swottable").hide();
-		      $("#toggle").show();
-		   }
-		});
-	
-	   $(document).ready(function() {
-	      $("#panel1").hide();
-	      $("#flip1").click(function() {
-	         $("#panel1").slideToggle("slow");
-	      });
-	   });
-	
-	   $(document).ready(function() {
-	      $("#panel2").hide();
-	      $("#flip2").click(function() {
-	         $("#panel2").slideToggle("slow");
-	      });
-	   });
-	
-	   $(document).ready(function() {
-	      $("#panel3").hide();
-	      $("#flip3").click(function() {
-	         $("#panel3").slideToggle("slow");
-	      });
-	   });
-	
-	   $(document).ready(function() {
-	      $("#panel4").hide();
-	      $("#flip4").click(function() {
-	         $("#panel4").slideToggle("slow");
-	      });
-	   });
-	</script>
-	
-	<script type="text/javascript">
-	function write(){
-	   window.open('www.daum.net','','width=500,height=500');
-	}
-	</script>
-		
+	<style type="text/css">
+		.head {
+			cursor:pointer;
+		}
+	</style>
 </head>
 
 
@@ -212,9 +152,15 @@
 	</div>
 	
 	<!-- Footer -->
-    <%@include file="/WEB-INF/views/footer.jsp"%> 
-
-
+    <%@include file="/WEB-INF/views/footer-text-white.jsp"%> 
+	
+	
+	
+	<!-- ============================================================================================= -->
+	
+	<!-- Slide-Toggle -->
+	<script src="<c:url value='/resources/js/slide-toggle.js'/>"></script>
+	
 	<!-- Bootstrap core JavaScript -->
     <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
     <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>

@@ -44,19 +44,19 @@
 	      <div class="collapse navbar-collapse drop_down" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}/main">Main Page</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/main">Main Page</a>
 	            </li>
 	            <li class="nav-item" class="drop_down_submenu">
- 				  <a tabindex="-1" class="nav-link js-scroll-trigger" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swotReadForm">Self-Analysis</a>
+ 				  <a tabindex="-1" class="nav-link" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swotReadForm">Self-Analysis</a>
  				  
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
 		        	<li>
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swotReadForm">SWOT Analysis</a>
+		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SWOT Analysis</a>
 
 		        	</li>
 		        	<li>
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/historyReadForm">My History</a>
+		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/history/historyReadForm">My History</a>
 		        	</li>
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/personalityReadForm">Personality Profile</a>
@@ -96,7 +96,7 @@
 	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort">New Portfolio</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="#view_port">My Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port">My Portfolio</a>
 	            </li>  
 	          </ul>
 	        </div>        
