@@ -93,7 +93,7 @@ $( function() {
 	imgUpload();
 
 	// 수정이 아닐때 포트폴리오영역 resizable이벤트 생성
-	if(${html == null}){
+	if(${port == null}){
 		$trash.resizable({
 			maxWidth: 1000,
 			autoHide: true
@@ -166,8 +166,8 @@ $( function() {
 	});
     
     //포트폴리오 수정일때(이페이지에 넘어온값이 있을때)
-    if(${html != null}) {
-    	$trash.html('${html}');		//포트폴리오영역에 넘어온값 추가
+    if(${port != null}) {
+    	$trash.html('${port.portContent}');		//포트폴리오영역에 넘어온값 추가
     	
     	var width = $('#div_size').attr('div_width');
     	var height = $('#div_size').attr('div_height');
@@ -406,7 +406,12 @@ function createGraph(i) {
 
 	<!-- 위젯영역 -->
 	<div id="sidebox" class="sidebox">
-		<input type="button" value="저장" id="savebtn">
+		<c:if test="${port == null }">
+			<input type="button" value="저장" id="savebtn">
+		</c:if>
+		<c:if test="${port != null }">
+			<input type="button" value="수정" id="savebtn">
+		</c:if>
 		<ul id="wigetBox" class="wigetBox ui-helper-reset ui-helper-clearfix">
 		  <li class="ui-widget-content ui-corner-tr" value="1">
 		    <h5 class="ui-widget-header">TextBox</h5>
@@ -524,10 +529,20 @@ function createGraph(i) {
   <div id="ttdiv"></div>
   
   <!-- 포트폴리오 저장을 위한 폼 -->
-  <form action="portSave" method="post" id="saveForm">
-  	<input type="hidden" id="saveDiv" name="portContent" value="">
-  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
-  </form>
+  <c:if test="${port == null }">
+	  <form action="portSave" method="post" id="saveForm">
+	  	<input type="hidden" id="saveDiv" name="portContent" value="">
+	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
+	  </form>
+  </c:if>
+  
+  <c:if test="${port != null }">
+	  <form action="portUpdate" method="post" id="saveForm">
+	  	<input type="hidden" id="saveDiv" name="portContent" value="">
+	  	<input type="hidden" name="portNum" value="${port.portNum }">
+	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
+	  </form>
+  </c:if>
   
 </body>
 <script src="${pageContext.request.contextPath}/resources/portfolio/table/js/test4.js"></script>

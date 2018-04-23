@@ -85,7 +85,6 @@
 		
 		
 		$('#update').on('click', function() {
-			$('#html').val('${port.portContent}');
 			$('#upForm').submit();
 		});
 		
@@ -93,8 +92,8 @@
 </script>
 </head>
 <body>
-	<form action="portUpdate" method="post" id="upForm">
-		<input type="hidden" id="html" name="portContent">
+	<form action="portUpdateForm" method="post" id="upForm">
+		<input type="hidden" name="portNum" value="${port.portNum }">
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
 		<input type="button" id="update" value="수정">
 	</form>

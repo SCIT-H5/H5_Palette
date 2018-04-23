@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.palette.h5.port.dao.PortMapper">
+	<!-- 포폴저장 -->
 	<insert id="portSave" parameterType="portfolio">
 		insert into portfolio
 			(
@@ -19,6 +20,30 @@
 			)
 	</insert>
 	
+	<!-- 포폴 수정 -->
+	<update id="portUpdate" parameterType="portfolio">
+		update 
+			portfolio
+		set
+			portContent = #{portContent}
+		where
+			portNum = #{portNum}
+			and
+			portId = #{portId}
+	</update>
+	
+	<!-- 한 아이디의 포폴 모두 불러오기 -->
+	<select id="portList" parameterType="String" resultType="portfolio">
+		select
+			*
+		from
+			portfolio
+		where
+			portId = #{portId}
+		order by portNum asc
+	</select>
+	
+	<!-- 포폴 하나 불러오기 -->
 	<select id="portSelectOne" parameterType="portfolio" resultType="portfolio">
 		select
 			*

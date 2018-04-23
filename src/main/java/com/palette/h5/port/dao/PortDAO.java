@@ -1,5 +1,7 @@
 package com.palette.h5.port.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,38 @@ public class PortDAO {
 		}
 		logger.info("DAO | 포트폴리오 저장 종료");
 		return result;
+	}
+	
+	public int portUpdate(Portfolio portfolio){
+		logger.info("DAO | 포트폴리오 수정 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		int result = 0;
+		
+		try {
+			result = mapper.portUpdate(portfolio);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 포트폴리오 수정 종료");
+		return result;
+	}
+	
+	public ArrayList<Portfolio> portList(String portId){
+		logger.info("DAO | 포트폴리오 리스트 불러오기 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		ArrayList<Portfolio> portList = null;
+		
+		try {
+			portList = mapper.portList(portId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 포트폴리오 리스트 불러오기 종료");
+		return portList;
 	}
 	
 	public Portfolio portSelectOne(Portfolio portfolio){

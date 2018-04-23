@@ -4,12 +4,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +42,12 @@ public class PortController {
 	final String uploadPath = "/upload"; 
 	
 	@RequestMapping(value = "my_port", method = RequestMethod.GET)
-	public String myPortfolio(){
+	public String myPortfolio(Model model, HttpSession session){
 		
 		logger.info("내 포트폴리오 이동 시작");
-		
+		String portId = (String)session.getAttribute("loginId");
+		ArrayList<Portfolio> portList = dao.portList(portId);
+		model.addAttribute("portList", portList);
 		logger.info("내 포트폴리오 이동 완료");
 		
 		return "port/my_port";
@@ -76,12 +80,27 @@ public class PortController {
 		return "port/portfolioView";
 	}
 	
-	@RequestMapping(value = "portUpdate", method = RequestMethod.POST)
-	public String portUpdate(Model model, String html) {
-		System.out.println("html: "+html);
-		model.addAttribute("html", html);
+	@RequestMapping(value = "portUpdateForm", method = RequestMethod.POST)
+	public String portUpdateForm(Model model, Portfolio portfolio) {
+		logger.info("Controller | 포트폴리오 수정 페이지 이동 시작");
+		
+		Portfolio port = dao.portSelectOne(portfolio);
+		logger.info("Controller | "+ port.getPortContent());
+		model.addAttribute("port", port);
+		logger.info("Controller | 포트폴리오 수정 페이지 이동 종료");
 		return "port/portfolio";
 	}
+	
+	@RequestMapping(value = "portUpdate", method = RequestMethod.POST)
+	public String portUpdate(Model model, Portfolio portfolio) {
+		logger.info("Controller | 포트폴리오 수정 시작");
+		
+		dao.portUpdate(portfolio);
+		
+		logger.info("Controller | 포트폴리오 수정  종료");
+		return "redirect:portView?portNum="+portfolio.getPortNum()+"&portId="+portfolio.getPortId();
+	}
+	
 	@RequestMapping(value="uploadfile", method=RequestMethod.POST)
 	public String writeBoard(MultipartFile upload, Model model){
 		String result = "";
