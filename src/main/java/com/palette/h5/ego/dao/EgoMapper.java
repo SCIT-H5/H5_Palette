@@ -3,6 +3,7 @@ package com.palette.h5.ego.dao;
 import java.util.ArrayList;
 
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
@@ -48,5 +49,8 @@ public interface EgoMapper {
 	
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
+	
+	//성격분석 성격리스트 불러오기
+	ArrayList<PersonalityList> personalityList();
 	
 }

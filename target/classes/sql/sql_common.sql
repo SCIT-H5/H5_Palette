@@ -1217,7 +1217,7 @@ CREATE TABLE portfolio
 
     portNum       NUMBER          NOT NULL, 
 
-    portFileId    NUMBER          NULL, 
+    portContent    CLOB          NULL, 
 
     CONSTRAINT PORTFOLIO_PK PRIMARY KEY (portNum)
 

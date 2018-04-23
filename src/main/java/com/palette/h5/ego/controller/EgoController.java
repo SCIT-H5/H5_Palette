@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 
 @Controller
@@ -250,4 +251,16 @@ public class EgoController {
 		return "redirect:certProjectReadForm";
 	}
 
+	@RequestMapping(value = "personalityReadForm", method = RequestMethod.GET)
+	public String personalityReadForm(Model model) {
+		logger.info("성격분석 폼으로 이동");
+		
+		ArrayList<PersonalityList> list = dao.personalityList();
+		model.addAttribute("personalityList", list);
+		logger.info(list.toString());
+		logger.info("성격분석 폼으로 이동 완료 ");
+		// model.addAttribute("proNum");
+
+		return "ego/personalityReadForm";
+	}
 }

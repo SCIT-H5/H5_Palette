@@ -215,4 +215,11 @@
  	where
  	proDetailNum = #{proDetailNum}
  	</select>
+ 	
+ 	<select id="personalityList" resultType="PersonalityList">
+ 		select 
+ 			*
+ 		from
+ 			personality_list
+ 	</select>
 </mapper>

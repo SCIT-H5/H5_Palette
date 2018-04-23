@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.FileManagement;
 
@@ -290,7 +291,22 @@ public class EgoDAO {
 		return result;
 	}
 	
-	
+	public ArrayList<PersonalityList> personalityList(){
+		
+		ArrayList<PersonalityList> list = null;
+		logger.info("DAO | 성격분석리스트 불러오기");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		try {
+			
+			list = mapper.personalityList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 성격분석리스트 불러오기 종료");
+		return list;
+	}
 
 	
 }

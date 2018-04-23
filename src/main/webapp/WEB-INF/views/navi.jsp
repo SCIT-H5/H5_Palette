@@ -93,7 +93,7 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="#new_port">New Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort">New Portfolio</a>
 	            </li>         
 	            <li class="nav-item">
 	              <a tabindex="-1" class="nav-link" href="#view_port">My Portfolio</a>

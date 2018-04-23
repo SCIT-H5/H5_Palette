@@ -1,0 +1,102 @@
+/* Ion.RangeSlider, Simple Skin
+// css version 2.0.3
+// © Denis Ineshin, 2014    https://github.com/IonDen
+// ===================================================================================================================*/
+
+/* =====================================================================================================================
+// Skin details */
+
+.irs4-line-mid,
+.irs4-line-left,
+.irs4-line-right,
+.irs4-bar,
+.irs4-bar-edge,
+.irs4-slider {
+    background: url(../img/sprite-skin-simple.png) repeat-x;
+}
+
+.irs4 {
+    height: 40px;
+}
+.irs4-with-grid {
+    height: 60px;
+}
+.irs4-line {
+    height: 6px; top: 25px;
+}
+    .irs4-line-left {
+        height: 6px;
+        background-position: 0 -30px;
+    }
+    .irs4-line-mid {
+        height: 6px;
+        background-position: 0 0;
+    }
+    .irs4-line-right {
+        height: 6px;
+        background-position: 100% -30px;
+    }
+
+.irs4-bar {
+    height: 6px; top: 25px;
+    background-position: 0 -60px;
+}
+    .irs4-bar-edge {
+        top: 25px;
+        height: 6px; width: 7px;
+        background-position: 0 -90px;
+    }
+
+.irs4-shadow {
+    height: 1px; top: 34px;
+    background: #000;
+    opacity: 0.75;
+}
+.lt-ie9 .irs4-shadow {
+    filter: alpha(opacity=75);
+}
+
+.irs4-slider {
+    width: 8px; height: 15px;
+    top: 21px;
+    background-position: 0 -120px;
+}
+.irs4-slider.state_hover, .irs4-slider:hover {
+    background-position: 0 -150px;
+}
+
+.irs4-min, .irs4-max {
+    color: #c0c0c0;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    top: 0; padding: 1px 3px;
+    background: rgba(0,0,0,0.1);
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.lt-ie9 .irs4-min, .lt-ie9 .irs4-max {
+    background: #3654b0;
+}
+
+.irs4-from, .irs4-to, .irs4-single {
+    color: #000;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: rgba(255,255,255,0.8);
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.lt-ie9 .irs4-from, .lt-ie9 .irs4-to, .lt-ie9 .irs4-single {
+    background: #d8dff3;
+}
+
+.irs4-grid-pol {
+    background: #777;
+}
+.irs4-grid-text {
+    color: #e0e0e0;
+}
+
+.irs4-disabled {
+}
