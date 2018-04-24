@@ -1,22 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>디테일 보기~</title>
-<script type="text/javascript">
-	function editForm(proNum) {
-		location.href = "edit?proNum="+proNum;
-	}
-</script>
-<!-- Custom styles for this template -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
+
+<title>Palette - 프로젝트 상세 내용</title>
+	
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        
+	<script type="text/javascript">
+		function editForm(proNum) {
+			location.href = "edit?proNum="+proNum;
+		}
+	</script>
+
+	<!-- Custom styles for this template -->
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
+      
+    <!-- Table_Fixed_Header CSS -->
+   	<!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/animate/animate.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/select2/select2.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
+	<!--===============================================================================================-->
    
-   
-   
-   <!-- Bootstrap core CSS -->
+   	<!-- Bootstrap core CSS -->
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
 
     <!-- Custom fonts for this template -->
@@ -30,69 +46,72 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
    
-   <!-- jQuery -->
-   <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 </head>
-<body id="page-top">
-        <!-- Navigation -->
-    <%@include file="/WEB-INF/views/navi.jsp"%>    
-   <header id="bg-primary" style="height:70px; background-color: black;"></header>>
 
+<body id="page-top" style="background-color: #e6e6e6;">
 
-		<h2>프로젝트 상세페이지이다 여기는...</h2>
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>    
+   	<header id="bg-primary" style="height:70px; background-color: black;"></header>
 
-		<table border="1">
-			<tr>
-				<th>프로젝트 주제</th>
-				<td>${result.proTitle}</td>
-			</tr>
-			<tr>
-				<th>과목명</th>
-				<td>${result.proEdu}</td>
-			</tr>
-			<tr>
-				<th>담당 교수</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>작성일</th>
-				<td>${resultDetail.proDetailDate}</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>${resultDetail.proDetailContent}</td>
-			</tr>
-			<tr>
-				<th>파일첨부</th>
-				<td>
-				<img alt="" src="download?boardnum=${board.boardnum}" height="300" width="300">
-				<br> 
-					<!-- 첨부된 파일이 있는 경우, 해당 파일을 다운로드 할 수 있는 링크 제공 --> 
-					
-						<a href="download?boardnum=${board.boardnum}">
-							${board.originalfile} </a>
-					
-				</td>
-			</tr>
-		</table>
-
-		<div id="line">
-			<!-- 목록보기-->
-			<a href="certProjectReadForm">목록보기</a>
-			
-			
-				<!-- 현재글 삭제하기 -->
-			<!--<a href="javascript:deleteCheck(${board.boardnum})">삭제</a> -->
-				<!-- 현재글 수정하기-->
-				<input type="button" id="button" value="수정하기" onclick="editForm(${result.proNum})">
-				
-			<!--<a href="edit?proNum=${board.boardnum}">수정</a>-->
-			
-
-			
-		</div>
+	<section id="viewList" style="padding-bottom: 80px;">
+	  
+    	<p style="width: 100%; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 상세 내용</p>
+	  	    	
+		<form id="projectWrite_One" action="projectWrite_One"  method="get" onsubmit="return formCheck();">	
+		<input type="hidden" name="proId" value="${sessionScope.loginId}">
 		
-		<!-- Bootstrap core JavaScript -->
+		<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
+			<div class="table100-head">
+				<table>					
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">프로젝트 주제</th>						
+						<td class="cell100 row100 body" style="width:70%;"> 
+							${result.proTitle}
+						</td> 						
+					</tr>
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">과목명</th>
+						<td class="cell100 row100 body" style="width:70%;"> 
+							${result.proEdu}
+						</td>
+					</tr>
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">제작기간</th>
+						<td class="cell100 row100 body" style="width:70%;"> 
+							${result.proTerm}
+						</td>
+					</tr>
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">담당교수</th>
+						<td class="cell100 row100 body" style="width:70%;"> 
+							${result.proProf}
+						</td>
+					</tr>
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">상세내용</th>
+						<td class="cell100 row100 body" style="width:70%;"> 
+							${result.proContent}
+						</td>
+					</tr>
+					
+				</table>
+			</div>		
+		</div>	
+		<div class="mx-auto" style="text-align: center;">
+	    	<a href="certProjectReadForm" class="text-uppercase text-white btn btn-primary btn-xl">목록보기</a>
+	    	<input type="button" class="text-uppercase text-white btn btn-primary btn-xl" 
+	    		value="수정하기" onclick="editForm(${result.proNum})">
+		</div>
+		</form>
+    </section>
+
+	<!-- Footer -->
+	<%@include file="/WEB-INF/views/footer-text-black.jsp"%>  
+		
+	<!-- Bootstrap core JavaScript -->
     <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
     <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>
 
@@ -103,5 +122,34 @@
 
     <!-- Custom scripts for this template -->
     <script src="<c:url value='/resources/js/creative.js'/>"></script>
+
+	<!-- Table-Fixed-Header JS -->
+	<!--===============================================================================================-->
+		<script src="<c:url value='/resources/Table_Fixed_Header/vendor/bootstrap/js/popper.js'/>"></script>
+		<script src="<c:url value='/resources/Table_Fixed_Header/vendor/bootstrap/js/bootstrap.js'/>"></script>
+	<!--===============================================================================================-->
+		<script src="<c:url value='/resources/Table_Fixed_Header/vendor/select2/select2.js'/>"></script>
+	<!--===============================================================================================-->
+		<script src="<c:url value='/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.min.js'/>"></script>
+		<script>
+			$('.js-pscroll').each(function(){
+				var ps = new PerfectScrollbar(this);
+	
+				$(window).on('resize', function(){
+					ps.update();
+				})
+			});	
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		
+		  gtag('config', 'UA-23581568-13');
+		</script>		
+	<!--===============================================================================================-->
+		<script src="<c:url value='/resources/Table_Fixed_Header/js/main.js'/>"></script>
 </body>
 </html>

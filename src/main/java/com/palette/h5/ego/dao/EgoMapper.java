@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
-import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.vo.FileManagement;
 
 public interface EgoMapper {
@@ -34,10 +34,8 @@ public interface EgoMapper {
 	ArrayList<CertProject> projectList(String proId);
 	//프로젝트 디테일 글 하나 출력(프로젝트 테이블에서)
 	CertProject projectdetail_One(int proNum);
-	//프로젝트 디테일 글 수정 / 작성
-	void projecDetailtWrite(CertProjectDetail CertProjectDetail);
-	//프로젝트 디테일 글 하나 출력(프로젝트 디테일 테이블에서)
-	CertProjectDetail projecDetail_one_one(int proDetailNum);
+	//프로젝트 수정
+	void projectUpdate(CertProject certProject);
 	
 	//swot분석 글 출력
 	Swot readswot(String swotId);
@@ -59,5 +57,8 @@ public interface EgoMapper {
 
 	//certification update
 	public int certificateUpdate(HashMap<String, String> certficateMap);
+	
+	//성격분석 성격리스트 불러오기
+	ArrayList<PersonalityList> personalityList();
 	
 }

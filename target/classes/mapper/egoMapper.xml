@@ -145,76 +145,77 @@
 		insert into cert_project(
 			proNum
 			, proId
-			, proTerm
+			, proTitle			
 			, proEdu
-			, proTitle
+			, proTerm
+			, proProf
+			, proContent
 		)
 		values(
 			cert_project_SEQ.nextval
 			, #{proId}
-			, #{proTerm}
+			, #{proTitle}			
 			, #{proEdu}
-			, #{proTitle}
-			)
+			, #{proTerm}
+			, #{proProf}
+			, #{proContent}
+		)
 	
 	</insert>
 	
 	<!-- 프로젝트 리스트 출력 -->
 	<select id="projectList" parameterType="String" resultType="CertProject">
 	select
-	* 
+		*
 	from 
-	cert_project 
+		cert_project 
 	where 
-	proId = #{proId}
+		proId = #{proId}
 	</select>
 	
  	<!-- 프로젝트 디테일 글 하나 출력 -->
  	<select id="projectdetail_One" parameterType="int" resultType="CertProject">
  	select
-	* 
+		* 
 	from 
-	cert_project 
+		cert_project 
 	where 
-	proNum = #{proNum}
+		proNum = #{proNum}
  	</select>
  	
- 	<!-- 프로젝트 디테일 글 수정 (입력)-->
- 	<insert id="projecDetailtWrite" parameterType="CertProjectDetail">
- 	
- 	insert into cert_project_detail(
-			proDetailNum
-			, proDetailTitle
-			, proDetailDate
-			, proDetailEdu
-			, proDetailContent
-			<if test="proDetailOriginalfile != null and proDetailSavedfile != null">
-			,proDetailOriginalfile
-			,proDetailSavedfile
-			</if>
-		)
-		values(
-			#{proDetailNum}
-			, #{proDetailTitle}
-			, #{proDetailDate}
-			, #{proDetailEdu}
-			, #{proDetailContent}
-			<if test="proDetailOriginalfile != null and proDetailSavedfile != null">
-			,#{proDetailOriginalfile}
-			,#{proDetailSavedfile}
-			</if>
-			)
- 	</insert>
+ 	<!-- 글 수정 -->
+	<update id="projectUpdate" parameterType="CertProject">
+		update
+			cert_project
+		set
+			proTitle = #{proTitle}
+			, proEdu = #{proEdu}
+			, proTerm = #{proTerm}
+			, proProf = #{proProf}
+			, proContent = #{proContent}
+		where
+			proNum = #{proNum}
+			and 
+			proId = #{proId}
+	</update>
  	
  	<!-- 프로젝트 디테일 글 수정 (입력) 출력-->
- 	<select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
+ 	<!-- <select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
  	select
  	*
  	from
  	cert_project_detail
  	where
  	proDetailNum = #{proDetailNum}
+ 	</select> -->
+ 	
+ 	<select id="personalityList" resultType="PersonalityList">
+ 		select 
+ 			*
+ 		from
+ 			personality_list
  	</select>
+<<<<<<< HEAD
  	
  	<!-- 자격증명 작성 -->
  	<insert id="certificateWrite" parameterType="Map">
@@ -253,4 +254,7 @@
  	where
  	CERTID = #{certId}
  	</update>
+=======
+
+>>>>>>> 4-24성격분석및뉴포폴
 </mapper>

@@ -15,8 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.CertProject;
-import com.palette.h5.ego.vo.CertProjectDetail;
+
+
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
+
+import com.palette.h5.ego.vo.History;
+
 
 @Controller
 @RequestMapping(value = "ego")
@@ -29,6 +34,7 @@ public class EgoController {
 
 
 	// swot 기본 글 읽기
+
 	@RequestMapping(value = "swotReadForm", method = RequestMethod.GET)
 	public String swotRead(HttpSession session) {
 
