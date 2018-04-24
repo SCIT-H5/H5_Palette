@@ -92,8 +92,8 @@
 					<thead>
 						<tr class="row100 head" style="font-weight: bold;">
 							<th class="cell100" style="width:50%; padding-left: 40px;">프로젝트 명</th>
-							<th class="cell100" style="width:40%;">과목명</th>
-							<th class="cell100" style="width:10%; padding-right: 40px;">제작기간</th>
+							<th class="cell100" style="width:35%;">과목명</th>
+							<th class="cell100" style="width:15%; padding-right: 40px;">제작기간</th>
 						</tr>
 					</thead>
 				</table>
