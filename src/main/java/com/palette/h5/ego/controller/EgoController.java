@@ -396,8 +396,6 @@ public class EgoController {
 
 		return "ego/personalityReadForm";
 	}
-<<<<<<< HEAD
-=======
 	
 	//마이페이지 정보 이동
 	@RequestMapping(value = "myInfo", method = RequestMethod.GET)
@@ -458,5 +456,5 @@ public class EgoController {
 			
 			return "ego/mypage/myportfolio";
 		}
->>>>>>> 4-20jinRe
+
 }

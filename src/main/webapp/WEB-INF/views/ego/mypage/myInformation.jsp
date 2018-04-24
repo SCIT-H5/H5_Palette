@@ -78,6 +78,6 @@ $(document).ready(function() {
 	<div class="view_two"><%@include file="/WEB-INF/views/ego/mypage/openEdit.jsp"%></div>
 </div>
 <!-- Footer -->
-    <%@include file="/WEB-INF/views/footer.jsp"%> 
+    <%@include file="/WEB-INF/views/footer-text-black.jsp"%> 
 </body>
 </html>

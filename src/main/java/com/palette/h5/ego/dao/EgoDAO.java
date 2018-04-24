@@ -272,8 +272,7 @@ public class EgoDAO {
 		
 		return result;
 	}
-	
-<<<<<<< HEAD
+
 	public ArrayList<PersonalityList> personalityList(){
 		
 		ArrayList<PersonalityList> list = null;
@@ -291,8 +290,7 @@ public class EgoDAO {
 		return list;
 	}
 
-=======
-	
+
 	//회원 정보 수정
 		public int userEdit(Userinfo userinfo){
 			System.out.println("들어온 "+userinfo);
@@ -309,6 +307,6 @@ public class EgoDAO {
 			
 			return result;
 		}
->>>>>>> 4-20jinRe
+
 	
 }
