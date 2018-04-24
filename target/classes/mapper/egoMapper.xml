@@ -215,7 +215,6 @@
  		from
  			personality_list
  	</select>
-<<<<<<< HEAD
  	
  	<!-- 자격증명 작성 -->
  	<insert id="certificateWrite" parameterType="Map">
@@ -254,7 +253,4 @@
  	where
  	CERTID = #{certId}
  	</update>
-=======
-
->>>>>>> 4-24성격분석및뉴포폴
 </mapper>
