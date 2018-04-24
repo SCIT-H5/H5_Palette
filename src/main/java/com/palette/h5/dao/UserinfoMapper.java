@@ -9,4 +9,6 @@ public interface UserinfoMapper {
 	public Userinfo getUserinfoById(String userId);			// 아이디로 유저정보 받아오기
 
 	public Userinfo getUserinfoByEmail(String userEmail);		// 이메일로 유저정보 받아오기
+	
+	
 }

@@ -5,6 +5,17 @@
 
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
+	<!-- 회원 정보 수정 -->
+	<update id="userEdit" parameterType="userinfo">
+	update
+		userinfo
+	set
+		 password = #{password}
+		, email = #{email}
+	where
+		id = #{id}	
+	</update>
+
 	<!-- Swot분석 글 출력 -->
 	<select id="readswot" parameterType="string" resultType="swot">
 	select

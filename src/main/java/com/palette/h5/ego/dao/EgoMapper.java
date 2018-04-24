@@ -7,6 +7,7 @@ import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.vo.FileManagement;
+import com.palette.h5.vo.Userinfo;
 
 public interface EgoMapper {
 	
@@ -48,5 +49,8 @@ public interface EgoMapper {
 	
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
+	
+	//회원 정보 수정
+	public int userEdit(Userinfo userinfo); 
 	
 }

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.CertProjectDetail;
 import com.palette.h5.ego.vo.Swot;
+import com.palette.h5.vo.Userinfo;
 
 @Controller
 @RequestMapping(value = "ego")
@@ -27,6 +29,7 @@ public class EgoController {
 
 	@Autowired
 	EgoDAO dao;
+	UserinfoDAO userdao;
 
 	@RequestMapping(value = "certCertificateReadForm", method = RequestMethod.GET)
 	public String test() {
@@ -59,7 +62,7 @@ public class EgoController {
 		// swotRead 페이지에서 글작성버튼 생성여부 판단
 
 		logger.info("CON | SWOT 글읽기 종료");
-		return "ego/swotReadForm";
+		return "ego/swot/swotReadForm";
 	}
 
 	// swot 글 작성 폼 이동
@@ -83,6 +86,7 @@ public class EgoController {
 		// 세선에서 아이디를 받아올 변수
 		String swotId = (String) session.getAttribute("loginId");
 		swot.setSwotId(swotId);
+		System.out.println("컨트롤러로 넘어온 ㅅ왓" + swot);
 		// 데이터를 DAO에 넘겨줌
 		int result = dao.writeswot(swot);
 
@@ -249,5 +253,64 @@ public class EgoController {
 
 		return "redirect:certProjectReadForm";
 	}
-
+	
+	//마이페이지 정보 이동
+	@RequestMapping(value = "myInfo", method = RequestMethod.GET)
+	public String MyInformation() {
+		logger.info("마이페이지/ 정보페이지 이동 시작");
+		
+		
+		
+		logger.info("마이페이지/ 정보페이지 이동 종료");
+		
+		return "ego/mypage/myInformation";
+	}
+	//마이페이지 -회원 수정하기
+		@RequestMapping(value = "editForm", method = RequestMethod.POST)
+		public String editForm(Userinfo userinfo, HttpSession session, Model model) {
+			logger.info("마이페이지/ 회원정보 수정 시작");
+			
+			//섹션의 아이디 및 이름 가져옴
+			String userId = (String) session.getAttribute("loginId");
+			String userName = (String) session.getAttribute("loginName");
+			
+			//아이디 이름을 vo에 저장
+			userinfo.setId(userId);
+			userinfo.setName(userName);
+			System.out.println("정보 수정 가자~!!"+userinfo);
+			
+			int result = dao.userEdit(userinfo);
+	
+			if (result == 1) {
+				
+				logger.info("마이페이지/ 회원정보 수정 종료");
+				
+				return "redirect:/main";
+			}
+			
+			else {
+				
+				model.addAttribute("errorMsg", "수정되지 않았습니다");
+				
+				logger.info("로그인 실패");
+				
+				return "ego/mypage/myInformation";
+			}
+			
+			
+		}
+		
+		
+		
+		//마이포토폴리오 페이지 이동
+		@RequestMapping(value = "myportfolio", method = RequestMethod.GET)
+		public String myportfolio() {
+			logger.info("마이페이지/ 마이포토폴리오 이동 시작");
+			
+			
+			
+			logger.info("마이페이지/ 마이포토폴리오 이동 종료");
+			
+			return "ego/mypage/myportfolio";
+		}
 }

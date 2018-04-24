@@ -88,9 +88,21 @@
 	</script>
 	
 	<script type="text/javascript">
-	function write(){
-	   window.open('www.daum.net','','width=500,height=500');
+	function writeForm(){
+		
+		window.open("swotWriteForm","writeForm","top=150,left=150,width=15000,height=500");
+	   	
 	}
+
+
+	function editForm(){
+		   window.open("swotUpdateForm","UpdateForm","top=150,left=150,width=15000,height=500");
+		}
+		
+	function deleteForm(loginId){
+		location.href="deleteswot";
+		
+	}	
 	</script>
 		
 </head>
@@ -130,7 +142,7 @@
 					<table>	
 						<tbody>
 							<tr class="row100 body" id="panel1">
-								<td class="cell100 column1" id="swot1" contenteditable='true'>내부환경의 강점</td>				
+								<td class="cell100 column1" id="swot1" contenteditable='true'>${swotlist.swotS}</td>				
 							</tr>
 						</tbody>
 					</table>
@@ -152,7 +164,7 @@
 					<table>
 						<thead>
 							<tr class="row100 body" id="panel2">			
-								<td class="cell100 column1" id="swot2" contenteditable='true'>내부환경의 약점</td>				
+								<td class="cell100 column1" id="swot2" contenteditable='true'>${swotlist.swotW}</td>				
 							</tr>
 						</thead>
 					</table>
@@ -174,7 +186,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel3">
-								<td class="cell100 column1" id="swot3" contenteditable='true'>외부 환경에서 비롯된 기회</td>				
+								<td class="cell100 column1" id="swot3" contenteditable='true'>${swotlist.swotO}</td>				
 							</tr>
 						</thead>
 					</table>
@@ -196,7 +208,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel4">
-								<td class="cell100 column1" id="swot4" contenteditable='true'>외부 환경에서 비롯된 위협</td>				
+								<td class="cell100 column1" id="swot4" contenteditable='true'>${swotlist.swotT}</td>				
 							</tr>		
 						</thead>
 					</table>							
@@ -206,10 +218,17 @@
 	</section>
 	
 	
+	
 	<!-- 공백시 쓰기버튼 -->
-	<div id="toggle">
-	   <button value="userid" onclick="write()"> 입력 </button>
-	</div>
+  	<c:if test="${sessionScope.swotlist == null}">
+  	  <input type="button" id="button_1" class="button_1"  value="입력하기" onclick="writeForm()">
+  	</c:if> 
+  	<c:if test="${sessionScope.swotlist != null}">
+  	<div class="divOne">
+     <input type="button" id="button_2"  class="button_2"value="수정하기" onclick="editForm()">
+  	  <input type="button" id="button_3"  class="button_3"value="삭제하기" onclick="deleteForm()">
+  	</div>
+      </c:if>
 	
 	<!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp"%> 
