@@ -28,11 +28,86 @@
 	<!-- Plugin CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 	
+<<<<<<< HEAD
 	<style type="text/css">
 		.head {
 			cursor:pointer;
 		}
 	</style>
+=======
+	<!-- slide toggle -->
+	<script>
+	
+		$(document).ready(function(){
+		   if ($("#swot1").text() || $("#swot2").text() || $("#swot3").text() || $("#swot4").text()) {
+		      for (var i = 1; i < 5; i++) {
+		         if ($("#swot" + i).text()) {
+		             $("#flip" + i).show();
+		             $("#panel" + i).slideToggle("slow");
+		         }
+		         else if(!$("#swot" + i).text()){
+		            $("#flip" + i).hide();
+		            $("#panel" + i).hide();
+		         }
+		      }
+		      
+		      $("#toggle").hide();
+		   }
+		   else{
+		      console.log("전부 비어있는값입니다.");
+		      $("#swottable").hide();
+		      $("#toggle").show();
+		   }
+		});
+	
+	   $(document).ready(function() {
+	      $("#panel1").hide();
+	      $("#flip1").click(function() {
+	         $("#panel1").slideToggle("slow");
+	      });
+	   });
+	
+	   $(document).ready(function() {
+	      $("#panel2").hide();
+	      $("#flip2").click(function() {
+	         $("#panel2").slideToggle("slow");
+	      });
+	   });
+	
+	   $(document).ready(function() {
+	      $("#panel3").hide();
+	      $("#flip3").click(function() {
+	         $("#panel3").slideToggle("slow");
+	      });
+	   });
+	
+	   $(document).ready(function() {
+	      $("#panel4").hide();
+	      $("#flip4").click(function() {
+	         $("#panel4").slideToggle("slow");
+	      });
+	   });
+	</script>
+	
+	<script type="text/javascript">
+	function writeForm(){
+		
+		window.open("swotWriteForm","writeForm","top=150,left=150,width=15000,height=500");
+	   	
+	}
+
+
+	function editForm(){
+		   window.open("swotUpdateForm","UpdateForm","top=150,left=150,width=15000,height=500");
+		}
+		
+	function deleteForm(loginId){
+		location.href="deleteswot";
+		
+	}	
+	</script>
+		
+>>>>>>> 4-20jinRe
 </head>
 
 
@@ -70,7 +145,7 @@
 					<table>	
 						<tbody>
 							<tr class="row100 body" id="panel1">
-								<td class="cell100 column1" id="swot1" contenteditable='true'>내부환경의 강점</td>				
+								<td class="cell100 column1" id="swot1" contenteditable='true'>${swotlist.swotS}</td>				
 							</tr>
 						</tbody>
 					</table>
@@ -92,7 +167,7 @@
 					<table>
 						<thead>
 							<tr class="row100 body" id="panel2">			
-								<td class="cell100 column1" id="swot2" contenteditable='true'>내부환경의 약점</td>				
+								<td class="cell100 column1" id="swot2" contenteditable='true'>${swotlist.swotW}</td>				
 							</tr>
 						</thead>
 					</table>
@@ -114,7 +189,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel3">
-								<td class="cell100 column1" id="swot3" contenteditable='true'>외부 환경에서 비롯된 기회</td>				
+								<td class="cell100 column1" id="swot3" contenteditable='true'>${swotlist.swotO}</td>				
 							</tr>
 						</thead>
 					</table>
@@ -136,7 +211,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel4">
-								<td class="cell100 column1" id="swot4" contenteditable='true'>외부 환경에서 비롯된 위협</td>				
+								<td class="cell100 column1" id="swot4" contenteditable='true'>${swotlist.swotT}</td>				
 							</tr>		
 						</thead>
 					</table>							
@@ -146,10 +221,17 @@
 	</section>
 	
 	
+	
 	<!-- 공백시 쓰기버튼 -->
-	<div id="toggle">
-	   <button value="userid" onclick="write()"> 입력 </button>
-	</div>
+  	<c:if test="${sessionScope.swotlist == null}">
+  	  <input type="button" id="button_1" class="button_1"  value="입력하기" onclick="writeForm()">
+  	</c:if> 
+  	<c:if test="${sessionScope.swotlist != null}">
+  	<div class="divOne">
+     <input type="button" id="button_2"  class="button_2"value="수정하기" onclick="editForm()">
+  	  <input type="button" id="button_3"  class="button_3"value="삭제하기" onclick="deleteForm()">
+  	</div>
+      </c:if>
 	
 	<!-- Footer -->
     <%@include file="/WEB-INF/views/footer-text-white.jsp"%> 

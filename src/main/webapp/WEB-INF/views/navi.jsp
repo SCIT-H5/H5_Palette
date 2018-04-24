@@ -85,7 +85,7 @@
 		        		
 		        	</li>
 		        	<li>
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/skillReadForm">My Skill</a>
+		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/skillReadForm">My Skill</a>    
 		        	</li>
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/activityReadForm">Activity</a>
@@ -93,7 +93,13 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
+<<<<<<< HEAD
 	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort">New Portfolio</a>
+=======
+	              <a tabindex="-1" class="nav-link" href="#new_port">New Portfolio</a>
+	              
+	              
+>>>>>>> 4-20jinRe
 	            </li>         
 	            <li class="nav-item">
 	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port">My Portfolio</a>
@@ -104,7 +110,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          	<ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}#mypage">My Page</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}/ego/myInfo">My Page</a>
+	               
+	               <!-- My Page SubMenu dropDown -->		        		
+		        		<ul class="drop_down_menu">
+			        		<li>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/myportfolio">My portfolio</a>
+			        		</li>
+			        		<li>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/myInfo">My Information</a>
+			        		</li>
+			        	</ul>		 
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>

@@ -57,9 +57,16 @@ public class UserinfoController {
 		
 		Userinfo user = userDao.getUserinfoById(userId);
 		
+		session.setAttribute("loginName", user.getName());
+		session.setAttribute("loginPassword", user.getPassword());
+		session.setAttribute("loginEmail", user.getEmail());
+		
+		
 		if (user != null && user.getPassword().equals(userPw)) {
 			
 			session.setAttribute("loginId", user.getId());
+			
+			
 			
 			logger.info("로그인 완료, 세션에 아이디 저장");
 			

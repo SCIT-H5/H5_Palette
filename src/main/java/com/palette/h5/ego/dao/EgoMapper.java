@@ -7,6 +7,7 @@ import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.vo.FileManagement;
+import com.palette.h5.vo.Userinfo;
 
 public interface EgoMapper {
 	
@@ -47,7 +48,12 @@ public interface EgoMapper {
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
 	
+<<<<<<< HEAD
 	//성격분석 성격리스트 불러오기
 	ArrayList<PersonalityList> personalityList();
+=======
+	//회원 정보 수정
+	public int userEdit(Userinfo userinfo); 
+>>>>>>> 4-20jinRe
 	
 }

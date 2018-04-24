@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.palette.h5.dao.UserinfoMapper;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.FileManagement;
+import com.palette.h5.vo.Userinfo;
 
 @Repository
 public class EgoDAO {
@@ -271,6 +273,7 @@ public class EgoDAO {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	public ArrayList<PersonalityList> personalityList(){
 		
 		ArrayList<PersonalityList> list = null;
@@ -288,5 +291,24 @@ public class EgoDAO {
 		return list;
 	}
 
+=======
+	
+	//회원 정보 수정
+		public int userEdit(Userinfo userinfo){
+			System.out.println("들어온 "+userinfo);
+			EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+			
+			int result = 0;
+			
+			try {
+				result = mapper.userEdit(userinfo);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+>>>>>>> 4-20jinRe
 	
 }

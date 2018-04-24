@@ -76,6 +76,8 @@ public class UserinfoDAO {
 		
 		return result;
 	}
+	
+	
 
 	
 }

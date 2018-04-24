@@ -219,31 +219,7 @@ function deleteForm(loginId){
          </div>
       </div>
    </div>
- <!-- 폼 작성 하는 곳(히든) -->
-<form action="swotWrite" method="post" id="swotWrite" name="swotWrite" target="swot_Write">
-
-<table>
-	<tr>
-		
-		<th><input type="hidden" id="swotS" name="swotS" value="" placeholder="강점을 입력하시오"></th>
-	</tr>
-	<tr>
-		
-		<th><input type="hidden" id="swotW" name="swotW" value="" placeholder="약점을 입력하시오"></th>
-	</tr>
-	<tr>
-		
-		<th><input  type="hidden" id="swotO" name="swotO" value="" placeholder="기회를 입력하시오"></th>
-	</tr>
-	<tr>
-		
-		<th><input type="hidden" id="swotT" name="swotT" value="" placeholder="위협을 입력하시오"></th>
-	</tr>
-</table>
-
-
-
-</form> 
+ 
    
    <!-- 공백시 쓰기버튼 -->
   	<c:if test="${sessionScope.swotlist == null}">
