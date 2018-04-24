@@ -130,4 +130,17 @@ public class EgoCertDAO {
 		return result;
 	}
 
+	public void projectUpdate(CertProject certProject){
+		
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		try {
+			
+			mapper.projectUpdate(certProject);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

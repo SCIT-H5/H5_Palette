@@ -27,14 +27,13 @@
 	
 	<!-- Plugin CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
-	
-<<<<<<< HEAD
+
 	<style type="text/css">
 		.head {
 			cursor:pointer;
 		}
 	</style>
-=======
+
 	<!-- slide toggle -->
 	<script>
 	
@@ -106,8 +105,6 @@
 		
 	}	
 	</script>
-		
->>>>>>> 4-20jinRe
 </head>
 
 

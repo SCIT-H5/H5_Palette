@@ -50,8 +50,7 @@ public interface EgoMapper {
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
 
-<<<<<<< HEAD
-=======
+
 	//certification write
 	public int certificateWrite(HashMap<String, String> certficateMap);
 
@@ -60,8 +59,7 @@ public interface EgoMapper {
 
 	//certification update
 	public int certificateUpdate(HashMap<String, String> certficateMap);
-	
->>>>>>> 4-24merge브런치
+
 	//성격분석 성격리스트 불러오기
 	ArrayList<PersonalityList> personalityList();
 

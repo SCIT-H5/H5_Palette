@@ -1,16 +1,21 @@
 package com.palette.h5.ego.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
+import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.Userinfo;
 
@@ -22,13 +27,13 @@ public class EgoController {
 	private static final Logger logger = LoggerFactory.getLogger(EgoController.class);
 
 	@Autowired
-	EgoDAO dao;
+	EgoDAO dao;	
 	UserinfoDAO userdao;
 
 
 	// swot 기본 글 읽기
 
-	@RequestMapping(value = "swotReadForm", method = RequestMethod.GET)
+	@RequestMapping(value = "swot/swotReadForm", method = RequestMethod.GET)
 	public String swotRead(HttpSession session) {
 
 		logger.info("CON | SWOT 글읽기 시작");
@@ -57,7 +62,7 @@ public class EgoController {
 
 	// swot 글 작성 폼 이동
 
-	@RequestMapping(value = "swotWriteForm", method = RequestMethod.GET)
+	@RequestMapping(value = "swot/swotWriteForm", method = RequestMethod.GET)
 	public String swotWriteForm() {
 
 		logger.info("CON | 글 작성 이동 시작");
@@ -68,7 +73,7 @@ public class EgoController {
 	}
 
 	// swot 글 작성
-	@RequestMapping(value = "swotWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "swot/swotWrite", method = RequestMethod.POST)
 	public String swotWrite(HttpSession session, Swot swot) {
 
 		logger.info("CON | SWOT 글 작성 시작");
@@ -91,7 +96,7 @@ public class EgoController {
 	}
 
 	// swot 글 수정 폼이동
-	@RequestMapping(value = "swotUpdateForm", method = RequestMethod.GET)
+	@RequestMapping(value = "swot/swotUpdateForm", method = RequestMethod.GET)
 	public String swotUpdateForm() {
 
 		logger.info("CON | SWOT 수정 이동 시작");
@@ -103,7 +108,7 @@ public class EgoController {
 
 	// swot 글 수정
 
-	@RequestMapping(value = "swotUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "swot/swotUpdate", method = RequestMethod.POST)
 	public String swotUpdate(HttpSession session, Swot swot) {
 
 		logger.info("CON | SWOT 수정 시작");
@@ -126,7 +131,7 @@ public class EgoController {
 	}
 
 	// swot 글 삭제
-	@RequestMapping(value = "deleteswot", method = RequestMethod.GET)
+	@RequestMapping(value = "swot/deleteswot", method = RequestMethod.GET)
 	public String deleteswot(HttpSession session) {
 
 		logger.info("CON | SWOT 삭제 시작");
@@ -146,60 +151,7 @@ public class EgoController {
 		return "redirect:swotReadForm";
 	}
 
-		logger.info("글 작성 폼으로 이동 완료 ");
-		// model.addAttribute("proNum");
-
-		return "ego/certProjectWrite";
-	}
-
-	// 프로젝트 작성
-	@RequestMapping(value = "projectWrite_One", method = RequestMethod.GET)
-	public String projectWrite_One(CertProject CertProject, HttpSession session) {
-		// model.addAttribute("proNum");
-		logger.info("프로젝트 리스트 작성 ");
-		
-		String proId = (String) session.getAttribute("loginId");// 섹션의 아이디 가져오기
-		CertProject.setProId(proId);
-		
-		System.out.println("넘어온 작성된 디테일 값 : " + CertProject);
-
-		dao.projectWrite_One(CertProject);
-
-		logger.info("프로젝트 리스트 작성 완료 ");
-		return "redirect:certProjectReadForm";
-	}
-
-	// 프로젝트 디테일 수정폼으로이동
-	@RequestMapping(value = "edit", method = RequestMethod.GET)
-	public String edit(int proNum, Model model) {
-		logger.info("프로젝트 디테일 수정폼 이동 ");
-		System.out.println("가지고온 넘버 : " + proNum);
-
-		CertProject result = null;
-		
-		System.out.println("넘어온 글 번호 " + proNum);
-
-		result = dao.projectdetail_One(proNum);// 이동하면서 번호로 글 가져오기		
-
-		model.addAttribute("result", result);
-		
-		logger.info("프로젝트 디테일 수정폼 이동 완료 ");
-
-		return "ego/certProjectEditForm";
-	}
 	
-	@RequestMapping(value = "projectEdit", method = RequestMethod.POST)
-	public String projectEdit(int proNum, Model model, CertProject CertProject, HttpSession session){
-		
-		String proId = (String) session.getAttribute("loginId");// 섹션의 아이디 가져오기
-		CertProject.setProId(proId);
-		
-		dao.projectUpdate(CertProject);
-		
-		logger.info("프로젝트 수정 완료");
-		
-		return "redirect:detail?proNum=" + proNum;
-	}
 	
 	 // history page로 이동 (userId는 session값으로 넣음)
     @RequestMapping(value="/history/historyReadForm", method=RequestMethod.GET)
