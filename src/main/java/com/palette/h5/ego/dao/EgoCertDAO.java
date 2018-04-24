@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
-import com.palette.h5.ego.vo.CertProjectDetail;
 
 @Repository
 public class EgoCertDAO {
@@ -73,38 +72,7 @@ public class EgoCertDAO {
 		
 		return result;
 	}
-	//프로젝트 디테일 글 하나 출력( CertProjectDetail 테이블로 부터)
-		public CertProjectDetail projecDetail_one_one(int proNum){
-			CertProjectDetail result = null;
-			
-			EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-			logger.info("다오의 아이디 "+proNum);
-			try {
-				
-				result = mapper.projecDetail_one_one(proNum);
-				logger.info("들어갔다온 후 "+result);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			return result;
-		}
 	
-	//프로젝트 디테일 글 수정 / 작성
-	public void projecDetailtWrite(CertProjectDetail CertProjectDetail){
-		logger.info("다오에 넘어온 값 "+CertProjectDetail);
-
-		
-		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-		
-		try {
-			
-			mapper.projecDetailtWrite(CertProjectDetail);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	public int certificateWrite(HashMap<String, String> certficateMap) {
 		// TODO Auto-generated method stub

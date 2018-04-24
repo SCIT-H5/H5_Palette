@@ -1,28 +1,18 @@
 package com.palette.h5.ego.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
-import com.palette.h5.ego.vo.CertProject;
-
-
-import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.Userinfo;
-
-import com.palette.h5.ego.vo.History;
 
 
 @Controller
@@ -74,7 +64,7 @@ public class EgoController {
 
 		logger.info("CON | 글 작성 이동 종료");
 
-		return "ego/swotWriteForm";
+		return "ego/swot/swotWriteForm";
 	}
 
 	// swot 글 작성
@@ -108,7 +98,7 @@ public class EgoController {
 
 		logger.info("CON | SWOT 수정 이동 종료");
 
-		return "ego/swotUpdateForm";
+		return "ego/swot/swotUpdateForm";
 	}
 
 	// swot 글 수정
