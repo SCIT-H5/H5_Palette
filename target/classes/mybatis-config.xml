@@ -14,6 +14,7 @@
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>
 
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml"/>

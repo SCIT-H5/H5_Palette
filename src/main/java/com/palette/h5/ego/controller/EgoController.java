@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.dao.UserinfoDAO;
@@ -36,11 +35,6 @@ public class EgoController {
 	EgoDAO dao;
 	UserinfoDAO userdao;
 
-	@RequestMapping(value = "certCertificateReadForm", method = RequestMethod.GET)
-	public String test() {
-
-		return "ego/certCertificateReadForm";
-	}
 
 	// swot 기본 글 읽기
 
@@ -142,7 +136,6 @@ public class EgoController {
 	}
 
 	// swot 글 삭제
-
 	@RequestMapping(value = "deleteswot", method = RequestMethod.GET)
 	public String deleteswot(HttpSession session) {
 
@@ -163,55 +156,8 @@ public class EgoController {
 		return "redirect:swotReadForm";
 	}
 
-	   @RequestMapping(value="/swot/swotReadForm",method=RequestMethod.GET)
-	   public String swotRead(Model model){
-	      
-	      logger.info("CON | 글 읽기 시작");
-	      
-	      // swotRead 페이지에서 글작성버튼 생성여부 판단 
-	      
-	      logger.info("CON | 글 읽기 종료");
-	      return "ego/swot/swotReadForm";
-	   }
 
-
-	@RequestMapping(value = "certProjectReadForm", method = RequestMethod.GET)
-	public String projectRead(HttpSession session, Model model, CertProject CertProject) {
-
-		ArrayList<CertProject> list = null;
-
-		String proId = (String) session.getAttribute("loginId");// 섹션의 아이디 가져오기
-		CertProject.setProId(proId);
-		
-		list = dao.projectList(proId);
-
-		model.addAttribute("list", list);
-		System.out.println("받아온 리스트 " + list);
-		return "ego/certProjectReadForm";
-	}
-
-	// 디테일 페이지로 이동
-	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detail(int proNum, HttpSession session, Model model) {
-		// 글 번호를 가지고 디테일 페이지로 이동
-		CertProject result = null;
-		
-		System.out.println("넘어온 글 번호 " + proNum);
-
-		result = dao.projectdetail_One(proNum);
-		
-		model.addAttribute("result", result);
-		
-		// model.addAttribute("proNum");
-
-		return "ego/certProjectDetailReadForm";
-	}
-
-	// 글작성폼으로이동
-	@RequestMapping(value = "writeForm", method = RequestMethod.GET)
-	public String write() {
-		logger.info("글 작성 폼으로 이동");
-
+<<<<<<< HEAD
 		logger.info("글 작성 폼으로 이동 완료 ");
 		// model.addAttribute("proNum");
 
@@ -457,4 +403,6 @@ public class EgoController {
 			return "ego/mypage/myportfolio";
 		}
 
+=======
+>>>>>>> 4-24merge브런치
 }
