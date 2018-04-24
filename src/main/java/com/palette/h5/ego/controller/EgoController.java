@@ -156,8 +156,6 @@ public class EgoController {
 		return "redirect:swotReadForm";
 	}
 
-
-<<<<<<< HEAD
 		logger.info("글 작성 폼으로 이동 완료 ");
 		// model.addAttribute("proNum");
 
@@ -403,6 +401,4 @@ public class EgoController {
 			return "ego/mypage/myportfolio";
 		}
 
-=======
->>>>>>> 4-24merge브런치
 }
