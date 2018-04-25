@@ -110,11 +110,25 @@ function initResizable(className, valueNum) {
 	    	}
 	    });
 	}
+	else if(valueNum == -1){
+		$(className).resizable({
+	    	containment: "#trash",
+	    	autoHide: true,
+	    	resize: function( event, ui ) {
+	    		$(this).children('video').attr('width', ui.size.width);
+	    		$(this).children('video').attr('height', ui.size.height);
+	    	}
+	    });
+	}
 	
 	else{
 		$(className).resizable({
 	    	containment: "#trash",
-	    	autoHide: true
+	    	autoHide: true,
+	    	resize: function( event, ui ) {
+	    		$(this).css('width', ui.size.width);
+	    		$(this).css('height', ui.size.height);
+	    	}
 	    });
 	}
 	
@@ -348,32 +362,59 @@ function insertWiget( $item, num, x, y ) {
 			});
 		}
 		
-		//추가한 이미지위젯 기능
+		//추가한 이미지, 동영상 위젯 기능
 		else {
 			var src = $('#file'+num).attr('src');	//id가 'file'+num인태그에 src속성추가
+			var text = "이미지";
+			var f_type = $('#file'+num).attr('f_type');
+			var file;
+			if(f_type != "img"){
+				file = '<div class="drag_video" style="position:absolute; width:320px; height:220px; left:'+x+'px; top:'+y+'px;">'
+				+ '<img class="close" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+				+ '<video width="300" height="200" controls><source src="'+f_type+'" type="video/mp4"></video></div>';
+				src = "/h5/resources/portfolio/img/icon_video.png";
+				text = "동영상";
+			}
 			//이미지 html태그 변수생성
-			var img = '<div class="drag_img" style="position:absolute; width:96px; height: 72px; left:'+x+'px; top:'+y+'px;">'
-					+ '<img class="close" style="position:absolute;" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
-					+ '<img src="'+src+'" class="img"></div>';
+			else {
+				file = '<div class="drag_img" style="position:absolute; width:96px; height: 72px; left:'+x+'px; top:'+y+'px;">'
+				+ '<img class="close" style="position:absolute;" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+				+ '<img src="'+src+'" class="img"></div>';
+			}
+			
+				
 			//이미지 포트폴리오영역에 추가
-			$(img).appendTo( $list ).fadeIn(function() {
+			$(file).appendTo( $list ).fadeIn(function() {
 				$item.animate({ width: "96px" })
 					 .animate({ height: "72px" });
 				//이미지에 resizable이벤트 생성
-				initResizable('.drag_img', num);
+				if(f_type != "img"){
+					initResizable('.drag_video', -1);
+					
+					$( ".drag_video").draggable({
+						revert : "invalid"
+					});
+
+					initCloseBtn('.drag_video');
+				}
+				else{
+					initResizable('.drag_img', num);
+					//추가한 이미지에 드래그 이벤트 생성
+					$( ".drag_img").draggable({
+						revert : "invalid"
+					});
+
+					initCloseBtn('.drag_img');
+				}
+				
 				
 				//넣었던 이미지 위젯에 다시생성
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
-		    			 +'<h5 class="ui-widget-header">이미지</h5>'
-		    			 +'<img src="'+src+'" id="file'+num+'">'
+		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
 		  				 +'</li>');
 				
-				//추가한 이미지에 드래그 이벤트 생성
-				$( ".drag_img").draggable({
-					revert : "invalid"
-				});
-
-				initCloseBtn('.drag_img');
+				
 			});//fadeIn
 		}//else
         
@@ -401,14 +442,26 @@ function imgUpload() {
     	if (fileNm != "") {
     	    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
     	
-    	    if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
-    	        alert("이미지파일 (.jpg, .png, .gif )만 업로드 가능합니다.");
+    	    if (!(ext == "gif" || ext == "jpg" || ext == "png" || ext == "mp4")) {
+    	        alert("이미지파일 (.jpg, .png, .gif )과 동영상파일(.mp4)만 업로드 가능합니다.");
     	        return false;
     	    }
     	}
     	
+    	var maxSize  = 30 * 1024 * 1024    //30MB
+    	var file = $("#upload")[0].files[0];
+        var fileSize = file.size/(1024*1024);
+
+    	
+
+        if(fileSize > maxSize)
+        {
+        	alert("파일사이즈 : "+ fileSize +"MB, 첨부파일 사이즈는 30MB 이내로 등록 가능합니다.");
+            return;
+        }
+    	
 		var formData = new FormData();
-		formData.append("file",$("#upload")[0].files[0]);
+		formData.append("file", file);
 		
 		//위젯에 업로드한 이미지 추가
 		$.ajax({
@@ -420,9 +473,17 @@ function imgUpload() {
 			dataType:"text",				
 			success:function(data){	
 				console.log(data);
+				var ext = data.split('.');
+				var f_type = "img";
+				var text = "이미지";
+				if(ext[ext.length-1] == 'mp4'){
+					f_type = data;
+					data = "/h5/resources/portfolio/img/icon_video.png";
+					text = "동영상";
+				}
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
-		    			 +'<h5 class="ui-widget-header">이미지</h5>'
-		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'">'
+		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
 		  				 +'</li>');
 				
 				$( "li", $wigetBox ).draggable({

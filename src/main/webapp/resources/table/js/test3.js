@@ -251,7 +251,6 @@
 
         // Add row 행추가
         $table.on('click', '.addrow', function () {
-
             if ($(this).hasClass('disabled')) {
                 return false;
             }
@@ -268,6 +267,7 @@
     			$(".hi2td").resizable();
             });
 
+            imgupload();
             return false;
         });
 
@@ -323,4 +323,3 @@
     };
 
 })(jQuery, this, 0);
-

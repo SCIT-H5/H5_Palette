@@ -50,6 +50,22 @@ public class PortDAO {
 		return result;
 	}
 	
+	public int portDelete(Portfolio portfolio){
+		logger.info("DAO | 포트폴리오 삭제 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		int result = 0;
+		
+		try {
+			result = mapper.portDelete(portfolio);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 포트폴리오 삭제 종료");
+		return result;
+	}
+	
 	public ArrayList<Portfolio> portList(String portId){
 		logger.info("DAO | 포트폴리오 리스트 불러오기 시작");
 		PortMapper mapper = session.getMapper(PortMapper.class);

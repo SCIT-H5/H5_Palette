@@ -81,7 +81,6 @@ function addcol() {
 
 function addrow() {
 	$('.addrow').off("click").on('click', function() {
-
 		$table = $(this).closest("table");
 		colnumber = $table.find('thead th').length - 1;
 		rownumber = $table.find('tbody tr').length;
@@ -91,7 +90,7 @@ function addrow() {
 		}
 
 		rownumber += 1;
-
+		
 		$(this).closest('tr').after(buildRow(0, colnumber));
 
 		$table.find('.delrow').removeClass('disabled');
@@ -127,6 +126,7 @@ function addrow() {
 }
 
 function buildCell(content, type) {
+	alert(type);
 	content = (content === 0) ? "0" : (content || '');
 	// Custom type
 	if (type && 'text' !== type) {

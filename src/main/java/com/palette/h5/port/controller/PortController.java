@@ -101,6 +101,16 @@ public class PortController {
 		return "redirect:portView?portNum="+portfolio.getPortNum()+"&portId="+portfolio.getPortId();
 	}
 	
+	@RequestMapping(value = "portDelete", method = RequestMethod.POST)
+	public String portDelete(Model model, Portfolio portfolio) {
+		logger.info("Controller | 포트폴리오 삭제 시작");
+		
+		dao.portDelete(portfolio);
+		
+		logger.info("Controller | 포트폴리오 삭제  종료");
+		return "redirect:my_port";
+	}
+	
 	@RequestMapping(value="uploadfile", method=RequestMethod.POST)
 	public String writeBoard(MultipartFile upload, Model model){
 		String result = "";
