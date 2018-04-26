@@ -3,21 +3,16 @@ package com.palette.h5.ego.vo;
 public class Skill {
 	
 	public String skillId;
-	public int skillNum;
-	public String skillName;
-	public String skillContent;
+	public String skillHtml;
 	
 	public Skill() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Skill(String skillId, int skillNum, String skillName, String skillContent) {
+	public Skill(String skillId, String skillHtml) {
 		super();
 		this.skillId = skillId;
-		this.skillNum = skillNum;
-		this.skillName = skillName;
-		this.skillContent = skillContent;
+		this.skillHtml = skillHtml;
 	}
 
 	public String getSkillId() {
@@ -28,34 +23,17 @@ public class Skill {
 		this.skillId = skillId;
 	}
 
-	public int getSkillNum() {
-		return skillNum;
+	public String getSkillHtml() {
+		return skillHtml;
 	}
 
-	public void setSkillNum(int skillNum) {
-		this.skillNum = skillNum;
-	}
-
-	public String getSkillName() {
-		return skillName;
-	}
-
-	public void setSkillName(String skillName) {
-		this.skillName = skillName;
-	}
-
-	public String getSkillContent() {
-		return skillContent;
-	}
-
-	public void setSkillContent(String skillContent) {
-		this.skillContent = skillContent;
+	public void setSkillHtml(String skillHtml) {
+		this.skillHtml = skillHtml;
 	}
 
 	@Override
 	public String toString() {
-		return "Skill [skillId=" + skillId + ", skillNum=" + skillNum + ", skillName=" + skillName + ", skillContent="
-				+ skillContent + "]";
+		return "Skill [skillId=" + skillId + ", skillHtml=" + skillHtml + "]";
 	}
 	
 }

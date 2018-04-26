@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
+import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertProject;
@@ -64,7 +65,7 @@ public interface EgoMapper {
 	ArrayList<PersonalityList> personalityList();
 
 	//회원 정보 수정
-	public int userEdit(Userinfo userinfo); 
+	public int userEdit(Userinfo userinfo);
 
 	
 }

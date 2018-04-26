@@ -1,6 +1,7 @@
 package com.palette.h5.ego.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
+import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.Userinfo;
 
@@ -342,5 +345,12 @@ public class EgoController {
 			
 			return "ego/mypage/myportfolio";
 		}
-
+		
+		@RequestMapping(value = "skillReadForm", method = RequestMethod.GET)
+		public String skillReadForm(){
+			logger.info("스킬페이지 이동 시작");
+			logger.info("스킬페이지 이동 종료");
+			return "ego/skillReadForm";
+		}
+		
 }

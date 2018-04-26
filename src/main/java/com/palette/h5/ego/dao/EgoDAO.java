@@ -1,6 +1,7 @@
 package com.palette.h5.ego.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -8,10 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.palette.h5.dao.UserinfoMapper;
-import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
+import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.vo.FileManagement;
 import com.palette.h5.vo.Userinfo;
@@ -245,7 +245,4 @@ public class EgoDAO {
 			
 			return result;
 		}
-
-
-	
 }
