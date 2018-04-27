@@ -122,14 +122,14 @@
 	   				<c:if test="${loopStat.index%2 == 0 }">
 	   					<li class="is-hidden timeline-item">
 	   				</c:if>
-				   		<h3>${his.hisTitle }</h3>
-				   		<hr>
-				   		<p>${his.hisContent }</p>
-				  		<hr>
-				   		<time>${his.hisPeriod }</time><br>
-				   		<hr>
-				   		<p style="text-align:right;"><a href="javascript:">수정</a>&nbsp;
-				   		<a href="javascript:">삭제</a></p>
+					   		<h3>${his.hisTitle }</h3>
+					   		<hr>
+					   		<p>${his.hisContent }</p>
+					  		<hr>
+					   		<time>${his.hisPeriod }</time><br>
+					   		<hr>
+					   		<p style="text-align:right;"><a href="javascript:">수정</a>&nbsp;
+					   		<a href="javascript:">삭제</a></p>
 			   			</li>
 	   			</ul>
 	   			

@@ -156,29 +156,5 @@ public class EgoDAO {
 		return result;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	public int file_management(FileManagement filemanagement){
-		
-		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-		
-		int result = 0;
-		
-		try {
-			result = mapper.file_management(filemanagement);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		
-		return result;
-	}
-	
 
-	
 }

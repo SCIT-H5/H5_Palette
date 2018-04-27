@@ -51,7 +51,7 @@
 <body>
 	
 	<div>
-		<form action="historyWrite" method="post" onsubmit="return formCheck();">
+		<form action="historyUpdate" method="post" onsubmit="return formCheck();">
 			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.userId }">
 			<table>
 				<tr>
