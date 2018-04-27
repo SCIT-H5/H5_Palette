@@ -83,6 +83,7 @@ public class EgoCertDAO {
 		int result=0;
 		
 		try {
+			logger.info(certficateMap.toString());
 			result = mapper.certificateWrite(certficateMap);
 		} catch (Exception e) {
 			// TODO: handle exception

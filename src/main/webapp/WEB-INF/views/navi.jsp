@@ -52,7 +52,7 @@
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
 		        	<li>
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swotReadForm">SWOT Analysis</a>
+		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SWOT Analysis</a>
 
 		        	</li>
 		        	<li>

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +21,8 @@ import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
+import com.palette.h5.port.dao.PortDAO;
+import com.palette.h5.vo.Portfolio;
 import com.palette.h5.vo.Userinfo;
 
 @Controller
@@ -31,6 +34,9 @@ public class EgoController {
 	@Autowired
 	EgoDAO dao;
 	UserinfoDAO userdao;
+	
+	@Autowired
+	PortDAO portdao;
 
 	// swot 기본 글 읽기
 
@@ -279,9 +285,15 @@ public class EgoController {
 
 	// 마이페이지 정보 이동
 	@RequestMapping(value = "myInfo", method = RequestMethod.GET)
-	public String MyInformation() {
+	public String MyInformation(Model model, HttpSession session) {
 		logger.info("마이페이지/ 정보페이지 이동 시작");
-
+		
+		String id = (String)session.getAttribute("loginId");
+		System.out.println(id);
+		ArrayList<Portfolio> portList = portdao.portList(id);
+		
+		model.addAttribute("portList", portList);
+		
 		logger.info("마이페이지/ 정보페이지 이동 종료");
 
 		return "ego/mypage/myInformation";

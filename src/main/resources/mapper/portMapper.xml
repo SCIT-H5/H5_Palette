@@ -32,6 +32,15 @@
 			portId = #{portId}
 	</update>
 	
+	<delete id="portDelete" parameterType="portfolio">
+		delete from
+			portfolio
+		where
+			portNum = #{portNum}
+			and
+			portId = #{portId}
+	</delete>
+	
 	<!-- 한 아이디의 포폴 모두 불러오기 -->
 	<select id="portList" parameterType="String" resultType="portfolio">
 		select

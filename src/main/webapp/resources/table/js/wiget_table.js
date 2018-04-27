@@ -91,7 +91,6 @@ function addrow() {
 		}
 
 		rownumber += 1;
-
 		$(this).closest('tr').after(buildRow(0, colnumber));
 
 		$table.find('.delrow').removeClass('disabled');
@@ -101,6 +100,7 @@ function addrow() {
 		$(function() {
 			$(".hi2td").resizable();
 		});
+		imgupload();
 		addrow();
 		return false;
 	});
@@ -152,7 +152,12 @@ function buildRow(data, len) {
 	if (!s.row_template) {
 		// Without row template
 		for (b = 0; b < (len || data.length); b += 1) {
-			rowcontent += buildCell(data[b]);
+			if(b == ((len || data.length)-1)){
+				rowcontent += '<td class="hi2td"><input type="file" class="jaa_file"></td>'
+			}
+			else{
+				rowcontent += buildCell(data[b]);				
+			}
 		}
 	} else {
 		// With row template
@@ -161,7 +166,7 @@ function buildRow(data, len) {
 			rowcontent += buildCell(data[b], s.row_template[b]);
 		}
 	}
-
+	
 	return $(
 			'<tr/>',
 			{

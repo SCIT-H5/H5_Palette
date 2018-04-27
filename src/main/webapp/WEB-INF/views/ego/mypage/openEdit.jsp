@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공개 범위 설정</title>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 <style type="text/css">
 .openDiv{
 	
@@ -26,11 +27,63 @@ height: 95px;
 text-align: center;
 }
 </style>
+
+<script type="text/javascript">
+$(function() {
+	var onoff = '${portList[0].portOpen}';
+
+	if(onoff == 0){
+		$('#port_off').prop('checked', true);
+	}
+	else if(onoff == 1){
+		$('#port_on').prop('checked', true);
+	}
+	
+	
+	$('#port').on('change', function() {
+		var portOpen = $('#port option:selected').attr("portOpen");
+		if(portOpen == 0){
+			$('#port_off').prop('checked', true);
+		}
+		else if(portOpen == 1){
+			$('#port_on').prop('checked', true);
+		}
+	});
+	
+	$('#sbtn').on('click', function() {
+		var portNum = $('#port option:selected').val();
+		var portOpen = $("input:radio[name='portOpen']:checked").val();
+		$.ajax({
+			type:"POST",						
+			url:"/h5/userinfo/openInfo",				
+			data:{
+				portNum : portNum,
+				portOpen : portOpen
+			},
+			dataType:"text",				
+			success:function(data){	
+				console.log(data);
+				alert("수정완료!");
+			},
+			error: function(e){			
+				console.log(e);
+			}
+		});
+	});
+	
+	/* $('#port_on').on('click', function() {
+		$('#port option:selected').attr("portOpen", 1);
+	});
+	$('#port_off').on('click', function() {
+		$('#port option:selected').attr("portOpen", 0);
+	}); */
+});
+</script>
 </head>
 <body>
 <div class="openDiv">
 
-<form action="openInfo" method="post">
+<form action="openInfo" method="post" id="openInfoForm">
 	<table class="openTable">
 		<tr>
 			<th colspan="4">공개범위 설정</th>
@@ -42,22 +95,19 @@ text-align: center;
 		<tr>
 			<th colspan="4">
 			<p>포토폴리오 페이지</p>
-			<select name="port">
-		
-				
-				<option>첫번째 포폴</option>
-				<option>두번째 포폴</option>
-				<option>세번째 포폴</option>
-				<option>네번째 포폴</option>
+			<select name="portNum" id="port">
+				<c:forEach items="${portList }" var="list" varStatus="status">
+					<option value="${list.portNum }" portOpen="${list.portOpen }">${status.index+1 }번째포폴</option>
+				</c:forEach>
 
 			</select>
 			</th>
 			
 			<th colspan="2">
-			<input type="radio" name="on_off_one"></button>
+				<input type="radio" id="port_on" class="port_radio" name="portOpen" value="1">
 			</th>
 			<th colspan="2">
-			<input type="radio" name="on_off_one"></button>
+				<input type="radio" id="port_off" class="port_radio" name="portOpen" value="0">
 			</th>
 			
 			
@@ -66,10 +116,10 @@ text-align: center;
 			<th colspan="4">자아 분석 페이지</th>
 			
 			<th colspan="2">
-			<input type="radio" name="on_off_two"></button>
+				<input type="radio" name="on_off_two">
 			</th>
 			<th colspan="2">
-			<input type="radio" name="on_off_two"></button>
+				<input type="radio" name="on_off_two">
 			</th>
 			
 			
@@ -78,7 +128,7 @@ text-align: center;
 		
 	</table>
 	<br>
-	<input type="submit" id="sbtn" name="sbtn" value="수정하기">
+	<input type="button" id="sbtn" value="수정하기">
 </form>	
 </div>
 </body>

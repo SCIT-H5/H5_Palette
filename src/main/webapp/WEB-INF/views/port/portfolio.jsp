@@ -89,7 +89,7 @@ $( function() {
 	var $wigetBox = $( "#wigetBox" ),
 	$trash = $( "#trash" );
 
-	colpick();
+	//colpick();
 	imgUpload();
 
 	// 수정이 아닐때 포트폴리오영역 resizable이벤트 생성
@@ -109,6 +109,7 @@ $( function() {
     	$('#trash').resizable('destroy');				
     	$( ".drag_text").resizable('destroy');
     	$( ".drag_img").resizable('destroy');
+    	$( ".drag_video").resizable('destroy');
     	
     	//Table 내용 html코드에 저장
     	jsonData = JSON.stringify(exportData());
@@ -215,6 +216,10 @@ $( function() {
 			revert : "invalid"
 		});
     	
+    	$( ".drag_video").draggable({
+			revert : "invalid"
+		});
+    	
     	$( ".drag_graph").draggable({
 			revert : "invalid"
 		});
@@ -230,11 +235,13 @@ $( function() {
     	initResizable('.drag_text', 1);
     	initResizable('.drag_graph', 4);
     	initResizable('.drag_img', 0);
+    	initResizable('.drag_video', -1);
     	
     	initCloseBtn('.drag_text');
     	initCloseBtn('.drag_graph');
     	initCloseBtn('.drag_stargraph');
     	initCloseBtn('.drag_img');
+    	initCloseBtn('.drag_video');
     	initCloseBtn('.drag_table');
     	
     	$(".addrowtd").show();
@@ -372,7 +379,7 @@ function createGraph(i) {
 <body>
 
 
-<div id="graphColor">
+<!-- <div id="graphColor">
 	<div>handleShape</div>
 	
 	<select name="target" id="target" onchange="change()">
@@ -395,7 +402,7 @@ function createGraph(i) {
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- DivTable.com -->
 
 <div class="ui-widget ui-helper-clearfix">
