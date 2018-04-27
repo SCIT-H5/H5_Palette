@@ -67,5 +67,14 @@ public interface EgoMapper {
 	//회원 정보 수정
 	public int userEdit(Userinfo userinfo);
 
+	//스킬 리드
+	public Skill skillRead(String userId);
+
+	//스킬 라이트
+	public void skillWrite(HashMap<String, Object> skillmap);
+
+	//스킬 업데이트
+	public void skillUpdate(HashMap<String, Object> skillmap);
+
 	
 }

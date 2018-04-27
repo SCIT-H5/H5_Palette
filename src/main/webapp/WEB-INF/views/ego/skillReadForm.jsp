@@ -18,28 +18,46 @@
 
 <!-- All JS -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%-- 
 <script src="${pageContext.request.contextPath}/resources/portfolio/graph/js/ion.rangeSlider.js"></script>
-<script src="${pageContext.request.contextPath}/resources/portfolio/graph/js/ion.rangeSlider2.js"></script>
+ --%>
+ <script src="${pageContext.request.contextPath}/resources/graph/js/ion.rangeSlider.js"></script>
 
 <script type="text/javascript">
 	var tnum = 0;
-	var gnum = 1;
-	var trow = 1;
+	var trow = 0;
 	var toggle = true;
 	
-	$(function readtable() {
+	
+	$(function readgraph() {
 		$.ajax({
-			url : "skillRead",
-			type : "POST",
-			succecc : function(obj){
-				skillhtml = obj.skillhtml;
-				$('#maindiv').html(skillhtml); //테이블 html로 값을 그림
-			},
-			error : function(e) {
-				alert(e);
-			}
-		})
-		
+            url : "skillload",
+            type : "get",
+            datatype : "json",
+            //받아오는 데이터타입
+            success : function(obj){
+
+				if(obj.skillHtml === undefined && obj.skillRow === undefined){ //두개다 널일시
+				} else{
+		            skillHtml = obj.skillHtml;
+		            trow = obj.skillRow;
+		            tnum = obj.skillTrow;
+	       			$('#maindiv').html(skillHtml); //테이블 html로 값을 그림
+	       			for(var i=0; i<trow; i++){
+	   					$("#js-range-slider"+i).ionRangeSlider({
+	   						min : 0,
+	   						max : 100,
+	   						from : $("#js-range-slider"+i).attr("g-value"),
+	   						hide_min_max : true
+	   					});
+	   				}
+				}
+       			
+            },
+            error : function(err){
+                     //에러 정보를 가진 자바스크립트 객체를 파라미터로
+            }
+         });
 	});
 
 	function addtable() {
@@ -91,19 +109,17 @@
 		var gadd = '<div class="divTableRow" id="divTableRow'+trow+'">';
 		gadd += '<div class="divGraphCell" id="divGraphCell'+trow+'">'+gtext+'</div>';
 		gadd += '<div class="range-slider color-1" id="range-slider'+trow+'">';
-		gadd += '<input type="text" class="js-range-slider" id="js-range-slider'+trow+'" />';
+		gadd += '<input type="text" class="js-range-slider" id="js-range-slider'+trow+'" />'; //슬라이더에 trow더하기
 		gadd += '</div>';
 		gadd += '</div>';
 		gadd += '<input type="button" class="delrow" value="삭제" onclick="delrow('+trow+')" id="delrowbtn'+trow+'"></input>'
 		//gadd += '<input type="button" onclick="delgraph('+gtnum+')" value="그래프 추가" style="float: left; vertical-align: bottom;"></input>';
-		trow++;
+		
 		$('#divTableBody'+gtnum).append(gadd);
 		
-		
-
 		$(function initslider() {
 
-			$(".js-range-slider").ionRangeSlider({
+			$("#js-range-slider"+trow).ionRangeSlider({
 				min : 0,
 				max : 100,
 				hide_min_max : true,
@@ -111,6 +127,9 @@
 			});
 
 		});
+		
+		trow++;
+		
 		
 	}
 	
@@ -140,14 +159,36 @@
 	
 	$(document).ready(function() {
 		$("#complete").click(function() {
+			for(var i=0; i<trow; i++){
+				var s = $("#js-range-slider"+i).data("ionRangeSlider");
+				if(typeof s === 'object')
+					s.destroy();
+				var bar = $("#js-range-slider"+i).val();
+				$("#js-range-slider"+i).attr("g-value", bar);
+			}
+			
 			var graphhtml = $('#maindiv').html();
 			console.log(graphhtml);
+			
+			for(var i=0; i<trow; i++){
+				$("#js-range-slider"+i).ionRangeSlider({
+					min : 0,
+					max : 100,
+					hide_min_max : true,
+				});
+			}
+			
+			var graphrow = trow;
+			graphrow.toString();
+			//alert(graphrow); 그래프개순
 			
 			$.ajax({
 				url : "skillWrite",
 				type : "POST",
 				data : {
-					graphhtml : graphhtml
+					graphhtml : graphhtml,
+					graphrow : trow,
+					tablerow : tnum
 				},
 				success : function(){
 					
@@ -155,8 +196,11 @@
 				error : function(e) {
 					alert(JSON.stringify(e));
 				}
-			});
-		});
+			});//endtoajax
+			
+			
+			
+		});//endtoclick
 	});
 </script>
 </head>
