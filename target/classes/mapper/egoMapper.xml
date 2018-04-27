@@ -131,24 +131,6 @@
 		where
 		hisId=#{hisId} and hisNo=#{hisNo}
 	</delete>
-<<<<<<< HEAD
-
-	<!-- 파일 저장 -->
-	<insert id="file_management" parameterType="file">
-		insert into file_management (
-		file_id
-		<if test="originalFileName != null and savedFileName != null">
-			, originalFileName
-			, savedFileName
-		</if>
-		)
-		values (
-		file_management_SEQ.nextval
-		<if test="originalFileName != null and savedFileName != null">
-			, #{originalFileName}
-			, #{savedFileName}
-		</if>
-=======
 	
 	<!-- 프로젝트 파일 저장 -->
 	<insert id="file_management" parameterType="file">
@@ -165,7 +147,6 @@
 			, #{savedFileName}
 			, #{fileDivision}
 			, #{fileUserId}
->>>>>>> 4-25현준
 		)
 		<selectKey keyProperty="idx" resultType="Integer" order="AFTER"> 
 			SELECT file_management_SEQ.currval FROM dual 
@@ -198,24 +179,6 @@
 	<insert id="projectWrite_One" parameterType="CertProject">
 
 		insert into cert_project(
-<<<<<<< HEAD
-		proNum
-		, proId
-		, proTitle
-		, proEdu
-		, proTerm
-		, proProf
-		, proContent
-		)
-		values(
-		cert_project_SEQ.nextval
-		, #{proId}
-		, #{proTitle}
-		, #{proEdu}
-		, #{proTerm}
-		, #{proProf}
-		, #{proContent}
-=======
 			proNum
 			, proId
 			, proTitle			
@@ -234,7 +197,6 @@
 			, #{proProf}
 			, #{proContent}
 			, #{proFileId}
->>>>>>> 4-25현준
 		)
 
 	</insert>
@@ -264,20 +226,12 @@
 		update
 		cert_project
 		set
-<<<<<<< HEAD
-		proTitle = #{proTitle}
-		, proEdu = #{proEdu}
-		, proTerm = #{proTerm}
-		, proProf = #{proProf}
-		, proContent = #{proContent}
-=======
 			proTitle = #{proTitle}
 			, proEdu = #{proEdu}
 			, proTerm = #{proTerm}
 			, proProf = #{proProf}
 			, proContent = #{proContent}
 			, proFileId = #{proFileId}
->>>>>>> 4-25현준
 		where
 		proNum = #{proNum}
 		and
