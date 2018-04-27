@@ -157,4 +157,27 @@ public class EgoDAO {
 		
 	}
 
+	public History historyonselect(int selecthisNo) {
+		// TODO Auto-generated method stub
+		logger.info("DAO | history 데이터 하나 가져오기 시작");
+		
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		History selecthistory = null;
+		
+		//System.out.println(selecthisNo +"받아온 글번호");
+		
+		try {
+			selecthistory = mapper.historyonselect(selecthisNo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		//System.out.println(selecthistory + "디비갔다온 HISTORY");
+		
+		logger.info("DAO | history 데이터 하나 가져오기 종료");
+		return selecthistory;
+	}
+
 }

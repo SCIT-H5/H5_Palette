@@ -118,8 +118,15 @@
 			hisId=#{hisId} and hisNo=#{hisNo}
 	</delete>
 	
-
-
+	<!-- HISTORY | HISTORY 하나 읽어오기 -->
+	<select id="historyonselect" parameterType="int" resultType="history">
+		select
+		*
+		from
+		history
+		where
+		hisNo=#{hisNo}
+	</select>
 
 
 </mapper>

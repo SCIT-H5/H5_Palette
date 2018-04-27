@@ -84,7 +84,6 @@ public class HomeController {
         			String savedfile = FileService.saveFile(mpf, uploadPath + "/ego_cert");
         			fileManagement.setOriginalFileName(mpf.getOriginalFilename());
         			fileManagement.setSavedFileName(savedfile);
-        			egoDao.file_management(fileManagement);
         		}
             } catch (IOException e) {
                 System.out.println(e.getMessage());

@@ -53,29 +53,30 @@
 	<div>
 		<form action="historyUpdate" method="post" onsubmit="return formCheck();">
 			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.userId }">
+			<input type="hidden" name="hisNo" id="hisNo" value="${hisNo}">
 			<table>
 				<tr>
 					<th>YEAR</th>
 					<td>
-						<input type="text" name="hisDate" id="hisDate" readonly="readonly">
+						<input type="text" name="hisDate" id="hisDate" readonly="readonly" value="${hisDate}">
 					</td>
 				</tr>
 				<tr>
 					<th>TITLE</th>
 					<td>
-						<input type="text" name="hisTitle" id="hisTitle">
+						<input type="text" name="hisTitle" id="hisTitle" value="${hisTitle}">
 					</td>
 				</tr>
 				<tr>
 					<th>CONTENT</th>
 					<td>
-						<textarea rows="1" cols="60" name="hisContent" id="thisContent"></textarea>
+						<textarea rows="1" cols="60" name="hisContent" id="hisContent">${hisContent}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>PERIOD</th>
 					<td>
-						<input type="text" name="hisTitle" id="hisTitle">
+						<input type="text" name="hisPeriod" id="hisPeriod" value="${hisPeriod}">
 					</td>
 				</tr>
 			</table>

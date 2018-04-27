@@ -58,8 +58,8 @@
 <body>
 
 	<div>
-		<form action="/history/historyWrite" method="post" onsubmit="return formCheck();">
-			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.userId }">
+		<form action="historyWrite" method="post" onsubmit="return formCheck();">
+			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.hisId}">
 			<table>
 				<tr>
 					<th>YEAR</th>

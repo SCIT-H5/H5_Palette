@@ -33,4 +33,7 @@ public interface EgoMapper {
 
 	// file management
 	public int file_management(FileManagement filemanagement);
+
+	//selectone
+	public History historyonselect(int hisNo);
 }

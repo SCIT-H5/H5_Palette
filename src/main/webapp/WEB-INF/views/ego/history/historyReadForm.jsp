@@ -128,8 +128,8 @@
 					  		<hr>
 					   		<time>${his.hisPeriod }</time><br>
 					   		<hr>
-					   		<p style="text-align:right;"><a href="javascript:">수정</a>&nbsp;
-					   		<a href="javascript:">삭제</a></p>
+					   		<p style="text-align:right;"><a href="historyUpdateForm?hisNo=${his.hisNo}">수정</a>&nbsp;
+					   		<a href="historyDeleteOne?hisNo=${his.hisNo}">삭제</a></p>
 			   			</li>
 	   			</ul>
 	   			
