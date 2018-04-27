@@ -12,8 +12,8 @@
 		<typeAlias type="com.palette.h5.ego.vo.Skill" alias="skill"/>
 
 		
-		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>
-
+		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="personalityList"/>
+		<typeAlias type="com.palette.h5.ego.vo.Personality" alias="personality"/>
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect"/>
