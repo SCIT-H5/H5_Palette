@@ -24,5 +24,8 @@ public interface FileMapper {
 	
 	// file_management | 해당 userId에 저장된 모든 파일 불러오기
 	public ArrayList<FileManagement> getAlldataById(String fileUserId);
+	
+	// file_management | 
+	public int getCurrentSeqFFM();
 
 }

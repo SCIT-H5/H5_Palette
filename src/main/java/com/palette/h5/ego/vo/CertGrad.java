@@ -3,17 +3,17 @@ package com.palette.h5.ego.vo;
 public class CertGrad {
 	
 	public String gradId;
-	public int gradField;
+	public int gradFileId;
 	
 	public CertGrad() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CertGrad(String gradId, int gradField) {
+	public CertGrad(String gradId, int gradFileId) {
 		super();
 		this.gradId = gradId;
-		this.gradField = gradField;
+		this.gradFileId = gradFileId;
 	}
 
 	public String getGradId() {
@@ -24,17 +24,17 @@ public class CertGrad {
 		this.gradId = gradId;
 	}
 
-	public int getGradField() {
-		return gradField;
+	public int getGradFileId() {
+		return gradFileId;
 	}
 
-	public void setGradField(int gradField) {
-		this.gradField = gradField;
+	public void setGradFileId(int gradFileId) {
+		this.gradFileId = gradFileId;
 	}
 
 	@Override
 	public String toString() {
-		return "CertGrad [gradId=" + gradId + ", gradField=" + gradField + "]";
+		return "CertGrad [gradId=" + gradId + ", gradFileId=" + gradFileId + "]";
 	}
 	
 }

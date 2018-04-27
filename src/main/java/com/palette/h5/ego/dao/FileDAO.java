@@ -123,6 +123,24 @@ public class FileDAO {
 		logger.info("DAO | fileManagement 해당 userId로 저장된 모든 파일 불러오기 종료 ");
 		return allFile;
 	}
+	
+	
+	// file_management | 현재 시퀀스 조회
+	public int getCurrentSeqFFM(){
+		
+		logger.info("DAO | filemanament 현재 시퀀스 조회 시작");
+		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
+		int currentSeqNo = 0;
+		
+		try {
+			currentSeqNo = mapper.getCurrentSeqFFM();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | filemanament 현재 시퀀스 조회 종료");
+		return currentSeqNo;
+	}
 
 
 }

@@ -7,6 +7,7 @@ public class FileManagement {
 	private String savedFileName;
 	private int fileDivision;
 	private String fileUserId;
+	private int idx;
 	
 	public FileManagement() {
 		super();
@@ -14,13 +15,14 @@ public class FileManagement {
 	}
 
 	public FileManagement(int file_id, String originalFileName, String savedFileName, int fileDivision,
-			String fileUserId) {
+			String fileUserId, int idx) {
 		super();
 		this.file_id = file_id;
 		this.originalFileName = originalFileName;
 		this.savedFileName = savedFileName;
 		this.fileDivision = fileDivision;
 		this.fileUserId = fileUserId;
+		this.idx = idx;
 	}
 
 	public int getFile_id() {
@@ -63,10 +65,19 @@ public class FileManagement {
 		this.fileUserId = fileUserId;
 	}
 
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
 	@Override
 	public String toString() {
 		return "FileManagement [file_id=" + file_id + ", originalFileName=" + originalFileName + ", savedFileName="
-				+ savedFileName + ", fileDivision=" + fileDivision + ", fileUserId=" + fileUserId + "]";
+				+ savedFileName + ", fileDivision=" + fileDivision + ", fileUserId=" + fileUserId + ", idx=" + idx
+				+ "]";
 	}
 	
 }
