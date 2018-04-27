@@ -43,7 +43,7 @@
 		}
 		
 		function services2(){
-			location.href = "port/new_port";			// 새 포트폴리오 페이지로 이동
+			location.href = "port/newPort";			// 새 포트폴리오 페이지로 이동
 		}
 		
 		function services3(){
@@ -51,7 +51,7 @@
 		}
 		
 		function services4(){
-			location.href = "#mypage";					// 마이 페이지로 이동
+			location.href = "ego/myInfo";					// 마이 페이지로 이동
 		}
 	
 	</script>

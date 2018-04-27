@@ -6,49 +6,196 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Palette - 이수과목</title>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/table/js/test3.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/table/js/jquery-ui.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/table/js/jquery-ui.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/table/js/wiget_table.js"></script>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/table/css/jquery.edittable.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/table/css/jquery-ui.css">
+
+
+<script type="text/javascript">
+	var toggle = true;
+	var jaatable;
+	var tablehtml;
+	var datatable;
+	var dataable = true;
+	var fileIdx = 0;
 	
-	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
-	
-	<script type="text/javascript">
-		$(function(){
-			
-			$("#imgBtn").on("click",function(){
+	$(function readtable() {
+		$.ajax({
+			url : "certLectRead",
+			type : "POST",
+			datatype : "json",
+			//받아오는 데이터타입
+			success : function(obj) {
+				console.log(JSON.stringify(obj));
+				jaatable = obj.lectJson; //DB json 불러오기
+				tablehtml = obj.lectHtml; //DB html 불러오기
+				console.log(jaatable);
+				console.log(tablehtml);
+				if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시
+					alert("노데이트");
+					dataable = false;
+					nodata(); //초기화테이블 생성
+					tableresize(); //테이블 리사이즈 생성
+				} else{
+					alert("노데이트 아님"); //값이 있을때
+					$('#edittable2').html(tablehtml); //테이블 html로 값을 그림
+					tableresize();
+					tableresizedis();
+					addrowLect(); //addrow
+				}
 				
-				var formData = new FormData();
-				formData.append("file",$("#upload")[0].files[0]);
-				
-				$.ajax({
-					type:"POST",						
-					url:"fileupload",				
-					data:formData,
-					processData: false,
-				    contentType: false,
-					dataType:"text",				
-					success:function(data){	
-						console.log(data);
-						$("#imgDiv").empty();
-						$("#imgDiv").html('<img alt="" src="'+data+'">');
-					},
-					error: function(e){			
-						console.log(e);
-					}
-				});
-			});
+				// Example of jQuery UI datePicker
+				/* $("#edittable2").on("focusin", "td:nth-child(3) input", function() {
+					$(this).datepicker();
+				}); */
+			},
+			error : function(e) {
+				alert(e);
+			}
 		});
+	});
 	
-	</script>
+	//edittable function
+	function nodata() {
+		jaatable = $("#edittable2") //edittable생성
+				.editTable(
+						{
+							field_templates : {
+								'textarea' : {
+									html : '<textarea class="jaatextarea" style="width: 100%; height: 100%; resize: none; border: 0; text-align: center; font-family: Arial; "/>',
+									getValue : function(input) {
+										return $(input).val();
+									},
+									setValue : function(input, value) {
+										return $(input).text(value);
+									}
+								}
+							},
+							row_template : [ 'textarea', 'textarea', 'textarea',
+									'textarea', 'textarea' ],
+							headerCols : [ '구분', '연도/학기', '교과목명', '평점',
+									'비고' ],
+							first_row : false
+						});
+		/* 
+		// Example of jQuery UI datePicker
+		$("#edittable2").on("focusin", "td:nth-child(3) input", function() {
+			$(this).datepicker();
+		});
+		 */
+		
+	}; //end edittable function
+	 
+	$(document).ready(function() {
+		$("#complete").click(function() {
+			//테이블리사이즈 디스트로이
+			tableresize();
+			tableresizedis();
+
+			//row추가 히든
+			$(".addrowtd").hide();
+			//수정버튼 히든
+			//$("#updatetoggle").hide();
+			//$("#complete").hide();
+			if(dataable == true){
+				datatable = JSON.stringify(exportData());
+				alert("데이터" + datatable);
+			} else{
+				datatable = jaatable.getJsonData();
+				alert("노데이터" + datatable);
+			}
+			if(datatable != "[]"){
+	        	var json = JSON.parse(datatable);
+	        	var cnt = 0;
+	            for(var i=0; i<json.length; i++){
+	            	for(var j=0; j<json[i].length; j++){
+	            		$(".inputtable .hi2td:eq("+cnt+")").html("<input type='text' value='"+json[i][j]+"'>");
+	            		cnt++;
+	            	}
+	            	
+	            }
+	        }
+			console.log(datatable);
+			
+			tablehtml = $('#edittable2').html();
+
+			console.log(tablehtml);
+
+			var datasum = {
+				tablehtml : tablehtml,
+				datatable : datatable
+			};
+
+			console.log(datasum);
+
+			var datasum2 = JSON.stringify(datasum);
+
+			//table data json 보내기
+			$.ajax({
+				url : "certLectWrite",
+				type : "POST",
+				data : {
+					tablehtml : tablehtml,
+					datatable : datatable
+				},
+				success : function() {
+					alert('저장됨');
+				},
+				error : function(e) {
+					alert(JSON.stringify(e));
+				}
+			});
+
+		});
+	});
+
+	$(document).ready(function() { //업데이트 펑션
+		$("#updatetoggle").click(function() {
+			$(".addrowtd").slideToggle("slow");
+			if (toggle == true) {
+				$(".jaatextarea").attr("readonly", true);
+				tableresize();
+				toggle = false;
+			} else {
+				$(".jaatextarea").attr("readonly", false);
+				tableresizedis();
+				toggle = true;
+			}
+		});
+	});
+
+
+	// Resizable function
+	function tableresize() {
+		$(".inputtable").resizable();
+		$(".hi2td").resizable();
+	};
+	
+	function tableresizedis() {
+		$(".inputtable").resizable('destroy');
+		$(".hi2td").resizable('destroy');
+	};
+
+</script>
+
 </head>
 <body>
 
-	<form action="file_upload" method="get">
-	
-		<div id="imgDiv"></div>
-		
-		<input type="file" id="upload" name="file-data">	
-		
-		<input type="button" id="imgBtn" value="전송">
-		
-	</form>
+	<div id="edittable2"></div>
 
+	<button id="updatetoggle">수정</button>
+	<button id="complete">완료</button>
 </body>
+</html>

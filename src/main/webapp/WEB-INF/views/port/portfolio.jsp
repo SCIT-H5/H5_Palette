@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/graph/dist/barrating/themes/bootstrap-stars.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/graph/dist/barrating/themes/fontawesome-stars-o.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/css/bar_graph.css">
 <!-- table -->
 
 
@@ -432,9 +432,29 @@ function createGraph(i) {
 		    <h5 class="ui-widget-header">그래프</h5>
 		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_graph.png" width="96" height="72">
 		    <ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side1">
-		    	<li class="ui-widget-content ui-corner-tr" value="3" >
+		    	<li class="ui-widget-content ui-corner-tr" value="3" id="bar_graph">
 		    		<h5 class="ui-widget-header">바그래프</h5>
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_bargraph.png" width="96" height="72">
+		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2" >
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="1">
+				    		<h5 class="ui-widget-header">1</h5>
+				    	</li>
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="2">
+				    		<h5 class="ui-widget-header">2</h5>
+				    	</li>
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="3">
+				    		<h5 class="ui-widget-header">3</h5>
+				    	</li>
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="4">
+				    		<h5 class="ui-widget-header">4</h5>
+				    	</li>
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="5">
+				    		<h5 class="ui-widget-header">5</h5>
+				    	</li>
+				    	<li class="ui-widget-content ui-corner-tr" value="3" type="6">
+				    		<h5 class="ui-widget-header">6</h5>
+				    	</li>
+		   			</ul>
 		    	</li>
 		    	<li class="ui-widget-content ui-corner-tr" id="circle_graph">
 		    		<h5 class="ui-widget-header">원그래프</h5>

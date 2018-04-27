@@ -249,3 +249,86 @@ function exportData() {
 	return data;
 
 }
+
+function addrowLect() {
+	$('.addrow').off("click").on('click', function() {
+
+		$table = $(this).closest("table");
+		colnumber = $table.find('thead th').length - 1;
+		rownumber = $table.find('tbody tr').length;
+
+		if ($(this).hasClass('disabled')) {
+			return false;
+		}
+
+		rownumber += 1;
+		$(this).closest('tr').after(buildRowLect(0, colnumber));
+
+		$table.find('.delrow').removeClass('disabled');
+
+		checkButtons(); // 라인수 체크 함수
+
+		$(function() {
+			$(".hi2td").resizable();
+		});
+		addrowLect();
+		return false;
+	});
+
+	$('.delrow').off("click").on('click', function() {
+		$table = $(this).closest("table");
+		colnumber = $table.find('thead th').length - 1;
+		rownumber = $table.find('tbody tr').length;
+
+		if ($(this).hasClass('disabled')) {
+			return false;
+		}
+
+		rownumber -= 1;
+
+		checkButtons(); // 라인수 체크 함수
+
+		$(this).closest('tr').remove();
+
+		$table.find('.addrow').removeClass('disabled');
+
+		return false;
+	});
+}
+
+function buildRowLect(data, len) {
+
+	var rowcontent = '', b;
+
+	data = data || '';
+
+	if (!s.row_template) {
+		// Without row template
+		for (b = 0; b < (len || data.length); b += 1) {
+			rowcontent += buildCell(data[b]);				
+		}
+	} else {
+		// With row template
+		for (b = 0; b < s.row_template.length; b += 1) {
+			// For each field in the row
+			rowcontent += buildCell(data[b], s.row_template[b]);
+		}
+	}
+	
+	return $(
+			'<tr/>',
+			{
+				html : rowcontent
+						+ '<td class="addrowtd"><a class="addrow icon-button" href="#">+</a> <a class="delrow icon-button" href="#">-</a></td>' // tr마지막에
+																																				// 삭제
+																																				// 추가
+																																				// 버튼에
+																																				// 대한
+																																				// td를
+																																				// 추가해준다.
+																																				// href로
+																																				// 번호를
+																																				// 받아옴
+			});
+
+}

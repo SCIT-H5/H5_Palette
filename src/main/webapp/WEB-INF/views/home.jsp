@@ -48,7 +48,12 @@
               <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="userinfo/login_register">Sign In &amp; Sign Up</a>
+              <c:if test="${sessionScope.loginId == null}">
+              	<a class="nav-link js-scroll-trigger" href="userinfo/login_register">Sign In &amp; Sign Up</a>
+              </c:if>
+              <c:if test="${sessionScope.loginId != null}">
+              	<a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>
+              </c:if>
             </li>           
           </ul>
         </div>
