@@ -171,7 +171,7 @@ public class EgoCertController {
 
 		model.addAttribute("list", list);
 		System.out.println("받아온 리스트 " + list);
-		return "ego/certProjectReadForm";
+		return "ego/cert/certProjectReadForm";
 	}
 
 	// 디테일 페이지로 이동
@@ -188,7 +188,7 @@ public class EgoCertController {
 
 		// model.addAttribute("proNum");
 
-		return "ego/certProjectDetailReadForm";
+		return "ego/cert/certProjectDetailReadForm";
 	}
 
 	// 글작성폼으로이동
@@ -199,7 +199,7 @@ public class EgoCertController {
 		logger.info("글 작성 폼으로 이동 완료 ");
 		// model.addAttribute("proNum");
 
-		return "ego/certProjectWrite";
+		return "ego/cert/certProjectWrite";
 	}
 
 	// 프로젝트 작성
@@ -235,7 +235,7 @@ public class EgoCertController {
 
 		logger.info("프로젝트 디테일 수정폼 이동 완료 ");
 
-		return "ego/certProjectEditForm";
+		return "ego/cert/certProjectEditForm";
 	}
 
 	@RequestMapping(value = "projectEdit", method = RequestMethod.POST)
