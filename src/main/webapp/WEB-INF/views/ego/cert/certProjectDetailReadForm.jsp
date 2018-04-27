@@ -96,7 +96,14 @@
 							${result.proContent}
 						</td>
 					</tr>
-					
+					<tr class="row100 head" style="font-weight: bold;">
+						<th class="cell100" style="padding-left: 50px; width:30%;">첨부파일</th>
+						<td class="cell100 row100 body" style="width:70%;"> 
+							<c:if test="${file != null}">
+								<a href="/h5/port/download?originfile=${file.originalFileName }&savefile=${file.savedFileName}">${file.originalFileName }</a>
+							</c:if>
+						</td>
+					</tr>
 				</table>
 			</div>		
 		</div>	
