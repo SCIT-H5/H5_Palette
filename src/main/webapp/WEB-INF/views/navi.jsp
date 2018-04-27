@@ -4,31 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
-	
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
-	
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-	<!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
-	
+	<!-- Library -->
+	<%@include file="/WEB-INF/views/lib-navi.jsp"%>	
 </head>
 
 <body id="page-top">
@@ -44,10 +21,10 @@
 	      <div class="collapse navbar-collapse drop_down" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}/main">Main Page</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/main">Main Page</a>
 	            </li>
 	            <li class="nav-item" class="drop_down_submenu">
- 				  <a tabindex="-1" class="nav-link js-scroll-trigger" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swotReadForm">Self-Analysis</a>
+ 				  <a tabindex="-1" class="nav-link" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">Self-Analysis</a>
  				  
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
@@ -84,7 +61,7 @@
 		        		
 		        	</li>
 		        	<li>
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/skillReadForm">My Skill</a>
+		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/skillReadForm">My Skill</a>    
 		        	</li>
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/activityReadForm">Activity</a>
@@ -92,10 +69,10 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="#new_port">New Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort">New Portfolio</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="#view_port">My Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port">My Portfolio</a>
 	            </li>  
 	          </ul>
 	        </div>        
@@ -103,7 +80,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          	<ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}#mypage">My Page</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}/ego/myInfo">My Page</a>	               	              	 
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>
@@ -113,19 +90,8 @@
                  
       </div>
           
-    </nav>
-    	
-	<!-- Bootstrap core JavaScript -->
-    <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="<c:url value='/resources/vendor/jquery-easing/jquery.easing.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/scrollreveal/scrollreveal.js'/>"></script>
-    <script src="<c:url value='/resources/vendor/magnific-popup/jquery.magnific-popup.js'/>"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="<c:url value='/resources/js/creative.js'/>"></script>
+    </nav>	
 	
 </body>
+
 </html>

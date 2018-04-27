@@ -1,0 +1,106 @@
+/* Ion.RangeSlider, Flat UI Skin
+// css version 2.0.3
+// © Denis Ineshin, 2014    https://github.com/IonDen
+// ===================================================================================================================*/
+
+/* =====================================================================================================================
+// Skin details */
+
+.color-1 .irs-line-mid,
+.color-1 .irs-line-left,
+.color-1 .irs-line-right,
+.color-1 .irs-bar,
+.color-1 .irs-bar-edge,
+.color-1 .irs-slider {
+    background: url(../img/sprite-skin-flat.png) repeat-x;
+}
+
+.color-1 .irs {
+    height: 40px;
+}
+.color-1 .irs-with-grid {
+    height: 60px;
+}
+.color-1 .irs-line {
+    height: 12px; top: 25px;
+}
+    .color-1 .irs-line-left {
+        height: 12px;
+        background-position: 0 -30px;
+    }
+    .color-1 .irs-line-mid {
+        height: 12px;
+        background-position: 0 0;
+    }
+    .color-1 .irs-line-right {
+        height: 12px;
+        background-position: 100% -30px;
+    }
+
+.color-1 .irs-bar {
+    height: 12px; top: 25px;
+    background-position: 0 -60px;
+}
+    .color-1 .irs-bar-edge {
+        top: 25px;
+        height: 12px; width: 9px;
+        background-position: 0 -90px;
+    }
+
+.color-1 .irs-shadow {
+    height: 3px; top: 34px;
+    background: #000;
+    opacity: 0.25;
+}
+.color-1 .lt-ie9 .irs-shadow {
+    filter: alpha(opacity=25);
+}
+
+.color-1 .irs-slider {
+    width: 16px; height: 18px;
+    top: 22px;
+    background-position: 0 -120px;
+}
+.color-1 .irs-slider.state_hover, .color-1 .irs-slider:hover {
+    background-position: 0 -150px;
+}
+
+.color-1 .irs-min, .color-1 .irs-max {
+    color: #999;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    top: 0; padding: 1px 3px;
+    background: #e1e4e9;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.color-1 .irs-from, .color-1 .irs-to, .color-1 .irs-single {
+    color: #fff;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: #ed5565;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.color-1 .irs-from:after, .color-1 .irs-to:after, .color-1 .irs-single:after {
+    position: absolute; display: block; content: "";
+    bottom: -6px; left: 50%;
+    width: 0; height: 0;
+    margin-left: -3px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-top-color: #ed5565;
+}
+
+
+.color-1 .irs-grid-pol {
+    background: #e1e4e9;
+}
+.color-1 .irs-grid-text {
+    color: #999;
+}
+
+.color-1 .irs-disabled {
+}

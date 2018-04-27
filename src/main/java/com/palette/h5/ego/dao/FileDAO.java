@@ -84,7 +84,6 @@ public class FileDAO {
 			e.printStackTrace();
 		}
 		
-		
 		logger.info("DAO | fileManagement file 불러오기 종료");
 		return fileListByDivision;
 	}

@@ -1,5 +1,6 @@
 package com.palette.h5.dao;
 
+import com.palette.h5.vo.Portfolio;
 import com.palette.h5.vo.Userinfo;
 
 public interface UserinfoMapper {
@@ -9,4 +10,7 @@ public interface UserinfoMapper {
 	public Userinfo getUserinfoById(String userId);			// 아이디로 유저정보 받아오기
 
 	public Userinfo getUserinfoByEmail(String userEmail);		// 이메일로 유저정보 받아오기
+	
+	public int portOpenUpdate(Portfolio portfolio);
+	
 }

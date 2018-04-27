@@ -47,5 +47,15 @@
 		)		
 		
 	</insert>
+	
+	<!-- 포폴 공개범위수정 -->
+	<update id="portOpenUpdate" parameterType="portfolio">
+		update 
+			portfolio
+		set
+			portOpen=#{portOpen}
+		where
+			portNum=#{portNum}
+	</update>
 
 </mapper>

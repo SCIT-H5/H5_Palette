@@ -3,30 +3,18 @@ package com.palette.h5.ego.vo;
 public class CertCertificate {
 	
 	public String certId;
-	public int certNum;
-	public String certName;
-	public String certAgency;
-	public String certDate;
-	public String certEtc;
-	public String certOriginalfile;
-	public String certSavedfile;
+	public String certJSON;
+	public String certHtml;
 	
 	public CertCertificate() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	public CertCertificate(String certId, int certNum, String certName, String certAgency, String certDate,
-			String certEtc, String certOriginalfile, String certSavedfile) {
+	
+	public CertCertificate(String certId, String certJSON, String certHtml) {
 		super();
 		this.certId = certId;
-		this.certNum = certNum;
-		this.certName = certName;
-		this.certAgency = certAgency;
-		this.certDate = certDate;
-		this.certEtc = certEtc;
-		this.certOriginalfile = certOriginalfile;
-		this.certSavedfile = certSavedfile;
+		this.certJSON = certJSON;
+		this.certHtml = certHtml;
 	}
 
 	public String getCertId() {
@@ -37,67 +25,25 @@ public class CertCertificate {
 		this.certId = certId;
 	}
 
-	public int getCertNum() {
-		return certNum;
+	public String getCertJSON() {
+		return certJSON;
 	}
 
-	public void setCertNum(int certNum) {
-		this.certNum = certNum;
+	public void setCertJSON(String certJSON) {
+		this.certJSON = certJSON;
 	}
 
-	public String getCertName() {
-		return certName;
+	public String getCertHtml() {
+		return certHtml;
 	}
 
-	public void setCertName(String certName) {
-		this.certName = certName;
-	}
-
-	public String getCertAgency() {
-		return certAgency;
-	}
-
-	public void setCertAgency(String certAgency) {
-		this.certAgency = certAgency;
-	}
-
-	public String getCertDate() {
-		return certDate;
-	}
-
-	public void setCertDate(String certDate) {
-		this.certDate = certDate;
-	}
-
-	public String getCertEtc() {
-		return certEtc;
-	}
-
-	public void setCertEtc(String certEtc) {
-		this.certEtc = certEtc;
-	}
-
-	public String getCertOriginalfile() {
-		return certOriginalfile;
-	}
-
-	public void setCertOriginalfile(String certOriginalfile) {
-		this.certOriginalfile = certOriginalfile;
-	}
-
-	public String getCertSavedfile() {
-		return certSavedfile;
-	}
-
-	public void setCertSavedfile(String certSavedfile) {
-		this.certSavedfile = certSavedfile;
+	public void setCertHtml(String certHtml) {
+		this.certHtml = certHtml;
 	}
 
 	@Override
 	public String toString() {
-		return "CertCertificate [certId=" + certId + ", certNum=" + certNum + ", certName=" + certName + ", certAgency="
-				+ certAgency + ", certDate=" + certDate + ", certEtc=" + certEtc + ", certOriginalfile="
-				+ certOriginalfile + ", certSavedfile=" + certSavedfile + "]";
+		return "CertCertificate [certId=" + certId + ", certJSON=" + certJSON + ", certHtml=" + certHtml + "]";
 	}
-	
+
 }

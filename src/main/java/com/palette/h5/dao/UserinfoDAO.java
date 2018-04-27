@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.palette.h5.vo.Portfolio;
 import com.palette.h5.vo.Userinfo;
 
 @Repository
@@ -76,6 +77,25 @@ public class UserinfoDAO {
 		
 		return result;
 	}
-
+	
+	/**
+	 * 	포트폴리오 공개범위 수정
+	 * 	@param portfolio 
+	 * 	@return 0 또는 1
+	 */
+	public int portOpenUpdate(Portfolio portfolio){
+		UserinfoMapper mapper = session.getMapper(UserinfoMapper.class);
+		
+		int result = 0;
+		
+		try {
+			result = mapper.portOpenUpdate(portfolio);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 }

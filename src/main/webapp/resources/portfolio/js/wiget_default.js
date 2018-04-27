@@ -1,0 +1,620 @@
+$(function() {
+	$wigetBox = $( "#wigetBox" );	// 위젯박스부분 변수로 선언
+	$trash = $( "#trash" );			// 포트폴리오부분 변수로 선언
+	valueNum = 6;	//임의의 파일(이미지,동영상)추가에 줄 값
+	$('#textEditBox').draggable();
+	$('#sidebox').draggable();
+	var pageX = 0;		//위젯드롭했을때 좌표값 받기위한변수x
+	var pageY = 0;		//위젯드롭했을때 좌표값 받기위한변수y
+	$(document).mousemove(function(e){
+		//마우스 움직일때 좌표저장
+		pageX = e.pageX;		
+		pageY = e.pageY;
+     });
+	//스크롤에 맞춰 따라다니는 위젯박스+텍스트에디터
+	var currentPosition = parseInt($("#sidebox").css("top")); 
+	$(window).scroll(function() { 
+		var position = $(window).scrollTop(); 
+	  	$("#sidebox").stop().animate({
+	  		"top":position+currentPosition+"px"
+	  		},500);
+	  	$("#textEditBox").stop().animate({
+	  		"top":position-100+currentPosition+"px"
+	  		},500); 
+	});
+	  
+	//텍스트에디터 이벤트
+	$('.textEditIcon').click(function(){
+		document.execCommand($(this).attr('id'), false, true);
+	});
+	$('select').change(function(){
+		document.execCommand($(this).attr('id'), false, $(this).val());
+	});
+	
+	$('#graph_1').hover(function() {
+		$(this).children('ul').css('display', 'block');
+	}, function() {
+		$(this).children('ul').css('display', 'none');
+	});
+	
+	$('#bar_graph').hover(function() {
+		$(this).children('ul').css('display', 'block');
+	}, function() {
+		$(this).children('ul').css('display', 'none');
+	});
+	
+	$('#circle_graph').hover(function() {
+		$(this).children('ul').css('display', 'block');
+	}, function() {
+		$(this).children('ul').css('display', 'none');
+	});
+	
+	$('#etc_graph').hover(function() {
+		$(this).children('ul').css('display', 'block');
+	}, function() {
+		$(this).children('ul').css('display', 'none');
+	});
+	
+	
+    
+   
+    // 위젯 드래그 이벤트 생성
+    $( "li", $wigetBox ).draggable({
+		cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+		revert: "invalid", // when not dropped, the item will revert back to its initial position
+		containment: "document",
+		helper: "clone",
+		cursor: "move"
+    });
+ 	
+    
+    // 포트폴리오 영역에 드롭이벤트 생성
+    $trash.droppable({
+		classes: {
+        	"ui-droppable-active": "ui-state-highlight"
+      	},
+      	//드롭되었을때
+      	drop: function( event, ui ) {
+      		for(var i=1; i<valueNum; i++){
+      			if(ui.draggable.val() == i){
+      				insertWiget( ui.draggable, i, pageX, pageY-100 );	//드롭된게 위젯에서 가져온거면 insertWiget함수 실행
+      				break;
+      			}
+      		}
+      	}//drop
+    });
+});	//$(function)종료
+	
+
+// 위젯제거버튼생성 함수
+function initCloseBtn(className) {
+	$('.close').on('click', function() {
+    	var tag = $(this).parent();
+    	tag.remove();
+	});
+	
+	$(className).hover(function() {
+		$(this).find('.close').css('display', 'block');
+	}, function() {
+		$(this).find('.close').css('display', 'none');
+	});
+}
+
+// 위젯 리사이즈생성 함수
+function initResizable(className, valueNum) {
+	
+	if(valueNum == 4){
+		$(className).resizable({
+			containment: "#trash",
+			autoHide: true,
+	    	resize: function( event, ui ) {
+	    		var id = $(this).children('.slider').attr('id');
+	    		$(this).children('.slider').roundSlider({
+	    			width : ui.size.width/5,
+	    			radius : (ui.size.height+ui.size.width)/4
+	    		});
+	    	}
+	    });
+	}
+	else if(valueNum == -1){
+		$(className).resizable({
+	    	containment: "#trash",
+	    	autoHide: true,
+	    	resize: function( event, ui ) {
+	    		$(this).children('video').attr('width', ui.size.width);
+	    		$(this).children('video').attr('height', ui.size.height);
+	    	}
+	    });
+	}
+	
+	else{
+		$(className).resizable({
+	    	containment: "#trash",
+	    	autoHide: true,
+	    	resize: function( event, ui ) {
+	    		$(this).css('width', ui.size.width);
+	    		$(this).css('height', ui.size.height);
+	    	}
+	    });
+	}
+	
+}
+
+//위젯 드롭
+function insertWiget( $item, num, x, y ) {
+	
+	
+	$item.fadeOut(function() {
+        var $list = $trash;		//포트폴리오 영역
+ 		
+		var value = $item.val();	//위젯의 value값
+		
+		
+		
+		//textBox위젯기능
+		if(value == "1"){
+			//텍스트박스 html태그 변수생성
+			var text = "<div class='drag_text' style='position:absolute; height:100px; width: 100px; left:"+x+"px; top:"+y+"px;' >"
+					 + "<img class='close' style='position:absolute; float:right;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+					 + "<div contenteditable='true' class='edit_text'></div></div>";
+			//포트폴리오영역에 텍스트박스html태그 추가
+			$(text).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+					 .animate({ height: "72px" });
+				//resizable이벤트생성
+				initResizable('.drag_text', num);
+				
+				//위젯box에 텍스트박스 다시 생성
+				$("#wigetBox").prepend('<li class="ui-widget-content ui-corner-tr" value="1">'
+		    			 +'<h5 class="ui-widget-header">TextBox</h5>'
+		    			 +'<img src="/h5/resources/portfolio/img/icon_textbox.png" width="96" height="72">'
+		  				 +'</li>');	
+				   
+				//넣은 텍스트박스에 드래그이벤트생성
+				$( ".drag_text").draggable({
+					revert: "invalid"	//포트폴리오영역 밖으로 나가면 제자리로 되돌아오는 속성
+				}).click(function() {
+					//클릭시 편집가능
+					$(this).draggable({
+						disabled: true
+					});
+					
+				});
+				
+				$('.edit_text').focus();
+				
+				$('.edit_text').blur(function() {
+					//focus벗어나면 편집불가능
+					$(".drag_text").draggable({
+						disabled: false
+					});
+				});	
+				
+				initCloseBtn('.drag_text');
+			});//fadeIn
+		}//if(value=="1")
+		
+		
+		//table위젯기능
+		else if(value == "2"){
+			var table = "<div class='drag_table' style='position:absolute; left:"+x+"px; top:"+y+"px;'>"
+					  + "<img class='close' style='position:absolute; float:right;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+			  		  + "<textarea class='table' style='display:none;' name='myField'></textarea>"
+			  		  + "</div>";
+			$(table).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+					 .animate({ height: "72px" });
+				
+				eTable = $('.table').editTable();
+				
+				$("#updatetoggle").click(function() {
+					$(".addrowtd").slideToggle("slow");
+					$(".addcolth").slideToggle("slow");
+				});
+				$(".inputtable").resizable({
+					containment: "#trash",
+			    	autoHide: true,
+			    	resize: function( event, ui ) {
+			    		$(this).parents('.drag_table').css('width', ui.size.width);
+			    	}
+				});
+				
+				$("#wigetBox > li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="2">'
+		    			 +'<h5 class="ui-widget-header">Table</h5>'
+		    			 +'<img src="/h5/resources/portfolio/img/icon_table.png" width="96" height="72">'
+		  				 +'</li>');	
+				
+				$( ".drag_table").draggable({
+					revert : "invalid"
+				});
+				
+				initCloseBtn('.drag_table');
+			});
+		}
+		
+		//바그래프
+		else if(value == "3"){
+			var graph = "<div class='drag_graph' style='position:absolute; width:100px; height: 100px; left:"+x+"px; top:"+y+"px;'>"
+					  + "<img class='close' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+					  + "<input type='text' class='js-range-slider' id='bargraph"+bar_graphNum+"' value='' /></div>";
+			
+			$(graph).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+					 .animate({ height: "72px" });
+				
+				var type = $item.attr("type");
+				
+				//넣었던 이미지 위젯에 다시생성
+				if(type == 1){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-1');
+					$("#bar_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="1">'
+			    			 +'<h5 class="ui-widget-header">1</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 2){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-2');
+					$("#bar_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="2">'
+			    			 +'<h5 class="ui-widget-header">2</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 3){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-3');
+					$("#bar_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="3">'
+			    			 +'<h5 class="ui-widget-header">3</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 4){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-4');
+					$("#bar_graph li:nth-child(3)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="4">'
+			    			 +'<h5 class="ui-widget-header">4</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 5){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-5');
+					$("#bar_graph li:nth-child(4)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="5">'
+			    			 +'<h5 class="ui-widget-header">5</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 6){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-6');
+					$("#bar_graph li:nth-child(5)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="6">'
+			    			 +'<h5 class="ui-widget-header">6</h5>'
+			  				 +'</li>');
+				}
+				
+				$("#bargraph"+bar_graphNum).ionRangeSlider({
+					type : "single",
+					min : 0,
+					max : 100,
+					hide_min_max : true
+				/*          hide_from_to: true  최소값 최대값 보이기*/
+				});
+				
+				 
+				initResizable('.drag_graph', num);
+				
+				
+				//추가한 이미지에 드래그 이벤트 생성
+				$( ".drag_graph").draggable({
+					revert : "invalid"
+				});
+				
+				initCloseBtn('.drag_graph');
+				
+				bar_graphNum++;
+			});
+			
+		}
+		
+		//원그래프
+		else if(value == "4"){
+			var graph = "<div class='drag_graph' style='position:absolute; width:200px; height:230px; left:"+x+"px; top:"+y+"px;'>"
+					  + "<img class='close' style='position:absolute; float:right;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+					  + "<input type='button' value='편집' class='edit_graph_btn'>"
+					  + "<input type='button' value='드래그' class='drag_graph_btn'>"
+					  + "<div class='slider' id='slider"+circle_graphNum+"'></div>"
+					  + "</div>";
+			
+			$(graph).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+					 .animate({ height: "72px" });
+				
+				var type = $item.attr("type");
+				change(type, "slider"+circle_graphNum);
+				
+				
+				initResizable('.drag_graph', num);
+				//넣었던 이미지 위젯에 다시생성
+				if(type == 1){
+					$("#circle_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="1">'
+			    			 +'<h5 class="ui-widget-header">1</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 2){
+					$("#circle_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="2">'
+			    			 +'<h5 class="ui-widget-header">2</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 3){
+					$("#circle_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="3">'
+			    			 +'<h5 class="ui-widget-header">3</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 4){
+					$("#circle_graph li:nth-child(3)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="4">'
+			    			 +'<h5 class="ui-widget-header">4</h5>'
+			  				 +'</li>');
+				}
+				
+				
+				//추가한 이미지에 드래그 이벤트 생성
+				$( ".drag_graph").draggable({
+					revert : "invalid"
+				});
+				
+		  		$('.edit_graph_btn').on('click', function() {
+		  			$(this).siblings(".slider").roundSlider("enable");
+		  			$( ".drag_graph").draggable({
+						disabled : true
+					});
+				});
+		  		
+				$('.drag_graph_btn').on('click', function() {
+					$(this).siblings(".slider").roundSlider("disable");
+					$( ".drag_graph").draggable({
+						disabled : false
+					});
+				});
+				
+				initCloseBtn('.drag_graph');
+				
+				circle_graphNum++;
+			});
+			
+		}
+		
+		//단계그래프
+		else if(value == "5"){
+			var graph = '<div class="drag_stargraph" style="position:absolute; width:100px; left:'+x+'px; top:'+y+'px;">'
+					  + '<img class="close" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+					  + 	'<select id="stargraph'+etc_graphNum+'">'
+			  		  + 		'<option value="1">1</option>'
+			  		  + 		'<option value="2">2</option>'
+			  		  + 		'<option value="3">3</option>'
+			  		  + 		'<option value="4">4</option>'
+			  		  + 		'<option value="5">5</option>'
+			  		  + 	'</select>'
+			  		  + '</div>';
+			  		  
+			var id = $item.attr("id");
+			
+			$(graph).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+				 .animate({ height: "72px" });
+				
+				createEtcGraph(etc_graphNum, num, id, 1);
+				
+				//추가한 이미지에 드래그 이벤트 생성
+				$( ".drag_stargraph").draggable({
+					revert : "invalid"
+				});
+				
+				initCloseBtn('.drag_stargraph');
+				etc_graphNum++;
+			});
+		}
+		
+		//추가한 이미지, 동영상 위젯 기능
+		else {
+			var src = $('#file'+num).attr('src');	//id가 'file'+num인태그에 src속성추가
+			var text = "이미지";
+			var f_type = $('#file'+num).attr('f_type');
+			var file;
+			if(f_type != "img"){
+				file = '<div class="drag_video" style="position:absolute; width:320px; height:220px; left:'+x+'px; top:'+y+'px;">'
+				+ '<img class="close" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+				+ '<video width="300" height="200" controls><source src="'+f_type+'" type="video/mp4"></video></div>';
+				src = "/h5/resources/portfolio/img/icon_video.png";
+				text = "동영상";
+			}
+			//이미지 html태그 변수생성
+			else {
+				file = '<div class="drag_img" style="position:absolute; width:96px; height: 72px; left:'+x+'px; top:'+y+'px;">'
+				+ '<img class="close" style="position:absolute;" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+				+ '<img src="'+src+'" class="img"></div>';
+			}
+			
+				
+			//이미지 포트폴리오영역에 추가
+			$(file).appendTo( $list ).fadeIn(function() {
+				$item.animate({ width: "96px" })
+					 .animate({ height: "72px" });
+				//이미지에 resizable이벤트 생성
+				if(f_type != "img"){
+					initResizable('.drag_video', -1);
+					
+					$( ".drag_video").draggable({
+						revert : "invalid"
+					});
+
+					initCloseBtn('.drag_video');
+				}
+				else{
+					initResizable('.drag_img', num);
+					//추가한 이미지에 드래그 이벤트 생성
+					$( ".drag_img").draggable({
+						revert : "invalid"
+					});
+
+					initCloseBtn('.drag_img');
+				}
+				
+				
+				//넣었던 이미지 위젯에 다시생성
+				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
+		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
+		  				 +'</li>');
+				
+				
+			});//fadeIn
+		}//else
+        
+		
+		//위젯box drag이벤트초기화
+		$( "li", $wigetBox ).draggable({
+			cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+			revert: "invalid", // when not dropped, the item will revert back to its initial position
+			containment: "document",
+			helper: "clone",
+			cursor: "move"
+	    });
+		
+
+	});//fadeOut
+}//insertWiget
+
+//이미지추가함수
+function imgUpload() {
+	
+	$("#upload").on("change",function(){
+    	var fileNm = $("#upload").val();	//업로드하려는 파일의 value값
+   	 
+    	//이미지 파일인지 검사
+    	if (fileNm != "") {
+    	    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
+    	
+    	    if (!(ext == "gif" || ext == "jpg" || ext == "png" || ext == "mp4")) {
+    	        alert("이미지파일 (.jpg, .png, .gif )과 동영상파일(.mp4)만 업로드 가능합니다.");
+    	        return false;
+    	    }
+    	}
+    	
+    	var maxSize  = 30 * 1024 * 1024    //30MB
+    	var file = $("#upload")[0].files[0];
+        var fileSize = file.size/(1024*1024);
+
+    	
+
+        if(fileSize > maxSize)
+        {
+        	alert("파일사이즈 : "+ fileSize +"MB, 첨부파일 사이즈는 30MB 이내로 등록 가능합니다.");
+            return;
+        }
+    	
+		var formData = new FormData();
+		formData.append("file", file);
+		
+		//위젯에 업로드한 이미지 추가
+		$.ajax({
+			type:"POST",						
+			url:"fileupload",				
+			data:formData,
+			processData: false,
+		    contentType: false,
+			dataType:"text",				
+			success:function(data){	
+				console.log(data);
+				var ext = data.split('.');
+				var f_type = "img";
+				var text = "이미지";
+				if(ext[ext.length-1] == 'mp4'){
+					f_type = data;
+					data = "/h5/resources/portfolio/img/icon_video.png";
+					text = "동영상";
+				}
+				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
+		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
+		  				 +'</li>');
+				
+				$( "li", $wigetBox ).draggable({
+					cancel: "a.ui-icon",
+					revert: "invalid",
+					containment: "document",
+					helper: "clone",
+					cursor: "move"
+			    });
+				
+				valueNum++;	//성공시 img에 줄 value값 1증가(아이디랑 value값 안겹치게하기위함)
+			},
+			error: function(e){			
+				console.log(e);
+			}
+		});//ajax
+	});//change이벤트
+	
+}
+
+function createEtcGraph(etc_graphNum, num, id, g_value) {
+	if(id == "graph5_1"){
+		$('#stargraph'+etc_graphNum).barrating({
+	        theme: 'bars-horizontal',
+	        initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+etc_graphNum).attr("g_value", e);
+			}
+	      });
+		$('#stargraph'+etc_graphNum).attr("g_type", 1);
+		$("#etc_graph ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_1">'
+    			 +'<h5 class="ui-widget-header">horizontal</h5>'
+  				 +'</li>'); 
+	}
+	else if(id == "graph5_2"){
+		$('#stargraph'+etc_graphNum).barrating({
+			theme: 'bars-movie',
+			initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+etc_graphNum).attr("g_value", e);
+			}
+	      });
+		$('#stargraph'+etc_graphNum).attr("g_type", 2);
+		$("#etc_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_2">'
+    			 +'<h5 class="ui-widget-header">movie</h5>'
+  				 +'</li>'); 
+	}
+	else if(id == "graph5_3"){
+		$('#stargraph'+etc_graphNum).barrating({
+			theme: 'fontawesome-stars',
+			initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+etc_graphNum).attr("g_value", e);
+			}
+	      });
+		$('#stargraph'+etc_graphNum).attr("g_type", 3);
+		$("#etc_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_3">'
+    			 +'<h5 class="ui-widget-header">star</h5>'
+  				 +'</li>'); 
+	}
+}
+
+
+function updateEtcGraph(i, type, g_value) {
+	if(type == 1){
+		$('#stargraph'+i).barrating({
+    		theme: 'bars-horizontal',
+    		initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+i).attr("g_value", e);
+			}
+    	});
+	}
+	else if(type == 2){
+		$('#stargraph'+i).barrating({
+			theme: 'bars-movie',
+			initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+i).attr("g_value", e);
+			}
+    	});
+	}
+	else if(type == 3){
+		$('#stargraph'+i).barrating({
+			theme: 'fontawesome-stars',
+			initialRating : g_value,
+			onDestroy : function(t, e) {
+				$('#stargraph'+i).attr("g_value", e);
+			}
+    	});
+	}
+}

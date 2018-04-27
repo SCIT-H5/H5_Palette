@@ -5,14 +5,25 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.palette.h5.vo.Userinfo" alias="userinfo"/>
+		<typeAlias type="com.palette.h5.vo.Portfolio" alias="portfolio"/>
 		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot"/>
 		<typeAlias type="com.palette.h5.ego.vo.History" alias="history"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject"/>
+		<typeAlias type="com.palette.h5.ego.vo.Skill" alias="skill"/>
+
+		
+		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>
+
 		<typeAlias type="com.palette.h5.ego.vo.CertGrad" alias="certGrad"/>
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect"/>
+		<typeAlias type="com.palette.h5.ego.vo.Activity" alias="activity"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml"/>
 		<mapper resource="mapper/egoMapper.xml"/>
 		<mapper resource="mapper/fileMapper.xml"/>
+		<mapper resource="mapper/portMapper.xml"/>
 	</mappers>
 </configuration>

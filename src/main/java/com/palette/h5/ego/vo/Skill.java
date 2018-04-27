@@ -3,21 +3,20 @@ package com.palette.h5.ego.vo;
 public class Skill {
 	
 	public String skillId;
-	public int skillNum;
-	public String skillName;
-	public String skillContent;
-	
+	public int skillRow;
+	public int skillTrow;
+	public String skillHtml;
+
 	public Skill() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Skill(String skillId, int skillNum, String skillName, String skillContent) {
+	public Skill(String skillId, int skillRow, int skillTrow, String skillHtml) {
 		super();
 		this.skillId = skillId;
-		this.skillNum = skillNum;
-		this.skillName = skillName;
-		this.skillContent = skillContent;
+		this.skillRow = skillRow;
+		this.skillTrow = skillTrow;
+		this.skillHtml = skillHtml;
 	}
 
 	public String getSkillId() {
@@ -28,34 +27,34 @@ public class Skill {
 		this.skillId = skillId;
 	}
 
-	public int getSkillNum() {
-		return skillNum;
+	public int getSkillRow() {
+		return skillRow;
 	}
 
-	public void setSkillNum(int skillNum) {
-		this.skillNum = skillNum;
+	public void setSkillRow(int skillRow) {
+		this.skillRow = skillRow;
 	}
 
-	public String getSkillName() {
-		return skillName;
+	public int getSkillTrow() {
+		return skillTrow;
 	}
 
-	public void setSkillName(String skillName) {
-		this.skillName = skillName;
+	public void setSkillTrow(int skillTrow) {
+		this.skillTrow = skillTrow;
 	}
 
-	public String getSkillContent() {
-		return skillContent;
+	public String getSkillHtml() {
+		return skillHtml;
 	}
 
-	public void setSkillContent(String skillContent) {
-		this.skillContent = skillContent;
+	public void setSkillHtml(String skillHtml) {
+		this.skillHtml = skillHtml;
 	}
 
 	@Override
 	public String toString() {
-		return "Skill [skillId=" + skillId + ", skillNum=" + skillNum + ", skillName=" + skillName + ", skillContent="
-				+ skillContent + "]";
+		return "Skill [skillId=" + skillId + ", skillRow=" + skillRow + ", skillTrow=" + skillTrow + ", skillHtml="
+				+ skillHtml + "]";
 	}
 	
 }

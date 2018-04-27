@@ -7,19 +7,33 @@ public class CertProject {
 	public String proTerm;
 	public String proEdu;
 	public String proTitle;
+	public String proContent;
+	public int proFileId;
+	public String proProf;
 	
 	public CertProject() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CertProject(String proId, int proNum, String proTerm, String proEdu, String proTitle) {
+	public CertProject(String proId, int proNum, String proTerm, String proEdu, String proTitle, String proContent,
+			int proFileId, String proProf) {
 		super();
 		this.proId = proId;
 		this.proNum = proNum;
 		this.proTerm = proTerm;
 		this.proEdu = proEdu;
 		this.proTitle = proTitle;
+		this.proContent = proContent;
+		this.proFileId = proFileId;
+		this.proProf = proProf;
+	}
+
+	@Override
+	public String toString() {
+		return "CertProject [proId=" + proId + ", proNum=" + proNum + ", proTerm=" + proTerm + ", proEdu=" + proEdu
+				+ ", proTitle=" + proTitle + ", proContent=" + proContent + ", proFileId=" + proFileId + ", proProf="
+				+ proProf + "]";
 	}
 
 	public String getProId() {
@@ -62,10 +76,29 @@ public class CertProject {
 		this.proTitle = proTitle;
 	}
 
-	@Override
-	public String toString() {
-		return "CertProject [proId=" + proId + ", proNum=" + proNum + ", proTerm=" + proTerm + ", proEdu=" + proEdu
-				+ ", proTitle=" + proTitle + "]";
+	public String getProContent() {
+		return proContent;
 	}
+
+	public void setProContent(String proContent) {
+		this.proContent = proContent;
+	}
+
+	public int getProFileId() {
+		return proFileId;
+	}
+
+	public void setProFileId(int proFileId) {
+		this.proFileId = proFileId;
+	}
+
+	public String getProProf() {
+		return proProf;
+	}
+
+	public void setProProf(String proProf) {
+		this.proProf = proProf;
+	}
+	
 	
 }

@@ -31,6 +31,37 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
 	
+	<script type="text/javascript">
+	
+		var icon1 = document.getElementById('icon1');
+		var icon2 = document.getElementById('icon2');
+		var icon3 = document.getElementById('icon3');
+		var icon4 = document.getElementById('icon4');
+		
+		function services1(){
+			location.href = "ego/swot/swotReadForm";	// SWOT 페이지로 이동
+		}
+		
+		function services2(){
+			location.href = "port/newPort";			// 새 포트폴리오 페이지로 이동
+		}
+		
+		function services3(){
+			location.href = "port/my_port";				// 내 포트폴리오 페이지로 이동
+		}
+		
+		function services4(){
+			location.href = "ego/myInfo";					// 마이 페이지로 이동
+		}
+	
+	</script>
+	
+	<style type="text/css">
+		.sr-icons {
+			cursor: pointer;
+		}
+	</style>
+	
 </head>
 
 <body id="page-top">
@@ -52,6 +83,9 @@
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">${loginId } 님, 환영합니다 :)</p>
           </div>
+          <div class="col-lg-8 mx-auto">
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">Services</a>
+          </div>
         </div>
       </div>
     </header>
@@ -69,35 +103,38 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Sturdy Templates</h3>
-              <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
+              <i class="fa fa-4x fa-pie-chart text-primary mb-3 sr-icons" id="icon1" onclick="services1()"></i>
+              <h3 class="mb-3">Self-Analysis</h3>
+              <p class="text-muted mb-0">지피지기면 백전백승! 우선 자아 분석을 통해 내가 가진 장단점을 알아봐요.</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Ready to Ship</h3>
-              <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
+              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons" id="icon2" onclick="services2()"></i>
+              <h3 class="mb-3">New Portfolio</h3>
+              <p class="text-muted mb-0">자아 분석을 활용해 새로운 포트폴리오를 작성해보세요.</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Up to Date</h3>
-              <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
+              <i class="fa fa-4x fa-file-archive-o text-primary mb-3 sr-icons" id="icon3" onclick="services3()"></i>
+              <h3 class="mb-3">My Portfolio</h3>
+              <p class="text-muted mb-0">작성된 포트폴리오를 확인해보세요.</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Made with Love</h3>
-              <p class="text-muted mb-0">You have to make your websites with love these days!</p>
+              <i class="fa fa-4x fa-user-secret text-primary mb-3 sr-icons" id="icon4" onclick="services4()"></i>
+              <h3 class="mb-3">My Page</h3>
+              <p class="text-muted mb-0">개인 정보 및 공개범위 설정을 해 보세요.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    
+    <!-- Footer -->
+    <%@include file="/WEB-INF/views/footer-text-black.jsp"%> 
 
 	<!-- Bootstrap core JavaScript -->
     <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>

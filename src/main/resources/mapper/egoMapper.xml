@@ -5,8 +5,333 @@
 
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
+	<!-- 회원 정보 수정 -->
+	<update id="userEdit" parameterType="userinfo">
+		update
+		userinfo
+		set
+		password = #{password}
+		, email = #{email}
+		where
+		id = #{id}
+	</update>
+
+	<!-- Swot분석 글 출력 -->
+	<select id="readswot" parameterType="string" resultType="swot">
+		select
+		*
+		from
+		swot
+		where
+		swotId = #{swotId}
+	</select>
+
+	<!-- Swot분석 글 작성 -->
+	<insert id="writeswot" parameterType="swot">
+		insert into
+		swot
+		(
+		swotId
+		,swotS
+		,swotW
+		,swotO
+		,swotT
+		) values (
+		#{swotId}
+		,#{swotS}
+		,#{swotW}
+		,#{swotO}
+		,#{swotT}
+		)
+	</insert>
+	<!-- Swot분석 글 수정 -->
+	<update id="updateswot" parameterType="swot">
+		update
+		swot
+		set
+		swotS=#{swotS}
+		,swotW=#{swotW}
+		,swotO=#{swotO}
+		,swotT=#{swotT}
+		where
+		swotId = #{swotId}
+
+	</update>
+
+	<!-- Swot분석 글 삭제 -->
+	<delete id="deleteswot" parameterType="string">
+		delete
+		from
+		swot
+		where
+		swotId = #{swotId}
+	</delete>
 	
-	<!-- HISTORY | HISTORY 전체 데이터 가져오기-->
+	<!-- 프로젝트 파일 저장 -->
+	<insert id="file_management" parameterType="file">
+		insert into file_management (
+			file_id
+			, originalFileName
+			, savedFileName
+			, fileDivision
+			, fileUserId
+		)
+		values (
+			file_management_SEQ.nextval
+			, #{originalFileName}
+			, #{savedFileName}
+			, #{fileDivision}
+			, #{fileUserId}
+		)
+		<selectKey keyProperty="idx" resultType="Integer" order="AFTER"> 
+			SELECT file_management_SEQ.currval FROM dual 
+		</selectKey>
+
+	</insert>
+	
+	<!-- 프로젝트 파일 수정 -->
+	<update id="proFileUpdate" parameterType="file">
+		update
+			file_management
+		set
+			originalFileName = #{originalFileName}
+			, savedFileName = #{savedFileName}
+		where
+			file_id = #{file_id}
+	</update>
+	
+	<!-- 저장된 파일 하나 정보 불러오기 -->
+	<select id="fileSelectOne" parameterType="int" resultType="file">
+		select 
+			*
+		from
+			file_management
+		where
+			file_id = #{file_id}
+	</select>
+
+	<!-- 프로젝트 리스트 입력 -->
+	<insert id="projectWrite_One" parameterType="CertProject">
+
+		insert into cert_project(
+			proNum
+			, proId
+			, proTitle			
+			, proEdu
+			, proTerm
+			, proProf
+			, proContent
+			, proFileId
+		)
+		values(
+			cert_project_SEQ.nextval
+			, #{proId}
+			, #{proTitle}			
+			, #{proEdu}
+			, #{proTerm}
+			, #{proProf}
+			, #{proContent}
+			, #{proFileId}
+		)
+
+	</insert>
+
+	<!-- 프로젝트 리스트 출력 -->
+	<select id="projectList" parameterType="String" resultType="CertProject">
+		select
+		*
+		from
+		cert_project
+		where
+		proId = #{proId}
+	</select>
+
+	<!-- 프로젝트 디테일 글 하나 출력 -->
+	<select id="projectdetail_One" parameterType="int" resultType="CertProject">
+		select
+		*
+		from
+		cert_project
+		where
+		proNum = #{proNum}
+	</select>
+
+	<!-- 글 수정 -->
+	<update id="projectUpdate" parameterType="CertProject">
+		update
+		cert_project
+		set
+			proTitle = #{proTitle}
+			, proEdu = #{proEdu}
+			, proTerm = #{proTerm}
+			, proProf = #{proProf}
+			, proContent = #{proContent}
+			, proFileId = #{proFileId}
+		where
+		proNum = #{proNum}
+		and
+		proId = #{proId}
+	</update>
+
+	<!-- 스킬 읽기 -->
+	<select id="skillRead" parameterType="string" resultType="skill">
+		select
+		*
+		from
+		skill
+		where
+		skillid = #{userId}
+	</select>
+	
+	<!-- 스킬 쓰기 -->
+	<insert id="skillWrite" parameterType="Map">
+		insert
+	 	into
+	 	skill
+	 	(
+	 	skillId,
+	 	skillrow,
+	 	skilltrow,
+	 	skillHtml
+	 	)
+	 	values
+	 	(
+	 	#{skillid},
+	 	#{skillrow},
+	 	#{skilltrow},
+	 	#{skillhtml}
+	 	)
+	</insert>
+	
+	<!-- 스킬 업데이트 -->
+	<update id="skillUpdate" parameterType="Map">
+		update
+		skill
+		set
+		skillrow = #{skillrow},
+	 	skilltrow = #{skilltrow},
+	 	skillHtml = #{skillhtml}
+		where
+		skillId = #{skillid}
+	</update>
+ 	
+ 	<select id="personalityList" resultType="PersonalityList">
+ 		select 
+ 			*
+ 		from
+ 			personality_list
+ 	</select>
+ 	
+ 	<insert id="certLectWrite" parameterType="certLect">
+ 		insert into
+ 			CERT_LECT
+ 			(
+ 				lectId,
+ 				lectJson,
+ 				lectHTML
+ 			) values (
+ 				#{lectId},
+ 				#{lectJson},
+ 				#{lectHtml}
+ 			)
+ 	</insert>
+ 	
+ 	<!-- 이수과목 읽기 -->
+ 	<select id="certLectRead" parameterType="string" resultType="certlect">
+	 	select
+	 		*
+	 	from
+	 		CERT_LECT
+	 	where
+	 		LECTID = #{lectId}
+ 	</select>
+ 	
+ 	<!-- 이수과목 업데이트 -->
+ 	<update id="certLectUpdate" parameterType="certlect">
+	 	update 
+	 		CERT_LECT
+	 	set
+	 		LECTJSON = #{lectJson},
+	 		LECTHTML = #{lectHtml}
+	 	where
+	 		LECTID = #{lectId}
+ 	</update>
+ 	
+ 	<!-- 자격증명 작성 -->
+ 	<insert id="certificateWrite" parameterType="Map">
+ 		insert
+ 		into
+ 		CERT_CERTIFICATE
+ 		(
+ 		CERTID,
+ 		CERTJSON,
+ 		CERTHTML
+ 		)
+ 		values
+ 		(
+ 		#{certId},
+ 		#{certjson},
+ 		#{certhtml}
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 자격증명 읽기 -->
+ 	<select id="certificateRead" parameterType="string" resultType="certificate">
+ 	select
+ 	*
+ 	from
+ 	CERT_CERTIFICATE
+ 	where
+ 	CERTID = #{certId}
+ 	</select>
+ 	
+ 	<!-- 자격증명 업데이트 -->
+ 	<update id="certificateUpdate" parameterType="string">
+ 	update CERT_CERTIFICATE
+ 	set
+ 	CERTJSON = #{certjson},
+ 	CERTHTML = #{certhtml}
+ 	where
+ 	CERTID = #{certId}
+ 	</update>
+ 	
+ 	<!-- 활동내역 작성 -->
+ 	<insert id="activityWrite" parameterType="activity">
+ 		insert into
+ 			ACTIVITY
+ 			(
+ 				actId,
+ 				actJson,
+ 				actHTML
+ 			) values (
+ 				#{actId},
+ 				#{actJson},
+ 				#{actHtml}
+ 			)
+ 	</insert>
+ 	
+ 	<!-- 활동내역 읽기 -->
+ 	<select id="activityRead" parameterType="string" resultType="activity">
+	 	select
+	 		*
+	 	from
+	 		ACTIVITY
+	 	where
+	 		actId = #{actId}
+ 	</select>
+ 	
+ 	<!-- 활동내역 수정 -->
+ 	<update id="activityUpdate" parameterType="activity">
+	 	update 
+	 		ACTIVITY
+	 	set
+	 		actJson = #{actJson},
+	 		actHtml = #{actHtml}
+	 	where
+	 		actId = #{actId}
+ 	</update>
+ 	
+ 		<!-- HISTORY | HISTORY 전체 데이터 가져오기-->
 	<select id="historyDataAll" parameterType="string" resultType="history">
 		select
 			hisId
@@ -118,8 +443,14 @@
 			hisId=#{hisId} and hisNo=#{hisNo}
 	</delete>
 	
-
-
-
-
+	<!-- HISTORY | HISTORY 하나 읽어오기 -->
+	<select id="historyonselect" parameterType="int" resultType="history">
+		select
+		*
+		from
+		history
+		where
+		hisNo=#{hisNo}
+	</select>
+ 	
 </mapper>

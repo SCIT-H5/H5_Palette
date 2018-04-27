@@ -45,15 +45,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	/**
-	 *  Demo 화면으로
-	 */
-	@RequestMapping(value = "demo", method = RequestMethod.GET)
-	public String demo(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		return "demo";
-	}
+	
 	
 	/**
 	 *	로그인 완료 후 메인 페이지로 
@@ -65,5 +57,38 @@ public class HomeController {
 	}
 		
 
+<<<<<<< HEAD
+=======
+	/**
+	 * 	파일업로드
+	 */
+	@ResponseBody
+	@RequestMapping(value="certificate", method = RequestMethod.POST)
+	public FileManagement certificate(MultipartHttpServletRequest request, HttpServletResponse response) {
+		
+        Iterator<String> itr =  request.getFileNames(); //파일의 이름을 받아옴
+        FileManagement fileManagement = new FileManagement(); //파일매니지먼트 자료형 생성
+        if(itr.hasNext()) {
+            MultipartFile mpf = request.getFile(itr.next());
+            System.out.println(mpf.getOriginalFilename() +" uploaded!");
+            try {
+                System.out.println("file length : " + mpf.getBytes().length);
+                System.out.println("file name : " + mpf.getOriginalFilename());
+        		if (!mpf.isEmpty()) {
+        			String savedfile = FileService.saveFile(mpf, uploadPath + "/ego_cert");
+        			fileManagement.setOriginalFileName(mpf.getOriginalFilename());
+        			fileManagement.setSavedFileName(savedfile);
+        		}
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+            System.out.println(fileManagement);
+            return fileManagement;
+        } else {
+            return fileManagement;
+        }
+    }
+>>>>>>> 서현local
 	
 }
