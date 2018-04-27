@@ -452,5 +452,10 @@
 		where
 		hisNo=#{hisNo}
 	</select>
+<<<<<<< HEAD
  	
+=======
+
+
+>>>>>>> 서현local
 </mapper>

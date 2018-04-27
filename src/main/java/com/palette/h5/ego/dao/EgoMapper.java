@@ -115,7 +115,15 @@ public interface EgoMapper {
 	// HISTORY | 데이터 삭제하기
 	public int historyDeleteOne(History history);
 
+<<<<<<< HEAD
 	// HISTORY | selectone
 	public History historyonselect(int hisNo);
 
+=======
+	// file management
+	public int file_management(FileManagement filemanagement);
+
+	//selectone
+	public History historyonselect(int hisNo);
+>>>>>>> 서현local
 }

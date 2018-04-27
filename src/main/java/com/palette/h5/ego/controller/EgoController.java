@@ -1,7 +1,6 @@
 package com.palette.h5.ego.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,6 +37,7 @@ public class EgoController {
 
 	@Autowired
 	EgoDAO dao;
+<<<<<<< HEAD
 	UserinfoDAO userdao;
 
 	@Autowired
@@ -71,6 +71,8 @@ public class EgoController {
 
 		logger.info("CON | SWOT 글읽기 종료");
 		return "ego/swot/swotReadForm";
+=======
+>>>>>>> 서현local
 
 	@RequestMapping(value = "certCertificateReadForm", method = RequestMethod.GET)
 	public String test() {
@@ -97,6 +99,7 @@ public class EgoController {
 		return "ego/history/historyReadForm";
 	}
 
+<<<<<<< HEAD
 	// swot 글 작성 폼 이동
 
 	@RequestMapping(value = "swot/swotWriteForm", method = RequestMethod.GET)
@@ -108,6 +111,8 @@ public class EgoController {
 
 		return "ego/swot/swotWriteForm";
 
+=======
+>>>>>>> 서현local
 	// history WriteForm으로 이동
 	@RequestMapping(value = "history/historyWriteForm", method = RequestMethod.GET)
 	public String historyWriteForm(HttpSession session) {
@@ -119,6 +124,7 @@ public class EgoController {
 		return "ego/history/historyWriteForm";
 	}
 
+<<<<<<< HEAD
 	// swot 글 작성
 	@RequestMapping(value = "swot/swotWrite", method = RequestMethod.POST)
 	public String swotWrite(HttpSession session, Swot swot) {
@@ -141,6 +147,8 @@ public class EgoController {
 		logger.info("CON | SWOT 글 작성 종료");
 		return "ego/swot/swotComplete";
 
+=======
+>>>>>>> 서현local
 	// history 데이터 등록
 	@RequestMapping(value = "history/historyWrite", method = RequestMethod.POST)
 	public String historyWrite(History history, Model model) {
@@ -160,6 +168,7 @@ public class EgoController {
 		return "redirect:historyReadForm";
 	}
 
+<<<<<<< HEAD
 	// swot 글 수정 폼이동
 	@RequestMapping(value = "swot/swotUpdateForm", method = RequestMethod.GET)
 	public String swotUpdateForm() {
@@ -170,6 +179,8 @@ public class EgoController {
 
 		return "ego/swot/swotUpdateForm";
 
+=======
+>>>>>>> 서현local
 	// history updateForm으로 이동
 	@RequestMapping(value = "history/historyUpdateForm", method = RequestMethod.GET)
 	public String historyUpdateForm(History history, HttpSession session, Model model) {
@@ -198,6 +209,7 @@ public class EgoController {
 		return "ego/history/historyUpdateForm";
 	}
 
+<<<<<<< HEAD
 	// swot 글 수정
 
 	@RequestMapping(value = "swot/swotUpdate", method = RequestMethod.POST)
@@ -391,6 +403,8 @@ public class EgoController {
 		logger.info("스킬 HTML읽기 종료");
 		return skillobject;
 
+=======
+>>>>>>> 서현local
 	// history 수정
 	@RequestMapping(value = "history/historyUpdate", method = RequestMethod.POST)
 	public String historyUpdateOne(History history) {
@@ -404,6 +418,7 @@ public class EgoController {
 		return "redirect:historyReadForm";
 	}
 
+<<<<<<< HEAD
 	// 스킬페이지 HTMLWRITE
 	@ResponseBody
 	@RequestMapping(value = "skillWrite", method = RequestMethod.POST)
@@ -443,6 +458,8 @@ public class EgoController {
 		logger.info("CON | historyReadForm로 이동 종료 ");
 		return "ego/history/historyReadForm";
 
+=======
+>>>>>>> 서현local
 	// history 삭제
 	@RequestMapping(value = "history/historyDeleteOne", method = RequestMethod.GET)
 	public String historyDelete(int hisNo, HttpSession session) {
@@ -465,6 +482,7 @@ public class EgoController {
 		logger.info("CON | history 삭제 종료");
 		return "redirect:historyReadForm";
 	}
+<<<<<<< HEAD
 
 	// history WriteForm으로 이동
 	@RequestMapping(value = "history/historyWriteForm", method = RequestMethod.GET)
@@ -559,5 +577,7 @@ public class EgoController {
 		logger.info("CON | history 삭제 종료");
 		return "redirect:historyReadForm";
 	}
+=======
+>>>>>>> 서현local
 
 }

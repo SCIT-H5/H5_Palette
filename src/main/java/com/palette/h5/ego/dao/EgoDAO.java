@@ -437,7 +437,10 @@ public class EgoDAO {
 		
 	}
 
+<<<<<<< HEAD
 	//히스토리 하나 가져오기
+=======
+>>>>>>> 서현local
 	public History historyonselect(int selecthisNo) {
 		// TODO Auto-generated method stub
 		logger.info("DAO | history 데이터 하나 가져오기 시작");
@@ -461,5 +464,8 @@ public class EgoDAO {
 		return selecthistory;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 서현local
 }
