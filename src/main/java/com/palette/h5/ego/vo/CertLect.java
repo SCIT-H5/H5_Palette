@@ -1,11 +1,11 @@
 package com.palette.h5.ego.vo;
 
 public class CertLect {
-	
+
 	public String lectId;
 	public String lectJson;
 	public String lectHtml;
-	
+
 	public CertLect() {
 	}
 
@@ -43,8 +43,5 @@ public class CertLect {
 	public String toString() {
 		return "CertLect [lectId=" + lectId + ", lectJson=" + lectJson + ", lectHtml=" + lectHtml + "]";
 	}
-	
-	
-
 
 }
