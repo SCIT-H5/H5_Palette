@@ -9,32 +9,35 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- jQuery -->
-	
-	
+		
 	<!-- Table_Fixed_Header CSS -->
-	
 	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/animate/animate.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/select2/select2.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
 	<!--===============================================================================================-->
 </head>
-<body>
-<
-<script type="text/javascript">
-$(document).ready(function(){
-	  $("#button_q").on("click", function(){
-		  var complete = $('#swotUpdate');
-		  complete.submit();
-	  });
-	}); 
-</script>
+<body style="background-color: rgb(34,48,80);">
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		  $("#button_q").on("click", function(){
+			  var complete = $('#swotUpdate');
+			  complete.submit();
+		  });
+		}); 
+	</script>
 <!-- 수정 시작 -->
 <form action="swotUpdate" method="post" id="swotUpdate" name="swotUpdate">
-<section id="contact">
+
 	    <div class="container" id="swottable">
 	    
 			<!-- Strength -->		
-			<div class="table100 ver2 m-b-110">
+			<div class="table100 ver2 m-b-70">
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -58,7 +61,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Weakness -->
-			<div class="table100 ver2 m-b-110">	
+			<div class="table100 ver2 m-b-70">	
 				<div class="table100-head">	
 					<table>
 						<thead>		
@@ -82,7 +85,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Opportunity -->
-			<div class="table100 ver2 m-b-110">	
+			<div class="table100 ver2 m-b-70">	
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -106,7 +109,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Threat -->
-			<div class="table100 ver2 m-b-110">		
+			<div class="table100 ver2 m-b-70">		
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -129,29 +132,10 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</section>
-<%-- <table>
-	<tr>
-		<td>Strength (강점)</td>
-		<th><input type="text" id="writeUpdate_s" name="swotS" value="${sessionScope.swotlist.swotS}" ></th>
-	</tr>
-	<tr>
-		<td>Weakness (약점)</td>
-		<th><input type="text" id="writeUpdate_w" name="swotW" value="${sessionScope.swotlist.swotW}"" ></th>
-	</tr>
-	<tr>
-		<td>Opportunity (기회)</td>
-		<th><input type="text" id="writeUpdate_o" name="swotO" value="${sessionScope.swotlist.swotO}"" ></th>
-	</tr>
-	<tr>
-		<td>Threat (위협)</td>
-		<th><input type="text" id="writeUpdate_t" name="swotT"  value="${sessionScope.swotlist.swotT}"" ></th>
-	</tr>
-</table> --%>
-
-
-<input type="submit" id="button_q" value="수정완료 " class="button_1">
+	<input type="submit" id="button_q" value="수정완료" class="button_1">
 </form>
  
+ 	<!-- Slide-Toggle -->
+	<script src="<c:url value='/resources/js/slide-toggle.js'/>"></script>
 </body>
 </html>

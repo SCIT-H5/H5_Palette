@@ -1574,7 +1574,7 @@
 .m-b-107 {margin-bottom: 107px;}
 .m-b-108 {margin-bottom: 108px;}
 .m-b-109 {margin-bottom: 109px;}
-/* .m-b-110 {margin-bottom: 110px;} */
+.m-b-110 {margin-bottom: 110px;}
 .m-b-111 {margin-bottom: 111px;}
 .m-b-112 {margin-bottom: 112px;}
 .m-b-113 {margin-bottom: 113px;}
@@ -2984,48 +2984,113 @@
 }
 .swotS{
 	background-color: #F6F6F6;
-	width: 1450px;
+	width: 1000px;
 	
 }
 .swotW{
 	background-color: #F6F6F6;
-	width: 1450px;
+	width: 1000px;
 	
 }
 .swotO{
 	background-color: #F6F6F6;
-	width: 1450px;
+	width: 1000px;
 	
 }
 .swotT{
 	background-color: #F6F6F6;
-	width: 1450px;
+	width: 1000px;
 	
 }
 .button_1{
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 	margin: auto;
 	background: #F6F6F6;
-	padding: 10px;
-	
+	padding: 1rem 2rem;
+	background-color: #F05F40;
+	border-color: #F05F40;
+	color: white;
+	cursor: pointer;
 }
 .button_2{
 	
-	
-	float: right;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	margin: auto;
+	margin-left: 0px;
 	background: #F6F6F6;
-	padding: 10px;
+	background-color: #F05F40;
+	border-color: #F05F40;
+	color: white;
+	cursor: pointer;
+	float: right;
+	padding: 20px;
 }
 .button_3{
 	
 	
-	
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	margin: auto;
+	margin-left: 0px;
 	background: #F6F6F6;
-	padding: 10px;
+	background-color: #F05F40;
+	border-color: #F05F40;
+	color: white;
+	cursor: pointer;
+	padding: 20px;
 	
 }
 .divOne{
 	
-	margin:  auto;
-	width: 250px;
+	margin: auto;
+	width: 300px;
 }
 
+.button_4{
+	
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	margin: auto;
+	margin-left: 58px;
+	background: #F6F6F6;
+	background-color: #F05F40;
+	border-color: #F05F40;
+	color: white;
+	cursor: pointer;
+	float: left;
+	padding: 20px;
+}
+
+.button_5{
+	
+	
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	margin: auto;
+	margin-left: 50px;
+	background: #F6F6F6;
+	background-color: #F05F40;
+	border-color: #F05F40;
+	color: white;
+	cursor: pointer;
+	float: left;
+	padding: 20px;
+	
+}

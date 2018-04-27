@@ -20,6 +20,7 @@
 	<!-- Custom styles for this template -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
 	
+	
 </head>
 <body>
 
