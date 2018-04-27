@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.palette.h5.ego.vo.Activity;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
@@ -107,9 +108,10 @@ public class EgoDAO {
 		return result;
 
 	}
-
-	public int file_management(FileManagement filemanagement) {
-
+	
+	//파일 저장하기
+	public int file_management(FileManagement filemanagement){
+		
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 
 		int result = 0;
@@ -123,10 +125,42 @@ public class EgoDAO {
 
 		return result;
 	}
-
-	// swot분석 글 보기
-	public Swot readswot(String swotId) {
-
+	
+	// 프로젝트 파일 수정하기
+	public int proFileUpdate(FileManagement fileManagement) {
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		int result = 0;
+		
+		try {
+			result = mapper.proFileUpdate(fileManagement);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		return result;
+	}
+	
+	//파일 하나 불러오기
+	public FileManagement fileSelectOne(int file_id) {
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+		
+		FileManagement file = null;
+		
+		try {
+			file = mapper.fileSelectOne(file_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		return file;
+	}
+	
+	//swot분석 글 보기
+	public Swot readswot(String swotId){
+		
 		Swot result = null;
 
 		System.out.println("다오에 넘어온 값 " + swotId);
@@ -204,8 +238,9 @@ public class EgoDAO {
 		return result;
 	}
 
-	public ArrayList<PersonalityList> personalityList() {
-
+	//성격분석 리스트 불러오기
+	public ArrayList<PersonalityList> personalityList(){
+		
 		ArrayList<PersonalityList> list = null;
 		logger.info("DAO | 성격분석리스트 불러오기");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
@@ -221,6 +256,10 @@ public class EgoDAO {
 		return list;
 	}
 
+	// 활동내역 쓰기
+	public int activityWrite(Activity activity) {
+		// TODO Auto-generated method stub
+		logger.info("DAO | 활동내역 작성 시작");
 	// 회원 정보 수정
 	public int userEdit(Userinfo userinfo) {
 		System.out.println("들어온 " + userinfo);
@@ -276,6 +315,75 @@ public class EgoDAO {
 			} else{
 				logger.info("스킬 업데이트");
 				mapper.skillUpdate(skillmap);
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+
+		int result = 0;
+
+		try {
+			logger.info(activity.toString());
+			result = mapper.activityWrite(activity);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		logger.info("DAO | 활동내역 작성 종료");
+		return result;
+	}
+
+	// 활동내역 읽기
+	public Activity activityRead(String actId) {
+		// TODO Auto-generated method stub
+		logger.info("DAO | 활동내역 읽기 시작");
+
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+
+		Activity activity = null;
+
+		try {
+			activity = mapper.activityRead(actId);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		logger.info("DAO | 활동내역 읽기 시작");
+		return activity;
+	}
+
+	// 활동내역 수정
+	public int activityUpdate(Activity activity) {
+		// TODO Auto-generated method stub
+		logger.info("DAO | 활동내역 수정 시작");
+
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+
+		int result = 0;
+
+		try {
+			result = mapper.activityUpdate(activity);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		logger.info("DAO | 활동내역 수정 종료");
+		return result;
+	}
+	
+	
+
+	//회원 정보 수정
+		public int userEdit(Userinfo userinfo){
+			System.out.println("들어온 "+userinfo);
+			EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+			
+			int result = 0;
+			
+			try {
+				result = mapper.userEdit(userinfo);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
+import com.palette.h5.ego.vo.Activity;
+import com.palette.h5.ego.vo.CertLect;
 import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
@@ -34,7 +36,7 @@ public class EgoController {
 	@Autowired
 	EgoDAO dao;
 	UserinfoDAO userdao;
-	
+
 	@Autowired
 	PortDAO portdao;
 
@@ -284,17 +286,70 @@ public class EgoController {
 		return "ego/personalityReadForm";
 	}
 
+	// 활동내역 페이지 이동
+	@RequestMapping(value = "activityReadForm", method = RequestMethod.GET)
+	public String activityReadForm() {
+		logger.info("Controller | 활동내역 폼으로 이동 ");
+		return "ego/activityReadForm";
+	}
+
+	// 활동내역 데이터 가져오기
+	@ResponseBody
+	@RequestMapping(value = "activityRead", method = RequestMethod.POST)
+	public Activity activityRead(HttpSession session) {
+		logger.info("Controller | 활동내역 데이터 불러오기 시작");
+
+		String actId = (String) session.getAttribute("loginId"); // 세션의 아이디
+																	// 가져오기
+
+		Activity activity;
+
+		activity = dao.activityRead(actId);
+
+		logger.info("반환값" + activity);
+
+		logger.info("Controller | 활동내역 데이터 불러오기 종료");
+		return activity;
+	}
+
+	// 활동내역 데이터 쓰기
+	@ResponseBody
+	@RequestMapping(value = "activityWrite", method = RequestMethod.POST)
+	public void certLectWrite(String tablehtml, String datatable, HttpSession session) {
+		logger.info("Controller | 활동내역 데이터 쓰기 시작");
+
+		logger.info(tablehtml);
+		logger.info(datatable);
+
+		String actId = (String) session.getAttribute("loginId"); // 세션의 아이디 가져오기
+
+
+		Activity activity = new Activity(actId, datatable, tablehtml);
+
+		Activity activity2 = dao.activityRead(actId);
+
+		if (activity2 == null) {
+			// db에 값이 없을때 insert
+			dao.activityWrite(activity);
+		} else {
+			// db에 값이 있을때 update
+			dao.activityUpdate(activity);
+		}
+		// System.out.println(datatable);
+		logger.info("Controller | 활동내역 데이터쓰기 종료");
+	}
+
 	// 마이페이지 정보 이동
 	@RequestMapping(value = "myInfo", method = RequestMethod.GET)
 	public String MyInformation(Model model, HttpSession session) {
 		logger.info("마이페이지/ 정보페이지 이동 시작");
-		
-		String id = (String)session.getAttribute("loginId");
+
+		String id = (String) session.getAttribute("loginId");
 		System.out.println(id);
 		ArrayList<Portfolio> portList = portdao.portList(id);
-		
+
 		model.addAttribute("portList", portList);
-		
+
 		logger.info("마이페이지/ 정보페이지 이동 종료");
 
 		return "ego/mypage/myInformation";

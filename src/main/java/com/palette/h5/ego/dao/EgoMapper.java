@@ -7,6 +7,7 @@ import com.palette.h5.ego.vo.History;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
+import com.palette.h5.ego.vo.Activity;
 import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertLect;
 import com.palette.h5.ego.vo.CertProject;
@@ -30,7 +31,15 @@ public interface EgoMapper {
 	// HISTORY | 데이터 삭제하기
 	public int historyDeleteOne(History history);
 
+	// 파일 저장
 	int file_management(FileManagement filemanagement);
+	
+	// 프로젝트 파일 수정
+	public int proFileUpdate(FileManagement fileManagement);
+	
+	// 파일 하나 불러오기
+	public FileManagement fileSelectOne(int file_id);
+	
 	//프로젝트 리스트 작성
 	void projectWrite_One(CertProject CertProject);
 	//프로젝트 리스트 출력
@@ -72,6 +81,15 @@ public interface EgoMapper {
 	//성격분석 성격리스트 불러오기
 	ArrayList<PersonalityList> personalityList();
 
+	//활동내역 쓰기
+	public int activityWrite(Activity activity);
+	
+	//활동내역 읽기
+	public Activity activityRead(String actId);
+	
+	//활동내역 수정
+	public int activityUpdate(Activity activity);
+	
 	//회원 정보 수정
 	public int userEdit(Userinfo userinfo);
 

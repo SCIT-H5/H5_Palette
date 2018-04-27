@@ -131,6 +131,7 @@
 		where
 		hisId=#{hisId} and hisNo=#{hisNo}
 	</delete>
+<<<<<<< HEAD
 
 	<!-- 파일 저장 -->
 	<insert id="file_management" parameterType="file">
@@ -147,13 +148,57 @@
 			, #{originalFileName}
 			, #{savedFileName}
 		</if>
+=======
+	
+	<!-- 프로젝트 파일 저장 -->
+	<insert id="file_management" parameterType="file">
+		insert into file_management (
+			file_id
+			, originalFileName
+			, savedFileName
+			, fileDivision
+			, fileUserId
 		)
+		values (
+			file_management_SEQ.nextval
+			, #{originalFileName}
+			, #{savedFileName}
+			, #{fileDivision}
+			, #{fileUserId}
+>>>>>>> 4-25현준
+		)
+		<selectKey keyProperty="idx" resultType="Integer" order="AFTER"> 
+			SELECT file_management_SEQ.currval FROM dual 
+		</selectKey>
+
 	</insert>
+	
+	<!-- 프로젝트 파일 수정 -->
+	<update id="proFileUpdate" parameterType="file">
+		update
+			file_management
+		set
+			originalFileName = #{originalFileName}
+			, savedFileName = #{savedFileName}
+		where
+			file_id = #{file_id}
+	</update>
+	
+	<!-- 저장된 파일 하나 정보 불러오기 -->
+	<select id="fileSelectOne" parameterType="int" resultType="file">
+		select 
+			*
+		from
+			file_management
+		where
+			file_id = #{file_id}
+	</select>
 
 	<!-- 프로젝트 리스트 입력 -->
 	<insert id="projectWrite_One" parameterType="CertProject">
 
 		insert into cert_project(
+<<<<<<< HEAD
 		proNum
 		, proId
 		, proTitle
@@ -170,6 +215,26 @@
 		, #{proTerm}
 		, #{proProf}
 		, #{proContent}
+=======
+			proNum
+			, proId
+			, proTitle			
+			, proEdu
+			, proTerm
+			, proProf
+			, proContent
+			, proFileId
+		)
+		values(
+			cert_project_SEQ.nextval
+			, #{proId}
+			, #{proTitle}			
+			, #{proEdu}
+			, #{proTerm}
+			, #{proProf}
+			, #{proContent}
+			, #{proFileId}
+>>>>>>> 4-25현준
 		)
 
 	</insert>
@@ -199,11 +264,20 @@
 		update
 		cert_project
 		set
+<<<<<<< HEAD
 		proTitle = #{proTitle}
 		, proEdu = #{proEdu}
 		, proTerm = #{proTerm}
 		, proProf = #{proProf}
 		, proContent = #{proContent}
+=======
+			proTitle = #{proTitle}
+			, proEdu = #{proEdu}
+			, proTerm = #{proTerm}
+			, proProf = #{proProf}
+			, proContent = #{proContent}
+			, proFileId = #{proFileId}
+>>>>>>> 4-25현준
 		where
 		proNum = #{proNum}
 		and
@@ -330,5 +404,41 @@
  	CERTHTML = #{certhtml}
  	where
  	CERTID = #{certId}
+ 	</update>
+ 	
+ 	<!-- 활동내역 작성 -->
+ 	<insert id="activityWrite" parameterType="activity">
+ 		insert into
+ 			ACTIVITY
+ 			(
+ 				actId,
+ 				actJson,
+ 				actHTML
+ 			) values (
+ 				#{actId},
+ 				#{actJson},
+ 				#{actHtml}
+ 			)
+ 	</insert>
+ 	
+ 	<!-- 활동내역 읽기 -->
+ 	<select id="activityRead" parameterType="string" resultType="activity">
+	 	select
+	 		*
+	 	from
+	 		ACTIVITY
+	 	where
+	 		actId = #{actId}
+ 	</select>
+ 	
+ 	<!-- 활동내역 수정 -->
+ 	<update id="activityUpdate" parameterType="activity">
+	 	update 
+	 		ACTIVITY
+	 	set
+	 		actJson = #{actJson},
+	 		actHtml = #{actHtml}
+	 	where
+	 		actId = #{actId}
  	</update>
 </mapper>
