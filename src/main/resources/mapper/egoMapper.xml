@@ -79,6 +79,7 @@
 		from
 		history
 		where hisId = #{hisId}
+		order by hisDate asc
 	</select>
 
 	<!-- HISTORY | HISTORY 연도List 가져오기 -->

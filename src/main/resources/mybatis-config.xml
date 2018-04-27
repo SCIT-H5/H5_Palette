@@ -14,6 +14,7 @@
 		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>
 
+		<typeAlias type="com.palette.h5.ego.vo.CertGrad" alias="certGrad"/>
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect"/>
@@ -22,5 +23,6 @@
 		<mapper resource="mapper/userinfoMapper.xml"/>
 		<mapper resource="mapper/egoMapper.xml"/>
 		<mapper resource="mapper/portMapper.xml"/>
+		<mapper resource="mapper/fileMapper.xml"/>
 	</mappers>
 </configuration>

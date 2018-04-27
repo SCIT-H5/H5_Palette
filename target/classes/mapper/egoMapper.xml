@@ -5,6 +5,7 @@
 
 <mapper namespace="com.palette.h5.ego.dao.EgoMapper">
 
+<<<<<<< HEAD
 	<!-- 회원 정보 수정 -->
 	<update id="userEdit" parameterType="userinfo">
 		update
@@ -68,6 +69,10 @@
 	</delete>
 
 	<!-- HISTORY | HISTORY 전체 데이터 가져오기 -->
+=======
+	
+	<!-- HISTORY | HISTORY 전체 데이터 가져오기-->
+>>>>>>> 서현local
 	<select id="historyDataAll" parameterType="string" resultType="history">
 		select
 		hisId
@@ -79,19 +84,77 @@
 		from
 		history
 		where hisId = #{hisId}
+		order by hisDate asc
 	</select>
 
+<<<<<<< HEAD
 	<!-- HISTORY | HISTORY 연도List 가져오기 -->
 	<select id="historyYearList" parameterType="string" resultType="string">
 		select
 		hisDate
+=======
+	
+	<!-- HISTORY | HISTORY 데이터중의 특정 hisNo의 데이터만 가져오기 -->
+	<select id="selectHistoryOne" parameterType="history" resultType="history">
+		select
+			hisId
+			,hisDate
+			,hisPeriod
+			,hisTitle
+			,hisContent
+			,hisNo
+		from
+			history
+		where hisId = #{hisId} and hisNo = #{hisNo}
+	</select>
+	
+	
+	<!-- HISTORY | HISTORY 연도List 가져오기(중복X)-->
+	<select id="historyYearList" parameterType="string" resultType="string">
+		select distinct
+			hisDate
+>>>>>>> 서현local
 		from
 		history
 		where
+<<<<<<< HEAD
 		hisId = #{hisId}
 	</select>
 
 	<!-- HISTORY | HISTORY 데이터 추가하기 -->
+=======
+			hisId = #{hisId}
+		order by hisDate asc
+	</select>
+	
+	
+	<!-- HISTORY | HISTORY 해당 year의 데이터들 불러오기 -->
+	<select id="historyDataPerYear" parameterType="history" resultType="history">
+		select
+			hisId
+			,hisDate
+			,hisPeriod
+			,hisTitle
+			,hisContent
+			,hisNo
+		from 
+			history
+		where
+			hisId = #{hisId} and hisDate = #{hisDate}
+	</select>
+	
+	
+	<!-- HISTORY | HISTORY 연도별 데이터 수 세기 -->
+	<select id="countDataPerYear" parameterType="history" resultType="int">
+		select count(*) as "countPerYear"
+			from history
+		where
+			hisId = #{hisId} and hisDate = #{hisDate}	
+	</select>
+	
+	
+	<!-- HISTORY | HISTORY 데이터 추가하기-->
+>>>>>>> 서현local
 	<insert id="historyAddOne" parameterType="history">
 		insert into
 		history
@@ -111,8 +174,16 @@
 		,history_seq.nextval
 		)
 	</insert>
+<<<<<<< HEAD
 
 	<!-- HISTORY | HISTORY 데이터 수정하기 -->
+=======
+	
+	<!-- HISTORY | HISTORY 카운트 뽑아내기 -->
+	
+	
+	<!-- HISTORY | HISTORY 데이터 수정하기-->
+>>>>>>> 서현local
 	<update id="historyUpdateOne" parameterType="history">
 		update
 		history
@@ -131,6 +202,7 @@
 		where
 		hisId=#{hisId} and hisNo=#{hisNo}
 	</delete>
+<<<<<<< HEAD
 
 	<!-- 파일 저장 -->
 	<insert id="file_management" parameterType="file">
@@ -152,6 +224,18 @@
 
 	<!-- 프로젝트 리스트 입력 -->
 	<insert id="projectWrite_One" parameterType="CertProject">
+=======
+	
+	<!-- HISTORY | HISTORY 하나 읽어오기 -->
+	<select id="historyonselect" parameterType="int" resultType="history">
+		select
+		*
+		from
+		history
+		where
+		hisNo=#{hisNo}
+	</select>
+>>>>>>> 서현local
 
 		insert into cert_project(
 		proNum

@@ -18,8 +18,17 @@ public interface EgoMapper {
 	// HISTORY | 전체 데이터 가져오기
 	public ArrayList<History> historyDataAll(String hisId);
 	
-	// HISTORY | 연도LIST 가져오기
+	// HISTORY | 연도LIST 가져오기 <중복X>
 	public ArrayList<String> historyYearList(String hisId);
+	
+	// HISTORY | 특정 hisNo에 해당하는 데이터 가져오기
+	public History selectHistoryOne(History history);
+	
+	// HISTORY | 해당 year별로 데이터들 불러오기
+	public ArrayList<History> countDataPerYear(History history);
+	
+	// HISTORY | 해당 year별로 데이터들 불러오기
+	public ArrayList<History> historyDataPerYear(History history);
 	
 	// HISTORY | 데이터 추가하기
 	public int historyAddOne(History history);
@@ -30,6 +39,11 @@ public interface EgoMapper {
 	// HISTORY | 데이터 삭제하기
 	public int historyDeleteOne(History history);
 
+	// file management
+	public int file_management(FileManagement filemanagement);
+
+	//selectone
+	public History historyonselect(int hisNo);
 	int file_management(FileManagement filemanagement);
 	//프로젝트 리스트 작성
 	void projectWrite_One(CertProject CertProject);
