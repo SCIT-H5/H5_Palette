@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.palette.h5.dao.UserinfoDAO;
+import com.palette.h5.vo.Portfolio;
 import com.palette.h5.vo.Userinfo;
 
 @Controller
@@ -149,5 +150,22 @@ public class UserinfoController {
 		session.removeAttribute("loginId");
 		
 		return "redirect:../";
+	}
+	
+	/**
+	 * 공개범위수정
+	 * @param portNum, portOpen
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "openInfo", method = RequestMethod.POST)
+	public void openInfo(int portNum, int portOpen){
+		logger.info("Controller | 포트폴리오 공개범위 수정 시작");
+		logger.info(portNum+"/"+portOpen);
+		Portfolio portfolio = new Portfolio();
+		portfolio.setPortNum(portNum);
+		portfolio.setPortOpen(portOpen);
+		userDao.portOpenUpdate(portfolio);
+		logger.info("Controller | 포트폴리오 공개범위 수정 종료");
 	}
 }

@@ -72,9 +72,14 @@ public class PortController {
 	}
 	
 	@RequestMapping(value = "portView", method = RequestMethod.GET)
-	public String jspFileTest(Model model, Portfolio portfolio) {
+	public String jspFileTest(Model model, Portfolio portfolio, HttpSession session) {
 		logger.info("Controller | 포트폴리오 보기 시작");
 		Portfolio port = dao.portSelectOne(portfolio);
+		String id = (String)session.getAttribute("loginId");
+		if(port.getPortOpen() == 0 && !port.getPortId().equals(id)){
+			logger.info("Controller | 미공개 포트폴리오");
+			return "redirect:/main";
+		}
 		model.addAttribute("port", port);
 		logger.info("Controller | 포트폴리오 보기 종료");
 		return "port/portfolioView";
