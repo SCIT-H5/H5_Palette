@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Library -->
-	<%@include file="/WEB-INF/views/lib-navi.jsp"%>	
+	
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/lib-navi.jsp"%> 
+		
 </head>
 
 <body id="page-top">
@@ -13,7 +15,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="${pageContext.request.contextPath}/">PALETTE!</a>
+        <a class="navbar-brand js-scroll-trigger" href="${pageContext.request.contextPath}/" style="color:black;">PALETTE!</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,10 +23,10 @@
 	      <div class="collapse navbar-collapse drop_down" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/main">Main Page</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/main" style="color:black;">Main Page</a>
 	            </li>
 	            <li class="nav-item" class="drop_down_submenu">
- 				  <a tabindex="-1" class="nav-link" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">Self-Analysis</a>
+ 				  <a tabindex="-1" class="nav-link" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm" style="color:black;">Self-Analysis</a>
  				  
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
@@ -69,10 +71,10 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort">New Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort" style="color:black;">New Portfolio</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port">My Portfolio</a>
+	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port" style="color:black;">My Portfolio</a>
 	            </li>  
 	          </ul>
 	        </div>        
@@ -80,18 +82,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          	<ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/ego/myInfo">My Page</a>	               	              	 
+	              <a class="nav-link" href="${pageContext.request.contextPath}/ego/myInfo" style="color:black;">My Page</a>	               	              	 
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout">Log-Out</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout" style="color:black;">Log-Out</a>
 	            </li>
             </ul>
         </div> 
                  
       </div>
           
-    </nav>	
-	
+    </nav>
+    	
 </body>
 
 </html>

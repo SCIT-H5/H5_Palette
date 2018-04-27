@@ -5,12 +5,11 @@
 <html>
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
 	<title>Palette - 프로젝트 리스트</title>
+	
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>  
+	
 	<!-- Custom styles for this template -->
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
       
@@ -24,24 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
 	<!--===============================================================================================-->
-   
-   	<!-- Bootstrap core CSS -->
-    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.css">
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
-   
-	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
-	
+   	
 	<script type="text/javascript">
 		function writeForm() {
 			location.href = "writeForm";
@@ -55,15 +37,12 @@
 	</style>
 </head>
 <body style="background-color: #e6e6e6;">
-
-	<!-- Navigation -->
-	<%@include file="/WEB-INF/views/navi.jsp"%>    
+	  
 	<header class="text-center text-black d-flex">
 		<div class="my-auto" >
 			<div class="mx-auto" style="text-align: center;">
 				<div class="bg-image-blur" style="">
-					<img src="/h5/resources/img/meeting-top-view.png" style="width: 100%;">
-					
+					<img src="/h5/resources/img/meeting-top-view.png" style="width: 100%;">					
 				</div>
 				<div class="row" style="position: absolute; left: 26%; top: 40%; display: inline-block; width: 50%; padding: 1em;">   
 					<div class="col-lg-10 mx-auto">

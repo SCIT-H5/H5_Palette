@@ -21,7 +21,7 @@
 	   }
 	   else{
 	      console.log("전부 비어있는값입니다.");
-	      $("#swottable").hide();
+	      //$("#swottable").hide();
 	      $("#toggle").show();
 	   }
 	});

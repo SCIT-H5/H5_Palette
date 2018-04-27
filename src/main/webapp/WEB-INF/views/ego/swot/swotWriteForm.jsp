@@ -1,41 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자아분석 - SWOT WRITE PAGE</title>
-<!-- jquery 가져오기 -->
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- jQuery -->
+
+	<!-- jquery 가져오기 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	
-	
-	<!-- Table_Fixed_Header CSS -->
-	
+	<!-- Table_Fixed_Header CSS -->	
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
 	<!--===============================================================================================-->
 
-<script type="text/javascript">
-
-$(document).ready(function(){
-	  $("#button").on("click", function(){
-		  var complete = $('#swotWrite');
-		  complete.submit();
-	  });
-	}); 
-</script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$("#button").on("click", function(){
+				var complete = $('#swotWrite');
+				complete.submit();
+			});
+		}); 
+	</script>
 </head>
-<body>
+<body style="background-color: rgb(34,48,80);">
 <!-- 폼 작성 하는 곳 -->
 <form action="swotWrite" method="post" id="swotWrite" name="swotWrite">
 <section id="contact">
 	    <div class="container" id="swottable">
 	    
 			<!-- Strength -->		
-			<div class="table100 ver2 m-b-110">
+			<div class="table100 ver2 m-b-50">
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -59,7 +58,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Weakness -->
-			<div class="table100 ver2 m-b-110">	
+			<div class="table100 ver2 m-b-50">	
 				<div class="table100-head">	
 					<table>
 						<thead>		
@@ -83,7 +82,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Opportunity -->
-			<div class="table100 ver2 m-b-110">	
+			<div class="table100 ver2 m-b-50">	
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -107,7 +106,7 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- Threat -->
-			<div class="table100 ver2 m-b-110">		
+			<div class="table100 ver2 m-b-50">		
 				<div class="table100-head">
 					<table>
 						<thead>
@@ -150,13 +149,13 @@ $(document).ready(function(){
 	</tr>
 </table> -->
 
-<input type="submit" id="button" value="작성하기 ">
+<input type="submit" id="button" class="button_1" value="작성하기 ">
 
 </form>
  
 
-
-
+	<!-- Slide-Toggle -->
+	<script src="<c:url value='/resources/js/slide-toggle.js'/>"></script>
 
 
 	

@@ -59,7 +59,8 @@ public class EgoController {
 		}
 
 		// 읽혀온 스왓을 리턴해줌
-		session.setAttribute("swotlist", readSWOT);
+		if(readSWOT != null)
+			session.setAttribute("swotlist", readSWOT);
 
 		// swotRead 페이지에서 글작성버튼 생성여부 판단
 
