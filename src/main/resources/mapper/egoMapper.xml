@@ -300,4 +300,94 @@
 		where
 		skillId = #{skillid}
 	</update>
+ 	
+ 	<!-- 프로젝트 디테일 글 수정 (입력) 출력-->
+ 	<!-- <select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
+ 	select
+ 	*
+ 	from
+ 	cert_project_detail
+ 	where
+ 	proDetailNum = #{proDetailNum}
+ 	</select> -->
+ 	
+ 	<select id="personalityList" resultType="PersonalityList">
+ 		select 
+ 			*
+ 		from
+ 			personality_list
+ 	</select>
+ 	
+ 	<insert id="certLectWrite" parameterType="certLect">
+ 		insert into
+ 			CERT_LECT
+ 			(
+ 				lectId,
+ 				lectJson,
+ 				lectHTML
+ 			) values (
+ 				#{lectId},
+ 				#{lectJson},
+ 				#{lectHtml}
+ 			)
+ 	</insert>
+ 	
+ 	<!-- 이수과목 읽기 -->
+ 	<select id="certLectRead" parameterType="string" resultType="certlect">
+	 	select
+	 		*
+	 	from
+	 		CERT_LECT
+	 	where
+	 		LECTID = #{lectId}
+ 	</select>
+ 	
+ 	<!-- 이수과목 업데이트 -->
+ 	<update id="certLectUpdate" parameterType="certlect">
+	 	update 
+	 		CERT_LECT
+	 	set
+	 		LECTJSON = #{lectJson},
+	 		LECTHTML = #{lectHtml}
+	 	where
+	 		LECTID = #{lectId}
+ 	</update>
+ 	
+ 	<!-- 자격증명 작성 -->
+ 	<insert id="certificateWrite" parameterType="Map">
+ 		insert
+ 		into
+ 		CERT_CERTIFICATE
+ 		(
+ 		CERTID,
+ 		CERTJSON,
+ 		CERTHTML
+ 		)
+ 		values
+ 		(
+ 		#{certId},
+ 		#{certjson},
+ 		#{certhtml}
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 자격증명 읽기 -->
+ 	<select id="certificateRead" parameterType="string" resultType="certificate">
+ 	select
+ 	*
+ 	from
+ 	CERT_CERTIFICATE
+ 	where
+ 	CERTID = #{certId}
+ 	</select>
+ 	
+ 	<!-- 자격증명 업데이트 -->
+ 	<update id="certificateUpdate" parameterType="string">
+ 	update CERT_CERTIFICATE
+ 	set
+ 	CERTJSON = #{certjson},
+ 	CERTHTML = #{certhtml}
+ 	where
+ 	CERTID = #{certId}
+ 	</update>
 </mapper>

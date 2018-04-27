@@ -16,6 +16,7 @@
 
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml"/>

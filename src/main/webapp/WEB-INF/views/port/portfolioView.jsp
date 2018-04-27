@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/graph/dist/barrating/themes/bootstrap-stars.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/graph/dist/barrating/themes/fontawesome-stars-o.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/css/bar_graph.css">
 
 
 <script type="text/javascript">

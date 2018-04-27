@@ -8,6 +8,7 @@ import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.ego.vo.CertCertificate;
+import com.palette.h5.ego.vo.CertLect;
 import com.palette.h5.ego.vo.CertProject;
 import com.palette.h5.vo.FileManagement;
 import com.palette.h5.vo.Userinfo;
@@ -51,6 +52,13 @@ public interface EgoMapper {
 	//swot분석 글 삭제
 	int deleteswot(String swotId);
 
+	//이수과목 쓰기
+	public int certLectWrite(CertLect certLect);
+	//이수과목 읽기
+	public CertLect certLectRead(String lectId);
+	//이수과목 수정
+	public int certLectUpdate(CertLect certLect);
+	
 
 	//certification write
 	public int certificateWrite(HashMap<String, String> certficateMap);

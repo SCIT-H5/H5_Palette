@@ -37,6 +37,12 @@ $(function() {
 		$(this).children('ul').css('display', 'none');
 	});
 	
+	$('#bar_graph').hover(function() {
+		$(this).children('ul').css('display', 'block');
+	}, function() {
+		$(this).children('ul').css('display', 'none');
+	});
+	
 	$('#circle_graph').hover(function() {
 		$(this).children('ul').css('display', 'block');
 	}, function() {
@@ -230,13 +236,54 @@ function insertWiget( $item, num, x, y ) {
 		else if(value == "3"){
 			var graph = "<div class='drag_graph' style='position:absolute; width:100px; height: 100px; left:"+x+"px; top:"+y+"px;'>"
 					  + "<img class='close' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
-					  + "<input type='text' id='bargraph"+bar_graphNum+"' value='' /></div>";
+					  + "<input type='text' class='js-range-slider' id='bargraph"+bar_graphNum+"' value='' /></div>";
 			
 			$(graph).appendTo( $list ).fadeIn(function() {
 				$item.animate({ width: "96px" })
 					 .animate({ height: "72px" });
 				
+				var type = $item.attr("type");
+				
+				//넣었던 이미지 위젯에 다시생성
+				if(type == 1){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-1');
+					$("#bar_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="1">'
+			    			 +'<h5 class="ui-widget-header">1</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 2){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-2');
+					$("#bar_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="2">'
+			    			 +'<h5 class="ui-widget-header">2</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 3){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-3');
+					$("#bar_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="3">'
+			    			 +'<h5 class="ui-widget-header">3</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 4){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-4');
+					$("#bar_graph li:nth-child(3)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="4">'
+			    			 +'<h5 class="ui-widget-header">4</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 5){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-5');
+					$("#bar_graph li:nth-child(4)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="5">'
+			    			 +'<h5 class="ui-widget-header">5</h5>'
+			  				 +'</li>');
+				}
+				else if(type == 6){
+					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-6');
+					$("#bar_graph li:nth-child(5)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="6">'
+			    			 +'<h5 class="ui-widget-header">6</h5>'
+			  				 +'</li>');
+				}
+				
 				$("#bargraph"+bar_graphNum).ionRangeSlider({
+					type : "single",
 					min : 0,
 					max : 100,
 					hide_min_max : true
@@ -246,11 +293,6 @@ function insertWiget( $item, num, x, y ) {
 				 
 				initResizable('.drag_graph', num);
 				
-				//넣었던 이미지 위젯에 다시생성
-				$("#graph_1 > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
-		    			 +'<h5 class="ui-widget-header">바그래프</h5>'
-		    			 +'<img src="/h5/resources/portfolio/img/icon_bargraph.png">'
-		  				 +'</li>'); 
 				
 				//추가한 이미지에 드래그 이벤트 생성
 				$( ".drag_graph").draggable({
