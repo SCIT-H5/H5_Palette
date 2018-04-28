@@ -43,7 +43,7 @@
 		        		<!-- 자격 사항 SubMenu dropDown -->		        		
 		        		<ul class="drop_down_menu">
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certGradReadForm">졸업 증명</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certGradeReadForm">졸업 증명</a>
 			        		</li>
 			        		<li>
 			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certLectReadForm">이수 과목</a>

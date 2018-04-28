@@ -3,19 +3,17 @@ package com.palette.h5.ego.vo;
 public class CertGrad {
 	
 	public String gradId;
-	public String gradOriginalfile;
-	public String gradSavedfile;
+	public int gradFileId;
 	
 	public CertGrad() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CertGrad(String gradId, String gradOriginalfile, String gradSavedfile) {
+	public CertGrad(String gradId, int gradFileId) {
 		super();
 		this.gradId = gradId;
-		this.gradOriginalfile = gradOriginalfile;
-		this.gradSavedfile = gradSavedfile;
+		this.gradFileId = gradFileId;
 	}
 
 	public String getGradId() {
@@ -26,26 +24,17 @@ public class CertGrad {
 		this.gradId = gradId;
 	}
 
-	public String getGradOriginalfile() {
-		return gradOriginalfile;
+	public int getGradFileId() {
+		return gradFileId;
 	}
 
-	public void setGradOriginalfile(String gradOriginalfile) {
-		this.gradOriginalfile = gradOriginalfile;
-	}
-
-	public String getGradSavedfile() {
-		return gradSavedfile;
-	}
-
-	public void setGradSavedfile(String gradSavedfile) {
-		this.gradSavedfile = gradSavedfile;
+	public void setGradFileId(int gradFileId) {
+		this.gradFileId = gradFileId;
 	}
 
 	@Override
 	public String toString() {
-		return "CertGrad [gradId=" + gradId + ", gradOriginalfile=" + gradOriginalfile + ", gradSavedfile="
-				+ gradSavedfile + "]";
+		return "CertGrad [gradId=" + gradId + ", gradFileId=" + gradFileId + "]";
 	}
 	
 }
