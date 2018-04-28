@@ -9,6 +9,7 @@
 		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot"/>
 		<typeAlias type="com.palette.h5.ego.vo.History" alias="history"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject"/>
+		<typeAlias type="com.palette.h5.ego.vo.Reply" alias="reply"/>
 
 		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="PersonalityList"/>

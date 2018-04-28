@@ -54,4 +54,54 @@
 			and
 			portNum = #{portNum}
 	</select>
+	
+	<!-- 리플 작성하기 -->
+	<insert id="commentwrite" parameterType="reply">
+		insert into port_comment (
+			commentNum
+			, replyportNum
+			, commentID
+			, commentText
+		)
+		values (
+			port_comment_SEQ.nextval
+			, #{replyportNum}
+			, #{commentID}
+			, #{commentText}
+		 )		
+	</insert>
+	<!--리플 출력하기  -->
+	<select id="commentView" parameterType="int" resultType="reply">
+	
+		select 
+			commentNum
+			, replyportNum
+			, commentID
+			, commentText
+			, to_char(commentDate, 'YYYY-MM-DD HH24:MI:SS') commentDate
+		from 
+			port_comment 
+		where
+			replyportNum = #{replyportNum}
+		order by replyportNum desc
+	</select>
+	<!--리플 수정하기  -->
+	<update id="commentUpdate" parameterType="reply">
+	update
+			port_comment
+		set
+			commentText = #{commentText}
+		where
+			commentNum = #{commentNum}
+			and replyportNum = #{replyportNum}
+	</update>
+	<!--리플 삭제하기  -->
+	<delete id="commentDel" parameterType="reply">
+	delete
+		from
+			port_comment
+		where
+			commentNum = #{commentNum}
+			and replyportNum = #{replyportNum}
+	</delete>
 </mapper>
