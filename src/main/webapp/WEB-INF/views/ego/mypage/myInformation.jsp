@@ -46,7 +46,6 @@ font-size: 30px;
 <script type="text/javascript">
 
 $(document).ready(function() {
-		  $(".view_one").hide();
 		  $(".view_two").hide();
 	      $(".inforEdit").click(function() {
 	    	$(".view_two").hide();  
@@ -72,7 +71,6 @@ $(document).ready(function() {
 	<div class="inforEdit"><a href="#">회원 정보 수정</a></div>
 	<div class="openEdit"><a href="#">공개 범위 설정</a></div>
 </div>
-
 <div class="div_two">
 	<div class="view_one"><%@include file="/WEB-INF/views/ego/mypage/inforEdit.jsp"%></div>
 	<div class="view_two"><%@include file="/WEB-INF/views/ego/mypage/openEdit.jsp"%></div>

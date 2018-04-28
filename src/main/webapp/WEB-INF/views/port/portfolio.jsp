@@ -409,7 +409,7 @@ function createGraph(i) {
  
  	<!-- 포트폴리오 영역 -->
 
- 	<div id="trash" class="ui-widget-header" style=" top:100px; border: 1px black solid"></div>
+ 	<div id="trash" class="ui-widget-header" style="width:100%; top:100px; border: 1px black solid" ></div>
 
 	<!-- 위젯영역 -->
 	<div id="sidebox" class="sidebox">
