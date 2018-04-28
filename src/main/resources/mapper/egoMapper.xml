@@ -7,64 +7,64 @@
 
 	<!-- 회원 정보 수정 -->
 	<update id="userEdit" parameterType="userinfo">
-		update
+	update
 		userinfo
-		set
-		password = #{password}
+	set
+		 password = #{password}
 		, email = #{email}
-		where
-		id = #{id}
+	where
+		id = #{id}	
 	</update>
 
 	<!-- Swot분석 글 출력 -->
 	<select id="readswot" parameterType="string" resultType="swot">
-		select
-		*
-		from
-		swot
-		where
-		swotId = #{swotId}
+	select
+	*
+	from
+	swot
+	where
+	swotId = #{swotId}
 	</select>
-
+	
 	<!-- Swot분석 글 작성 -->
 	<insert id="writeswot" parameterType="swot">
-		insert into
-		swot
-		(
-		swotId
-		,swotS
-		,swotW
-		,swotO
-		,swotT
-		) values (
-		#{swotId}
-		,#{swotS}
-		,#{swotW}
-		,#{swotO}
-		,#{swotT}
-		)
+	insert into
+			swot
+			(
+				swotId
+				,swotS
+				,swotW
+				,swotO
+				,swotT
+			) values (
+				#{swotId}
+				,#{swotS}
+				,#{swotW}
+				,#{swotO}
+				,#{swotT}
+			)
 	</insert>
 	<!-- Swot분석 글 수정 -->
 	<update id="updateswot" parameterType="swot">
-		update
-		swot
-		set
-		swotS=#{swotS}
-		,swotW=#{swotW}
-		,swotO=#{swotO}
-		,swotT=#{swotT}
-		where
-		swotId = #{swotId}
-
+	update 
+	swot
+	set
+	swotS=#{swotS}
+	,swotW=#{swotW}
+	,swotO=#{swotO}
+	,swotT=#{swotT}
+	where
+	swotId = #{swotId}
+	
 	</update>
-
+	
 	<!-- Swot분석 글 삭제 -->
 	<delete id="deleteswot" parameterType="string">
-		delete
-		from
-		swot
-		where
-		swotId = #{swotId}
+	delete
+	from
+	swot
+	where
+	swotId = #{swotId}
 	</delete>
 	
 	<!-- 프로젝트 파일 저장 -->
@@ -111,8 +111,8 @@
 	</select>
 
 	<!-- 프로젝트 리스트 입력 -->
-	<insert id="projectWrite_One" parameterType="CertProject">
-
+	<insert id="projectWrite_One" parameterType="CertProject" >
+	
 		insert into cert_project(
 			proNum
 			, proId
@@ -133,33 +133,33 @@
 			, #{proContent}
 			, #{proFileId}
 		)
-
+	
 	</insert>
-
+	
 	<!-- 프로젝트 리스트 출력 -->
 	<select id="projectList" parameterType="String" resultType="CertProject">
-		select
+	select
 		*
-		from
-		cert_project
-		where
+	from 
+		cert_project 
+	where 
 		proId = #{proId}
 	</select>
-
-	<!-- 프로젝트 디테일 글 하나 출력 -->
-	<select id="projectdetail_One" parameterType="int" resultType="CertProject">
-		select
-		*
-		from
-		cert_project
-		where
+	
+ 	<!-- 프로젝트 디테일 글 하나 출력 -->
+ 	<select id="projectdetail_One" parameterType="int" resultType="CertProject">
+ 	select
+		* 
+	from 
+		cert_project 
+	where 
 		proNum = #{proNum}
-	</select>
-
-	<!-- 글 수정 -->
+ 	</select>
+ 	
+ 	<!-- 글 수정 -->
 	<update id="projectUpdate" parameterType="CertProject">
 		update
-		cert_project
+			cert_project
 		set
 			proTitle = #{proTitle}
 			, proEdu = #{proEdu}
@@ -168,60 +168,73 @@
 			, proContent = #{proContent}
 			, proFileId = #{proFileId}
 		where
-		proNum = #{proNum}
-		and
-		proId = #{proId}
-	</update>
-
-	<!-- 스킬 읽기 -->
-	<select id="skillRead" parameterType="string" resultType="skill">
-		select
-		*
-		from
-		skill
-		where
-		skillid = #{userId}
-	</select>
-	
-	<!-- 스킬 쓰기 -->
-	<insert id="skillWrite" parameterType="Map">
-		insert
-	 	into
-	 	skill
-	 	(
-	 	skillId,
-	 	skillrow,
-	 	skilltrow,
-	 	skillHtml
-	 	)
-	 	values
-	 	(
-	 	#{skillid},
-	 	#{skillrow},
-	 	#{skilltrow},
-	 	#{skillhtml}
-	 	)
-	</insert>
-	
-	<!-- 스킬 업데이트 -->
-	<update id="skillUpdate" parameterType="Map">
-		update
-		skill
-		set
-		skillrow = #{skillrow},
-	 	skilltrow = #{skilltrow},
-	 	skillHtml = #{skillhtml}
-		where
-		skillId = #{skillid}
+			proNum = #{proNum}
+			and 
+			proId = #{proId}
 	</update>
  	
- 	<select id="personalityList" resultType="PersonalityList">
+ 	<!-- 프로젝트 디테일 글 수정 (입력) 출력-->
+ 	<!-- <select id="projecDetail_one_one" parameterType="int" resultType="CertProjectDetail">
+ 	select
+ 	*
+ 	from
+ 	cert_project_detail
+ 	where
+ 	proDetailNum = #{proDetailNum}
+ 	</select> -->
+ 	
+ 	<!-- 성격분석리스트 불러오기 -->
+ 	<select id="personalityList" resultType="personalityList">
  		select 
  			*
  		from
  			personality_list
  	</select>
  	
+ 	<!-- 성격분석쓰기 -->
+ 	<insert id="personalityWrite" parameterType="personality">
+ 		insert into
+ 			personality
+ 			(
+ 				persNum
+ 				,persId
+ 				,persKind
+ 				,persWord
+ 				,persContent
+ 			) values (
+ 				personality_seq.nextval
+ 				,#{persId}
+ 				,#{persKind}
+ 				,#{persWord}
+ 				,#{persContent}
+ 			)
+ 	</insert>
+ 	
+ 	<!-- 성격분석 수정 -->
+ 	<update id="personalityUpdate" parameterType="personality">
+ 		update 
+ 			personality
+ 		set
+ 			persWord=#{persWord}
+ 			,persContent=#{persContent}
+ 		where
+ 			persNum=#{persNum}
+ 			and
+ 			persId=#{persId}
+ 	</update>
+ 	
+ 	<!-- 저장한 성격 불러오기 -->
+ 	<select id="personalitySelect" parameterType="personality" resultType="personality">
+ 		select
+ 			*
+ 		from
+ 			personality
+ 		where
+ 			persId=#{persId}
+ 			and
+ 			persKind=#{persKind}
+ 			order by persNum asc
+ 	</select>
  	<insert id="certLectWrite" parameterType="certLect">
  		insert into
  			CERT_LECT

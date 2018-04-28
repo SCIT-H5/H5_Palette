@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Personality;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
@@ -70,7 +71,16 @@ public interface EgoMapper {
 	// 성격분석 성격리스트 불러오기
 	ArrayList<PersonalityList> personalityList();
 
-	// 활동내역 쓰기
+	//성격분석 작성
+	public int personalityWrite(Personality personality);
+	
+	//성격분석 수정
+	public int personalityUpdate(Personality personality);
+	
+	//저장한 성격리스트 불러오기
+	public ArrayList<Personality> personalitySelect(Personality personality);
+	
+	//활동내역 쓰기
 	public int activityWrite(Activity activity);
 
 	// 활동내역 읽기

@@ -18,7 +18,9 @@ import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.Activity;
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Personality;
 import com.palette.h5.ego.vo.PersonalityList;
+import com.palette.h5.ego.vo.PersonalityWord;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.port.dao.PortDAO;
@@ -160,16 +162,144 @@ public class EgoController {
 	}
 
 	@RequestMapping(value = "personalityReadForm", method = RequestMethod.GET)
-	public String personalityReadForm(Model model) {
+	public String personalityReadForm(Model model, HttpSession session) {
 		logger.info("성격분석 폼으로 이동");
 
 		ArrayList<PersonalityList> list = dao.personalityList();
 		model.addAttribute("personalityList", list);
-		logger.info(list.toString());
+		
+		String persId = (String)session.getAttribute("loginId");
+		Personality pers = new Personality();
+		pers.setPersId(persId);
+		
+		//강점
+		pers.setPersKind(0);
+		ArrayList<Personality> persList = dao.personalitySelect(pers);
+		model.addAttribute("persS", persList);
+		
+		//약점
+		pers.setPersKind(1);
+		persList = dao.personalitySelect(pers);
+		model.addAttribute("persW", persList);
+		
 		logger.info("성격분석 폼으로 이동 완료 ");
-		// model.addAttribute("proNum");
 
 		return "ego/personalityReadForm";
+	}
+	
+	//성격분석 쓰기
+	@RequestMapping(value = "personalityWrite", method = RequestMethod.POST)
+	public String personalityWrite(PersonalityWord word, HttpSession session){
+		logger.info("Controller | 성격분석 작성 시작");
+		
+		logger.info("Controller | 넘어온값 : " +word);
+		String id = (String)session.getAttribute("loginId");
+		
+		Personality personality = new Personality();
+		personality.setPersId(id);
+
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS0());
+		personality.setPersContent(word.getsContent0());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS1());
+		personality.setPersContent(word.getsContent1());
+		dao.personalityWrite(personality);
+
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS2());
+		personality.setPersContent(word.getsContent2());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW0());
+		personality.setPersContent(word.getwContent0());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW1());
+		personality.setPersContent(word.getwContent1());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW2());
+		personality.setPersContent(word.getwContent2());
+		dao.personalityWrite(personality);
+		
+		
+		logger.info("Controller | 성격분석 작성 종료");
+		return "redirect:/main";
+	}
+	
+	//성격분석 수정
+	@RequestMapping(value = "personalityUpdate", method = RequestMethod.POST)
+	public String personalityUpdate(PersonalityWord word, HttpSession session){
+		logger.info("Controller | 성격분석 수정 시작");
+		
+		logger.info("Controller | 넘어온값 : " +word);
+		String id = (String)session.getAttribute("loginId");
+		
+		Personality personality = new Personality();
+		personality.setPersId(id);
+		
+		ArrayList<Personality> persList = null;
+		
+		if(word.getS0() != null){
+			personality.setPersKind(0);
+			persList = dao.personalitySelect(personality);
+			
+			personality.setPersNum(persList.get(0).getPersNum());
+			personality.setPersWord(word.getS0());
+			personality.setPersContent(word.getsContent0());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getS1() != null){
+			personality.setPersKind(0);
+			personality.setPersNum(persList.get(1).getPersNum());
+			personality.setPersWord(word.getS1());
+			personality.setPersContent(word.getsContent1());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getS2() != null){
+			personality.setPersKind(0);
+			personality.setPersNum(persList.get(2).getPersNum());
+			personality.setPersWord(word.getS2());
+			personality.setPersContent(word.getsContent2());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW0() != null){
+			personality.setPersKind(1);
+			persList = dao.personalitySelect(personality);
+			
+			personality.setPersNum(persList.get(0).getPersNum());
+			personality.setPersWord(word.getW0());
+			personality.setPersContent(word.getwContent0());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW1() != null){
+			personality.setPersKind(1);
+			personality.setPersNum(persList.get(1).getPersNum());
+			personality.setPersWord(word.getW1());
+			personality.setPersContent(word.getwContent1());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW2() != null){
+			personality.setPersKind(1);
+			personality.setPersNum(persList.get(2).getPersNum());
+			personality.setPersWord(word.getW2());
+			personality.setPersContent(word.getwContent2());
+			dao.personalityUpdate(personality);
+		}
+		
+		logger.info("Controller | 성격분석 작성 종료");
+		return "redirect:/main";
 	}
 
 	// 활동내역 페이지 이동

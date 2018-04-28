@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.palette.h5.ego.vo.Activity;
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Personality;
 import com.palette.h5.ego.vo.PersonalityList;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
@@ -172,7 +173,57 @@ public class EgoDAO {
 		return list;
 	}
 
+	// 성격분석 작성
+	public int personalityWrite(Personality personality) {
+		
+		logger.info("DAO | 성격분석 작성");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 
+		int result = 0;
+		try {
+
+			result = mapper.personalityWrite(personality);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 성격분석 작성 종료");
+		return result;
+	}
+
+	//성격분석 수정
+	public int personalityUpdate(Personality personality) {
+		logger.info("DAO | 성격분석 수정");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+
+		int result = 0;
+		try {
+
+			result = mapper.personalityUpdate(personality);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 성격분석 수정 종료");
+		return result;
+	}
+	
+	// 저장한 성격 불러오기
+	public ArrayList<Personality> personalitySelect(Personality personality) {
+		logger.info("DAO | 성격분석 불러오기");
+		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
+
+		ArrayList<Personality> pers = null;
+		try {
+
+			pers = mapper.personalitySelect(personality);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 성격분석 불러오기 종료");
+		return pers;
+	}
 
 	//스킬 리드
 	public Skill skillRead(String userId) {
