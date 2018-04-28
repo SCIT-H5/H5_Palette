@@ -233,9 +233,11 @@ public class EgoDAO {
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 
 		Skill skillobject = null;
+		System.out.println(userId);
 
 		try {
 			skillobject = mapper.skillRead(userId);
+			System.out.println(skillobject);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
