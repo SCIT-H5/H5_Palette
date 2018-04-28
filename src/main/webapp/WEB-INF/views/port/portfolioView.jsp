@@ -5,8 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<%@include file="/WEB-INF/views/navi.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- jquery, jquery-ui, 위젯에 필요한 css -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/resources/portfolio/js/wiget_default.js"></script>
+<script src="${pageContext.request.contextPath}/resources/portfolio/js/wiget_table.js"></script>
+<script src="${pageContext.request.contextPath}/resources/portfolio/js/wiget_graph.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/css/wiget.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/css/wiget.css">
@@ -94,8 +104,27 @@
 		
 	})
 </script>
+<style type="text/css">
+.see{
+	width: 70%;
+    height: 95%;
+    background-color: white;
+    position: relative;
+    top: 140px;
+    left: 236px;
+}
+
+.btnDiv{
+	position: relative;
+    top: 100px;
+    /* background-color: red; */
+    width: 45px;
+    margin: auto;
+}
+</style>
 </head>
 <body>
+<<<<<<< HEAD
 	<form action="portUpdateForm" method="post" id="upForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
@@ -107,7 +136,25 @@
 		<input type="button" id="delete" value="삭제">
 	</form>
 	<div id="see"></div>	
+=======
+	
+	<div id="see" class="see">
+	<!-- 보여지는 영역 -->
+	</div>
+	
+	<div class="btnDiv">
+		<form action="portUpdateForm" method="post" id="upForm">
+			<input type="hidden" name="portNum" value="${port.portNum }">
+			<input type="hidden" name="portId" value="${sessionScope.loginId }">
+			<input type="button" id="update" class="update" value="수정">
+		</form>	
+	</div>	
+>>>>>>> 4.24시작안진홍이
 </body>
+
+
+
+
 <script src="${pageContext.request.contextPath}/resources/portfolio/table/js/test4.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/table/css/jquery.edittable.min.css">
 

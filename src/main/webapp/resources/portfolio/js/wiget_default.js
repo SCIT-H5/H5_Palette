@@ -19,7 +19,7 @@ $(function() {
 	  		"top":position+currentPosition+"px"
 	  		},500);
 	  	$("#textEditBox").stop().animate({
-	  		"top":position-100+currentPosition+"px"
+	  		"top":position-95+currentPosition+"px"
 	  		},500); 
 	});
 	  
@@ -30,12 +30,19 @@ $(function() {
 	$('select').change(function(){
 		document.execCommand($(this).attr('id'), false, $(this).val());
 	});
+	$('#graph_1').on("mouseover focus",function(){
+		
+		$(this).children('ul').css('display', 'block');
+	});
+	$('#graph_1').on("mouseleave focusout",function(){
+		$(this).children('ul').css('display', 'none');
+	});
 	
-	$('#graph_1').hover(function() {
+	/*$('#graph_1').hover(function() {
 		$(this).children('ul').css('display', 'block');
 	}, function() {
 		$(this).children('ul').css('display', 'none');
-	});
+	});*/
 	
 	$('#bar_graph').hover(function() {
 		$(this).children('ul').css('display', 'block');
@@ -166,8 +173,8 @@ function insertWiget( $item, num, x, y ) {
 				
 				//위젯box에 텍스트박스 다시 생성
 				$("#wigetBox").prepend('<li class="ui-widget-content ui-corner-tr" value="1">'
-		    			 +'<h5 class="ui-widget-header">TextBox</h5>'
-		    			 +'<img src="/h5/resources/portfolio/img/icon_textbox.png" width="96" height="72">'
+		    			/* +'<h5 class="ui-widget-header">TextBox</h5>'*/
+		    			 +'<img src="/h5/resources/portfolio/img/text icon.png" width="96" height="72">'
 		  				 +'</li>');	
 				   
 				//넣은 텍스트박스에 드래그이벤트생성
@@ -220,7 +227,7 @@ function insertWiget( $item, num, x, y ) {
 				});
 				
 				$("#wigetBox > li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="2">'
-		    			 +'<h5 class="ui-widget-header">Table</h5>'
+		    			/* +'<h5 class="ui-widget-header">Table</h5>'*/
 		    			 +'<img src="/h5/resources/portfolio/img/icon_table.png" width="96" height="72">'
 		  				 +'</li>');	
 				
@@ -293,6 +300,14 @@ function insertWiget( $item, num, x, y ) {
 				 
 				initResizable('.drag_graph', num);
 				
+<<<<<<< HEAD
+=======
+				//넣었던 이미지 위젯에 다시생성
+				$("#graph_1 > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
+		    			/* +'<h5 class="ui-widget-header">바그래프</h5>'*/
+		    			 +'<img src="/h5/resources/portfolio/img/graph icon_1.png">'
+		  				 +'</li>'); 
+>>>>>>> 4.24시작안진홍이
 				
 				//추가한 이미지에 드래그 이벤트 생성
 				$( ".drag_graph").draggable({
@@ -452,8 +467,13 @@ function insertWiget( $item, num, x, y ) {
 				
 				//넣었던 이미지 위젯에 다시생성
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
+<<<<<<< HEAD
 		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
 		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
+=======
+		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
+		    			 +'<img src="'+src+'" id="file'+num+'">'
+>>>>>>> 4.24시작안진홍이
 		  				 +'</li>');
 				
 				
@@ -524,8 +544,13 @@ function imgUpload() {
 					text = "동영상";
 				}
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
+<<<<<<< HEAD
 		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
 		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
+=======
+		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
+		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'">'
+>>>>>>> 4.24시작안진홍이
 		  				 +'</li>');
 				
 				$( "li", $wigetBox ).draggable({

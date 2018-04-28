@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="com.palette.h5.vo.Userinfo" alias="userinfo" />
 		<typeAlias type="com.palette.h5.vo.Portfolio" alias="portfolio" />
 		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot" />
@@ -12,6 +13,14 @@
 		<typeAlias type="com.palette.h5.ego.vo.Skill" alias="skill" />
 		<typeAlias type="com.palette.h5.ego.vo.CertGrad" alias="certGrad" />
 		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file" />
+=======
+		<typeAlias type="com.palette.h5.vo.Userinfo" alias="userinfo"/>
+		<typeAlias type="com.palette.h5.vo.Portfolio" alias="portfolio"/>
+		<typeAlias type="com.palette.h5.ego.vo.Swot" alias="swot"/>
+		<typeAlias type="com.palette.h5.ego.vo.History" alias="history"/>
+		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject"/>
+		<typeAlias type="com.palette.h5.ego.vo.Reply" alias="reply"/>
+>>>>>>> 4.24시작안진홍이
 
 		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="personalityList"/>
