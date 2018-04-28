@@ -32,7 +32,7 @@ INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_l
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '호기심');
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '겸손함');
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '주인의식');
-INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '혁신적');
+INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '용의주도');
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '독립적');
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '친밀함');
 INSERT INTO personality_list ( persListNum, persListWord ) VALUES (personality_list_SEQ.nextval, '사교적');

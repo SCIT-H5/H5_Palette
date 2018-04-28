@@ -39,12 +39,12 @@
 					console.log(jaatable);
 					console.log(tablehtml);
 					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시
-						alert("노데이트");
+						//alert("노데이트");
 						dataable = false;
 						nodata(); //초기화테이블 생성
 						tableresize(); //테이블 리사이즈 생성
 					} else{
-						alert("노데이트 아님"); //값이 있을때
+						//alert("노데이트 아님"); //값이 있을때
 						$('#edittable2').html(tablehtml); //테이블 html로 값을 그림
 						tableresize();
 						tableresizedis();
@@ -106,12 +106,12 @@
 				//$("#complete").hide();
 				if(dataable == true){
 					datatable = JSON.stringify(exportData());
-					alert("데이터" + datatable);
+					//alert("데이터" + datatable);
 				} else{
 					datatable = jaatable.getJsonData();
-					alert("노데이터" + datatable);
+					//alert("노데이터" + datatable);
 				}
-				alert(datatable);
+				//alert(datatable);
 				if(datatable != "[]"){
 		        	var json = JSON.parse(datatable);
 		            var cnt = 0;

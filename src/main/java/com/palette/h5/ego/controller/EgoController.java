@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,9 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.palette.h5.dao.UserinfoDAO;
 import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.Activity;
-import com.palette.h5.ego.vo.CertLect;
 import com.palette.h5.ego.vo.History;
+import com.palette.h5.ego.vo.Personality;
 import com.palette.h5.ego.vo.PersonalityList;
+import com.palette.h5.ego.vo.PersonalityWord;
 import com.palette.h5.ego.vo.Skill;
 import com.palette.h5.ego.vo.Swot;
 import com.palette.h5.port.dao.PortDAO;
@@ -161,129 +161,145 @@ public class EgoController {
 		return "redirect:swotReadForm";
 	}
 
-	// history page로 이동 (userId는 session값으로 넣음)
-	@RequestMapping(value = "/history/historyReadForm", method = RequestMethod.GET)
-	public String historyReadForm(Model model, HttpSession session) {
-
-		logger.info("CON | historyReadForm로 이동 시작 ");
-
-		String hisId = (String) session.getAttribute("loginId");
-
-		/*
-		 * ArrayList<String> yearList = dao.historyYearList(hisId);
-		 * 
-		 * ArrayList<History> dataPerYear = new ArrayList<>();
-		 * 
-		 * 
-		 * History historyDPY = new History(); historyDPY.setHisId(hisId);
-		 * //historyDPY.setHisDate(year);
-		 * 
-		 * dataPerYear = dao.historyDataPerYear(historyDPY);
-		 * System.out.println(dataPerYear);
-		 * 
-		 * 
-		 * model.addAttribute("dataPerYear", dataPerYear);
-		 * model.addAttribute("yearList", yearList);
-		 */
-
-		ArrayList<History> hisAll = dao.historyDataAll(hisId);
-		ArrayList<String> classplus = new ArrayList<String>();
-		classplus.add("is-hidden timeline-item");
-		classplus.add("is-hidden timeline-item inverted");
-
-		model.addAttribute("hisAll", hisAll);
-		model.addAttribute("classname", classplus);
-
-		// if(hisAll == null){
-		// logger.info("CON | historyReadForm로 이동 실패");
-		// return "redirect:/";
-		// }
-
-		logger.info("CON | historyReadForm로 이동 종료 ");
-		return "ego/history/historyReadForm";
-	}
-
-	// history WriteForm으로 이동
-	@RequestMapping(value = "historyWriteForm", method = RequestMethod.POST)
-	public String historyWriteForm() {
-
-		logger.info("CON | history 글쓰기 폼으로 이동 시작");
-
-		logger.info("CON | history 글쓰기 폼으로 이동 종료");
-		return "ego/history/historyWriteForm";
-	}
-
-	// history 데이터 등록
-	@RequestMapping(value = "historyWrite", method = RequestMethod.POST)
-	public String historyWrite(History history, Model model) {
-
-		logger.info("CON | history 글쓰기 시작");
-
-		// form에서 hidden타입으로 id 넣어줌 session여기서 안써도 ok
-
-		int result = dao.historyAddOne(history);
-
-		if (result != 1) {
-			logger.info("등록 실패");
-			return "ego/history/historyWriteForm";
-		}
-
-		logger.info("CON | history 글쓰기 종료");
-		return "redirect:historyReadForm";
-	}
-	/*
-	 * // history updateForm으로 이동
-	 * 
-	 * @RequestMapping(value="historyUpdateForm", method=RequestMethod.POST)
-	 * public String historyUpdateForm(History history, HttpSession session,
-	 * Model model){ // 여기서 매개변수 History history는 hisNo와 hisId를 제공
-	 * 
-	 * logger.info("CON | history 수정 폼으로 이동 시작");
-	 * 
-	 * String hisId = (String) session.getAttribute("userId");
-	 * 
-	 * 
-	 * 
-	 * // 수정을 하는 경우에는 hisId랑 해당 게시글의 hisNo 둘다 일치해야한다. // 해당 hisNo의 글을 들고와서
-	 * updateForm에 그 정보를 뿌려줘야함.
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * logger.info("CON | history 수정 폼으로 이동 종료 "); return
-	 * "ego/history/historyUpdateForm"; }
-	 * 
-	 * 
-	 * // history 수정
-	 * 
-	 * @RequestMapping(value="", method=RequestMethod.POST) public String
-	 * historyUpdate(){
-	 * 
-	 * logger.info("CON | history 수정 시작"); logger.info("CON | history 수정 종료 ");
-	 * return ""; }
-	 * 
-	 * // history 삭제
-	 * 
-	 * @RequestMapping(value="", method=RequestMethod.GET) public String
-	 * historyDelete(){
-	 * 
-	 * logger.info("CON | history 삭제 시작"); logger.info("CON | history 삭제 종료 ");
-	 * return ""; }
-	 * 
-	 */
-
 	@RequestMapping(value = "personalityReadForm", method = RequestMethod.GET)
-	public String personalityReadForm(Model model) {
+	public String personalityReadForm(Model model, HttpSession session) {
 		logger.info("성격분석 폼으로 이동");
 
 		ArrayList<PersonalityList> list = dao.personalityList();
 		model.addAttribute("personalityList", list);
-		logger.info(list.toString());
+		
+		String persId = (String)session.getAttribute("loginId");
+		Personality pers = new Personality();
+		pers.setPersId(persId);
+		
+		//강점
+		pers.setPersKind(0);
+		ArrayList<Personality> persList = dao.personalitySelect(pers);
+		model.addAttribute("persS", persList);
+		
+		//약점
+		pers.setPersKind(1);
+		persList = dao.personalitySelect(pers);
+		model.addAttribute("persW", persList);
+		
 		logger.info("성격분석 폼으로 이동 완료 ");
-		// model.addAttribute("proNum");
 
 		return "ego/personalityReadForm";
+	}
+	
+	//성격분석 쓰기
+	@RequestMapping(value = "personalityWrite", method = RequestMethod.POST)
+	public String personalityWrite(PersonalityWord word, HttpSession session){
+		logger.info("Controller | 성격분석 작성 시작");
+		
+		logger.info("Controller | 넘어온값 : " +word);
+		String id = (String)session.getAttribute("loginId");
+		
+		Personality personality = new Personality();
+		personality.setPersId(id);
+
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS0());
+		personality.setPersContent(word.getsContent0());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS1());
+		personality.setPersContent(word.getsContent1());
+		dao.personalityWrite(personality);
+
+		personality.setPersKind(0);
+		personality.setPersWord(word.getS2());
+		personality.setPersContent(word.getsContent2());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW0());
+		personality.setPersContent(word.getwContent0());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW1());
+		personality.setPersContent(word.getwContent1());
+		dao.personalityWrite(personality);
+		
+		personality.setPersKind(1);
+		personality.setPersWord(word.getW2());
+		personality.setPersContent(word.getwContent2());
+		dao.personalityWrite(personality);
+		
+		
+		logger.info("Controller | 성격분석 작성 종료");
+		return "redirect:/main";
+	}
+	
+	//성격분석 수정
+	@RequestMapping(value = "personalityUpdate", method = RequestMethod.POST)
+	public String personalityUpdate(PersonalityWord word, HttpSession session){
+		logger.info("Controller | 성격분석 수정 시작");
+		
+		logger.info("Controller | 넘어온값 : " +word);
+		String id = (String)session.getAttribute("loginId");
+		
+		Personality personality = new Personality();
+		personality.setPersId(id);
+		
+		ArrayList<Personality> persList = null;
+		
+		if(word.getS0() != null){
+			personality.setPersKind(0);
+			persList = dao.personalitySelect(personality);
+			
+			personality.setPersNum(persList.get(0).getPersNum());
+			personality.setPersWord(word.getS0());
+			personality.setPersContent(word.getsContent0());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getS1() != null){
+			personality.setPersKind(0);
+			personality.setPersNum(persList.get(1).getPersNum());
+			personality.setPersWord(word.getS1());
+			personality.setPersContent(word.getsContent1());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getS2() != null){
+			personality.setPersKind(0);
+			personality.setPersNum(persList.get(2).getPersNum());
+			personality.setPersWord(word.getS2());
+			personality.setPersContent(word.getsContent2());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW0() != null){
+			personality.setPersKind(1);
+			persList = dao.personalitySelect(personality);
+			
+			personality.setPersNum(persList.get(0).getPersNum());
+			personality.setPersWord(word.getW0());
+			personality.setPersContent(word.getwContent0());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW1() != null){
+			personality.setPersKind(1);
+			personality.setPersNum(persList.get(1).getPersNum());
+			personality.setPersWord(word.getW1());
+			personality.setPersContent(word.getwContent1());
+			dao.personalityUpdate(personality);
+		}
+		
+		if(word.getW2() != null){
+			personality.setPersKind(1);
+			personality.setPersNum(persList.get(2).getPersNum());
+			personality.setPersWord(word.getW2());
+			personality.setPersContent(word.getwContent2());
+			dao.personalityUpdate(personality);
+		}
+		
+		logger.info("Controller | 성격분석 작성 종료");
+		return "redirect:/main";
 	}
 
 	// 활동내역 페이지 이동
@@ -441,6 +457,119 @@ public class EgoController {
 		dao.skillWrite(skillmap);
 
 		logger.info("스킬 데이터 쓰기 종료");
+	}
+	
+	// history page로 이동 (userId는 session값으로 넣음)
+	@RequestMapping(value = "history/historyReadForm", method = RequestMethod.GET)
+	public String historyReadForm(Model model, HttpSession session) {
+		String hisId = (String) session.getAttribute("loginId");
+
+		ArrayList<History> hisAll = dao.historyDataAll(hisId);
+		ArrayList<String> classplus = new ArrayList<>();
+		classplus.add("is-hidden timeline-item");
+		classplus.add("is-hidden timeline-item inverted");
+
+		model.addAttribute("hisAll", hisAll);
+		model.addAttribute("classname", classplus);
+
+		System.out.println(hisAll);
+
+		logger.info("CON | historyReadForm로 이동 종료 ");
+		return "ego/history/historyReadForm";
+	}
+
+	// history WriteForm으로 이동
+	@RequestMapping(value = "history/historyWriteForm", method = RequestMethod.GET)
+	public String historyWriteForm(HttpSession session) {
+		logger.info("CON | history 글쓰기 폼으로 이동 시작");
+		String hisId = (String) session.getAttribute("loginId");
+
+		session.setAttribute("hisId", hisId);
+		logger.info("CON | history 글쓰기 폼으로 이동 종료");
+		return "ego/history/historyWriteForm";
+	}
+
+	// history 데이터 등록
+	@RequestMapping(value = "history/historyWrite", method = RequestMethod.POST)
+	public String historyWrite(History history, Model model) {
+		logger.info("CON | history 글쓰기 시작");
+		System.out.println(history);
+
+		// form에서 hidden타입으로 id 넣어줌 session여기서 안써도 ok
+
+		int result = dao.historyAddOne(history);
+
+		if (result != 1) {
+			logger.info("등록 실패");
+			return "ego/history/historyWriteForm";
+		}
+
+		logger.info("CON | history 글쓰기 종료");
+		return "redirect:historyReadForm";
+	}
+
+	// history updateForm으로 이동
+	@RequestMapping(value = "history/historyUpdateForm", method = RequestMethod.GET)
+	public String historyUpdateForm(History history, HttpSession session, Model model) {
+		// 여기서 매개변수 History history는 hisNo와 hisId를 제공
+		logger.info("CON | history 수정 폼으로 이동 시작");
+		System.out.println(history);
+
+		int selecthisNo = history.getHisNo();
+
+		System.out.println(selecthisNo);
+
+		History selecthistory = dao.historyonselect(selecthisNo);
+
+		System.out.println(selecthistory);
+
+		String hisId = (String) session.getAttribute("loginId");
+		session.setAttribute("userId", hisId);
+
+		model.addAttribute("hisDate", selecthistory.getHisDate());
+		model.addAttribute("hisTitle", selecthistory.getHisTitle());
+		model.addAttribute("hisContent", selecthistory.getHisContent());
+		model.addAttribute("hisPeriod", selecthistory.getHisPeriod());
+		model.addAttribute("hisNo", selecthistory.getHisNo());
+
+		logger.info("CON | history 수정 폼으로 이동 종료 ");
+		return "ego/history/historyUpdateForm";
+	}
+
+	// history 수정
+	@RequestMapping(value = "history/historyUpdate", method = RequestMethod.POST)
+	public String historyUpdateOne(History history) {
+		logger.info("CON | history 수정 시작");
+
+		int result = 0;
+
+		dao.historyUpdateOne(history);
+
+		logger.info("CON | history 수정 종료 ");
+		return "redirect:historyReadForm";
+	}
+
+	// history 삭제
+	@RequestMapping(value = "history/historyDeleteOne", method = RequestMethod.GET)
+	public String historyDelete(int hisNo, HttpSession session) {
+
+		logger.info("CON | history 삭제 시작");
+
+		String hisId = (String) session.getAttribute("loginId");
+		History delHistory = new History();
+		delHistory.setHisNo(hisNo);
+		delHistory.setHisId(hisId);
+
+		int result = dao.historyDeleteOne(delHistory);
+
+		if (result != 1) {
+			// 삭제 실패
+			logger.info("글 삭제 실패");
+			return "redirect:";
+		}
+
+		logger.info("CON | history 삭제 종료");
+		return "redirect:historyReadForm";
 	}
 
 }

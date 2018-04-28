@@ -4,7 +4,7 @@
  * 		Made By H5_Palette
  */
 
-$(function() {
+function nodata() {
 	var strong_cnt = 0;	//들어간 장점 갯수
 	var weak_cnt = 0;	//들어간 단점 갯수
 	
@@ -34,16 +34,19 @@ $(function() {
 			}
 			
 			//div에 text추가
-			$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"'>"+word+"</span> ");
+			$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"' value='"+strong_cnt+"'>"+word+"</span> ");
 			
 			//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 			$('.in_strongword').off('click').on('click', function() {
-				var display = $('#strong_detail').css('display');
+				
+				var v = $(this).attr('value');
+				var display = $('#strong_detail'+v).css('display');
 				if(display == 'none'){
-					$('#strong_detail').css('display', 'block');
+					$('.strong_detail').css('display', 'none');
+					$('#strong_detail'+v).css('display', 'block');
 				}
 				else if(display == 'block'){
-					$('#strong_detail').css('display', 'none');
+					$('#strong_detail'+v).css('display', 'none');
 				}
 			});
 			strong_cnt++;	//장점갯수 +
@@ -69,16 +72,18 @@ $(function() {
 			}
 			
 			//div에 text추가
-			$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"'>"+word+"</span> ");
+			$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"' value='"+weak_cnt+"'>"+word+"</span> ");
 			
 			//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 			$('.in_weakword').off('click').on('click', function() {
-				var display = $('#weak_detail').css('display');
+				var v = $(this).attr('value');
+				var display = $('#weak_detail'+v).css('display');
 				if(display == 'none'){
-					$('#weak_detail').css('display', 'block');
+					$('.weak_detail').css('display', 'none');
+					$('#weak_detail'+v).css('display', 'block');
 				}
 				else if(display == 'block'){
-					$('#weak_detail').css('display', 'none');
+					$('#weak_detail'+v).css('display', 'none');
 				}
 			});
 			
@@ -86,4 +91,21 @@ $(function() {
 		}
 	});
 	
-});
+	$('#saveBtn').on('click', function() {
+		for(var i=0; i<strong_cnt; i++){
+			var s = $('#strong'+i).text();
+			var sc = $('#strong_detail'+i).text();
+			$('#s'+i).val(s);
+			$('#sContent'+i).val(sc);
+		}
+		for(var j=0; j<weak_cnt; j++){
+			var w = $('#weak'+j).text();
+			var wc = $('#weak_detail'+j).text();
+			$('#w'+j).val(w);
+			$('#wContent'+j).val(wc);
+		}
+		$('#personalityForm').submit();
+	});
+	
+}//nodata
+
