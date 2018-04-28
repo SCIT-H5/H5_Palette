@@ -1,20 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Palette - 스킬 분석</title>
 
-<title>Ion.RangeSlider - test</title>
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>
+	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/normalize.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/ion.rangeSlider.css" />
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/ion.rangeSlider.skinModern.css" />
-
-
-<!-- change skin -->
-
 
 <!-- All JS -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -204,24 +201,38 @@
 	});
 </script>
 </head>
-<body>
+<body id="page-top" style="background-color: rgb(34,48,59);">
+	
+	<header>
+		<div>
+	        <div class="row">
+	          <div class="mx-auto">
+	           	<img src="/h5/resources/img/skill-main.png" style="width: 100%;">
+	          </div>         
+	        </div>
+	    </div>
+	</header>
+	
+	<section>
+		<div id="maindiv" style="width: 60%; margin: auto;"></div>
+	</section>
 
-	<div id="maindiv">
-	</div>
+	<section>
+		<div style="width: 62%; margin-left: auto;">
+			<div style="margin: auto;">
+				<input type="button" onclick="addtable()" value="테이블 추가" style="float: left; vertical-align: bottom;"></input>
+				<input type="text" id="divtablevalue" style="float: left; vertical-align: bottom;"></input>
+			</div>
+			<div>
+				<input type="button" value="수정" id="updateto"></input>
+				<input type="button" id="complete" value="완료"></input>
+			</div>
+		</div>
+	</section>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div>
-		<input type="button" onclick="addtable()" value="테이블 추가" style="float: left; vertical-align: bottom;"></input>
-		<input type="text" id="divtablevalue" style="float: left; vertical-align: bottom;"></input>
-	</div>
-	<div>
-	<input type="button" value="수정" id="updateto"></input>
-	<input type="button" id="complete" value="완료"></input>
-	</div>
-
+	
+	<!-- Footer -->
+    <%@include file="/WEB-INF/views/footer-text-white.jsp"%> 
+	
 </body>
 </html>

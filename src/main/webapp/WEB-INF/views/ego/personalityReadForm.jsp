@@ -45,21 +45,21 @@
 			color: blue;
 		}
 		.outer {
-		  display: table;
-		  width: 100%;
-		  height: 100%;
+			display: table;
+			width: 100%;
+			height: 100%;
 		}
 		.inner {
-		  display: table-cell;
-		  vertical-align: middle;
-		  text-align: center;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
 		}
 		.centered {
-		  position: relative;
-		  display: inline-block;
-		 
-		  width: 50%;
-		  padding: 1em;
+			position: relative;
+			display: inline-block;
+			
+			width: 50%;
+			padding: 1em;
 		}
 	</style>
 </head>
