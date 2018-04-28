@@ -54,6 +54,24 @@ public class FileDAO {
 		return gradFileIdList;
 	}
 	
+	// certGrad | certGrad의 data 삭제
+	public int deleteCertGrad(String gradId){
+		
+		logger.info("DAO | certGrad 삭제하기 시작");
+		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
+		int result = 0;
+		
+		try {
+			result = mapper.deleteCertGrad(gradId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | certGrad 삭제하기 종료");
+		return result;
+	}
+	
+	
 	// file_management | (공통) 파일 저장하기 by Ajax
 	public int uploadAjax(FileManagement file){
 		
@@ -77,13 +95,12 @@ public class FileDAO {
 		logger.info("DAO | fileManagement file 불러오기 시작");
 		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
 		ArrayList<FileManagement> fileListByDivision = null;
-		
+		System.out.println(file);
 		try {
 			fileListByDivision = mapper.displayfile(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 		logger.info("DAO | fileManagement file 불러오기 종료");
 		return fileListByDivision;
@@ -125,22 +142,6 @@ public class FileDAO {
 	}
 	
 	
-	// file_management | 현재 시퀀스 조회
-	public int getCurrentSeqFFM(){
-		
-		logger.info("DAO | filemanament 현재 시퀀스 조회 시작");
-		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
-		int currentSeqNo = 0;
-		
-		try {
-			currentSeqNo = mapper.getCurrentSeqFFM();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		logger.info("DAO | filemanament 현재 시퀀스 조회 종료");
-		return currentSeqNo;
-	}
-
-
+	
+	
 }

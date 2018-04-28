@@ -11,20 +11,7 @@
 		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject" />
 		<typeAlias type="com.palette.h5.ego.vo.Skill" alias="skill" />
 		<typeAlias type="com.palette.h5.ego.vo.CertGrad" alias="certGrad" />
-		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file" />
 
-<<<<<<< HEAD
-
-
-		<typeAlias type="com.palette.h5.ego.vo.PersonalityList"
-			alias="PersonalityList" />
-
-		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file" />
-		<typeAlias type="com.palette.h5.ego.vo.CertCertificate"
-			alias="certificate" />
-		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect" />
-		<typeAlias type="com.palette.h5.ego.vo.Activity" alias="activity" />
-=======
 		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="personalityList"/>
 		<typeAlias type="com.palette.h5.ego.vo.Personality" alias="personality"/>
@@ -32,7 +19,6 @@
 		<typeAlias type="com.palette.h5.ego.vo.CertCertificate" alias="certificate"/>
 		<typeAlias type="com.palette.h5.ego.vo.CertLect" alias="certlect"/>
 		<typeAlias type="com.palette.h5.ego.vo.Activity" alias="activity"/>
->>>>>>> 성격분석
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/userinfoMapper.xml" />

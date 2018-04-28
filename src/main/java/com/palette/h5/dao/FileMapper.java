@@ -13,6 +13,9 @@ public interface FileMapper {
 	// certGrad | certGrad의 gradField(파일No) 불러오기
 	public ArrayList<CertGrad> displayCertGrad(String gradId);
 	
+	// certGrad | certGrad의 삭제하기
+	public int deleteCertGrad(String gradId);
+	
 	// file_management | (공통) 파일 저장하기 by Ajax
 	public int uploadAjax(FileManagement file);
 	
@@ -25,7 +28,5 @@ public interface FileMapper {
 	// file_management | 해당 userId에 저장된 모든 파일 불러오기
 	public ArrayList<FileManagement> getAlldataById(String fileUserId);
 	
-	// file_management | 
-	public int getCurrentSeqFFM();
-
+	
 }

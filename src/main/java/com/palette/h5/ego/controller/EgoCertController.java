@@ -32,43 +32,40 @@ public class EgoCertController {
 	@RequestMapping(value = "certLectReadForm", method = RequestMethod.GET)
 	public String certLectReadForm() {
 		// 이동폼 유저 아이디에 맞는 테이블 불러오기
-
 		return "ego/cert/certLectReadForm";
 	}
 	
 	// 이수과목 데이터 쓰기
-		@ResponseBody
-		@RequestMapping(value = "certLectWrite", method = RequestMethod.POST)
-		public void certLectWrite(String tablehtml, String datatable, HttpSession session) {
-			logger.info("Controller | 이수과목 데이터 쓰기");
+	@ResponseBody
+	@RequestMapping(value = "certLectWrite", method = RequestMethod.POST)
+	public void certLectWrite(String tablehtml, String datatable, HttpSession session) {
+		logger.info("Controller | 이수과목 데이터 쓰기");
+		//logger.info(tablehtml);
+		//logger.info(datatable);
 
-			logger.info(tablehtml);
-			logger.info(datatable);
-
-			String lectId = (String) session.getAttribute("loginId"); // 세션의 아이디
-																		// 가져오기
-
-			/*HashMap<String, String> certficateMap = new HashMap<String, String>();
-
-			certficateMap.put("certId", certId);
-			certficateMap.put("certhtml", tablehtml);
-			certficateMap.put("certjson", datatable);*/
+		String lectId = (String) session.getAttribute("loginId"); // 세션의 아이디
+																  // 가져오기
+		/*
+		HashMap<String, String> certficateMap = new HashMap<String, String>();
+		certficateMap.put("certId", certId);
+		certficateMap.put("certhtml", tablehtml);
+		certficateMap.put("certjson", datatable);
+		*/
+		
+		CertLect certLect = new CertLect(lectId, datatable, tablehtml);
+		CertLect certLect2 = dao.certLectRead(lectId);
 			
-			CertLect certLect = new CertLect(lectId, datatable, tablehtml);
-			
-			
-			CertLect certLect2 = dao.certLectRead(lectId);
-			
-			if (certLect2 == null) {
-				// db에 값이 없을때 insert
-				dao.certLectWrite(certLect);
-			} else {
-				// db에 값이 있을때 update
-				dao.certLectUpdate(certLect);
-			}
-			// System.out.println(datatable);
-			logger.info("Controller | 이수과목 데이터쓰기 종료");
+		if (certLect2 == null) {
+			// db에 값이 없을때 insert
+			dao.certLectWrite(certLect);
+		} else {
+			// db에 값이 있을때 update
+			dao.certLectUpdate(certLect);
 		}
+		
+		// System.out.println(datatable);
+		logger.info("Controller | 이수과목 데이터쓰기 종료");
+	}
 
 	// 이수과목 데이터 가져오기
 	@ResponseBody
@@ -78,13 +75,10 @@ public class EgoCertController {
 
 		String lectId = (String) session.getAttribute("loginId"); // 세션의 아이디
 																	// 가져오기
-
 		CertLect lect;
-
 		lect = dao.certLectRead(lectId);
 
 		logger.info("반환값" + lect);
-
 		logger.info("Controller | 이수과목 데이터 불러오기 종료");
 		return lect;
 	}
@@ -159,6 +153,7 @@ public class EgoCertController {
 		return "ego/swot/swotReadForm";
 	}
 
+	
 	@RequestMapping(value = "certProjectReadForm", method = RequestMethod.GET)
 	public String projectRead(HttpSession session, Model model, CertProject CertProject) {
 
@@ -191,7 +186,7 @@ public class EgoCertController {
 		return "ego/cert/certProjectDetailReadForm";
 	}
 
-	// 글작성폼으로이동
+	// 글작성폼으로 이동
 	@RequestMapping(value = "writeForm", method = RequestMethod.GET)
 	public String write() {
 		logger.info("글 작성 폼으로 이동");
@@ -238,6 +233,7 @@ public class EgoCertController {
 		return "ego/cert/certProjectEditForm";
 	}
 
+	
 	@RequestMapping(value = "projectEdit", method = RequestMethod.POST)
 	public String projectEdit(int proNum, Model model, CertProject CertProject, HttpSession session) {
 

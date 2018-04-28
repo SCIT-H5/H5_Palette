@@ -3,6 +3,7 @@ package com.palette.h5.ego.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,8 +48,18 @@ public class FileController {
 	   
 	   // 01. certGradeReadFrom page로 이동 
 	   @RequestMapping(value="ego/cert/certGradeReadForm", method=RequestMethod.GET)
-	   public String certGradeReadForm(){
+	   public String certGradeReadForm(Model model, HttpSession session){
 	       // uploadAjax.jsp로 포워딩
+		   FileManagement file = new FileManagement();
+	    	String fileUserId = (String) session.getAttribute("loginId");
+	    	int fileDivision = 1;
+	    	
+	    	file.setFileDivision(fileDivision);
+	    	file.setFileUserId(fileUserId);
+	    	
+	    	ArrayList<FileManagement> fileList = dao.displayfile(file);
+	    	//System.out.println(fileList);
+	    	model.addAttribute("fileList", fileList);
 		   return "ego/cert/certGradeReadForm";
 	   }
 	   
@@ -55,6 +67,7 @@ public class FileController {
 	   @RequestMapping(value="ego/cert/certScholarshipReadForm", method=RequestMethod.GET)
 	   public String certScholarshipReadForm(){
 	       // uploadAjax.jsp로 포워딩
+		   
 		   return "ego/cert/certScholarshipReadForm";
 	   }
 	   
@@ -82,8 +95,8 @@ public class FileController {
 	      fileData.setSavedFileName(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()));
 	      
 	      int uploadFM = dao.uploadAjax(fileData);
-	      if(uploadFM!=0){
-	    	  logger.info("certGrad | filemanagement table에서 fileupload 실패");
+	      if(uploadFM!=1){
+	    	  logger.info("CON | filemanagement table에서 fileupload 실패");
 	      }
 	      
 	      int seq = fileData.getIdx();
@@ -94,7 +107,7 @@ public class FileController {
 	      certgrad.setGradFileId(seq);
 	      int uploadCertGrad = dao.insertCertGradOne(certgrad);
 	      if(uploadCertGrad !=0){
-	    	  logger.info("certGrad | certGrad table에서 fileupload 실패");
+	    	  logger.info("CON | certGrad table에서 fileupload 실패");
 	      }
 	      
 	      logger.info(" CON | certGrad fileupload 종료");
@@ -106,8 +119,9 @@ public class FileController {
 	    // (# Ajax 이미지 표시 매핑)
 	    @ResponseBody // view가 아닌 data리턴
 	    @RequestMapping("displayFile01")
-	    public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
-	        // 서버의 파일을 다운로드하기 위한 스트림
+	    public ResponseEntity<byte[]> displayFile(String fileName, HttpSession session) throws Exception {
+	    	
+	    	// 서버의 파일을 다운로드하기 위한 스트림
 	    	InputStream in = null; //java.io
 	        ResponseEntity<byte[]> entity = null;
 	        try {
@@ -148,8 +162,16 @@ public class FileController {
 	    // 파일 삭제 매핑
 	    @ResponseBody // view가 아닌 데이터 리턴
 	    @RequestMapping(value = "deleteFile01", method = RequestMethod.POST)
-	    public ResponseEntity<String> deleteFile(String fileName) {
-	        // 파일의 확장자 추출
+	    public ResponseEntity<String> deleteFile(String fileName, HttpSession session) {
+	    	
+	    	String fileUserId = (String) session.getAttribute("loginId");
+	    	int result = dao.deleteCertGrad(fileUserId);
+	    	
+	    	if(result!=1){
+	    		logger.info("CON | certGrad table에서 delete 실패");
+	    	}
+	    	
+	    	// 파일의 확장자 추출
 	        String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 	        // 이미지 파일 여부 검사
 	        MediaType mType = MediaUtils.getMediaType(formatName);
@@ -164,9 +186,8 @@ public class FileController {
 	        }
 	        // 원본 파일 삭제
 	        new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-
 	        // 데이터와 http 상태 코드 전송
 	        return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	    }	   
-
+	    
 }
