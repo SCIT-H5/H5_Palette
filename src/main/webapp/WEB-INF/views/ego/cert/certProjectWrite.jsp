@@ -4,44 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Palette - 프로젝트 리스트 작성</title>
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>    
+	<title>Palette - 프로젝트 리스트 작성</title>
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<!-- Custom styles for this template -->
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_page.css">
-      
     <!-- Table_Fixed_Header CSS -->
 	<!--===============================================================================================-->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/animate/animate.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/select2/select2.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
 	<!--===============================================================================================-->
-   
-   	<!-- Bootstrap core CSS -->
-    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.css">
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
-   
-	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
    
    	<script type="text/javascript">	
    	
@@ -80,13 +56,12 @@
 </head>
 
 <body id="page-top" style="background-color: #e6e6e6;">
-	<!-- Navigation -->
-	<%@include file="/WEB-INF/views/navi.jsp"%>    
+	
 	<header id="bg-primary" style="height:70px; background-color: black;"></header>
-   
+   	
 	<section id="viewList" style="padding-bottom: 80px;">
 	  
-    	<p style="width: 100%; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 리스트 작성</p>
+    	<p style="width: 100%; margin-bottom: 30px; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 리스트 작성</p>
 	  	    	
     <form id="projectWrite_One" action="projectWrite_One"  method="POST" enctype="multipart/form-data" onsubmit="return formCheck();">   
 		<!-- 세션에서 아이디 받아오기 -->
