@@ -203,7 +203,7 @@ public class EgoCertController {
 	}
 
 	// 프로젝트 작성
-	@RequestMapping(value = "projectWrite_One", method = RequestMethod.GET)
+	@RequestMapping(value = "projectWrite_One", method = RequestMethod.POST)
 	public String projectWrite_One(CertProject CertProject, HttpSession session) {
 		// model.addAttribute("proNum");
 		logger.info("프로젝트 리스트 작성 ");
