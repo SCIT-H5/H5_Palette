@@ -1,9 +1,13 @@
 Manifest-Version: 1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: sec
 =======
 Built-By: caden
 >>>>>>> Seohyeon
+=======
+Built-By: SCITMASTER
+>>>>>>> 4-28지농점심
 Build-Jdk: 1.8.0_144
 Created-By: Maven Integration for Eclipse
 

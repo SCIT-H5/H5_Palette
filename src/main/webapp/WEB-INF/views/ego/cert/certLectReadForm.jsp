@@ -6,6 +6,8 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>Palette - 이수과목</title>
+   
+   <%@include file="/WEB-INF/views/navi.jsp"%>
    <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -189,13 +191,24 @@
    };
 
 </script>
+<style type="text/css">
+.btndiv{
+
+    width: 100px;
+    
+    margin: auto;
+}
+</style>
 
 </head>
 <body>
+<div class="bg-image-blur" style="">
+	<img src="/h5/resources/img/subject.png" style="width: 100%;">
+<div id="edittable2"></div>
 
-   <div id="edittable2"></div>
-
+<div class="btndiv">
    <button id="updatetoggle">수정</button>
    <button id="complete">완료</button>
+</div>   
 </body>
 </html>
