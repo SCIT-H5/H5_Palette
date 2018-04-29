@@ -51,8 +51,8 @@
 					<table>	
 						<tbody>
 							<tr class="row100 body" id="panel1">
-								<td class="cell100 column1" id="swot1" name="swotS" contenteditable='true'>
-									<input type="text" id="swotO_O" name="swotS" value="${sessionScope.swotlist.swotS}" placeholder="기회를 입력하시오" class="swotS">
+								<td class="cell100 column1" id="swot1" name="swotS">
+									<input type="text" id="swotO_O" name="swotS" value="${sessionScope.swotlist.swotS}" placeholder="강점을 입력하시오" class="swotS">
 								</td>				
 							</tr>
 						</tbody>
@@ -75,8 +75,8 @@
 					<table>
 						<thead>
 							<tr class="row100 body" id="panel2">			
-								<td class="cell100 column1" id="swot2"  name="swotW" contenteditable='true'>
-									<input type="text" id="swotO_O" name="swotW" value="${sessionScope.swotlist.swotW}" placeholder="기회를 입력하시오" class="swotW">
+								<td class="cell100 column1" id="swot2"  name="swotW">
+									<input type="text" id="swotO_O" name="swotW" value="${sessionScope.swotlist.swotW}" placeholder="약점을 입력하시오" class="swotW">
 								</td>				
 							</tr>
 						</thead>
@@ -99,7 +99,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel3">
-								<td class="cell100 column1" id="swot3" name="swotO" contenteditable='true'>
+								<td class="cell100 column1" id="swot3" name="swotO">
 									<input type="text" id="swotO_O" name="swotO" value="${sessionScope.swotlist.swotO}" placeholder="기회를 입력하시오" class="swotO">
 								</td>				
 							</tr>
@@ -123,7 +123,7 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel4">
-								<td class="cell100 column1" id="swot4" contenteditable='true'>
+								<td class="cell100 column1" id="swot4">
 									<input type="text" id="swotT_T" name="swotT" value="${sessionScope.swotlist.swotT}" placeholder="위협을 입력하시오" class="swotT">
 								</td>				
 							</tr>		
