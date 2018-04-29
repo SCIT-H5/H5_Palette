@@ -177,7 +177,11 @@ public class FileController {
 	    public ResponseEntity<String> deleteFile01(String fileName, HttpSession session) {
 	    	
 	    	String fileUserId = (String) session.getAttribute("loginId");
-	    	int result = dao.deleteCertGrad(fileUserId);
+	    	FileManagement fileData = new FileManagement();
+	    	fileData.setFileUserId(fileUserId);
+	    	fileData.setFileDivision(1);
+	    	
+	    	int result = dao.deleteFile(fileData);
 	    	
 	    	if(result!=1){
 	    		logger.info("CON | certGrad table에서 delete 실패");
@@ -293,11 +297,15 @@ public class FileController {
 		    @RequestMapping(value = "deleteFile02", method = RequestMethod.POST)
 		    public ResponseEntity<String> deleteFile02(String fileName, HttpSession session) {
 		    	
-		    	String schId = (String) session.getAttribute("loginId");
-		    	int result = dao.deleteCertSch(schId);
+		    	String fileUserId = (String) session.getAttribute("loginId");
+		    	FileManagement fileData = new FileManagement();
+		    	fileData.setFileUserId(fileUserId);
+		    	fileData.setFileDivision(2);
+		    	
+		    	int result = dao.deleteFile(fileData);
 		    	
 		    	if(result!=1){
-		    		logger.info("CON | certScholarship table에서 delete 실패");
+		    		logger.info("CON | certGrad table에서 delete 실패");
 		    	}
 		    	
 		    	// 파일의 확장자 추출

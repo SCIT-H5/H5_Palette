@@ -76,7 +76,6 @@ public class HomeController {
         			String savedfile = FileService.saveFile(mpf, uploadPath + "/ego_cert");
         			fileManagement.setOriginalFileName(mpf.getOriginalFilename());
         			fileManagement.setSavedFileName(savedfile);
-        			egoDao.file_management(fileManagement);
         		}
             } catch (IOException e) {
                 System.out.println(e.getMessage());
@@ -89,33 +88,4 @@ public class HomeController {
         }
     }
 	
-	/**
-	 *  파일 다운로드
-	 */
-	@RequestMapping(value = "download", method = RequestMethod.GET)
-	public void fileDownload(HttpServletResponse response, String origin , String saved){
-		try {
-			response.setHeader("Content-Disposition", " attachment;filename="+ URLEncoder.encode(origin, "UTF-8"));
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String fullPath = uploadPath + "/" + saved;
-		//서버의 파일을 읽을 입력 스트림과 클라이언트에게 전달할 출력스트림
-		FileInputStream filein = null;
-		ServletOutputStream fileout = null;
-		
-		try {
-			filein = new FileInputStream(fullPath);
-			fileout = response.getOutputStream();
-			
-			//Spring의 파일 관련 유틸
-			FileCopyUtils.copy(filein, fileout);
-			
-			filein.close();
-			fileout.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}		
 }
