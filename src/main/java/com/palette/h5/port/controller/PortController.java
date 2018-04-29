@@ -19,12 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.palette.h5.ego.vo.Reply;
 import com.palette.h5.port.controller.PortController;
 import com.palette.h5.port.dao.PortDAO;
 import com.palette.h5.util.FileService;
@@ -41,6 +43,25 @@ public class PortController {
 	
 	final String uploadPath = "/upload"; 
 	
+	//새 포토폴리오 이동
+	@RequestMapping(value = "newPort", method = RequestMethod.GET)
+	public String home(Locale locale) {
+		logger.info("포트폴리오 제작 페이지 이동");
+		
+		return "port/portfolio";
+	}
+	//작성 포폴 저장
+		@RequestMapping(value = "portSave", method = RequestMethod.POST)
+		public String jspFileTest(Portfolio portfolio) {
+			logger.info("Controller | 포트폴리오 저장 시작");
+			
+			System.out.println("html: "+ portfolio.getPortContent());
+			dao.portSave(portfolio);
+			
+			logger.info("Controller | 포트폴리오 저장 종료");
+			return "redirect:../main";
+		}
+	//내 포토폴리오 이동
 	@RequestMapping(value = "my_port", method = RequestMethod.GET)
 	public String myPortfolio(Model model, HttpSession session){
 		
@@ -52,35 +73,34 @@ public class PortController {
 		
 		return "port/my_port";
 	}
-
-	@RequestMapping(value = "newPort", method = RequestMethod.GET)
-	public String home(Locale locale) {
-		logger.info("포트폴리오 제작 페이지 이동");
-		
-		return "port/portfolio";
-	}
-
-	@RequestMapping(value = "portSave", method = RequestMethod.POST)
-	public String jspFileTest(Portfolio portfolio) {
-		logger.info("Controller | 포트폴리오 저장 시작");
-		
-		System.out.println("html: "+ portfolio.getPortContent());
-		dao.portSave(portfolio);
-		
-		logger.info("Controller | 포트폴리오 저장 종료");
-		return "redirect:../main";
+	//ajax - 리플 출력
+	@ResponseBody
+	@RequestMapping(value = "portReplyList", method = RequestMethod.POST)
+	public ArrayList<Reply> portReplyList(int portNum){
+		ArrayList<Reply> replyList = null;
+		replyList = dao.commentView(portNum);
+		System.out.println("에이젝스로 넘어옴"+replyList);
+		return replyList;
 	}
 	
+	//작성한 포폴 보기
 	@RequestMapping(value = "portView", method = RequestMethod.GET)
 	public String jspFileTest(Model model, Portfolio portfolio, HttpSession session) {
 		logger.info("Controller | 포트폴리오 보기 시작");
 		Portfolio port = dao.portSelectOne(portfolio);
+
 		String id = (String)session.getAttribute("loginId");
 		if(port.getPortOpen() == 0 && !port.getPortId().equals(id)){
 			logger.info("Controller | 미공개 포트폴리오");
 			return "redirect:/main";
 		}
+
+		System.out.println("포폴 내용"+port);
+		
+
 		model.addAttribute("port", port);
+		
+	
 		logger.info("Controller | 포트폴리오 보기 종료");
 		return "port/portfolioView";
 	}
@@ -90,6 +110,7 @@ public class PortController {
 		logger.info("Controller | 포트폴리오 수정 페이지 이동 시작");
 		
 		Portfolio port = dao.portSelectOne(portfolio);
+		System.out.println("수정페이지 포폴 내용 : "+port);
 		logger.info("Controller | "+ port.getPortContent());
 		model.addAttribute("port", port);
 		logger.info("Controller | 포트폴리오 수정 페이지 이동 종료");
@@ -103,9 +124,10 @@ public class PortController {
 		dao.portUpdate(portfolio);
 		
 		logger.info("Controller | 포트폴리오 수정  종료");
-		return "redirect:portView?portNum="+portfolio.getPortNum()+"&portId="+portfolio.getPortId();
+		return "port/updateComplete";
 	}
 	
+
 	@RequestMapping(value = "portDelete", method = RequestMethod.POST)
 	public String portDelete(Model model, Portfolio portfolio) {
 		logger.info("Controller | 포트폴리오 삭제 시작");
@@ -116,6 +138,56 @@ public class PortController {
 		return "redirect:my_port";
 	}
 	
+
+	//리플 작성
+	@RequestMapping(value = "replyWrite", method = RequestMethod.POST)
+	public String replyWrite(Reply reply, HttpSession session, Model model) {
+			logger.info("Controller | 리플 작성 시작");
+			
+			
+			
+			//세션에서 로그인한 사용자의 아이디를 읽어서 Reply객체의 작성자 정보에 세팅
+			String custId = (String) session.getAttribute("loginId");
+			reply.setCommentID(custId);
+			
+			dao.commentwrite(reply);
+			
+			logger.info("Controller | 리플 작성  종료");
+			return "redirect:my_port";
+		}
+	//리플수정
+	@RequestMapping (value="replyEdit", method=RequestMethod.POST)
+	public String replyEdit(Reply reply, HttpSession session) {
+		logger.info("Controller | 리플 수정 시작");
+		//삭제할 리플 정보와 본인 글인지 확인할 로그인아이디
+		String custId = (String) session.getAttribute("loginId");
+		reply.setCommentID(custId);
+		
+		
+		//리플  수정 처리
+		dao.commentUpdate(reply);
+		
+		logger.info("Controller | 리플 수정  종료");
+		//원래의 글읽기 화면으로 이동 
+		return "redirect:my_port?replyportNum=" + reply.getReplyportNum();
+	}
+	//리플삭제
+	@RequestMapping (value="replyDelete", method=RequestMethod.POST)
+	public String commentDel(Reply reply, HttpSession session) {
+		logger.info("Controller | 리플 삭제 시작");
+		//삭제할 리플 정보와 본인 글인지 확인할 로그인아이디
+		String custId = (String) session.getAttribute("loginId");
+		reply.setCommentID(custId);
+		
+		
+		//리플  수정 처리
+		dao.commentDel(reply);
+		
+		logger.info("Controller | 리플 삭제  종료");
+		//원래의 글읽기 화면으로 이동 
+		return "redirect:my_port?replyportNum=" + reply.getReplyportNum();
+	}
+
 	@RequestMapping(value="uploadfile", method=RequestMethod.POST)
 	public String writeBoard(MultipartFile upload, Model model){
 		String result = "";
@@ -192,5 +264,7 @@ public class PortController {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 }

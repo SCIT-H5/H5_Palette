@@ -60,12 +60,7 @@
 	</header> 
        
     <section id="viewList">
-    	<div class="mx-auto" style="text-align: center;">
-	    	<a class="text-uppercase text-white btn btn-primary btn-xl js-scroll-trigger" 
-	    		onclick="writeForm()">Write</a>
-		</div>
-		<p></p>			
-		<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
+    	<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
 			<div class="table100-head">
 				<table>
 					<thead>
@@ -92,7 +87,10 @@
 				</table>
 			</div>
 		</div>	
-		
+		<div class="mx-auto" style="text-align: center;">
+	    	<a class="text-uppercase text-white btn btn-primary btn-xl js-scroll-trigger" 
+	    		onclick="writeForm()">Write</a>
+		</div>
     </section>   
 	
 	<!-- Footer -->

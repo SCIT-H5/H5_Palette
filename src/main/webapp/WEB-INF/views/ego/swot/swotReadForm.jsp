@@ -213,7 +213,7 @@
 		</script>		
 	<!--===============================================================================================-->
 		<script src="<c:url value='/resources/Table_Fixed_Header/js/main.js'/>"></script>
-	    
+	    <script src="<c:url value='/resources/js/creative.js'/>"></script>
  
 
 </body>

@@ -465,5 +465,48 @@
 		where
 		hisNo=#{hisNo}
 	</select>
+	
+		<!-- 스킬 읽기 -->
+	<select id="skillRead" parameterType="string" resultType="skill">
+		select
+		*
+		from
+		skill
+		where
+		skillid = #{userId}
+	</select>
+	
+	<!-- 스킬 쓰기 -->
+	<insert id="skillWrite" parameterType="Map">
+		insert
+	 	into
+	 	skill
+	 	(
+	 	skillId,
+	 	skillrow,
+	 	skilltrow,
+	 	skillHtml
+	 	)
+	 	values
+	 	(
+	 	#{skillid},
+	 	#{skillrow},
+	 	#{skilltrow},
+	 	#{skillhtml}
+	 	)
+	</insert>
+	
+	<!-- 스킬 업데이트 -->
+	<update id="skillUpdate" parameterType="Map">
+		update
+		skill
+		set
+		skillrow = #{skillrow},
+	 	skilltrow = #{skilltrow},
+	 	skillHtml = #{skillhtml}
+		where
+		skillId = #{skillid}
+	</update>
+	
  	
 </mapper>
