@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
@@ -187,7 +186,7 @@
 
 </head>
 
-<body style="background-color: rgb(104,22,22)">
+<body style="background-color: rgb(104,22,22);">
 	<header>
 		<div class="my-auto" >
 			<div class="mx-auto" style="text-align: center;">

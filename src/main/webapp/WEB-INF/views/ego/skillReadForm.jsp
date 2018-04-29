@@ -1,20 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Palette - 스킬 분석</title>
 
-<title>Ion.RangeSlider - test</title>
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>
+	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/normalize.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/ion.rangeSlider.css" />
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/graph/css/ion.rangeSlider.skinModern.css" />
 
-
-<!-- change skin -->
-
+	<!-- Table_Fixed_Header CSS -->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
+	<!--===============================================================================================-->
 
 <!-- All JS -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -22,6 +25,21 @@
 <script src="${pageContext.request.contextPath}/resources/portfolio/graph/js/ion.rangeSlider.js"></script>
  --%>
  <script src="${pageContext.request.contextPath}/resources/graph/js/ion.rangeSlider.js"></script>
+		
+	<!-- Custom scripts for this template -->
+    <script src="<c:url value='/resources/js/creative.js'/>"></script>
+
+<style type="text/css">
+
+	.divTableBody {
+		margin: 20px;
+	}
+	.divTable {
+		color: white;
+	}
+
+</style>
+
 
 <script type="text/javascript">
 	var tnum = 0;
@@ -70,12 +88,11 @@
 		tadd += '<div class="divTableBody" id="divTableBody'+tnum+'">';
 		tadd += '</div>';
 		tadd += '</div>';
-		tadd += '<input type="button" class="addgraphbtn" onclick="addgraph('+tnum+')" id="addgraphbtn'+tnum+'" value="그래프 추가"></input>';
-		tadd += '<input type="text" class="divTableCell" id="divTableCell'+tnum+'" style="float: left; vertical-align: bottom;"></input>';
-		tadd += '<input type="button" class="deltablebtn" onclick="deltable('+tnum+')" id="deltablebtn'+tnum+'" value="테이블삭제"></input>';
+		tadd += '<input type="button" class="addgraphbtn btn btn-primary btn-light btn-l" onclick="addgraph('+tnum+')" id="addgraphbtn'+tnum+'" style="padding: 20px; margin: 10px;" value="그래프 추가"></input>';
+		tadd += '<input type="text" class="divTableCell table100 ver2" id="divTableCell'+tnum+'" style="float: left; padding: 20px; margin: 10px; width: 40%;"></input>';
+		tadd += '<input type="button" class="deltablebtn btn btn-primary btn-light btn-l" onclick="deltable('+tnum+')" id="deltablebtn'+tnum+'" style="padding: 20px; margin: 10px;" value="테이블삭제"></input>';
 
 		$('#maindiv').append(tadd);
-
 		
 		$('#divtablevalue').val("");
 		
@@ -108,11 +125,13 @@
 
 		var gadd = '<div class="divTableRow" id="divTableRow'+trow+'">';
 		gadd += '<div class="divGraphCell" id="divGraphCell'+trow+'">'+gtext+'</div>';
-		gadd += '<div class="range-slider color-1" id="range-slider'+trow+'">';
+		gadd += '<div class="range-slider color-1" style="width:80%;" id="range-slider'+trow+'">';
 		gadd += '<input type="text" class="js-range-slider" id="js-range-slider'+trow+'" />'; //슬라이더에 trow더하기
 		gadd += '</div>';
+		gadd += '<input type="button"  class="delrow btn btn-primary btn-l btn-light" style="margin: 10px; position: relative; top: -40px; float:right;" value="삭제" onclick="delrow('+trow+')" id="delrowbtn'+trow+'"></input>';
 		gadd += '</div>';
-		gadd += '<input type="button" class="delrow" value="삭제" onclick="delrow('+trow+')" id="delrowbtn'+trow+'"></input>'
+		
+		
 		//gadd += '<input type="button" onclick="delgraph('+gtnum+')" value="그래프 추가" style="float: left; vertical-align: bottom;"></input>';
 		
 		$('#divTableBody'+gtnum).append(gadd);
@@ -198,30 +217,42 @@
 				}
 			});//endtoajax
 			
-			
-			
 		});//endtoclick
 	});
 </script>
 </head>
-<body>
+<body id="page-top" style="background-color: rgb(34,48,59);">
+	
+	<header>
+		<div>
+	        <div class="row">
+	          <div class="mx-auto">
+	           	<img src="/h5/resources/img/skill-main.png" style="width: 100%;">
+	          </div>         
+	        </div>
+	    </div>
+	</header>
+	
+	<section>
+		<div id="maindiv" style="width: 60%; margin: auto;"></div>
+	</section>
 
-	<div id="maindiv">
-	</div>
+	<section>
+		<div style="width: 75%; margin-left: auto;">
+			<div style="margin: auto;">
+				<input type="button" class="btn btn-primary btn-light btn-l" onclick="addtable()" value="테이블 추가" style="padding: 20px; margin: 10px; float: left; vertical-align: bottom;"></input>
+				<input type="text" id="divtablevalue" class="table100 ver2" style="float: left; padding: 20px; margin: 10px; width: 40%;"></input>
+			</div>
+			<div>
+				<input type="button" class="btn btn-primary btn-light btn-l" id="updateto" style="padding: 20px; margin: 10px;" value="수정"></input>
+				<input type="button" class="btn btn-primary btn-light btn-l" id="complete" style="padding: 20px; margin: 10px;" value="완료"></input>
+			</div>
+		</div>
+	</section>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div>
-		<input type="button" onclick="addtable()" value="테이블 추가" style="float: left; vertical-align: bottom;"></input>
-		<input type="text" id="divtablevalue" style="float: left; vertical-align: bottom;"></input>
-	</div>
-	<div>
-	<input type="button" value="수정" id="updateto"></input>
-	<input type="button" id="complete" value="완료"></input>
-	</div>
-
+	
+	<!-- Footer -->
+    <%@include file="/WEB-INF/views/footer-text-white.jsp"%> 
+    
 </body>
 </html>
