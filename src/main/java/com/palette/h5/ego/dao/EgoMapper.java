@@ -71,16 +71,16 @@ public interface EgoMapper {
 	// 성격분석 성격리스트 불러오기
 	ArrayList<PersonalityList> personalityList();
 
-	//성격분석 작성
+	// 성격분석 작성
 	public int personalityWrite(Personality personality);
-	
-	//성격분석 수정
+
+	// 성격분석 수정
 	public int personalityUpdate(Personality personality);
-	
-	//저장한 성격리스트 불러오기
+
+	// 저장한 성격리스트 불러오기
 	public ArrayList<Personality> personalitySelect(Personality personality);
-	
-	//활동내역 쓰기
+
+	// 활동내역 쓰기
 	public int activityWrite(Activity activity);
 
 	// 활동내역 읽기

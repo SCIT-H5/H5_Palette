@@ -41,7 +41,7 @@ public class PortController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PortController.class);
 	
-	final String uploadPath = "/upload"; 
+	final String uploadPath = "/certProject"; 
 	
 	//새 포토폴리오 이동
 	@RequestMapping(value = "newPort", method = RequestMethod.GET)
