@@ -3,19 +3,17 @@ package com.palette.h5.ego.vo;
 public class CertScholarship {
 	
 	public String schId;
-	public String schOriginalfile;
-	public String schSavedfile;
+	public int schField;
 	
 	public CertScholarship() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CertScholarship(String schId, String schOriginalfile, String schSavedfile) {
+	public CertScholarship(String schId, int schField) {
 		super();
 		this.schId = schId;
-		this.schOriginalfile = schOriginalfile;
-		this.schSavedfile = schSavedfile;
+		this.schField = schField;
 	}
 
 	public String getSchId() {
@@ -26,26 +24,17 @@ public class CertScholarship {
 		this.schId = schId;
 	}
 
-	public String getSchOriginalfile() {
-		return schOriginalfile;
+	public int getSchField() {
+		return schField;
 	}
 
-	public void setSchOriginalfile(String schOriginalfile) {
-		this.schOriginalfile = schOriginalfile;
-	}
-
-	public String getSchSavedfile() {
-		return schSavedfile;
-	}
-
-	public void setSchSavedfile(String schSavedfile) {
-		this.schSavedfile = schSavedfile;
+	public void setSchField(int schField) {
+		this.schField = schField;
 	}
 
 	@Override
 	public String toString() {
-		return "CertScholarship [schId=" + schId + ", schOriginalfile=" + schOriginalfile + ", schSavedfile="
-				+ schSavedfile + "]";
+		return "CertScholarship [schId=" + schId + ", schField=" + schField + "]";
 	}
 	
 }
