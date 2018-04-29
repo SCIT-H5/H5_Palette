@@ -36,6 +36,36 @@
 			gradId=#{gradId}
 	</delete>
 	
+	<!-- certScholarship | certScholarship 파일 업로드 -->
+	<insert id="insertCertSch" parameterType="certSch">
+		insert into
+			cert_scholarship(
+				schId
+				,schField
+			) values (
+				#{schId}
+				,#{schField}
+			)
+	</insert>
+	
+	<!-- certScholarship | certScholarship에 저장된 파일No 불러오기 -->
+	<select id="displayCertSch" parameterType="string" resultType="certSch">
+		select 
+			* 
+		from 
+			cert_scholarship
+		where
+			schId = #{schId}
+	</select>
+	
+	<!-- certScholarship | certScholarship의 delete -->
+	<delete id="deleteCertSch" parameterType="string">
+		delete
+		from cert_scholarship
+		where
+			schId = #{schId}
+	</delete>
+	
 	<!-- 파일 업로드 ㅣ 통합 -->
 	<insert id="uploadAjax" parameterType="file">
 		insert into 

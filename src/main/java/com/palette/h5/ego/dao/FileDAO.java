@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.palette.h5.dao.FileMapper;
 import com.palette.h5.ego.vo.CertGrad;
+import com.palette.h5.ego.vo.CertScholarship;
 import com.palette.h5.vo.FileManagement;
 
 @Repository
@@ -70,6 +71,60 @@ public class FileDAO {
 		logger.info("DAO | certGrad 삭제하기 종료");
 		return result;
 	}
+	
+	// certSch | certSch 파일 업로드
+	public int insertCertSch(CertScholarship certsch){
+		
+		logger.info("DAO | certScholarship 파일 업로드 시작");
+		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
+		int result = 0;
+		
+		try {
+			result = mapper.insertCertSch(certsch);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | certScholarship 파일 업로드 종료");
+		return result;
+		
+	}
+	
+	// certSch | certScholarship의 gradField(파일No) 불러오기
+	public ArrayList<CertScholarship> displayCertSch(String schId){
+		
+		logger.info("DAO | CertScholarship schFileId(파일No)불러오기 시작");
+		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
+		ArrayList<CertScholarship> schFileNoList = null;
+		
+		try {
+			schFileNoList = mapper.displayCertSch(schId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | CertScholarship schFileId(파일No)불러오기 종료");
+		return schFileNoList;
+	}
+	
+	
+	// certSch | certScholarship의 data 삭제
+	public int deleteCertSch(String schId){
+		
+		logger.info("DAO | CertScholarship 삭제하기 시작");
+		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
+		int result = 0;
+		
+		try {
+			result = mapper.deleteCertSch(schId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		logger.info("DAO | CertScholarship 삭제하기 종료");
+		return result;
+	}
+	
 	
 	
 	// file_management | (공통) 파일 저장하기 by Ajax

@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Palette - 성적</title>
+	<title>Palette - 졸업증명</title>
 	<!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 	
@@ -182,7 +182,7 @@
 </head>
 <body>
 	
-	<h2>AJAX File Upload</h2>
+	<h2> 졸업 증명서 파일 업로드  </h2>
 	<!-- 파일을 업로드할 영역 -->
 	<form id="uploadAjax01" enctype="multipart/form-data">
 		<input type="file" id="upload" name="file-data">

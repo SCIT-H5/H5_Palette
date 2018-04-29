@@ -3,6 +3,7 @@ package com.palette.h5.dao;
 import java.util.ArrayList;
 
 import com.palette.h5.ego.vo.CertGrad;
+import com.palette.h5.ego.vo.CertScholarship;
 import com.palette.h5.vo.FileManagement;
 
 public interface FileMapper {
@@ -16,6 +17,15 @@ public interface FileMapper {
 	// certGrad | certGrad의 삭제하기
 	public int deleteCertGrad(String gradId);
 	
+	// certSch | certSch 파일 업로드
+	public int insertCertSch(CertScholarship certsch);
+	
+	// certSch | certSch  불러오기 
+	public ArrayList<CertScholarship> displayCertSch(String schId);
+	
+	// certSch | certSch 삭제하기
+	public int deleteCertSch(String schId);
+	
 	// file_management | (공통) 파일 저장하기 by Ajax
 	public int uploadAjax(FileManagement file);
 	
@@ -27,6 +37,5 @@ public interface FileMapper {
 	
 	// file_management | 해당 userId에 저장된 모든 파일 불러오기
 	public ArrayList<FileManagement> getAlldataById(String fileUserId);
-	
 	
 }
