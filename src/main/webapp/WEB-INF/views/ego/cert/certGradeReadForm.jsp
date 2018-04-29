@@ -42,8 +42,8 @@
             } else { 
                 str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
             }
-            // 삭제 버튼
-            str += "<span data-src="+data+">[삭제]</span></div>";
+            // 삭제 버튼            
+            str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
             $(".uploadedList01").append(str);
         </c:forEach>
         
@@ -86,7 +86,7 @@
                         str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
                     }
                     // 삭제 버튼
-                    str += "<span data-src="+data+">[삭제]</span></div>";
+                    str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
                     $(".uploadedList01").append(str);
                 }, error : function(e) {
 					alert(JSON.stringify(e));
@@ -184,7 +184,7 @@
 						<tbody>						
 							<tr class="row100 body">
 								<td class="cell100" style="padding-left: 40px;">
-									<div class="uploadedList01" style="border: 1px solid black;"></div>
+									<div class="uploadedList01" style="border: 1px solid gray;"></div>
 								</td>
 							</tr>							
 						</tbody>
@@ -194,4 +194,7 @@
 		</form>	
 	</section>
 
+	<!-- Footer -->
+	<%@include file="/WEB-INF/views/footer-text-white.jsp"%>  
+	
 </body>
