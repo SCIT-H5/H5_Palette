@@ -238,6 +238,8 @@ $( function() {
     	initResizable('.drag_graph', 4);
     	initResizable('.drag_img', 0);
     	initResizable('.drag_video', -1);
+    	$(".inputtable").resizable();
+ 	  	$(".hi2td").resizable();
     	
     	initCloseBtn('.drag_text');
     	initCloseBtn('.drag_graph');
