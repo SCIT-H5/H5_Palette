@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Palette - 내 포트폴리오</title>
+<%@include file="/WEB-INF/views/navi.jsp"%>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <!-- Table_Fixed_Header CSS -->
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
@@ -180,7 +180,7 @@
 
 <body class="back">
 <!-- Navigation -->
-    <%@include file="/WEB-INF/views/navi.jsp"%>
+    
 <div class="bg-image-blur" style="">
 	
 	<img src="/h5/resources/img/myportfolio.png" style="width: 100%;">
@@ -189,7 +189,7 @@
 
 <div>
 	<!-- portfolio list -->
-	<div  style="width: 20%; height: 1000px; position: absolute; margin: 20px; text-align: center; border: 1px solid;">
+	<div  style="width: 13%; height: 1000px; position: absolute; margin: 20px; text-align: center; border: 1px solid;">
 	
 		<c:forEach items="${portList }" var="list" varStatus="status">
 			<br><br>
@@ -200,7 +200,7 @@
 	</div>
 </div>	
 
-<div style="width:75%; height:1000px; float: right; margin: 20px; background-color: white;">
+<div style="width:82%; height:1000px; float: right; margin: 20px; background-color: white;">
 
 	<!-- portfolio view -->
 			<div id="portDiv" class="portDiv" >

@@ -51,14 +51,14 @@
 <style type="text/css">
 	.ui-side1{
 		position: absolute;
-    	left: 60px;
-    	top: 155px;
+    	left: 57px;
+    	top: 153px;
     	width: 50px;
 		display : none;
 	}
 	.ui-side2{
 		position: absolute;
-		left : 110px;
+		left : 47px;
 		top : 0px;
 		display: none;
 	}
@@ -142,17 +142,6 @@ $( function() {
 		$('#trash').prepend('<input type="hidden" id="circle_graphNum" value="'+circle_graphNum+'">');
 		$('#trash').prepend('<input type="hidden" id="etc_graphNum" value="'+etc_graphNum+'">');
 		
-		for(var i=0; i<etc_graphNum; i++){
-			$('#stargraph'+i).barrating('destroy');
-		}
-		
-		for(var i=0; i<bar_graphNum; i++){
-			var s = $("#bargraph"+i).data("ionRangeSlider");
-			if(typeof s === 'object')
-				s.destroy();
-			var bar = $("#bargraph"+i).val();
-			$("#bargraph"+i).attr("g_value", bar);
-		}
 		
 		
     	var width = $('#trash').css('width');
@@ -161,16 +150,29 @@ $( function() {
     	$('#trash').prepend("<input type='hidden' id='div_size' div_width='"+width+"' div_height='"+height+"'>");
 
 		var html = $('#trash').html();	//포트폴리오영역의 html태그 전부 변수에 저장
-		$('#saveDiv').val(html);		//hidden폼에 html태그 저장
-		//$('#div_width').val(width);
-		//$('#div_height').val(height);
+		$('#saveDiv').val(html);		//hidden폼에 html태그 저장(view용)
+
+		//그래프 뿌셔
+		for(var i=0; i<etc_graphNum; i++){
+			$('#stargraph'+i).barrating('destroy');
+		}
+		for(var i=0; i<bar_graphNum; i++){
+			var s = $("#bargraph"+i).data("ionRangeSlider");
+			if(typeof s === 'object')
+				s.destroy();
+			var bar = $("#bargraph"+i).val();
+			$("#bargraph"+i).attr("g_value", bar);
+		}
+		
+		html = $('#trash').html();	//포트폴리오영역의 html태그 전부 변수에 저장
+		$('#saveDiv2').val(html);	//hidden폼에 html태그 저장(수정용)
 		
 		$('#saveForm').submit();		//전송
 	});
     
     //포트폴리오 수정일때(이페이지에 넘어온값이 있을때)
     if(${port != null}) {
-    	$trash.html('${port.portContent}');		//포트폴리오영역에 넘어온값 추가
+    	$trash.html('${port.portModify}');		//포트폴리오영역에 넘어온값 추가
     	
     	var width = $('#div_size').attr('div_width');
     	var height = $('#div_size').attr('div_height');
@@ -343,7 +345,7 @@ function createGraph(i) {
 			g_handleSize = graph.handleSize;
 			g_handleShape = graph.handleShape;
 			g_value = graph.value;
-			g_type = $(g_id).attr("element.styleg_type");
+			g_type = $(g_id).attr("g_type");
 			rrc_bg = $('#slider'+i+ " .rs-range-color").css('background-color');
 			rpc_bg = $('#slider'+i+ " .rs-path-color").css('background-color');
 			rh_bg = $('#slider'+i+ " .rs-handle").css('background-color');
@@ -445,9 +447,6 @@ function createGraph(i) {
 		    <ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side1">
 
 		    	<li class="ui-widget-content ui-corner-tr" value="3" id="bar_graph">
-		    		<h5 class="ui-widget-header">바그래프</h5>
-
-		    	<li class="ui-widget-content ui-corner-tr" value="3" >
 		    		<!-- <h5 class="ui-widget-header">바그래프</h5> -->
 
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_bargraph.png" width="96" height="72">
@@ -491,7 +490,7 @@ function createGraph(i) {
 		   			</ul>
 		    	</li>
 		    	<li class="ui-widget-content ui-corner-tr" id="etc_graph">
-		    		<h5 class="ui-widget-header">단계그래프</h5>
+		    		<!-- <h5 class="ui-widget-header">단계그래프</h5> -->
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_etc_graph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2">
 				    	<li class="ui-widget-content ui-corner-tr" value="5" id="graph5_1">
@@ -575,6 +574,7 @@ function createGraph(i) {
   <c:if test="${port == null }">
 	  <form action="portSave" method="post" id="saveForm">
 	  	<input type="hidden" id="saveDiv" name="portContent" value="">
+	  	<input type="hidden" id="saveDiv2" name="portModify" value="">
 	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
 	  </form>
   </c:if>
@@ -582,6 +582,7 @@ function createGraph(i) {
   <c:if test="${port != null }">
 	  <form action="portUpdate" method="post" id="saveForm">
 	  	<input type="hidden" id="saveDiv" name="portContent" value="">
+	  	<input type="hidden" id="saveDiv2" name="portModify" value="">
 	  	<input type="hidden" name="portNum" value="${port.portNum }">
 	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
 	  </form>
