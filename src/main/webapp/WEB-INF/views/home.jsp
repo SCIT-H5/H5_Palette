@@ -92,8 +92,9 @@
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">About</h2>
-            <hr class="light my-4">
-            <p class="text-faded mb-4">[ 프로젝트에 대한 설명 필요 ]</p>
+            <hr class="light my-4"><br>
+            <p class="text-faded mb-4" style="font-size: 25px">H5のpalatteは特別なあなたのもっと特別に表現する方法を提示してくれます。ユニックなあなたのポートフォリオで魅力的なあなたを、あなたの能力をアピールしたらどうでしょうか。あなただけのキャリア設計、palatteと一緒に描きましょう。</p>
+            <br>
             <a class="btn btn-light btn-xl js-scroll-trigger" href="userinfo/login_register">Get Started!</a>
           </div>
         </div>

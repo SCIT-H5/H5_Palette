@@ -24,7 +24,7 @@
 	
 	<!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.css">	
-	
+
 	<!-- Timelify animation 적용 -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/animate.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/timelify/css/font-awesome.min.css">
