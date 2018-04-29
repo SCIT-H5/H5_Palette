@@ -172,13 +172,12 @@ public class PortController {
 		return "redirect:my_port?replyportNum=" + reply.getReplyportNum();
 	}
 	//리플삭제
-	@RequestMapping (value="replyDelete", method=RequestMethod.POST)
+	@RequestMapping (value="replyDelete", method=RequestMethod.GET)
 	public String commentDel(Reply reply, HttpSession session) {
 		logger.info("Controller | 리플 삭제 시작");
 		//삭제할 리플 정보와 본인 글인지 확인할 로그인아이디
 		String custId = (String) session.getAttribute("loginId");
 		reply.setCommentID(custId);
-		
 		
 		//리플  수정 처리
 		dao.commentDel(reply);
