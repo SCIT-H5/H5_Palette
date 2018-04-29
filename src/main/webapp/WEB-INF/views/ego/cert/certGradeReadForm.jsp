@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Palette - 성적</title>
+	<title>Palette - 졸업증명</title>
 	<!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 	
@@ -54,6 +55,26 @@
 	}); */
 	
 	$(document).ready(function(){
+        var size = ${fn:length(fileList)};
+        
+        <c:forEach items="${fileList}" var="file">
+    	alert('${file.savedFileName}');
+    	
+    	    var data = '${file.savedFileName}';
+        	var str = "";
+            // 이미지 파일이면 썸네일 이미지 출력
+            if(checkImageType(data)){ 
+                str = "<div><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
+                str += "<img src='${path}/h5/displayFile01?fileName="+data+"'></a>";
+            // 일반파일이면 다운로드링크
+            } else { 
+                str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+            }
+            // 삭제 버튼
+            str += "<span data-src="+data+">[삭제]</span></div>";
+            $(".uploadedList01").append(str);
+        </c:forEach>
+        
         
         // event : jQuery의 이벤트
         // originalEvent : javascript의 이벤트
@@ -70,7 +91,6 @@
             var formData = new FormData();
             // 폼 객체에 파일추가, append("변수명", 값)
             formData.append("file", file);
-
 
             $.ajax({
                 type: "post",
@@ -162,7 +182,7 @@
 </head>
 <body>
 	
-	<h2>AJAX File Upload</h2>
+	<h2> 졸업 증명서 파일 업로드  </h2>
 	<!-- 파일을 업로드할 영역 -->
 	<form id="uploadAjax01" enctype="multipart/form-data">
 		<input type="file" id="upload" name="file-data">

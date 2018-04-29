@@ -11,8 +11,7 @@
 		<typeAlias type="com.palette.h5.ego.vo.CertProject" alias="CertProject" />
 		<typeAlias type="com.palette.h5.ego.vo.Skill" alias="skill" />
 		<typeAlias type="com.palette.h5.ego.vo.CertGrad" alias="certGrad" />
-		<typeAlias type="com.palette.h5.vo.FileManagement" alias="file" />
-
+		<typeAlias type="com.palette.h5.ego.vo.CertScholarship" alias="certSch" />
 		
 		<typeAlias type="com.palette.h5.ego.vo.PersonalityList" alias="personalityList"/>
 		<typeAlias type="com.palette.h5.ego.vo.Personality" alias="personality"/>

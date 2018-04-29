@@ -35,7 +35,6 @@ public class EgoDAO {
 
 		try {
 			result = mapper.file_management(filemanagement);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
