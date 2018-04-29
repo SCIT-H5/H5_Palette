@@ -52,9 +52,9 @@ function formCheck() {
 </script>	
 </head>
 <body id="page-top">
-        <!-- Navigation -->
-    <%@include file="/WEB-INF/views/navi.jsp"%>    
-   <header id="bg-primary" style="height:70px; background-color: black;"></header>>
+   <!-- Navigation -->
+   <%@include file="/WEB-INF/views/navi.jsp"%>    
+   <header id="bg-primary" style="height:70px; background-color: black;"></header>
 <div class="centerdiv">
 
 <h2>[ 디테일 작성 폼 ]</h2>
