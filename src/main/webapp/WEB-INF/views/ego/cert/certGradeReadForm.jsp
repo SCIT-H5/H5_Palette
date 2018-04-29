@@ -1,59 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Palette - 성적</title>
+	
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Table_Fixed_Header CSS -->
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
+	<!--===============================================================================================-->
+	
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi.jsp"%>  
+	<title>Palette - 졸업증명</title>
+	
 	<!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 	
 	<script type="text/javascript">
-
-	/* 	$(function(){
-		
-		$("#imgBtn").on("click",function(){	//imgBtn이라는 id를 가진 버튼을 click했을때 이 function이 실행된다.
-			
-			//fileupload시 form자체를 넘기는 방법 : 이게 아니면 append(key, value)이용해서 formData에 붙여서 이동시켜야한다 : (자료가 form으로 다 넘어가지 않는 경우)
-			// form 정보를 Ajax를 통해 전달하기 위해서 formData 객체 생성해서 form정보를 담아 보내는 방법
-			// 단, form의 속성중 enctype이 반드시 'multipart/form-data' 형 이어야 한다.
-			
-			var formData = new FormData();
-			formData.append("file",$("#upload")[0].files[0]);	
-			
-			$.ajax({						// 객체니까 하나하나 선언해주고나서 , 찍어주기
-				type:"POST",				// 내가 보내는 ajax 데이터 전송방식 지정 : get/post
-				url:"fileupload",			// url안쪽에 적어주는 주소로 request가 전송된다. ~ 내가 가지고 있는 requestmapping의 주소가 아니라도 외부 url도 가능.
-				data:formData,				// 보내는 데이터
- 				//data : JSON.stringify({	//보내는 데이터를 JSON타입으로 변형
-				//	name : name,	// 전달해서 받아줄 곳의 명칭과 일치 : 이 function에서 선언/명명해준 변수명
-				//	text : text
-				//}),
-								
-				processData: false,			// 데이터 문자열을 자동으로 쿼리스트링으로 변환되는것을 false
-				// 쿼리스트링 : url주소 뒤에 입력 데이터를 함께 제공하는 방법, ?뒤에 오는 것 : get방식 파라미터 전달 문자열
-				
-			    //contentType: false,
-			    contentType : "application/json; charset=utf-8",	//우리가 보낼 데이터 입력타입, 한글이 출력되게하려면 이렇게!
-				dataType:"json",			// request보낸 후 해당 액션에 대해 spring으로부터 받을 응답 response의 데이터 타입 
-											// JSON : 자바스크립트 객체 object의 형태를 갖는 문자열
-				success:function(data){		// 성공적으로 request를 보내져서 나오는 response은 이쪽으로 온다!
-					console.log(data);
-					$("#imgDiv").empty();	// 이때, 함수의 매개변수로 아무 parameter라도 적어준다면, 서버로부터 데이터를 받아올 경우 여기 함수의 매개변수로 값이 들어감
-					$("#imgDiv").html('<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">');
-					// imgDiv 비워주고 거기에 이 이미지 링크가 들어있는 html태그를 넣어서 DB로부터 받아온 이미지를 바로 띄워서 보여주도록 함. 
-				},
-				error: function(e){			// request가 성공적으로 전달되지 않았을때, response는 이쪽으로 온다! <옵션! 꼭 안적어줘도 됨>
-					console.log(e);
-					// 위에서 dataType을 String등으로 지정한 경우에는 JSON으로 들어오는 객체를 문자열로 반환해서 보여줘야한다 ex. alert(JSON.stringify(e));
-				}
-			});3
-			
-		});
-	}); */
 	
 	$(document).ready(function(){
+        var size = ${fn:length(fileList)};
+        
+        <c:forEach items="${fileList}" var="file">
+    	alert('${file.savedFileName}');
+    	
+    	    var data = '${file.savedFileName}';
+        	var str = "";
+            // 이미지 파일이면 썸네일 이미지 출력
+            if(checkImageType(data)){ 
+                str = "<div><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
+                str += "<img src='${path}/h5/displayFile01?fileName="+data+"'></a>";
+            // 일반파일이면 다운로드링크
+            } else { 
+                str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+            }
+            // 삭제 버튼            
+            str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
+            $(".uploadedList01").append(str);
+        </c:forEach>
+        
         
         // event : jQuery의 이벤트
         // originalEvent : javascript의 이벤트
@@ -71,7 +64,6 @@
             // 폼 객체에 파일추가, append("변수명", 값)
             formData.append("file", file);
 
-
             $.ajax({
                 type: "post",
                 url: "/h5/uploadAjax01",
@@ -85,7 +77,7 @@
                 success: function(data){
                 	//alert(data);
                 	var str = "";
-                    // 이미지 파일이면 썸네일 이미지 출력
+					// 이미지 파일이면 썸네일 이미지 출력
                     if(checkImageType(data)){ 
                         str = "<div><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
                         str += "<img src='${path}/h5/displayFile01?fileName="+data+"'></a>";
@@ -94,7 +86,7 @@
                         str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
                     }
                     // 삭제 버튼
-                    str += "<span data-src="+data+">[삭제]</span></div>";
+                    str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
                     $(".uploadedList01").append(str);
                 }, error : function(e) {
 					alert(JSON.stringify(e));
@@ -160,23 +152,49 @@
 	
 	</script>
 </head>
-<body>
+<body style="background-color: rgb(104,22,22);">
 	
-	<h2>AJAX File Upload</h2>
-	<!-- 파일을 업로드할 영역 -->
-	<form id="uploadAjax01" enctype="multipart/form-data">
-		<input type="file" id="upload" name="file-data">
-			<!-- <input type="button" id="imgBtn" value="전송"> -->
-	</form>
-	<!-- 업로드된 파일 목록 -->
-	<div class="uploadedList01" style="border: 1px solid black;"></div>
-		
-<%-- 	<div>
-		<form id="${path}/upload/uploadForm" enctype="multipart/form-data">
-			<input type="file" id="upload" name="file-data">	<!-- 파일명 뜨는 곳 -->
-			<input type="button" id="imgBtn" value="전송">	<!-- 파일 전송 버튼  -->
-		</form>
-	</div>
-	<div id="imgDiv"></div>	<!-- 이미지가 출력되는 div -->
- --%>
+	<header>
+		<div>
+	        <div class="row">
+	          <div class="mx-auto">
+	           	<img src="/h5/resources/img/graduation_main.png" style="width: 100%;">
+	          </div>         
+	        </div>
+	    </div>
+	</header>
+	
+	<section id="container">
+		<form id="uploadAjax01" enctype="multipart/form-data">
+			<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
+				<div class="table100-head">
+					<table>
+						<thead>
+							<tr class="row100 head" style="font-weight: bold;">
+								<th class="cell100" style="padding-left: 40px;">
+									<input type="file" id="upload" name="file-data">
+								</th>								
+							</tr>
+						</thead>
+					</table>
+				</div>
+	
+				<div class="table100-body js-pscroll">
+					<table>
+						<tbody>						
+							<tr class="row100 body">
+								<td class="cell100" style="padding-left: 40px;">
+									<div class="uploadedList01" style="border: 1px solid gray;"></div>
+								</td>
+							</tr>							
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</form>	
+	</section>
+
+	<!-- Footer -->
+	<%@include file="/WEB-INF/views/footer-text-white.jsp"%>  
+	
 </body>
