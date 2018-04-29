@@ -40,7 +40,6 @@ public class FileDAO {
 	
 	// certGrad | certGrad의 gradField(파일No) 불러오기
 	public ArrayList<CertGrad> displayCertGrad(String gradId){
-		
 		logger.info("DAO | certGrad gradFileId(파일No)불러오기 시작");
 		FileMapper mapper = sqlSession.getMapper(FileMapper.class);
 		ArrayList<CertGrad> gradFileIdList = null;

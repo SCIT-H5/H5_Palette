@@ -11,48 +11,6 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 	
 	<script type="text/javascript">
-
-	/* 	$(function(){
-		
-		$("#imgBtn").on("click",function(){	//imgBtn이라는 id를 가진 버튼을 click했을때 이 function이 실행된다.
-			
-			//fileupload시 form자체를 넘기는 방법 : 이게 아니면 append(key, value)이용해서 formData에 붙여서 이동시켜야한다 : (자료가 form으로 다 넘어가지 않는 경우)
-			// form 정보를 Ajax를 통해 전달하기 위해서 formData 객체 생성해서 form정보를 담아 보내는 방법
-			// 단, form의 속성중 enctype이 반드시 'multipart/form-data' 형 이어야 한다.
-			
-			var formData = new FormData();
-			formData.append("file",$("#upload")[0].files[0]);	
-			
-			$.ajax({						// 객체니까 하나하나 선언해주고나서 , 찍어주기
-				type:"POST",				// 내가 보내는 ajax 데이터 전송방식 지정 : get/post
-				url:"fileupload",			// url안쪽에 적어주는 주소로 request가 전송된다. ~ 내가 가지고 있는 requestmapping의 주소가 아니라도 외부 url도 가능.
-				data:formData,				// 보내는 데이터
- 				//data : JSON.stringify({	//보내는 데이터를 JSON타입으로 변형
-				//	name : name,	// 전달해서 받아줄 곳의 명칭과 일치 : 이 function에서 선언/명명해준 변수명
-				//	text : text
-				//}),
-								
-				processData: false,			// 데이터 문자열을 자동으로 쿼리스트링으로 변환되는것을 false
-				// 쿼리스트링 : url주소 뒤에 입력 데이터를 함께 제공하는 방법, ?뒤에 오는 것 : get방식 파라미터 전달 문자열
-				
-			    //contentType: false,
-			    contentType : "application/json; charset=utf-8",	//우리가 보낼 데이터 입력타입, 한글이 출력되게하려면 이렇게!
-				dataType:"json",			// request보낸 후 해당 액션에 대해 spring으로부터 받을 응답 response의 데이터 타입 
-											// JSON : 자바스크립트 객체 object의 형태를 갖는 문자열
-				success:function(data){		// 성공적으로 request를 보내져서 나오는 response은 이쪽으로 온다!
-					console.log(data);
-					$("#imgDiv").empty();	// 이때, 함수의 매개변수로 아무 parameter라도 적어준다면, 서버로부터 데이터를 받아올 경우 여기 함수의 매개변수로 값이 들어감
-					$("#imgDiv").html('<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">');
-					// imgDiv 비워주고 거기에 이 이미지 링크가 들어있는 html태그를 넣어서 DB로부터 받아온 이미지를 바로 띄워서 보여주도록 함. 
-				},
-				error: function(e){			// request가 성공적으로 전달되지 않았을때, response는 이쪽으로 온다! <옵션! 꼭 안적어줘도 됨>
-					console.log(e);
-					// 위에서 dataType을 String등으로 지정한 경우에는 JSON으로 들어오는 객체를 문자열로 반환해서 보여줘야한다 ex. alert(JSON.stringify(e));
-				}
-			});3
-			
-		});
-	}); */
 	
 	$(document).ready(function(){
         var size = ${fn:length(fileList)};
@@ -140,7 +98,8 @@
     	            }
     	        }
     	    });
-    	});
+    	});//endtouploadedlist
+    	
     });
 	
 	// 업로드된 파일이 이미지가 아닐 경우 업로드파일 목록에 파일명을 출력해주기 위한 함수

@@ -25,6 +25,7 @@
 		var tablehtml;
 		var datatable;
 		var dataable = true;
+		var fileIdx = 0;
 	
 		$(function readtable() {
 			$.ajax({
@@ -43,12 +44,25 @@
 						dataable = false;
 						nodata(); //초기화테이블 생성
 						tableresize(); //테이블 리사이즈 생성
+						imgupload();
 					} else{
 						//alert("노데이트 아님"); //값이 있을때
 						$('#edittable2').html(tablehtml); //테이블 html로 값을 그림
+						fileIdx = $('#fileNum').val();
 						tableresize();
 						tableresizedis();
 						addrow(); //addrow
+				         imgupload(); 
+				         for(var i=0; i<fileIdx; i++){ 
+				            $('#file'+i).on('click', function() { 
+				              var src = $(this).attr('src'); 
+				              $('.bigimg').remove(); 
+				              $('body').append('<img src="'+src+'" class="bigimg cert_img" width="500px" height="500px" style="position:absolute; top:30%; left:30%;">'); 
+				              $('.bigimg').on('click', function() { 
+				                $(this).remove(); 
+				              }); 
+				            }); 
+				          } 
 					}
 					
 					// Example of jQuery UI datePicker
@@ -76,10 +90,19 @@
 										setValue : function(input, value) {
 											return $(input).text(value);
 										}
+									}, 
+					                'file' : { 
+					                  html : '<input type="file" class="jaa_file">', 
+					                  getValue : function(input) { 
+					                    return $(input).val(); 
+					                  }, 
+					                  setValue : function(input, value) { 
+					                    return $(input).text(value); 
+					                  } 
 									}
 								},
 								row_template : [ 'textarea', 'textarea', 'text',
-										'textarea', 'textarea' ],
+										'textarea', 'file' ], 
 								headerCols : [ '취득자격구문', '기관명', '취득일자', '비고',
 										'자격증이미지' ],
 								first_row : false
@@ -98,7 +121,8 @@
 				//테이블리사이즈 디스트로이
 				tableresize();
 				tableresizedis();
-	
+				$('bigimg').remove(); 
+				
 				//row추가 히든
 				$(".addrowtd").hide();
 				//수정버튼 히든
@@ -117,13 +141,23 @@
 		            var cnt = 0;
 		            for(var i=0; i<json.length; i++){
 		            	for(var j=0; j<json[i].length; j++){
-		            		$(".inputtable .hi2td:eq("+cnt+")").html("<input type='text' value='"+json[i][j]+"'>");
+		            		if(j == json[i].length-1){ 
+		                        var path = $('#file'+i).attr('src'); 
+		                        if(path == "undefined"){ 
+		                          $(".inputtable .hi2td:eq("+cnt+")").html('<img src="'+path+'" class="cert_img" id="file'+i+'" width="50px" height="50px">');   
+		                        } 
+		                         
+		                      } 
+		                      else{ 
+		                        $(".inputtable .hi2td:eq("+cnt+")").html("<input type='text' value='"+json[i][j]+"'>"); 
+		                      } 
 		            		cnt++;
 		            	}	
 		            }
 		        }
 				console.log(datatable);
 				
+			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
@@ -181,6 +215,66 @@
 			$(".hi2td").resizable('destroy');
 		};
 	
+		  function imgupload() { 
+			    $(".jaa_file").off("change").on("change", function(){ 
+			      var $upfile = $(this); 
+			        var fileNm = $(this).val();  //업로드하려는 파일의 value값 
+			         
+			        //이미지 파일인지 검사 
+			        if (fileNm != "") { 
+			            var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase(); 
+			         
+			            if (!(ext == "gif" || ext == "jpg" || ext == "png")) { 
+			                alert("이미지파일 (.jpg, .png, .gif )만 업로드 가능합니다."); 
+			                $upfile.val(''); 
+			                return false; 
+			            } 
+			        } 
+			         
+			        var maxSize  = 30 * 1024 * 1024    //30MB 
+			        var file = $(this)[0].files[0]; 
+			          var fileSize = file.size/(1024*1024); 
+			 
+			         
+			 
+			          if(fileSize > maxSize) 
+			          { 
+			            alert("파일사이즈 : "+ fileSize +"MB, 첨부파일 사이즈는 30MB 이내로 등록 가능합니다."); 
+			            $upfile.val(''); 
+			              return; 
+			          } 
+			         
+			      var formData = new FormData(); 
+			      formData.append("file", file); 
+			       
+			      //위젯에 업로드한 이미지 추가 
+			      $.ajax({ 
+			        type:"POST",             
+			        url:"/h5/port/fileupload",         
+			        data:formData, 
+			        processData: false, 
+			          contentType: false, 
+			        dataType:"text",         
+			        success:function(data){   
+			          console.log(data); 
+			          $upfile.css('display', 'none'); 
+			          $upfile.parent('td').append('<img src="'+data+'" class="cert_img" id="file'+fileIdx+'" width="50px" height="50px">'); 
+			          $('#file'+fileIdx).on('click', function() { 
+			            $('.bigimg').remove(); 
+			            $('body').append('<img src="'+data+'" class="bigimg cert_img" width="500px" height="500px" style="position:absolute; top:30%; left:30%;">'); 
+			            $('.bigimg').on('click', function() { 
+			              $(this).remove(); 
+			            }); 
+			          }); 
+			          fileIdx++; 
+			        }, 
+			        error: function(e){       
+			          console.log(e); 
+			        } 
+			      });//ajax 
+			    });//change이벤트 
+			  } 
+
 	
 	</script>
 
