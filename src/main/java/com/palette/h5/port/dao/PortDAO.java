@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.palette.h5.ego.vo.Reply;
 import com.palette.h5.vo.Portfolio;
 
 @Repository
@@ -96,5 +97,89 @@ public class PortDAO {
 		}
 		logger.info("DAO | 포트폴리오 하나 불러오기 종료");
 		return port;
+	}
+	
+	//리플 작성
+	public int commentwrite(Reply reply){
+		int result = 0;
+		
+		logger.info("DAO | 리플 작성 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		
+		
+		try {
+			
+			result = mapper.commentwrite(reply);
+			System.out.println("갔다온 결과 :"+result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 리플 작성 종료");
+		
+		return result;
+		
+	}
+	//리플 출력 
+	public ArrayList<Reply>commentView(int replyportNum){
+		ArrayList<Reply> result = null;
+		logger.info("DAO | 리플 출력 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		
+		
+		try {
+			
+			result = mapper.commentView(replyportNum);
+			System.out.println("갔다온 결과 :"+result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 리플 출력 종료");
+		
+		return result;
+	}
+	//리플 수정
+	public int commentUpdate(Reply reply){
+		
+		int result = 0;
+		
+		logger.info("DAO | 리플 수정 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		
+		
+		try {
+			System.out.println("수정할 리플의 정보"+reply);
+			result = mapper.commentUpdate(reply);
+			System.out.println("갔다온 결과 :"+result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 리플 수정 종료");
+		
+		return result;
+	}
+	
+	//리플 삭제
+	public int commentDel(Reply reply){
+		
+		int result = 0;
+		
+		logger.info("DAO | 리플 삭제 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		
+		
+		try {
+			System.out.println("삭제 리플의 정보"+reply);
+			result = mapper.commentDel(reply);
+			System.out.println("갔다온 결과 :"+result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 리플 삭제 종료");
+		
+		return result;
 	}
 }

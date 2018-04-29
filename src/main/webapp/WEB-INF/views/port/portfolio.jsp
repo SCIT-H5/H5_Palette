@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>나만의 포트폴리오 만들기</title>
+<%@include file="/WEB-INF/views/navi.jsp"%>
 
 <!-- jquery, jquery-ui, 위젯에 필요한 css -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -50,8 +51,9 @@
 <style type="text/css">
 	.ui-side1{
 		position: absolute;
-		left : 120px;
-		top : 245px;
+    	left: 60px;
+    	top: 155px;
+    	width: 50px;
 		display : none;
 	}
 	.ui-side2{
@@ -339,7 +341,7 @@ function createGraph(i) {
 			g_handleSize = graph.handleSize;
 			g_handleShape = graph.handleShape;
 			g_value = graph.value;
-			g_type = $(g_id).attr("g_type");
+			g_type = $(g_id).attr("element.styleg_type");
 			rrc_bg = $('#slider'+i+ " .rs-range-color").css('background-color');
 			rpc_bg = $('#slider'+i+ " .rs-path-color").css('background-color');
 			rh_bg = $('#slider'+i+ " .rs-handle").css('background-color');
@@ -378,6 +380,13 @@ function createGraph(i) {
 </head>
 <body>
 
+<div class="bg-image-blur" style="">
+					<img src="/h5/resources/img/portfoliomain.png" style="width: 100%;">
+					
+				</div>
+<%-- <!-- Navigation -->
+    <%@include file="/WEB-INF/views/navi.jsp"%>  --%>
+   
 
 <!-- <div id="graphColor">
 	<div>handleShape</div>
@@ -409,7 +418,7 @@ function createGraph(i) {
  
  	<!-- 포트폴리오 영역 -->
 
- 	<div id="trash" class="ui-widget-header" style=" top:100px; border: 1px black solid"></div>
+ 	<div id="trash" class="ui-widget-header" style=" top:70px; border: 1px black solid"></div>
 
 	<!-- 위젯영역 -->
 	<div id="sidebox" class="sidebox">
@@ -421,19 +430,24 @@ function createGraph(i) {
 		</c:if>
 		<ul id="wigetBox" class="wigetBox ui-helper-reset ui-helper-clearfix">
 		  <li class="ui-widget-content ui-corner-tr" value="1">
-		    <h5 class="ui-widget-header">TextBox</h5>
-		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_textbox.png" width="96" height="72">
+		   <!--  <h5 class="ui-widget-header">TextBox</h5> -->
+		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/text icon.png" width="96" height="72">
 		  </li>
 		  <li class="ui-widget-content ui-corner-tr" value="2">
-		    <h5 class="ui-widget-header">Table</h5>
+		    <!-- <h5 class="ui-widget-header">Table</h5> -->
 		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_table.png" width="96" height="72">
 		  </li>
 		  <li class="ui-widget-content ui-corner-tr" id="graph_1" style="cursor: pointer;">
-		    <h5 class="ui-widget-header">그래프</h5>
-		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_graph.png" width="96" height="72">
+		    <!-- <h5 class="ui-widget-header">그래프</h5> -->
+		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/graph icon_1.png" width="96" height="72">
 		    <ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side1">
+
 		    	<li class="ui-widget-content ui-corner-tr" value="3" id="bar_graph">
 		    		<h5 class="ui-widget-header">바그래프</h5>
+
+		    	<li class="ui-widget-content ui-corner-tr" value="3" >
+		    		<!-- <h5 class="ui-widget-header">바그래프</h5> -->
+
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_bargraph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2" >
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="1">
@@ -457,7 +471,7 @@ function createGraph(i) {
 		   			</ul>
 		    	</li>
 		    	<li class="ui-widget-content ui-corner-tr" id="circle_graph">
-		    		<h5 class="ui-widget-header">원그래프</h5>
+		    		<!-- <h5 class="ui-widget-header">원그래프</h5> -->
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_circlegraph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2">
 				    	<li class="ui-widget-content ui-corner-tr" value="4" type="1">
@@ -493,7 +507,7 @@ function createGraph(i) {
 		  </li>
 		</ul>
 		<input type=file name="file1" id="upload" style="display: none;" accept=".gif, .jpg, .png, .mp4">
-		<img class="addfile" src="${pageContext.request.contextPath}/resources/portfolio/img/plus.png" width="96" height="72" onclick="document.all.file1.click()">
+		<img class="addfile" src="${pageContext.request.contextPath}/resources/portfolio/img/clip.png" width="48"  onclick="document.all.file1.click()">
 	</div>
 </div>
 
@@ -571,8 +585,12 @@ function createGraph(i) {
 	  </form>
   </c:if>
   
+ 
 </body>
+
+
 <script src="${pageContext.request.contextPath}/resources/portfolio/table/js/test4.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/portfolio/table/css/jquery.edittable.min.css">
+
 
 </html>
