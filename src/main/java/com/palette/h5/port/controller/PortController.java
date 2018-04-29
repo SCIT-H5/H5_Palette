@@ -88,16 +88,16 @@ public class PortController {
 	public String jspFileTest(Model model, Portfolio portfolio, HttpSession session) {
 		logger.info("Controller | 포트폴리오 보기 시작");
 		Portfolio port = dao.portSelectOne(portfolio);
-<<<<<<< HEAD
+
 		String id = (String)session.getAttribute("loginId");
 		if(port.getPortOpen() == 0 && !port.getPortId().equals(id)){
 			logger.info("Controller | 미공개 포트폴리오");
 			return "redirect:/main";
 		}
-=======
+
 		System.out.println("포폴 내용"+port);
 		
->>>>>>> 4.24시작안진홍이
+
 		model.addAttribute("port", port);
 		
 	
@@ -127,7 +127,7 @@ public class PortController {
 		return "port/updateComplete";
 	}
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "portDelete", method = RequestMethod.POST)
 	public String portDelete(Model model, Portfolio portfolio) {
 		logger.info("Controller | 포트폴리오 삭제 시작");
@@ -138,7 +138,7 @@ public class PortController {
 		return "redirect:my_port";
 	}
 	
-=======
+
 	//리플 작성
 	@RequestMapping(value = "replyWrite", method = RequestMethod.POST)
 	public String replyWrite(Reply reply, HttpSession session, Model model) {
@@ -187,7 +187,7 @@ public class PortController {
 		//원래의 글읽기 화면으로 이동 
 		return "redirect:my_port?replyportNum=" + reply.getReplyportNum();
 	}
->>>>>>> 4.24시작안진홍이
+
 	@RequestMapping(value="uploadfile", method=RequestMethod.POST)
 	public String writeBoard(MultipartFile upload, Model model){
 		String result = "";

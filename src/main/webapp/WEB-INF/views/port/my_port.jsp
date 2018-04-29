@@ -46,8 +46,8 @@
 					var commentID = obj[i].commentID;
 					var commentText = obj[i].commentText;
 					var commentNum = obj[i].commentNum;
-					
 					var replyportNum = obj[i].replyportNum;
+					alert(replyportNum);
 					str += "<tr class='row100 head' style='font-weight: bold;'><td class='cell100' style='width:25%; padding-left: 40px;'><b>"+commentID+"</b></td>";
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
@@ -97,7 +97,7 @@
 	//리플 수정
 	function replyEditForm(commentNum, replyportNum, retext) {
 		//해당 리플번호를 붙여 생성한 <div>태그에 접근
-		alert('들어왓?'+commentNum);
+		/* alert('들어왓?'+commentNum); */
 		var div = document.getElementById("div" + commentNum);
 	
 		var str = '<form name="editForm' + commentNum + '" action="replyEdit" method="post">';
@@ -183,7 +183,8 @@
 <!-- Navigation -->
     <%@include file="/WEB-INF/views/navi.jsp"%>
 <div class="bg-image-blur" style="">
-					<img src="/h5/resources/img/myportfolio.png" style="width: 100%;">
+	
+	<img src="/h5/resources/img/myportfolio.png" style="width: 100%;">
 					
 </div>
 

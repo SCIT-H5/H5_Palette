@@ -114,17 +114,17 @@
     left: 236px;
 }
 
-.btnDiv{
+/* .btnDiv{
 	position: relative;
     top: 100px;
     /* background-color: red; */
     width: 45px;
     margin: auto;
-}
+} */
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+
 	<form action="portUpdateForm" method="post" id="upForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
@@ -135,21 +135,21 @@
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
 		<input type="button" id="delete" value="삭제">
 	</form>
-	<div id="see"></div>	
-=======
+	<!-- <div id="see"></div>	 -->
+
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->
 	</div>
 	
-	<div class="btnDiv">
+	<%-- <div class="btnDiv">
 		<form action="portUpdateForm" method="post" id="upForm">
 			<input type="hidden" name="portNum" value="${port.portNum }">
 			<input type="hidden" name="portId" value="${sessionScope.loginId }">
 			<input type="button" id="update" class="update" value="수정">
 		</form>	
-	</div>	
->>>>>>> 4.24시작안진홍이
+	</div>	 --%>
+
 </body>
 
 

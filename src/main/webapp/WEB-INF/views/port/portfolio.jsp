@@ -441,13 +441,13 @@ function createGraph(i) {
 		    <!-- <h5 class="ui-widget-header">그래프</h5> -->
 		    <img src="${pageContext.request.contextPath}/resources/portfolio/img/graph icon_1.png" width="96" height="72">
 		    <ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side1">
-<<<<<<< HEAD
+
 		    	<li class="ui-widget-content ui-corner-tr" value="3" id="bar_graph">
 		    		<h5 class="ui-widget-header">바그래프</h5>
-=======
+
 		    	<li class="ui-widget-content ui-corner-tr" value="3" >
 		    		<!-- <h5 class="ui-widget-header">바그래프</h5> -->
->>>>>>> 4.24시작안진홍이
+
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_bargraph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2" >
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="1">

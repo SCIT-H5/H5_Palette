@@ -300,14 +300,13 @@ function insertWiget( $item, num, x, y ) {
 				 
 				initResizable('.drag_graph', num);
 				
-<<<<<<< HEAD
-=======
+
 				//넣었던 이미지 위젯에 다시생성
 				$("#graph_1 > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
 		    			/* +'<h5 class="ui-widget-header">바그래프</h5>'*/
 		    			 +'<img src="/h5/resources/portfolio/img/graph icon_1.png">'
 		  				 +'</li>'); 
->>>>>>> 4.24시작안진홍이
+
 				
 				//추가한 이미지에 드래그 이벤트 생성
 				$( ".drag_graph").draggable({
@@ -467,13 +466,12 @@ function insertWiget( $item, num, x, y ) {
 				
 				//넣었던 이미지 위젯에 다시생성
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
-<<<<<<< HEAD
+
 		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
 		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
-=======
+
 		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
 		    			 +'<img src="'+src+'" id="file'+num+'">'
->>>>>>> 4.24시작안진홍이
 		  				 +'</li>');
 				
 				
@@ -544,13 +542,13 @@ function imgUpload() {
 					text = "동영상";
 				}
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
-<<<<<<< HEAD
+
 		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
 		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
-=======
+
 		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
 		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'">'
->>>>>>> 4.24시작안진홍이
+
 		  				 +'</li>');
 				
 				$( "li", $wigetBox ).draggable({
