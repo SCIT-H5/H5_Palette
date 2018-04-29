@@ -53,6 +53,7 @@
  				  <ul class="drop_down_menu">
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SWOT Analysis</a>
+
 		        	</li>
 		        	<li>
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/history/historyReadForm">My History</a>
