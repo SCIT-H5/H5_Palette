@@ -124,6 +124,7 @@
 		        }
 				console.log(datatable);
 				
+				 $('input[type="text"]').attr("readonly", true);
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
@@ -156,7 +157,9 @@
 	
 		$(document).ready(function() { //업데이트 펑션
 			$("#updatetoggle").click(function() {
-				$(".addrowtd").slideToggle("slow");
+				 $('.addrowtd').css('display', 'table-cell');
+		    	  //$(".addrowtd").slideToggle("slow");
+		         $('input[type="text"]').attr("readonly", false);
 				if (toggle == true) {
 					$(".jaatextarea").attr("readonly", true);
 					tableresize();

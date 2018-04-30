@@ -76,7 +76,7 @@
 	<h1 style="width: 100%; margin-bottom: 30px; text-align: center; font-weight: bold;">ヒストリー内容入力</h1>
 	
 		<form action="historyWrite" method="post" onsubmit="return formCheck();">
-			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.hisId}">
+			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.loginId}">
 				<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
 					<div class="table100-head">
 					

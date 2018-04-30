@@ -167,6 +167,7 @@
 				console.log(datatable);
 				
 				$('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">');
+				 $('input[type="text"]').attr("readonly", true);
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
