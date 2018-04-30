@@ -20,7 +20,7 @@ function nodata() {
 		drop : function( event, ui ) {
 			var word = ui.draggable.text();		//드래그 된 text값 변수에 담기
 			if(strong_cnt >= 3){
-				alert('장점은 3개까지만 가능합니다');
+				alert('長所は３つだけ可能です。');
 				return;
 			}
 			
@@ -28,17 +28,22 @@ function nodata() {
 			for(var i=0; i<strong_cnt; i++){
 				var txt = $('#strong'+i).text();
 				if(txt == word){
-					alert("중복 불가능");
+					alert("中腹不可能");
 					return;
 				}
 			}
 			
 			//div에 text추가
-			$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"' value='"+strong_cnt+"'>"+word+"</span> ");
+			$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"' value='"+strong_cnt+"'>"+word+"</span>&nbsp;&nbsp;");
 			
 			//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 			$('.in_strongword').off('click').on('click', function() {
-				
+				$('.in_strongword').css('color', 'red');
+				$('.in_strongword').css('font-weight', 'normal');
+				$('.in_strongword').css('text-decoration', 'none');
+				$(this).css('color', 'blue');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
 				var v = $(this).attr('value');
 				var display = $('#strong_detail'+v).css('display');
 				if(display == 'none'){
@@ -47,6 +52,9 @@ function nodata() {
 				}
 				else if(display == 'block'){
 					$('#strong_detail'+v).css('display', 'none');
+					$('.in_strongword').css('color', 'red');
+					$('.in_strongword').css('font-weight', 'normal');
+					$('.in_strongword').css('text-decoration', 'none');
 				}
 			});
 			strong_cnt++;	//장점갯수 +
@@ -58,7 +66,7 @@ function nodata() {
 		drop : function( event, ui ) {
 			var word = ui.draggable.text();
 			if(weak_cnt >= 3){
-				alert('단점은 3개까지만 가능합니다');
+				alert('短所は３つだけ可能です。');
 				return;
 			}
 			
@@ -66,16 +74,22 @@ function nodata() {
 			for(var i=0; i<weak_cnt; i++){
 				var txt = $('#weak'+i).text();
 				if(txt == word){
-					alert("중복불가능");
+					alert("中腹不可能");
 					return;
 				}
 			}
 			
 			//div에 text추가
-			$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"' value='"+weak_cnt+"'>"+word+"</span> ");
+			$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"' value='"+weak_cnt+"'>"+word+"</span>&nbsp;&nbsp;");
 			
 			//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 			$('.in_weakword').off('click').on('click', function() {
+				$('.in_weakword').css('color', 'blue');
+				$('.in_weakword').css('font-weight', 'normal');
+				$('.in_weakword').css('text-decoration', 'none');
+				$(this).css('color', 'red');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
 				var v = $(this).attr('value');
 				var display = $('#weak_detail'+v).css('display');
 				if(display == 'none'){
@@ -84,6 +98,9 @@ function nodata() {
 				}
 				else if(display == 'block'){
 					$('#weak_detail'+v).css('display', 'none');
+					$('.in_weakword').css('color', 'blue');
+					$('.in_weakword').css('font-weight', 'normal');
+					$('.in_weakword').css('text-decoration', 'none');
 				}
 			});
 			
