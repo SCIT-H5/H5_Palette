@@ -66,7 +66,7 @@
     
 	    <div class="container" id="swottable">
 	    <c:choose>
-			<c:when test="${sessionScope.swotlist == '' || sessionScope.swotlist == null }">
+			<c:when test="${swotlist == '' || swotlist == null }">
 				<input type="button" id="button_1" class="button_1" value="입력하기" onclick="writeForm()">
 			</c:when>
 			<c:otherwise>

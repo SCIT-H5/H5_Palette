@@ -58,7 +58,8 @@
         var size = ${fn:length(fileList)};
         
         <c:forEach items="${fileList}" var="file">
-    	    	
+    	alert('${file.savedFileName}');
+    	
     	    var data = '${file.savedFileName}';
         	var str = "";
             // 이미지 파일이면 썸네일 이미지 출력
@@ -139,7 +140,8 @@
     	            }
     	        }
     	    });
-    	});
+    	});//endtouploadedlist
+    	
     });
 	
 	// 업로드된 파일이 이미지가 아닐 경우 업로드파일 목록에 파일명을 출력해주기 위한 함수

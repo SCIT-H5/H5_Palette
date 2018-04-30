@@ -71,7 +71,6 @@
 </head>
 
 <body id="page-top">
-	
 	<!-- Navigation -->
 <%--     <%@include file="/WEB-INF/views/navi.jsp"%>  --%>
        
@@ -94,7 +93,7 @@
 	  <div class="content">
 	    <h1>MY HISTORY</h1>
 		    <h2>나의 연혁 관리 페이지</h2>
-	    	<p><a href="historyWriteForm" target="_blank">나의 연혁 작성하러 가기</a></p>
+	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
 	  </div>
 	</div>
 	</c:if>

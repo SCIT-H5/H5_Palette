@@ -174,7 +174,7 @@ public class EgoDAO {
 
 	// 성격분석 작성
 	public int personalityWrite(Personality personality) {
-		
+
 		logger.info("DAO | 성격분석 작성");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 
@@ -190,7 +190,7 @@ public class EgoDAO {
 		return result;
 	}
 
-	//성격분석 수정
+	// 성격분석 수정
 	public int personalityUpdate(Personality personality) {
 		logger.info("DAO | 성격분석 수정");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
@@ -206,7 +206,7 @@ public class EgoDAO {
 		logger.info("DAO | 성격분석 수정 종료");
 		return result;
 	}
-	
+
 	// 저장한 성격 불러오기
 	public ArrayList<Personality> personalitySelect(Personality personality) {
 		logger.info("DAO | 성격분석 불러오기");
@@ -224,7 +224,7 @@ public class EgoDAO {
 		return pers;
 	}
 
-	//스킬 리드
+	// 스킬 리드
 	public Skill skillRead(String userId) {
 		// TODO Auto-generated method stub
 		logger.info("DAO | 스킬 불러오기 시작");
@@ -245,7 +245,7 @@ public class EgoDAO {
 		return skillobject;
 	}
 
-	//스킬쓰기
+	// 스킬쓰기
 	public void skillWrite(HashMap<String, Object> skillmap) {
 		// TODO Auto-generated method stub
 		logger.info("DAO | 스킬 쓰기 시작");
@@ -330,7 +330,7 @@ public class EgoDAO {
 		logger.info("DAO | 활동내역 수정 종료");
 		return result;
 	}
-	
+
 	// 활동내역 쓰기
 	public int activityWrite(Activity activity) {
 		// TODO Auto-generated method stub
@@ -350,168 +350,164 @@ public class EgoDAO {
 		logger.info("DAO | 활동내역 작성 종료");
 		return result;
 	}
-	
+
 	// HISTORY | 전체 데이터 가져오기
-	public ArrayList<History> historyDataAll(String hisId){
-		
+	public ArrayList<History> historyDataAll(String hisId) {
+
 		logger.info("DAO | history 전체 데이터 가져오기 시작");
-		
+
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		ArrayList<History> historyAll = null;
-		
-		try{
+
+		try {
 			historyAll = mapper.historyDataAll(hisId);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		logger.info("DAO | history 전체 데이터 가져오기 종료");
 		return historyAll;
 	}
-		
+
 	// HISTORY | 연도LIST 가져오기
-	public ArrayList<String> historyYearList(String hisId){
-		
+	public ArrayList<String> historyYearList(String hisId) {
+
 		logger.info("DAO | history 연도List 가져오기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		ArrayList<String> yearList = null;
-		
-		try{
+
+		try {
 			yearList = mapper.historyYearList(hisId);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		logger.info("DAO | history 연도List 가져오기 종료");
 		return yearList;
 	}
-	
+
 	// HISTORY | 해당 year별로 데이터들 불러오기
-	public ArrayList<History> historyDataPerYear(History history){
-		
+	public ArrayList<History> historyDataPerYear(History history) {
+
 		logger.info("DAO | history 해당 year별로 데이터들 불러오기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		ArrayList<History> dataPerYear = null;
-		
-		try{
+
+		try {
 			dataPerYear = mapper.historyDataPerYear(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		logger.info("DAO | history 해당 year별로 데이터들 불러오기 종료");
 		return dataPerYear;
 	}
-	
-	
+
 	// HISTORY | 연도별 데이터 수 세기
-	public ArrayList<History> countDataPerYear(History history){
-		
+	public ArrayList<History> countDataPerYear(History history) {
+
 		logger.info("DAO | history 연도별 데이터 수 세기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		ArrayList<History> countPY = null;
-		
-		try{
+
+		try {
 			countPY = mapper.countDataPerYear(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		logger.info("DAO | history 연도별 데이터 수 세기 종료");
 		return countPY;
 	}
-	
-	
+
 	// HISTORY | 특정 hisNo에 해당하는 데이터 가져오기
-	public History selectHistoryOne(History history){
-		
+	public History selectHistoryOne(History history) {
+
 		logger.info("DAO | history 특정 hisNo의 데이터 가져오기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		History hisOne = null;
-		
-		try{
+
+		try {
 			hisOne = mapper.selectHistoryOne(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		logger.info("DAO | history 특정 hisNo의 데이터 가져오기 종료");
 		return hisOne;
 	}
-	
-		
+
 	// HISTORY | 데이터 추가하기
-	public int historyAddOne(History history){
-		
+	public int historyAddOne(History history) {
+
 		logger.info("DAO | history 데이터 추가하기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		int result = 0;
-		
-		try{
+
+		try {
 			result = mapper.historyAddOne(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		logger.info("DAO | history 데이터 추가하기 종료");
 		return result;
-		
+
 	}
-		
+
 	// HISTORY | 데이터 수정하기
-	public int historyUpdateOne(History history){
-		
+	public int historyUpdateOne(History history) {
+
 		logger.info("DAO | history 데이터 수정하기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		int result = 0;
-		
-		try{
+
+		try {
 			result = mapper.historyUpdateOne(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		logger.info("DAO | history 데이터 수정하기 종료");
 		return result;
 	}
-		
+
 	// HISTORY | 데이터 삭제하기
-	public int historyDeleteOne(History history){
-		
+	public int historyDeleteOne(History history) {
+
 		logger.info("DAO | history 데이터 삭제하기 시작");
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
 		int result = 0;
-		
-		try{
+
+		try {
 			result = mapper.historyDeleteOne(history);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		logger.info("DAO | history 데이터 삭제하기 종료");
 		return result;
-		
+
 	}
 
-	//히스토리 하나 가져오기
+	// 히스토리 하나 가져오기
 	public History historyonselect(int selecthisNo) {
 		// TODO Auto-generated method stub
 		logger.info("DAO | history 데이터 하나 가져오기 시작");
-		
+
 		EgoMapper mapper = sqlSession.getMapper(EgoMapper.class);
-		
+
 		History selecthistory = null;
-		
-		//System.out.println(selecthisNo +"받아온 글번호");
-		
+
+		// System.out.println(selecthisNo +"받아온 글번호");
+
 		try {
 			selecthistory = mapper.historyonselect(selecthisNo);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
-		//System.out.println(selecthistory + "디비갔다온 HISTORY");
-		
+
+		// System.out.println(selecthistory + "디비갔다온 HISTORY");
+
 		logger.info("DAO | history 데이터 하나 가져오기 종료");
 		return selecthistory;
 	}
-
 
 }

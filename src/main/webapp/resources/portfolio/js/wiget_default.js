@@ -16,7 +16,7 @@ $(function() {
 	$(window).scroll(function() { 
 		var position = $(window).scrollTop(); 
 	  	$("#sidebox").stop().animate({
-	  		"top":position+currentPosition+"px"
+	  		"top":position-200+currentPosition+"px"
 	  		},500);
 	  	$("#textEditBox").stop().animate({
 	  		"top":position-95+currentPosition+"px"
@@ -84,7 +84,7 @@ $(function() {
       	drop: function( event, ui ) {
       		for(var i=1; i<valueNum; i++){
       			if(ui.draggable.val() == i){
-      				insertWiget( ui.draggable, i, pageX, pageY-100 );	//드롭된게 위젯에서 가져온거면 insertWiget함수 실행
+      				insertWiget( ui.draggable, i, pageX-250, pageY-400 );	//드롭된게 위젯에서 가져온거면 insertWiget함수 실행
       				break;
       			}
       		}
@@ -242,7 +242,7 @@ function insertWiget( $item, num, x, y ) {
 		//바그래프
 		else if(value == "3"){
 			var graph = "<div class='drag_graph' style='position:absolute; width:100px; height: 100px; left:"+x+"px; top:"+y+"px;'>"
-					  + "<img class='close' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+					  + "<img class='close' style='position:absolute; top:-15px;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
 					  + "<input type='text' class='js-range-slider' id='bargraph"+bar_graphNum+"' value='' /></div>";
 			
 			$(graph).appendTo( $list ).fadeIn(function() {
@@ -302,10 +302,9 @@ function insertWiget( $item, num, x, y ) {
 				
 
 				//넣었던 이미지 위젯에 다시생성
-				$("#graph_1 > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
-		    			/* +'<h5 class="ui-widget-header">바그래프</h5>'*/
-		    			 +'<img src="/h5/resources/portfolio/img/graph icon_1.png">'
-		  				 +'</li>'); 
+			/*	$("#bar_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="'+type+'">'
+		    			 +'<h5 class="ui-widget-header">'+type+'</h5>'
+		  				 +'</li>'); */
 
 				
 				//추가한 이미지에 드래그 이벤트 생성
@@ -323,7 +322,7 @@ function insertWiget( $item, num, x, y ) {
 		//원그래프
 		else if(value == "4"){
 			var graph = "<div class='drag_graph' style='position:absolute; width:200px; height:230px; left:"+x+"px; top:"+y+"px;'>"
-					  + "<img class='close' style='position:absolute; float:right;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
+					  + "<img class='close' style='position:absolute; top:-15px;' src='/h5/resources/portfolio/img/close.png' width='20px' height='20px'>"
 					  + "<input type='button' value='편집' class='edit_graph_btn'>"
 					  + "<input type='button' value='드래그' class='drag_graph_btn'>"
 					  + "<div class='slider' id='slider"+circle_graphNum+"'></div>"
@@ -390,7 +389,7 @@ function insertWiget( $item, num, x, y ) {
 		//단계그래프
 		else if(value == "5"){
 			var graph = '<div class="drag_stargraph" style="position:absolute; width:100px; left:'+x+'px; top:'+y+'px;">'
-					  + '<img class="close" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
+					  + '<img class="close" style="position:absolute; top:-15px;" src="/h5/resources/portfolio/img/close.png" width="20px" height="20px">'
 					  + 	'<select id="stargraph'+etc_graphNum+'">'
 			  		  + 		'<option value="1">1</option>'
 			  		  + 		'<option value="2">2</option>'
@@ -466,14 +465,11 @@ function insertWiget( $item, num, x, y ) {
 				
 				//넣었던 이미지 위젯에 다시생성
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
-
-		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+						 +'<img class="close" style="width:30%;" src="/h5/resources/portfolio/img/close.png">'
 		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
-
-		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
-		    			 +'<img src="'+src+'" id="file'+num+'">'
 		  				 +'</li>');
 				
+				initCloseBtn('.ui-corner-tr');
 				
 			});//fadeIn
 		}//else
@@ -542,13 +538,8 @@ function imgUpload() {
 					text = "동영상";
 				}
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
-
-		    			 +'<h5 class="ui-widget-header">'+text+'</h5>'
+						 +'<img class="close" style="width:30%;" src="/h5/resources/portfolio/img/close.png">'
 		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
-
-		    			/* +'<h5 class="ui-widget-header">이미지</h5>'*/
-		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'">'
-
 		  				 +'</li>');
 				
 				$( "li", $wigetBox ).draggable({
@@ -558,6 +549,8 @@ function imgUpload() {
 					helper: "clone",
 					cursor: "move"
 			    });
+				
+				initCloseBtn('.ui-corner-tr');
 				
 				valueNum++;	//성공시 img에 줄 value값 1증가(아이디랑 value값 안겹치게하기위함)
 			},
