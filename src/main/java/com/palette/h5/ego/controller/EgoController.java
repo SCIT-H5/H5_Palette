@@ -43,7 +43,7 @@ public class EgoController {
 	// swot 기본 글 읽기
 
 	@RequestMapping(value = "swot/swotReadForm", method = RequestMethod.GET)
-	public String swotRead(HttpSession session) {
+	public String swotRead(Model model, HttpSession session) {
 
 		logger.info("CON | SWOT 글읽기 시작");
 
@@ -62,7 +62,7 @@ public class EgoController {
 
 		// 읽혀온 스왓을 리턴해줌
 		if(readSWOT != null)
-			session.setAttribute("swotlist", readSWOT);
+			model.addAttribute("swotlist", readSWOT);
 
 		// swotRead 페이지에서 글작성버튼 생성여부 판단
 

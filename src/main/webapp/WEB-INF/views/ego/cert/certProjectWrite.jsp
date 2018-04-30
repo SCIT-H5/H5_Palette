@@ -63,7 +63,7 @@
 	  
     	<p style="width: 100%; margin-bottom: 30px; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 리스트 작성</p>
 	  	    	
-		<form id="projectWrite_One" action="projectWrite_One"  method="POST" enctype="multipart/form-data" onsubmit="return formCheck();">	
+    <form id="projectWrite_One" action="projectWrite_One"  method="POST" enctype="multipart/form-data" onsubmit="return formCheck();">   
 		<!-- 세션에서 아이디 받아오기 -->
 		<input type="hidden" name="proId" value="${sessionScope.loginId}">
 		

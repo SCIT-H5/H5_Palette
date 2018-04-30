@@ -119,7 +119,6 @@
 </head>
 
 <body id="page-top">
-	
 	<!-- Navigation -->
 <%--     <%@include file="/WEB-INF/views/navi.jsp"%>  --%>
        
@@ -142,11 +141,15 @@
 	  <div class="content">
 	    <h1>MY HISTORY</h1>
 		    <h2>나의 연혁 관리 페이지</h2>
+<<<<<<< HEAD
 		    <!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   			作成
 			</button>
 	    	<!-- <p><a href="historyWriteForm" target="_blank">나의 연혁 작성하러 가기</a></p> -->
+=======
+	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
+>>>>>>> 4-30.6차합병브런치
 	  </div>
 	</div>
 	

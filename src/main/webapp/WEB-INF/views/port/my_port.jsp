@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Palette - 내 포트폴리오</title>
+<%@include file="/WEB-INF/views/navi.jsp"%>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <!-- Table_Fixed_Header CSS -->
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
@@ -47,13 +47,12 @@
 					var commentText = obj[i].commentText;
 					var commentNum = obj[i].commentNum;
 					var replyportNum = obj[i].replyportNum;
-					alert(replyportNum);
+					//alert(replyportNum);
 					str += "<tr class='row100 head' style='font-weight: bold;'><td class='cell100' style='width:25%; padding-left: 40px;'><b>"+commentID+"</b></td>";
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
 					if(portId == commentID){
 						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[수정]</a>";
-							
 					}
 					str +="</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
@@ -68,6 +67,7 @@
 				
 					
 				}
+				$('.reply').html("");
 				$('.reply').html(str);
 			},
 			error : function(e) {
@@ -98,7 +98,7 @@
 	function replyEditForm(commentNum, replyportNum, retext) {
 		//해당 리플번호를 붙여 생성한 <div>태그에 접근
 		/* alert('들어왓?'+commentNum); */
-		var div = document.getElementById("div" + commentNum);
+		var div = document.getElementById("div" + commentNum); //div를 만들어냄 댓글넘버를통해
 	
 		var str = '<form name="editForm' + commentNum + '" action="replyEdit" method="post">';
 		str += '<input type="hidden" name="commentNum" value="'+commentNum+'">';
@@ -106,13 +106,12 @@
 		str += '&nbsp;';
 		str += '<input type="text" name="commentText" value="' + retext + '" style="width:697px;">';
 		str += '&nbsp;';
-		str += '<a href="javascript:replyEdit(document.editForm' + commentNum
-				+ ')">[저장]</a>';
+		str += '<a href="javascript:replyEdit(document.editForm' + commentNum + ')">[저장]</a>';
 		str += '&nbsp;';
-		str += '<a href="javascript:replyEditCancle(document.getElementById(\'div'
-				+ commentNum + '\'))">[취소]</a>';
+		str += '<a href="javascript:replyEditCancle(document.getElementById(\'div' + commentNum + '\'))">[취소]</a>';
 		str += '</form>';
 		div.innerHTML = str;
+		
 	}
 
 	//리플 수정 취소
@@ -181,7 +180,7 @@
 
 <body class="back">
 <!-- Navigation -->
-    <%@include file="/WEB-INF/views/navi.jsp"%>
+    
 <div class="bg-image-blur" style="">
 	
 	<img src="/h5/resources/img/myportfolio.png" style="width: 100%;">
@@ -190,7 +189,7 @@
 
 <div>
 	<!-- portfolio list -->
-	<div  style="width: 20%; height: 1000px; position: absolute; margin: 20px; text-align: center; border: 1px solid;">
+	<div  style="width: 13%; height: 1000px; position: absolute; margin: 20px; text-align: center; border: 1px solid;">
 	
 		<c:forEach items="${portList }" var="list" varStatus="status">
 			<br><br>
@@ -201,11 +200,11 @@
 	</div>
 </div>	
 
-<div style="width:75%; height:1000px; float: right; margin: 20px; background-color: white;">
+<div style="width:82%; height:1000px; float: right; margin: 20px; background-color: white;">
 
 	<!-- portfolio view -->
 			<div id="portDiv" class="portDiv" >
-				<p>뷰</p>
+				<img alt="" src="/h5/resources/portfolio/img/resume.gif" width="100%" height="1000px">
 				
 			</div>	
 				<!-- 리플 작성 폼 시작 -->
@@ -222,56 +221,9 @@
 				<br>
 				<!-- 리플 목록 출력 시작 -->
 				<table class="reply">
-					<%-- <c:forEach var="reply" items="${replylist}">
-					<input type="hidden" name="reply" id="reply_t" />
-						<tr>
-							<td class="commentID">
-							<b>${reply.commentID}</b>
-							</td>
-							<td class="commentText">
-							${reply.commentText}
-							</td>
-							<td class="replybutton">
-							<c:if test="${loginId == reply.commentID}">
-							<a href="javascript:replyEditForm(${reply.commentNum}, ${reply.replyportNum}, '${reply.commentText}')">
-							[수정]</a>
-							</c:if>
-							</td>	
-							<td class="replybutton">
-							<c:if test="${loginId == reply.commentID}">
-							<a href="javascript:replyDelete(${reply.commentNum}, ${reply.replyportNum })">
-							[삭제]</a>
-							</c:if>
-							</td>
-						</tr>
-						<tr>
-							<!-- 리플 수정 폼이 나타날 위치 -->
-							<td class="white" colspan="4">
-							<div id="div${reply.commentNum}"></div>
-							</td>
-						</tr>
-
-					</c:forEach> --%>
 				</table>
-				
-				
-				
-				
-			
-			
-			
-				<!-- buttons -->
-				<!-- <div style="height: 20%; background-color: fuchsia; text-align: center;">
-					<input type="button" value="수정">
-					<input type="button" value="다운로드">
-					<input type="button" value="삭제">
-				</div> -->
 				
 	
 </div>				
-		
-	
-
-
 </body>
 </html>

@@ -11,12 +11,14 @@
 			portId
 			,portNum
 			,portContent
+			,portModify
 			)
 		values
 			(
 			#{portId}
 			,portfolio_SEQ.nextval
 			,#{portContent}
+			,#{portModify}
 			)
 	</insert>
 	
@@ -26,6 +28,7 @@
 			portfolio
 		set
 			portContent = #{portContent}
+			,portModify = #{portModify}
 		where
 			portNum = #{portNum}
 			and

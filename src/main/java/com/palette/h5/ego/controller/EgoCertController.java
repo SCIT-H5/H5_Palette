@@ -13,11 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.palette.h5.ego.dao.EgoCertDAO;
+import com.palette.h5.ego.dao.EgoDAO;
 import com.palette.h5.ego.vo.CertCertificate;
 import com.palette.h5.ego.vo.CertLect;
 import com.palette.h5.ego.vo.CertProject;
+import com.palette.h5.util.FileService;
+import com.palette.h5.vo.FileManagement;
 
 @Controller
 @RequestMapping(value = "ego/cert")
@@ -28,33 +32,38 @@ public class EgoCertController {
 	@Autowired
 	EgoCertDAO dao;
 
+	@Autowired
+	EgoDAO edao;
+
+	final String uploadPath = "/certProject"; // 프로젝트 파일 업로드 경로
+
 	// 이수과목 메인
 	@RequestMapping(value = "certLectReadForm", method = RequestMethod.GET)
 	public String certLectReadForm() {
 		// 이동폼 유저 아이디에 맞는 테이블 불러오기
 		return "ego/cert/certLectReadForm";
 	}
-	
+
 	// 이수과목 데이터 쓰기
 	@ResponseBody
 	@RequestMapping(value = "certLectWrite", method = RequestMethod.POST)
 	public void certLectWrite(String tablehtml, String datatable, HttpSession session) {
 		logger.info("Controller | 이수과목 데이터 쓰기");
-		//logger.info(tablehtml);
-		//logger.info(datatable);
+		// logger.info(tablehtml);
+		// logger.info(datatable);
 
 		String lectId = (String) session.getAttribute("loginId"); // 세션의 아이디
-																  // 가져오기
+																	// 가져오기
 		/*
-		HashMap<String, String> certficateMap = new HashMap<String, String>();
-		certficateMap.put("certId", certId);
-		certficateMap.put("certhtml", tablehtml);
-		certficateMap.put("certjson", datatable);
-		*/
-		
+		 * HashMap<String, String> certficateMap = new HashMap<String,
+		 * String>(); certficateMap.put("certId", certId);
+		 * certficateMap.put("certhtml", tablehtml);
+		 * certficateMap.put("certjson", datatable);
+		 */
+
 		CertLect certLect = new CertLect(lectId, datatable, tablehtml);
 		CertLect certLect2 = dao.certLectRead(lectId);
-			
+
 		if (certLect2 == null) {
 			// db에 값이 없을때 insert
 			dao.certLectWrite(certLect);
@@ -62,7 +71,7 @@ public class EgoCertController {
 			// db에 값이 있을때 update
 			dao.certLectUpdate(certLect);
 		}
-		
+
 		// System.out.println(datatable);
 		logger.info("Controller | 이수과목 데이터쓰기 종료");
 	}
@@ -153,7 +162,6 @@ public class EgoCertController {
 		return "ego/swot/swotReadForm";
 	}
 
-	
 	@RequestMapping(value = "certProjectReadForm", method = RequestMethod.GET)
 	public String projectRead(HttpSession session, Model model, CertProject CertProject) {
 
@@ -179,6 +187,12 @@ public class EgoCertController {
 
 		result = dao.projectdetail_One(proNum);
 
+		if (result.getProFileId() != 0) {
+			int file_id = result.getProFileId();
+			FileManagement file = edao.fileSelectOne(file_id);
+			model.addAttribute("file", file);
+		}
+
 		model.addAttribute("result", result);
 
 		// model.addAttribute("proNum");
@@ -199,12 +213,34 @@ public class EgoCertController {
 
 	// 프로젝트 작성
 	@RequestMapping(value = "projectWrite_One", method = RequestMethod.POST)
-	public String projectWrite_One(CertProject CertProject, HttpSession session) {
+	public String projectWrite_One(CertProject CertProject, MultipartFile upload, HttpSession session) {
 		// model.addAttribute("proNum");
 		logger.info("프로젝트 리스트 작성 ");
 
 		String proId = (String) session.getAttribute("loginId");// 섹션의 아이디 가져오기
+		System.out.println(upload);
+		int idx = 0;
+
+		if (!upload.isEmpty()) {
+			// Board객체에 originalFileName과 savedfileName을 저장
+			logger.info("첨부파일 추가 시작");
+
+			String savedfile = FileService.saveFile(upload, uploadPath);
+			String originalfile = upload.getOriginalFilename();
+
+			FileManagement fileManagement = new FileManagement();
+			fileManagement.setFileDivision(3);
+			fileManagement.setFileUserId(proId);
+			fileManagement.setOriginalFileName(originalfile);
+			fileManagement.setSavedFileName(savedfile);
+
+			edao.file_management(fileManagement);
+			idx = fileManagement.getIdx();
+			logger.info("첨부파일 추가 종료" + idx);
+		}
+
 		CertProject.setProId(proId);
+		CertProject.setProFileId(idx);
 
 		System.out.println("넘어온 작성된 디테일 값 : " + CertProject);
 
@@ -233,11 +269,56 @@ public class EgoCertController {
 		return "ego/cert/certProjectEditForm";
 	}
 
-	
+	// 프로젝트 수정
 	@RequestMapping(value = "projectEdit", method = RequestMethod.POST)
-	public String projectEdit(int proNum, Model model, CertProject CertProject, HttpSession session) {
+	public String projectEdit(Model model, CertProject CertProject, MultipartFile upload, HttpSession session) {
 
 		String proId = (String) session.getAttribute("loginId");// 섹션의 아이디 가져오기
+		int proNum = CertProject.getProNum();
+
+		int proFileId = dao.projectdetail_One(proNum).getProFileId();
+
+		// 수정한 첨부파일 있을때
+		if (!upload.isEmpty()) {
+			// Board객체에 originalFileName과 savedfileName을 저장
+			logger.info("첨부파일 추가 시작");
+
+			String savedfile = FileService.saveFile(upload, uploadPath);
+			String originalfile = upload.getOriginalFilename();
+
+			FileManagement fileManagement = new FileManagement();
+
+			fileManagement.setOriginalFileName(originalfile);
+			fileManagement.setSavedFileName(savedfile);
+
+			// 원래 파일 없으면 생성
+			if (proFileId == 0) {
+				fileManagement.setFileDivision(3);
+				fileManagement.setFileUserId(proId);
+				edao.file_management(fileManagement);
+				int idx = fileManagement.getIdx();
+				CertProject.setProFileId(idx);
+			}
+			// 아니면 수정
+			else {
+				fileManagement.setFile_id(proFileId);
+				System.out.println(fileManagement);
+				edao.proFileUpdate(fileManagement);
+				CertProject.setProFileId(proFileId);
+			}
+		}
+		// 수정한 첨부파일이 없을때
+		else {
+			// 원래 파일 없으면
+			if (proFileId == 0) {
+				CertProject.setProFileId(0);
+			}
+			// 원래 파일 있으면
+			else {
+				CertProject.setProFileId(proFileId);
+			}
+		}
+
 		CertProject.setProId(proId);
 
 		dao.projectUpdate(CertProject);
