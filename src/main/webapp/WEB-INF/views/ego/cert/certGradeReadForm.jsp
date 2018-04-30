@@ -24,26 +24,53 @@
 	<!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 	
+	<style type="text/css">
+		.filebox label { 
+			display: inline-block; 
+			padding: .5em .75em; 
+			color: white; 
+			font-size: large; 
+			width: 15%;
+			text-align: center;
+			line-height: normal; 
+			vertical-align: middle;
+			background-color: rgb(104,22,22); 
+			cursor: pointer; 
+			border: 1px solid #ebebeb; 
+			border-bottom-color: #e2e2e2; 
+			border-radius: .50em; 
+		} 
+		.filebox input[type="file"] { /* 파일 필드 숨기기 */ 
+			position: absolute; 
+			width: 1px; 
+			height: 1px; 
+			padding: 0; 
+			margin: -1px; 
+			overflow: hidden; 
+			clip:rect(0,0,0,0); 
+			border: 0; 
+		}
+	</style>
+	
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
         var size = ${fn:length(fileList)};
         
         <c:forEach items="${fileList}" var="file">
-    	alert('${file.savedFileName}');
-    	
+    	    	
     	    var data = '${file.savedFileName}';
         	var str = "";
             // 이미지 파일이면 썸네일 이미지 출력
             if(checkImageType(data)){ 
-                str = "<div><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
+                str = "<div style='margin: 20px;'><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
                 str += "<img src='${path}/h5/displayFile01?fileName="+data+"'></a>";
             // 일반파일이면 다운로드링크
             } else { 
-                str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+                str = "<div style='margin: 20px;'><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
             }
             // 삭제 버튼            
-            str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
+            str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[ 削除 ]</span></div>";
             $(".uploadedList01").append(str);
         </c:forEach>
         
@@ -79,14 +106,14 @@
                 	var str = "";
 					// 이미지 파일이면 썸네일 이미지 출력
                     if(checkImageType(data)){ 
-                        str = "<div><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
+                        str = "<div style='margin: 20px;'><a href='${path}/h5/displayFile01?fileName="+getImageLink(data)+"'>";
                         str += "<img src='${path}/h5/displayFile01?fileName="+data+"'></a>";
                     // 일반파일이면 다운로드링크
                     } else { 
-                        str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+                        str = "<div style='margin: 20px;'><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
                     }
                     // 삭제 버튼
-                    str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[削除]</span></div>";
+                    str += "<span data-src="+data+" style='margin: 50px; cursor: pointer;'>[ 削除 ]</span></div>";
                     $(".uploadedList01").append(str);
                 }, error : function(e) {
 					alert(JSON.stringify(e));
@@ -96,7 +123,7 @@
         
       //업로드한 파일을 목록에서 삭제하기 위해 <span>태그를 클릭 이벤트로 설정
     	$(".uploadedList01").on("click", "span", function(event){
-    	    alert("이미지 삭제");
+    	    confirm("ファイルを削除しますか？");
     	    var that = $(this); // 여기서 this는 클릭한 span태그
     	    $.ajax({
     	        url: "../../deleteFile01",
@@ -152,6 +179,7 @@
 	
 	</script>
 </head>
+
 <body style="background-color: rgb(104,22,22);">
 	
 	<header>
@@ -167,11 +195,12 @@
 	<section id="container">
 		<form id="uploadAjax01" enctype="multipart/form-data">
 			<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
-				<div class="table100-head">
+				<div class="table100-head filebox" style="margin-top: 7px;">
 					<table>
 						<thead>
-							<tr class="row100 head" style="font-weight: bold;">
-								<th class="cell100" style="padding-left: 40px;">
+							<tr class="row100 head">
+								<th class="cell100" style="padding-left: 80px;">
+									<label for="upload">ファイル選択</label>
 									<input type="file" id="upload" name="file-data">
 								</th>								
 							</tr>
@@ -184,7 +213,7 @@
 						<tbody>						
 							<tr class="row100 body">
 								<td class="cell100" style="padding-left: 40px;">
-									<div class="uploadedList01" style="border: 1px solid gray;"></div>
+									<div class="uploadedList01" style="margin: 20px;"></div>
 								</td>
 							</tr>							
 						</tbody>

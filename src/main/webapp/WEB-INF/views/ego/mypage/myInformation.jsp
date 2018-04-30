@@ -8,9 +8,11 @@
 <title>마이 인포메이션</title>
 
 
+	<!-- Navigation -->
+    <%@include file="/WEB-INF/views/navi.jsp"%>
 
-<!-- jQuery -->
-		<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 
 <style type="text/css">
 .div_one{
@@ -67,10 +69,9 @@ $(document).ready(function() {
 
 </script>
 </head>
-<!-- Navigation -->
-    <%@include file="/WEB-INF/views/navi.jsp"%>
+	
 <body class="back">
-
+	<header id="bg-primary" style="height:70px; background-color: black;"></header>
 
 <div class="div_one">
 	<div class="inforEdit"><a href="#">회원 정보 수정</a></div>

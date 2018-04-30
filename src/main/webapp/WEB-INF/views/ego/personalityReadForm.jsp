@@ -28,12 +28,9 @@
 		.drop_weakword {
 			width: 750px; height: 50px; border: 1px solid black;
 		}
-		.strong_detail {
-			width: 750px; height: 300px; border: 1px solid black; display: none; text-align:left;
-		}
-		 .weak_detail {
-		 	width: 750px; height: 300px; border: 1px solid black; display: none; text-align:left;
-		 }
+		.strong_detail, .weak_detail {
+			width: 750px; height: 300px; border: 1px solid black; display: none; text-align:left; padding: 20px;
+		}		
 		.in_strongword {
 			cursor: pointer;
 			font-size : 20px;
@@ -61,6 +58,10 @@
 			width: 50%;
 			padding: 1em;
 		}
+		span {
+			vertical-align: middle; 
+			display: table-cell;
+		}		
 	</style>
 
 	<script type="text/javascript">
@@ -75,7 +76,58 @@
 			}
 		});
 		
+		function changeColor() {
+			$('.in_strongword').on('click', function() {
+				$(this).css('color', 'yellow');
+			});
+			$('.in_weakword').on('click', function() {
+				$(this).css('color', 'yellow');
+			});
+		}
+		
 		function yesdata() {
+			$('.in_strongword').off('click').on('click', function() {
+				$('.in_strongword').css('color', 'red');
+				$('.in_strongword').css('font-weight', 'normal');
+				$('.in_strongword').css('text-decoration', 'none');
+				$(this).css('color', 'blue');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
+				var v = $(this).attr('value');
+				var display = $('#strong_detail'+v).css('display');
+				if(display == 'none'){
+					$('.strong_detail').css('display', 'none');
+					$('#strong_detail'+v).css('display', 'block');
+				}
+				else if(display == 'block'){
+					$('#strong_detail'+v).css('display', 'none');
+					$('.in_strongword').css('color', 'red');
+					$('.in_strongword').css('font-weight', 'normal');
+					$('.in_strongword').css('text-decoration', 'none');
+				}
+			});
+			
+			$('.in_weakword').off('click').on('click', function() {
+				$('.in_weakword').css('color', 'blue');
+				$('.in_weakword').css('font-weight', 'normal');
+				$('.in_weakword').css('text-decoration', 'none');
+				$(this).css('color', 'red');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
+				var v = $(this).attr('value');
+				var display = $('#weak_detail'+v).css('display');
+				if(display == 'none'){
+					$('.weak_detail').css('display', 'none');
+					$('#weak_detail'+v).css('display', 'block');
+				}
+				else if(display == 'block'){
+					$('#weak_detail'+v).css('display', 'none');
+					$('.in_weakword').css('color', 'blue');
+					$('.in_weakword').css('font-weight', 'normal');
+					$('.in_weakword').css('text-decoration', 'none');
+				}
+			});
+		
 			var strong_cnt = 0;	//들어간 장점 갯수
 			var weak_cnt = 0;	//들어간 단점 갯수
 			
@@ -105,7 +157,12 @@
 			}	
 			
 			$('.in_strongword').off('click').on('click', function() {
-				
+				$('.in_strongword').css('color', 'red');
+				$('.in_strongword').css('font-weight', 'normal');
+				$('.in_strongword').css('text-decoration', 'none');
+				$(this).css('color', 'blue');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
 				var v = $(this).attr('value');
 				var display = $('#strong_detail'+v).css('display');
 				if(display == 'none'){
@@ -114,10 +171,19 @@
 				}
 				else if(display == 'block'){
 					$('#strong_detail'+v).css('display', 'none');
+					$('.in_strongword').css('color', 'red');
+					$('.in_strongword').css('font-weight', 'normal');
+					$('.in_strongword').css('text-decoration', 'none');
 				}
 			});
 			
 			$('.in_weakword').off('click').on('click', function() {
+				$('.in_weakword').css('color', 'blue');
+				$('.in_weakword').css('font-weight', 'normal');
+				$('.in_weakword').css('text-decoration', 'none');
+				$(this).css('color', 'red');
+				$(this).css('font-weight', 'bold');
+				$(this).css('text-decoration', 'underline');
 				var v = $(this).attr('value');
 				var display = $('#weak_detail'+v).css('display');
 				if(display == 'none'){
@@ -126,6 +192,9 @@
 				}
 				else if(display == 'block'){
 					$('#weak_detail'+v).css('display', 'none');
+					$('.in_weakword').css('color', 'blue');
+					$('.in_weakword').css('font-weight', 'normal');
+					$('.in_weakword').css('text-decoration', 'none');
 				}
 			});
 			//성격리스트에 드래그이벤트 생성
@@ -137,10 +206,12 @@
 			
 			//장점div영역에 드롭이벤트 생성
 			$('.drop_strongword').droppable({
+				
+			
 				drop : function( event, ui ) {
 					var word = ui.draggable.text();		//드래그 된 text값 변수에 담기
 					if(strong_cnt >= 3){
-						alert('장점은 3개까지만 가능합니다');
+						alert('長所は３つだけ可能です。');
 						return;
 					}
 					
@@ -148,17 +219,22 @@
 					for(var i=0; i<strong_cnt; i++){
 						var txt = $('#strong'+i).text();
 						if(txt == word){
-							alert("중복 불가능");
+							alert("中腹不可能");
 							return;
 						}
 					}
 					
 					//div에 text추가
-					$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"' value='"+strong_cnt+"'>"+word+"</span> ");
+					$(this).append("<span class='in_strongword' id='strong"+strong_cnt+"' value='"+strong_cnt+"'>"+word+"</span>&nbsp;&nbsp;");
 					
 					//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 					$('.in_strongword').off('click').on('click', function() {
-						
+						$('.in_strongword').css('color', 'red');
+						$('.in_strongword').css('font-weight', 'normal');
+						$('.in_strongword').css('text-decoration', 'none');
+						$(this).css('color', 'blue');
+						$(this).css('font-weight', 'bold');
+						$(this).css('text-decoration', 'underline');
 						var v = $(this).attr('value');
 						var display = $('#strong_detail'+v).css('display');
 						if(display == 'none'){
@@ -167,6 +243,9 @@
 						}
 						else if(display == 'block'){
 							$('#strong_detail'+v).css('display', 'none');
+							$('.in_strongword').css('color', 'red');
+							$('.in_strongword').css('font-weight', 'normal');
+							$('.in_strongword').css('text-decoration', 'none');
 						}
 					});
 					strong_cnt++;	//장점갯수 +
@@ -178,7 +257,7 @@
 				drop : function( event, ui ) {
 					var word = ui.draggable.text();
 					if(weak_cnt >= 3){
-						alert('단점은 3개까지만 가능합니다');
+						alert('短所は３つだけ可能です。');
 						return;
 					}
 					
@@ -186,16 +265,22 @@
 					for(var i=0; i<weak_cnt; i++){
 						var txt = $('#weak'+i).text();
 						if(txt == word){
-							alert("중복불가능");
+							alert("中腹不可能");
 							return;
 						}
 					}
 					
 					//div에 text추가
-					$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"' value='"+weak_cnt+"'>"+word+"</span> ");
+					$(this).append("<span class='in_weakword' id='weak"+weak_cnt+"' value='"+weak_cnt+"'>"+word+"</span>&nbsp;&nbsp;");
 					
 					//추가된 단어 클릭시 단어에 대한 편집영역 보이기,또는 숨기기
 					$('.in_weakword').off('click').on('click', function() {
+						$('.in_weakword').css('color', 'blue');
+						$('.in_weakword').css('font-weight', 'normal');
+						$('.in_weakword').css('text-decoration', 'none');
+						$(this).css('color', 'red');
+						$(this).css('font-weight', 'bold');
+						$(this).css('text-decoration', 'underline');
 						var v = $(this).attr('value');
 						var display = $('#weak_detail'+v).css('display');
 						if(display == 'none'){
@@ -204,6 +289,9 @@
 						}
 						else if(display == 'block'){
 							$('#weak_detail'+v).css('display', 'none');
+							$('.in_weakword').css('color', 'blue');
+							$('.in_weakword').css('font-weight', 'normal');
+							$('.in_weakword').css('text-decoration', 'none');
 						}
 					});
 					
@@ -236,7 +324,7 @@
 		<div id="container">
 		    <div class="row">
 		      <div class="mx-auto">
-		      	<img src="/h5/resources/img/personality-main.png" style="width: 100%;">
+		      	<img src="/h5/resources/img/personality_main.png" style="width: 100%;">
 		      </div>         
 		    </div>
 	    </div>
@@ -271,8 +359,8 @@
 		</div>
    		
    		<div class="outer"><div class="inner"><div class="centered">
-			<div class="drop_strongword table100 ver2" style="text-align: left;">
-				<b style="margin: 8px; font-size: large;">장점 |</b>
+			<div class="drop_strongword table100 ver2" style="text-align: left; display: table;">
+				<b style="margin:auto; width:20%; font-size: large; vertical-align: middle; display: table-cell;">　長所　　 |</b>
 			</div>
 			<c:if test="${persS == '[]' }">
 				<span id="strong_detail0" class="strong_detail table100 ver2" contenteditable="true"></span>
@@ -284,8 +372,8 @@
 					<span id="strong_detail${status.index }" class="strong_detail table100 ver2" contenteditable="true">${persS.persContent }</span>
 				</c:forEach>
 			</c:if>
-			<div class="drop_weakword table100 ver2" style="text-align: left;">
-				<b style="margin: 8px; font-size: large;">단점 |</b>
+			<div class="drop_weakword table100 ver2" style="margin-top: 50px; text-align: left; display: table;">
+				<b style="margin:auto; width:20%; font-size: large; vertical-align: middle; display: table-cell;">　短所　　 |</b>
 			</div>
 			<c:if test="${persW == '[]' }">
 				<span id="weak_detail0" class="weak_detail table100 ver2" contenteditable="true"></span>
@@ -299,10 +387,10 @@
 			</c:if>
 		<div class="divOne">
 			<c:if test="${persS == '[]' && persW == '[]' }">
-				<input type="button" style="margin-top: 20px;" id="saveBtn" class="button_1" value="저장하기">
+				<input type="button" style="margin-top: 20px;" id="saveBtn" class="button_1" value="セーブする">
 			</c:if>
 			<c:if test="${persS != '[]' || persW != '[]' }">
-				<input type="button" style="margin-top: 20px;" id="updateBtn" class="button_1" value="수정하기">
+				<input type="button" style="margin-top: 20px;" id="updateBtn" class="button_1" value="修整する">
 			</c:if>
 		</div>
 		</div></div></div>

@@ -47,14 +47,21 @@
 					tablehtml = obj.actHtml; //DB html 불러오기
 					console.log(jaatable);
 					console.log(tablehtml);
+<<<<<<< HEAD
 					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시
 						//alert("노데이트");
+=======
+					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시						
+>>>>>>> 후니후니브런치
 						dataable = false;
 						nodata(); //초기화테이블 생성
 						tableresize(); //테이블 리사이즈 생성
 						imgupload();
 					} else{
+<<<<<<< HEAD
 						//alert("노데이트 아님"); //값이 있을때
+=======
+>>>>>>> 후니후니브런치
 						$('#edittable2').html(tablehtml); //테이블 html로 값을 그림
 						fileIdx = $('#fileNum').val();
 						tableresize();
@@ -91,7 +98,7 @@
 							{
 								field_templates : {
 									'textarea' : {
-										html : '<textarea class="jaatextarea" style="width: 100%; height: 100%; resize: none; border: 0; text-align: center; font-family: Arial; "/>',
+										html : '<textarea class="jaatextarea" style="width: 100%; height: 100%; resize: none; border: 0; text-align: center; vertical-align: middle; font-family: Arial; "/>',
 										getValue : function(input) {
 											return $(input).val();
 										},
@@ -109,10 +116,8 @@
 										}
 									}
 								},
-								row_template : [ 'textarea', 'textarea', 'textarea', 'textarea',
-										'textarea', 'file' ],
-								headerCols : [ '활동명', '기관명', '활동기간', '직위', '업무내역',
-										'증명서첨부' ],
+								row_template : [ 'textarea', 'textarea', 'textarea', 'textarea', 'textarea', 'file' ],
+								headerCols : [ '活動名', '機関名', '活動期間', '職位', '業務内訳', '証明書添付' ],
 								first_row : false
 							});
 			/* 
@@ -138,10 +143,8 @@
 				//$("#complete").hide();
 				if(dataable == true){
 					datatable = JSON.stringify(exportData());
-					alert("데이터" + datatable);
 				} else{
-					datatable = jaatable.getJsonData();
-					alert("노데이터" + datatable);
+					datatable = jaatable.getJsonData();					
 				}
 				alert(datatable);
 				if(datatable != "[]"){
@@ -237,7 +240,7 @@
 		    	    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
 		    	
 		    	    if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
-		    	        alert("이미지파일 (.jpg, .png, .gif )만 업로드 가능합니다.");
+		    	        alert("イメージファイル (.jpg, .png, .gif)だけをアップロードできます。");
 		    	        $upfile.val('');
 		    	        return false;
 		    	    }
@@ -251,7 +254,7 @@
 	
 		        if(fileSize > maxSize)
 		        {
-		        	alert("파일사이즈 : "+ fileSize +"MB, 첨부파일 사이즈는 30MB 이내로 등록 가능합니다.");
+		        	alert("ファイルサイズ : "+ fileSize +"MB, 添付ファイルサイズは30MB以内で登録できます。");
 		        	$upfile.val('');
 		            return;
 		        }
@@ -294,16 +297,21 @@
 	<header>
 		<div class="my-auto" >
 			<div class="mx-auto" style="text-align: center;">
-				<img src="/h5/resources/img/activity_main.png" style="width: 100%;">					
+				<img src="/h5/resources/img/activity.png" style="width: 100%;">					
 			</div>         
 		</div>      
 	</header>
 	<section style="width: 90%;">
-		<div id="edittable2" class="table100 ver2" style="margin-left: 150px;"></div>
+		<div id="edittable2" class="table100 ver2" style="margin-left: 150px; vertical-align: middle;"></div>
 	</section>
 	<div class="divOne">
+<<<<<<< HEAD
 		<input type="button" id="updatetoggle" class="button_4" value="修正"/>
 		<input type="button" id="complete" class="button_5" value="セーブ"/>
+=======
+		<input type="button" id="updatetoggle" class="button_4" value="修整"/>
+		<input type="button" id="complete" class="button_5" value="完了"/>
+>>>>>>> 후니후니브런치
 	</div>
 	
 	<section>

@@ -83,14 +83,14 @@
 		
 		++tnum; //테이블넘버++
 		
-		var tadd = '<div class="divTable" id="divTable'+tnum+'">';
+		var tadd = '<div class="divTable" id="divTable'+tnum+'" style="color: yellow;">';
 		tadd += tablevalue;
 		tadd += '<div class="divTableBody" id="divTableBody'+tnum+'">';
 		tadd += '</div>';
 		tadd += '</div>';
-		tadd += '<input type="button" class="addgraphbtn btn btn-primary btn-light btn-l" onclick="addgraph('+tnum+')" id="addgraphbtn'+tnum+'" style="padding: 20px; margin: 10px;" value="그래프 추가"></input>';
+		tadd += '<input type="button" class="addgraphbtn btn btn-primary btn-light btn-l" onclick="addgraph('+tnum+')" id="addgraphbtn'+tnum+'" style="padding: 20px; margin: 10px;" value="グラフ追加"></input>';
 		tadd += '<input type="text" class="divTableCell table100 ver2" id="divTableCell'+tnum+'" style="float: left; padding: 20px; margin: 10px; width: 40%;"></input>';
-		tadd += '<input type="button" class="deltablebtn btn btn-primary btn-light btn-l" onclick="deltable('+tnum+')" id="deltablebtn'+tnum+'" style="padding: 20px; margin: 10px;" value="테이블삭제"></input>';
+		tadd += '<input type="button" class="deltablebtn btn btn-primary btn-light btn-l" onclick="deltable('+tnum+')" id="deltablebtn'+tnum+'" style="padding: 20px; margin: 10px;" value="テーブル削除"></input>';
 
 		$('#maindiv').append(tadd);
 		
@@ -123,12 +123,12 @@
 		
 		$('#divTableCell'+gtnum).val(""); //값을 지워준다.
 
-		var gadd = '<div class="divTableRow" id="divTableRow'+trow+'">';
+		var gadd = '<div class="divTableRow" id="divTableRow'+trow+'"  style="color: white;">';
 		gadd += '<div class="divGraphCell" id="divGraphCell'+trow+'">'+gtext+'</div>';
 		gadd += '<div class="range-slider color-1" style="width:80%;" id="range-slider'+trow+'">';
 		gadd += '<input type="text" class="js-range-slider" id="js-range-slider'+trow+'" />'; //슬라이더에 trow더하기
 		gadd += '</div>';
-		gadd += '<input type="button"  class="delrow btn btn-primary btn-l btn-light" style="margin: 10px; position: relative; top: -40px; float:right;" value="삭제" onclick="delrow('+trow+')" id="delrowbtn'+trow+'"></input>';
+		gadd += '<input type="button"  class="delrow btn btn-primary btn-l btn-light" style="margin: 10px; position: relative; top: -40px; float:right;" value="削除" onclick="delrow('+trow+')" id="delrowbtn'+trow+'"></input>';
 		gadd += '</div>';
 		
 		
@@ -240,12 +240,12 @@
 	<section>
 		<div style="width: 75%; margin-left: auto;">
 			<div style="margin: auto;">
-				<input type="button" class="btn btn-primary btn-light btn-l" onclick="addtable()" value="테이블 추가" style="padding: 20px; margin: 10px; float: left; vertical-align: bottom;"></input>
+				<input type="button" class="btn btn-primary btn-light btn-l" onclick="addtable()" value="テーブル追加" style="padding: 20px; margin: 10px; float: left; vertical-align: bottom;"></input>
 				<input type="text" id="divtablevalue" class="table100 ver2" style="float: left; padding: 20px; margin: 10px; width: 40%;"></input>
 			</div>
 			<div>
-				<input type="button" class="btn btn-primary btn-light btn-l" id="updateto" style="padding: 20px; margin: 10px;" value="수정"></input>
-				<input type="button" class="btn btn-primary btn-light btn-l" id="complete" style="padding: 20px; margin: 10px;" value="완료"></input>
+				<input type="button" class="btn btn-primary btn-light btn-l" id="updateto" style="padding: 20px; margin: 10px;" value="修整"></input>
+				<input type="button" class="btn btn-primary btn-light btn-l" id="complete" style="padding: 20px; margin: 10px;" value="完了"></input>
 			</div>
 		</div>
 	</section>

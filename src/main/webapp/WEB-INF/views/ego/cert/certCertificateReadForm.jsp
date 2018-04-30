@@ -193,7 +193,7 @@
 	<header>
 		<div class="my-auto" >
 			<div class="mx-auto" style="text-align: center;">
-				<img src="/h5/resources/img/certification-main.png" style="width: 100%;">					
+				<img src="/h5/resources/img/certification.png" style="width: 100%;">					
 			</div>         
 		</div>      
 	</header>

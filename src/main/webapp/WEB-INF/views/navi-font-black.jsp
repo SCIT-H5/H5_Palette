@@ -63,7 +63,7 @@
 		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/personalityReadForm">Personality Profile</a>
 		        	</li>
 		        	<li class="drop_down_submenu">
-		        		<a tabindex="-1" href="${pageContext.request.contextPath}/ego/qualification" class="drop_down_multi_p">Qualification</a>
+		        		<a tabindex="-1" class="drop_down_multi_p" style="cursor: default;">Qualification</a>
 		        		
 		        		<!-- 자격 사항 SubMenu dropDown -->		        		
 		        		<ul class="drop_down_menu">
