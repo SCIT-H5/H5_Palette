@@ -113,10 +113,12 @@ public class UserinfoController {
 	public void checkId(String id, HttpServletResponse response) {
 		
 		if (userDao.getUserinfoById(id) == null) {
+			System.out.println("ok");
 			response.setStatus(HttpServletResponse.SC_OK);
 			
 		} else {
 			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+			System.out.println(id);
 		}
 	}
 	
