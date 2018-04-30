@@ -465,9 +465,11 @@ function insertWiget( $item, num, x, y ) {
 				
 				//넣었던 이미지 위젯에 다시생성
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'">'
+						 +'<img class="close" style="width:30%;" src="/h5/resources/portfolio/img/close.png">'
 		    			 +'<img src="'+src+'" id="file'+num+'" f_type="'+f_type+'">'
 		  				 +'</li>');
 				
+				initCloseBtn('.ui-corner-tr');
 				
 			});//fadeIn
 		}//else
@@ -536,6 +538,7 @@ function imgUpload() {
 					text = "동영상";
 				}
 				$("#wigetBox > li:nth-last-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+valueNum+'">'
+						 +'<img class="close" style="width:30%;" src="/h5/resources/portfolio/img/close.png">'
 		    			 +'<img src="'+data+'" width="96px" height="72px" id="file'+valueNum+'" f_type="'+f_type+'">'
 		  				 +'</li>');
 				
@@ -546,6 +549,8 @@ function imgUpload() {
 					helper: "clone",
 					cursor: "move"
 			    });
+				
+				initCloseBtn('.ui-corner-tr');
 				
 				valueNum++;	//성공시 img에 줄 value값 1증가(아이디랑 value값 안겹치게하기위함)
 			},

@@ -236,19 +236,7 @@ $( function() {
 			revert : "invalid"
 		});
     	
-    	initResizable('.drag_text', 1);
-    	initResizable('.drag_graph', 4);
-    	initResizable('.drag_img', 0);
-    	initResizable('.drag_video', -1);
-    	$(".inputtable").resizable();
- 	  	$(".hi2td").resizable();
     	
-    	initCloseBtn('.drag_text');
-    	initCloseBtn('.drag_graph');
-    	initCloseBtn('.drag_stargraph');
-    	initCloseBtn('.drag_img');
-    	initCloseBtn('.drag_video');
-    	initCloseBtn('.drag_table');
     	
     	$(".addrowtd").show();
 		$(".addcolth").show();
@@ -289,7 +277,19 @@ $( function() {
 			});
 		}
 		
-		
+		initResizable('.drag_text', 1);
+    	initResizable('.drag_graph', 4);
+    	initResizable('.drag_img', 0);
+    	initResizable('.drag_video', -1);
+    	$(".inputtable").resizable();
+ 	  	$(".hi2td").resizable();
+    	
+    	initCloseBtn('.drag_text');
+    	initCloseBtn('.drag_graph');
+    	initCloseBtn('.drag_stargraph');
+    	initCloseBtn('.drag_img');
+    	initCloseBtn('.drag_video');
+    	initCloseBtn('.drag_table');
     }//if
     
 });	/* //function종료 */
