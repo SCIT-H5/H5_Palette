@@ -86,12 +86,12 @@
 	<form action="portUpdateForm" method="post" id="upForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="update" value="수정">
+		<input type="button" id="update" value="修整">
 	</form>
 	<form action="portDelete" method="post" id="delForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
 		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="delete" value="삭제">
+		<input type="button" id="delete" value="削除">
 	</form>
 	<!-- <div id="see"></div>	 -->
 

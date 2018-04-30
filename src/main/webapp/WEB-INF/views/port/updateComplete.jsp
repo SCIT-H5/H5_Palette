@@ -15,9 +15,9 @@ function gohome() {
 </script>
 
 
-수정성공 
+修整成功 
 
-<input type="button" value="메인화면" onclick="gohome()">
+<input type="button" value="メイン画面" onclick="gohome()">
 </head>
 <body>
 
