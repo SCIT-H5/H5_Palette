@@ -47,12 +47,20 @@
 					tablehtml = obj.actHtml; //DB html 불러오기
 					console.log(jaatable);
 					console.log(tablehtml);
+
+					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시
+						//alert("노데이트");
+
 					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시						
+
 						dataable = false;
 						nodata(); //초기화테이블 생성
 						tableresize(); //테이블 리사이즈 생성
 						imgupload();
 					} else{
+
+						//alert("노데이트 아님"); //값이 있을때
+
 						$('#edittable2').html(tablehtml); //테이블 html로 값을 그림
 						fileIdx = $('#fileNum').val();
 						tableresize();
@@ -161,6 +169,7 @@
 				console.log(datatable);
 				
 				$('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">');
+				 $('input[type="text"]').attr("readonly", true);
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
@@ -193,7 +202,9 @@
 	
 		$(document).ready(function() { //업데이트 펑션
 			$("#updatetoggle").click(function() {
-				$(".addrowtd").slideToggle("slow");
+				   $('.addrowtd').css('display', 'table-cell');
+			    	  //$(".addrowtd").slideToggle("slow");
+			       $('input[type="text"]').attr("readonly", false);
 				if (toggle == true) {
 					$(".jaatextarea").attr("readonly", true);
 					tableresize();
@@ -293,8 +304,13 @@
 		<div id="edittable2" class="table100 ver2" style="margin-left: 150px; vertical-align: middle;"></div>
 	</section>
 	<div class="divOne">
+
+		<input type="button" id="updatetoggle" class="button_4" value="修正"/>
+		<input type="button" id="complete" class="button_5" value="セーブ"/>
+
 		<input type="button" id="updatetoggle" class="button_4" value="修整"/>
 		<input type="button" id="complete" class="button_5" value="完了"/>
+
 	</div>
 	
 	<section>

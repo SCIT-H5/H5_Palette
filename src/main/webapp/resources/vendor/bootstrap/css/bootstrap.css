@@ -5446,6 +5446,7 @@ button.close {
 }
 
 .modal-content {
+  height: 650px;	
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;

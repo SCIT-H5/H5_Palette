@@ -8,6 +8,17 @@
    <title>Palette - 이수과목</title>
    
    <%@include file="/WEB-INF/views/navi.jsp"%>
+   
+   <!-- Table_Fixed_Header CSS -->
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/animate/animate.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/select2/select2.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/util.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/Table_Fixed_Header/css/main.css">
+	<!--===============================================================================================-->
    <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -85,10 +96,8 @@
                            }
                         }
                      },
-                     row_template : [ 'textarea', 'textarea', 'textarea',
-                           'textarea', 'textarea' ],
-                     headerCols : [ '구분', '연도/학기', '교과목명', '평점',
-                           '비고' ],
+                     row_template : [ 'textarea', 'textarea', 'textarea','textarea', 'textarea' ],
+                    /*  headerCols : [ '区分', '年/学期', '科目', '評点', '備考' ], */
                      first_row : false
                   });
       /* 
@@ -99,7 +108,7 @@
        */
       
    }; //end edittable function
-    
+    //저장버튼 클릭
    $(document).ready(function() {
       $("#complete").click(function() {
          //테이블리사이즈 디스트로이
@@ -131,6 +140,7 @@
            }
          console.log(datatable);
          
+         $('input[type="text"]').attr("readonly", true);
          tablehtml = $('#edittable2').html();
 
          console.log(tablehtml);
@@ -163,9 +173,12 @@
       });
    });
 
+   //수정버튼 클릭
    $(document).ready(function() { //업데이트 펑션
       $("#updatetoggle").click(function() {
-         $(".addrowtd").slideToggle("slow");
+         $('.addrowtd').css('display', 'table-cell');
+    	  //$(".addrowtd").slideToggle("slow");
+         $('input[type="text"]').attr("readonly", false);
          if (toggle == true) {
             $(".jaatextarea").attr("readonly", true);
             tableresize();
@@ -193,22 +206,51 @@
 </script>
 <style type="text/css">
 .btndiv{
-
-    width: 100px;
-    
+    width: 300px;
     margin: auto;
+    margin-top: 90px;
 }
+.back{
+		 background-color: rgb(64,64,64);
+	}
+.addcolth{
+	color: red;
+	}
+#updatetoggle{
+ float: left;
+ margin-right: 10px;
+}	
+#edittable2{
+	width: 80%;
+    margin: auto;
+    margin-top: 100px;
+}
+
 </style>
 
 </head>
-<body>
+<body class="back">
 <div class="bg-image-blur" style="">
 	<img src="/h5/resources/img/subject.png" style="width: 100%;">
 <div id="edittable2"></div>
 
 <div class="btndiv">
-   <button id="updatetoggle">수정</button>
-   <button id="complete">완료</button>
+   <button id="updatetoggle" class="button_2 btn-xl">修正</button>
+   <button id="complete" class="button_2 btn-xl">セーブ</button>
 </div>   
+
+<section>
+		<!-- Navigation -->
+		<%@include file="/WEB-INF/views/footer-text-white.jsp"%>
+	</section>
+	
+	<script
+		src="${pageContext.request.contextPath}/resources/table/js/test3.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/table/js/jquery-ui.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/table/js/jquery-ui.min.js"></script>
+	
+	<script src="${pageContext.request.contextPath}/resources/table/js/wiget_table.js"></script>
 </body>
 </html>

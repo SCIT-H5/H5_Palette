@@ -157,7 +157,15 @@
 		        }
 				console.log(datatable);
 				
+<<<<<<< HEAD
 			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
+=======
+<<<<<<< HEAD
+				 $('input[type="text"]').attr("readonly", true);
+=======
+			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
+>>>>>>> 4-30.6차합병브런치
+>>>>>>> 4-28지농점심
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
@@ -190,7 +198,9 @@
 	
 		$(document).ready(function() { //업데이트 펑션
 			$("#updatetoggle").click(function() {
-				$(".addrowtd").slideToggle("slow");
+				 $('.addrowtd').css('display', 'table-cell');
+		    	  //$(".addrowtd").slideToggle("slow");
+		         $('input[type="text"]').attr("readonly", false);
 				if (toggle == true) {
 					$(".jaatextarea").attr("readonly", true);
 					tableresize();

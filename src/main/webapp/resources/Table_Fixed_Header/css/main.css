@@ -171,8 +171,8 @@ table {
 }
 
 th, td {
-  font-weight: unset;
-  padding-right: 10px;
+  /* font-weight: unset;
+  padding-right: 10px; */
 }
 
 .column1 {

@@ -204,7 +204,7 @@
 
 	<!-- portfolio view -->
 			<div id="portDiv" class="portDiv" >
-				<p>뷰</p>
+				<img alt="" src="/h5/resources/portfolio/img/resume.gif" width="100%" height="1000px">
 				
 			</div>	
 				<!-- 리플 작성 폼 시작 -->

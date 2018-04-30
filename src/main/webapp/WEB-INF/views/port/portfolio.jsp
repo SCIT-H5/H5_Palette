@@ -449,25 +449,37 @@ function createGraph(i) {
 		    	<li class="ui-widget-content ui-corner-tr" value="3" id="bar_graph">
 		    		<!-- <h5 class="ui-widget-header">바그래프</h5> -->
 
-		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_bargraph.png" width="96" height="72">
+		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/mack.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2" >
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="1">
-				    		<h5 class="ui-widget-header">1</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_1.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="2">
-				    		<h5 class="ui-widget-header">2</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_2.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="3">
-				    		<h5 class="ui-widget-header">3</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_3.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="4">
-				    		<h5 class="ui-widget-header">4</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_4.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="5">
-				    		<h5 class="ui-widget-header">5</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_5.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="3" type="6">
-				    		<h5 class="ui-widget-header">6</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/bar_6.png" width="96" height="72">
+							</h5>
 				    	</li>
 		   			</ul>
 		    	</li>
@@ -476,16 +488,24 @@ function createGraph(i) {
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_circlegraph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2">
 				    	<li class="ui-widget-content ui-corner-tr" value="4" type="1">
-				    		<h5 class="ui-widget-header">1</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/cycle_1.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="4" type="2">
-				    		<h5 class="ui-widget-header">2</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/cycle_2.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="4" type="3">
-				    		<h5 class="ui-widget-header">3</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/cycle_3.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="4" type="4">
-				    		<h5 class="ui-widget-header">4</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/cycle_4.png" width="96" height="72">
+							</h5>
 				    	</li>
 		   			</ul>
 		    	</li>
@@ -494,13 +514,19 @@ function createGraph(i) {
 		    		<img src="${pageContext.request.contextPath}/resources/portfolio/img/icon_etc_graph.png" width="96" height="72">
 		    		<ul class="wigetBox ui-helper-reset ui-helper-clearfix ui-side2">
 				    	<li class="ui-widget-content ui-corner-tr" value="5" id="graph5_1">
-				    		<h5 class="ui-widget-header">horizontal</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/dan_1.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="5" id="graph5_2">
-				    		<h5 class="ui-widget-header">movie</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/dan_2.png" width="96" height="72">
+							</h5>
 				    	</li>
 				    	<li class="ui-widget-content ui-corner-tr" value="5" id="graph5_3">
-				    		<h5 class="ui-widget-header">star</h5>
+				    		<h5 class="ui-widget-header">
+								<img src="${pageContext.request.contextPath}/resources/portfolio/img/dan_3png.png" width="96" height="72">
+							</h5>
 				    	</li>
 		   			</ul>
 		    	</li>

@@ -255,37 +255,49 @@ function insertWiget( $item, num, x, y ) {
 				if(type == 1){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-1');
 					$("#bar_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="1">'
-			    			 +'<h5 class="ui-widget-header">1</h5>'
+			    			 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_1.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 2){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-2');
 					$("#bar_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="2">'
-			    			 +'<h5 class="ui-widget-header">2</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_2.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 3){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-3');
 					$("#bar_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="3">'
-			    			 +'<h5 class="ui-widget-header">3</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_3.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 4){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-4');
 					$("#bar_graph li:nth-child(3)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="4">'
-			    			 +'<h5 class="ui-widget-header">4</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_4.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 5){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-5');
 					$("#bar_graph li:nth-child(4)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="5">'
-			    			 +'<h5 class="ui-widget-header">5</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_5.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 6){
 					$('#bargraph'+bar_graphNum).parent('.drag_graph').addClass('range-slider color-6');
 					$("#bar_graph li:nth-child(5)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="6">'
-			    			 +'<h5 class="ui-widget-header">6</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/bar_6.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				
@@ -340,22 +352,30 @@ function insertWiget( $item, num, x, y ) {
 				//넣었던 이미지 위젯에 다시생성
 				if(type == 1){
 					$("#circle_graph > ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="1">'
-			    			 +'<h5 class="ui-widget-header">1</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/cycle_1.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 2){
 					$("#circle_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="2">'
-			    			 +'<h5 class="ui-widget-header">2</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/cycle_2.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 3){
 					$("#circle_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="3">'
-			    			 +'<h5 class="ui-widget-header">3</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/cycle_3.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				else if(type == 4){
 					$("#circle_graph li:nth-child(3)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" type="4">'
-			    			 +'<h5 class="ui-widget-header">4</h5>'
+							 +'<h5 class="ui-widget-header">'
+							 +'<img src="/h5/resources/portfolio/img/cycle_4.png" width="96" height="72">'
+							 +'</h5>'
 			  				 +'</li>');
 				}
 				
@@ -573,8 +593,10 @@ function createEtcGraph(etc_graphNum, num, id, g_value) {
 	      });
 		$('#stargraph'+etc_graphNum).attr("g_type", 1);
 		$("#etc_graph ul").prepend('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_1">'
-    			 +'<h5 class="ui-widget-header">horizontal</h5>'
-  				 +'</li>'); 
+				+'<h5 class="ui-widget-header">'
+				 +'<img src="/h5/resources/portfolio/img/dan_1.png" width="96" height="72">'
+				 +'</h5>'
+ 				 +'</li>');
 	}
 	else if(id == "graph5_2"){
 		$('#stargraph'+etc_graphNum).barrating({
@@ -586,8 +608,10 @@ function createEtcGraph(etc_graphNum, num, id, g_value) {
 	      });
 		$('#stargraph'+etc_graphNum).attr("g_type", 2);
 		$("#etc_graph li:nth-child(1)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_2">'
-    			 +'<h5 class="ui-widget-header">movie</h5>'
-  				 +'</li>'); 
+				+'<h5 class="ui-widget-header">'
+				 +'<img src="/h5/resources/portfolio/img/dan_2.png" width="96" height="72">'
+				 +'</h5>'
+ 				 +'</li>');
 	}
 	else if(id == "graph5_3"){
 		$('#stargraph'+etc_graphNum).barrating({
@@ -599,8 +623,10 @@ function createEtcGraph(etc_graphNum, num, id, g_value) {
 	      });
 		$('#stargraph'+etc_graphNum).attr("g_type", 3);
 		$("#etc_graph li:nth-child(2)").after('<li class="ui-widget-content ui-corner-tr" value="'+num+'" id="graph5_3">'
-    			 +'<h5 class="ui-widget-header">star</h5>'
-  				 +'</li>'); 
+				+'<h5 class="ui-widget-header">'
+				 +'<img src="/h5/resources/portfolio/img/dan_3png.png" width="96" height="72">'
+				 +'</h5>'
+ 				 +'</li>');
 	}
 }
 

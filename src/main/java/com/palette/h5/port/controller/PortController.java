@@ -124,7 +124,7 @@ public class PortController {
 		dao.portUpdate(portfolio);
 		
 		logger.info("Controller | 포트폴리오 수정  종료");
-		return "port/updateComplete";
+		return "redirect:/main";
 	}
 	
 

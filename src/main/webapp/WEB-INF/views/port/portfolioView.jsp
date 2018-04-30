@@ -98,6 +98,7 @@
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->
+	
 	</div>
 	
 	<%-- <div class="btnDiv">
