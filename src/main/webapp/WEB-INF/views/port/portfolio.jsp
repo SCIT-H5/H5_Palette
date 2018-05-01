@@ -575,7 +575,11 @@ function createGraph(i) {
 	</select>
 	<br>
 		
+<<<<<<< HEAD
 	<select id="foreColor" style="width: 23%;">
+=======
+	<select id="foreColor" width="50px">
+>>>>>>> 5-1포폴공유,포폴height적용2
 		<option value="">フォント色</option>
 		<option value="#f00">赤い</option>
 		<option value="#00f">青い</option>

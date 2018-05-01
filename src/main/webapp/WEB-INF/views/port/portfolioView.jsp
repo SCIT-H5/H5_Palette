@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@include file="/WEB-INF/views/navi.jsp"%>
 
 <!-- jquery, jquery-ui, 위젯에 필요한 css -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -83,6 +82,7 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	<form action="portUpdateForm" method="post" id="upForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
@@ -97,6 +97,8 @@
 	<!-- <div id="see"></div>	 -->
 
 =======
+=======
+>>>>>>> 5-1포폴공유,포폴height적용2
 	
 	<c:if test="${sessionScope.loginId == port.portId}">
 		<form action="portUpdateForm" method="post" id="upForm">
@@ -111,7 +113,10 @@
 		</form>
 		
 	</c:if>
+<<<<<<< HEAD
 >>>>>>> 5-1포폴공유,포폴height적용
+=======
+>>>>>>> 5-1포폴공유,포폴height적용2
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->
