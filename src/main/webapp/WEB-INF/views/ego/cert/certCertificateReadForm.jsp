@@ -103,8 +103,8 @@
 								},
 								row_template : [ 'textarea', 'textarea', 'text',
 										'textarea', 'file' ], 
-								headerCols : [ '취득자격구문', '기관명', '취득일자', '비고',
-										'자격증이미지' ],
+								headerCols : [ '取得資格', '機関名', '取得日', '備考',
+										'資格所イメージ' ],
 								first_row : false
 							});
 			/* 

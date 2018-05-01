@@ -212,8 +212,13 @@
 </div>
 	</c:if>
 	<c:if test="${hisAll ne '[]'}">
-	<div id="historyMenu" class="historyMenu" style=" width: 13%; margin: auto; cursor: move; font-size: 23px; margin-top: 160px; text-decoration:none !important;"  >
-	 			<p><a href="historyWriteForm" > 私の沿革追加する </a></p>
+	<div id="historyMenu" class="historyMenu" style=" width: 20%; margin: auto; cursor: move; font-size: 37px; margin-top: 160px; text-align: center; font-family: 고딕;
+    font-weight: bolder;"  >
+	 			<p>
+	 				<a href="historyWriteForm" style="text-decoration:none !important; color: black;"> 沿革追加する </a>
+	 			</p>
+	 			
+	 			<p style="font-size: 15px;">こちを押してください</p>
 	 		</div>
 			
 	<div class="timeline">

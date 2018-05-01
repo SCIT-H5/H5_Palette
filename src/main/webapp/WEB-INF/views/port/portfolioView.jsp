@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,24 +82,6 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-	<form action="portUpdateForm" method="post" id="upForm">
-		<input type="hidden" name="portNum" value="${port.portNum }">
-		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="update" value="修正">
-	</form>
-	<form action="portDelete" method="post" id="delForm">
-		<input type="hidden" name="portNum" value="${port.portNum }">
-		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="delete" value="削除">
-	</form>
-	<!-- <div id="see"></div>	 -->
-
-=======
-=======
->>>>>>> 5-1포폴공유,포폴height적용2
 	
 	<c:if test="${sessionScope.loginId == port.portId}">
 		<form action="portUpdateForm" method="post" id="upForm">
@@ -113,10 +96,6 @@
 		</form>
 		
 	</c:if>
-<<<<<<< HEAD
->>>>>>> 5-1포폴공유,포폴height적용
-=======
->>>>>>> 5-1포폴공유,포폴height적용2
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->

@@ -66,22 +66,13 @@
 					//alert(replyportNum);
 					str += "<tr class='row100 head' style='font-weight: bold;'><td class='cell100' style='width:25%; padding-left: 40px;'><b>"+commentID+"</b></td>";
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
-<<<<<<< HEAD
-<<<<<<< HEAD
+					str +="<td class='cell100' style='width: 26%;'>"+commentDate+"</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
-					if(portId == commentID){
-						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修正]</a>";
-=======
-=======
->>>>>>> 5-1포폴공유,포폴height적용2
-					str +="<td class='cell100' style='width: 26%; padding-right: 40px;'>"+commentDate+"</td>";
-					str +="<td class='cell100' style='width:12%%;'>";
 					if(s_id == commentID){
-						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修整]</a>";
->>>>>>> 5-1포폴공유,포폴height적용
+						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+",\""+commentText+"\")'>[修整]</a>";
 					}
 					str +="</td>";
-					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
+					str +="<td class='cell100' style='width:15%; padding-right: 30px;'>";
 					if(s_id == commentID){
 						str +="<a href='javascript:replyDelete("+commentNum+", "+replyportNum+")'>[削除]</a>";
 						
@@ -93,7 +84,7 @@
 				
 					
 				}
-				$('.reply').html("");
+				//$('.reply').html("");
 				$('.reply').html(str);
 			},
 			error : function(e) {
@@ -123,7 +114,7 @@
 	//리플 수정
 	function replyEditForm(commentNum, replyportNum, retext) {
 		//해당 리플번호를 붙여 생성한 <div>태그에 접근
-		/* alert('들어왓?'+commentNum); */
+		// alert('들어왓?'+commentNum); 
 		var div = document.getElementById("div" + commentNum); //div를 만들어냄 댓글넘버를통해
 	
 		var str = '<form name="editForm' + commentNum + '" action="replyEdit" method="post">';
@@ -155,7 +146,7 @@
 	//리플 삭제
 	function replyDelete(replynum, boardnum) {
 		if (confirm('コメントを削除しますか？')) {
-			location.href = 'replyDelete?replynum=' + replynum + '&boardnum='
+			location.href = 'replyDelete?commentNum=' + replynum + '&replyportNum='
 					+ boardnum;
 		}
 	}
@@ -215,23 +206,15 @@
 
 <div>
 	<!-- portfolio list -->
-<<<<<<< HEAD
-	<div  style="width: 16%; height: 1000px; position: absolute; margin-top: 20px; text-align: center; border: 1px solid;">
-		<p style="font-size: 15pt; background-color:#FFFF00; padding:15px;">私のポートフォリオ</p>
-=======
 	<div  style="width: 16%; height: 1000px; position: absolute; margin-top: 20px; text-align: center; ">
 		<p style="font-size: 15pt; background-color:#528FF8; padding:15px;font-family: '고딕'; border: 1px solid; font-weight:bold;">私のポートフォリオ</p>
->>>>>>> 5-1포폴공유,포폴height적용2
 		<c:forEach items="${portList }" var="list" varStatus="status">
 			<span class="portNum" value="${list.portNum }" portHeight="${list.portHeight }">${status.index+1 }番ポートフォリオ</span>
 			<br><br>
 		</c:forEach>
-		
-<<<<<<< HEAD
-		<p style="font-size: 15pt;  background-color:#FFFF00; margin-top: 160px; padding:15px; font-family: '돋움';">共有ポートフォリオ</p>
-=======
+
 		<p style="font-size: 15pt;  background-color:#528FF8; margin-top: 160px; padding:15px; font-family: '고딕'; border: 1px solid; font-weight:bold;">共有ポートフォリオ</p>
->>>>>>> 5-1포폴공유,포폴height적용2
+
 		<c:forEach items="${portOpenList }" var="openList">
 			<span class="openPortNum" value="${openList.portNum }" portId="${openList.portId }" portHeight="${openList.portHeight }">${openList.portId }さまのポートフォリオ</span>
 			<br><br>
@@ -265,10 +248,7 @@
 					<!-- /리플 작성 폼 끝 -->
 				<br>
 	<!-- 리플 목록 출력 시작 -->
-				<table class="reply">
-<<<<<<< HEAD
-<<<<<<< HEAD
-				</table>
+				<table class="reply"></table>
 				
 	
 </div>	
@@ -277,11 +257,6 @@
 		<!-- Navigation -->
 		<%@include file="/WEB-INF/views/footer-text-white.jsp"%>
 	</section>			
-=======
-				</table>		
->>>>>>> 5-1포폴공유,포폴height적용
-=======
-				</table>		
->>>>>>> 5-1포폴공유,포폴height적용2
+	
 </body>
 </html>
