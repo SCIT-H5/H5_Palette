@@ -72,7 +72,11 @@
 	}
 </script>
 
-
+<style type="text/css">
+.col-sm-5{
+    margin-left: 225px;
+}
+</style>
 
 </head>
 
