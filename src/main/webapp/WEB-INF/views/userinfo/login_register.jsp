@@ -161,7 +161,7 @@
 				                        </div>
 				                        <div class="form-group has-feedback">
 											<label for="inputEmail" class="sr-only">メールアドレス</label> 
-											<input type="text" id="email" name="email" data-remote="checkEmail" 
+											<input type="email" id="email" name="email" data-remote="checkEmail" 
 												class="form-control" placeholder="メールアドレス" data-error="間違ったメールアドレスです。" 
 												required>
 												
@@ -197,10 +197,7 @@
 
         <!-- Bootstrap Validator -->
 		<script type="text/javascript" src="<c:url value='/resources/js/validator.js'/>"></script>				
-		
-		<!-- Custom javascript -->
-		<script type="text/javascript" src="<c:url value='/resources/js/member.js'/>"></script>
-        
+		        
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->

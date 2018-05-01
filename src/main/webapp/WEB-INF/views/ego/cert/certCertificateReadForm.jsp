@@ -303,7 +303,7 @@
 		<div id="edittable2" class="table100 ver2" style="margin-left: 150px;"></div>
 	</section>
 	<div class="divOne">
-		<input type="button" id="updatetoggle" class="button_4" value="修整"/>
+		<input type="button" id="updatetoggle" class="button_4" value="修正"/>
 		<input type="button" id="complete" class="button_5" value="完了"/>
 	</div>
 	

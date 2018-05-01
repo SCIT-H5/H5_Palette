@@ -244,7 +244,7 @@
 				<input type="text" id="divtablevalue" class="table100 ver2" style="float: left; padding: 20px; margin: 10px; width: 40%;"></input>
 			</div>
 			<div>
-				<input type="button" class="btn btn-primary btn-light btn-l" id="updateto" style="padding: 20px; margin: 10px;" value="修整"></input>
+				<input type="button" class="btn btn-primary btn-light btn-l" id="updateto" style="padding: 20px; margin: 10px;" value="修正"></input>
 				<input type="button" class="btn btn-primary btn-light btn-l" id="complete" style="padding: 20px; margin: 10px;" value="完了"></input>
 			</div>
 		</div>

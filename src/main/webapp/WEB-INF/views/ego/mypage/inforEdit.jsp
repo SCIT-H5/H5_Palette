@@ -56,13 +56,13 @@
 		
 		
 		if (password != password_T) {
-			alert('비번이 일치하지 않습니다');
+			alert('暗所番号が違います。');
 			password_T.focus();
 			return false;
 		}
 		
 		if (email == '') {
-			alert('이메일을 입력 하시오');
+			alert('メールアドレスを入力してください。');
 			email.focus();
 			return false;
 		}
@@ -83,8 +83,8 @@
 		<div class="form-box">
 			<div class="form-top">
 				<div class="form-top-left">
-					<h3>Sign up now</h3>
-					<p>빈 칸을 작성해 주세요.</p>
+					<h3>会員情報修正</h3>
+					<p>暗所番号とメールアドレス修正</p>
 				</div>
 				<div class="form-top-right">
 					<i class="fa fa-pencil"></i>
@@ -94,49 +94,48 @@
 				<form role="form" action="editForm" method="post"
 					class="form-signin" data-toggle="validator">
 					<div class="form-group has-feedback">
-						<label for="inputId" class="sr-only">아이디</label> <input
+						<label for="inputId" class="sr-only">ID</label> <input
 							type="text" id="id" name="id" 
-							class="form-control" placeholder="${loginId}"
+							class="form-control" value="${loginId}"
 							pattern="^[_A-z0-9]{1,}$" readonly="readonly" required> <span
 							class="glyphicon form-control-feedback" aria-hidden="true"></span>
-						<span class="help-block">아이디는 숫자와 영어로만 작성해 주세요.</span>
+						<span class="help-block"></span>
 						<div id="help-block-id" class="help-block with-errors"></div>
 					</div>
 					<div class="form-group has-feedback">
-						<label for="inputName" class="sr-only">이름</label> <input
+						<label for="inputName" class="sr-only">名前</label> <input
 							type="text" id="name" name="name" class="form-control"
-							placeholder="${loginName}" readonly="readonly" required> <span
+							value="${loginName}" readonly="readonly" required> <span
 							class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						<div class="help-block with-errors"></div>
 					</div>
 					<div class="form-group has-feedback">
-						<label for="inputPassword" class="sr-only">비밀번호</label> <input
+						<label for="inputPassword" class="sr-only">暗所番号</label> <input
 							type="password" id="password" name="password"
-							pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="비밀번호"
+							pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="暗所番号"
 							required> <span class="glyphicon form-control-feedback"
-							aria-hidden="true"></span> <span class="help-block">비밀번호는
-							숫자와 영어로만 작성해 주세요.</span>
+							aria-hidden="true"></span> <span class="help-block">暗所番号は数字と英語だけを入力してください。</span>
 						<div class="help-block with-errors"></div>
 					</div>
 					<div class="form-group has-feedback">
-						<label for="inputPasswordCheck" class="sr-only">비밀번호 확인</label> <input
+						<label for="inputPasswordCheck" class="sr-only">暗所番号確認</label> <input
 							type="password" id="inputPasswordCheck" class="form-control"
-							placeholder="비밀번호 확인" data-match="#password"
-							data-match-error="비밀번호가 일치하지 않습니다!" required> <span
+							placeholder="暗所番号確認" data-match="#password"
+							data-match-error="暗所番号が違います。" required> <span
 							class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						<div class="help-block with-errors"></div>
 					</div>
 					
 					<div class="form-group has-feedback">
-						<label for="inputEmail" class="sr-only">이메일</label> <input
-							type="text" id="email" name="email" data-remote="checkEmail"
-							class="form-control" placeholder="${loginEmail}"
-							data-error="잘못된 이메일 주소입니다." required> <span
+						<label for="inputEmail" class="sr-only">メール</label> <input
+							type="email" id="email" name="email" data-remote="checkEmail"
+							class="form-control" value="${loginEmail}"
+							data-error="間違ったメールアドレスです。" required> <span
 							class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						<div class="help-block with-errors"></div>
 					</div>
-					<button type="submit" class="btn" onclick='formCheck()'>회원수정</button>
-					<a href="../" class="btn"> 돌아가기 </a>
+					<button type="submit" class="btn" onclick='formCheck()'>情報修整</button>
+					<a href="../" class="btn">戻る</a>
 				</form>
 			</div>
 		</div>
@@ -144,14 +143,14 @@
 
 
 
-	<!--        Javascript
+	<!-- Javascript -->
         <script src="/resources/assets/js/jquery-1.11.1.min.js"></script>
         <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/resources/assets/js/scripts.js"></script> -->
+        <script src="/resources/assets/js/scripts.js"></script>
 
-	<%-- <!-- Bootstrap Validator -->
+	<!-- Bootstrap Validator -->
 	<script type="text/javascript"
-		src="<c:url value='/resources/js/validator.js'/>"></script> --%>
+		src="<c:url value='/resources/js/validator.js'/>"></script>
 
 	<!-- Custom javascript -->
 	<script type="text/javascript"

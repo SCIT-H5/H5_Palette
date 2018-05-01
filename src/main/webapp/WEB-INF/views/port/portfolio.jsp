@@ -430,7 +430,7 @@ function createGraph(i) {
 			<input type="button" value="セーブ" id="savebtn">
 		</c:if>
 		<c:if test="${port != null }">
-			<input type="button" value="修整" id="savebtn">
+			<input type="button" value="修正" id="savebtn">
 		</c:if>
 		<ul id="wigetBox" class="wigetBox ui-helper-reset ui-helper-clearfix">
 		  <li class="ui-widget-content ui-corner-tr" value="1">

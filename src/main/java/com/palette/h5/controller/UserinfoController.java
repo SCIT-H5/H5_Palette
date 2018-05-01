@@ -76,7 +76,7 @@ public class UserinfoController {
 		
 		else {
 			
-			model.addAttribute("errorMsg", "ID 또는 비밀번호가 틀립니다.");
+			model.addAttribute("errorMsg", "ID、または暗所番号が違います。");
 			
 			logger.info("로그인 실패");
 			

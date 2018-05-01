@@ -52,7 +52,7 @@
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
 					if(portId == commentID){
-						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修整]</a>";
+						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修正]</a>";
 					}
 					str +="</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
@@ -121,7 +121,7 @@
 
 	//리플 수정 정보 저장
 	function replyEdit(form) {
-		if (confirm('修整された内容をセーブしますか？')) {
+		if (confirm('修正された内容をセーブしますか？')) {
 			form.submit();
 		}
 	}

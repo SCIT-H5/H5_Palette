@@ -81,7 +81,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">${loginId }　様、 ようこそ :)</p>
+            <p class="text-faded mb-5" style="font-weight: bold; ">${loginId }　様、 ようこそ :)</p>
           </div>
           <div class="col-lg-8 mx-auto">
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">Services</a>

@@ -390,7 +390,7 @@
 				<input type="button" style="margin-top: 20px;" id="saveBtn" class="button_1" value="セーブする">
 			</c:if>
 			<c:if test="${persS != '[]' || persW != '[]' }">
-				<input type="button" style="margin-top: 20px;" id="updateBtn" class="button_1" value="修整する">
+				<input type="button" style="margin-top: 20px;" id="updateBtn" class="button_1" value="修正する">
 			</c:if>
 		</div>
 		</div></div></div>

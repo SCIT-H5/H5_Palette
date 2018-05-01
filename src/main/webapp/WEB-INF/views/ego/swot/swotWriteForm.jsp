@@ -130,24 +130,6 @@
 			</div>
 		</div>
 	</section>
-<!-- <table>
-	<tr>
-		<td>Strength (강점)</td>
-		<th><input type="text" id="swotS_S" name="swotS" value="" placeholder="강점을 입력하시오"></th>
-	</tr>
-	<tr>
-		<td>Weakness (약점)</td>
-		<th><input type="text" id="swotW_W" name="swotW" value="" placeholder="약점을 입력하시오"></th>
-	</tr>
-	<tr>
-		<td>Opportunity (기회)</td>
-		<th><input type="text" id="swotO_O" name="swotO" value="" placeholder="기회를 입력하시오"></th>
-	</tr>
-	<tr>
-		<td>Threat (위협)</td>
-		<th><input type="text" id="swotT_T" name="swotT" value="" placeholder="위협을 입력하시오"></th>
-	</tr>
-</table> -->
 
 <input type="submit" id="button" class="button_1" value="作成完了">
 

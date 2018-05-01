@@ -158,8 +158,8 @@
 					</div>
 				</div>	
 				<div class="divOne">
-			     	<input type="button" id="button_2" class="button_2 btn-xl" value="修整する" onclick="editForm()">
-			  	  	<input type="button" id="button_3" class="button_3 btn-xl" value="削除する" onclick="deleteForm()">
+			     	<input type="button" id="button_2" class="button_2 btn-xl" value="修正" onclick="editForm()">
+			  	  	<input type="button" id="button_3" class="button_3 btn-xl" value="削除" onclick="deleteForm()">
 			  	</div>
 			</c:otherwise>
 		</c:choose>	    	    	    

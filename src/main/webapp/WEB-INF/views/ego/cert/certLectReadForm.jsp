@@ -235,7 +235,7 @@
 <div id="edittable2"></div>
 
 <div class="btndiv">
-   <button id="updatetoggle" class="button_2 btn-xl">修整</button>
+   <button id="updatetoggle" class="button_2 btn-xl">修正</button>
    <button id="complete" class="button_2 btn-xl">セーブ</button>
 </div>   
 

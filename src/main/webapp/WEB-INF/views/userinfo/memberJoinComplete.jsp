@@ -26,11 +26,11 @@
 			<div class="site-wrapper-inner">
 				<div class="cover-container">
 					<div class="inner cover">
-						<h1 class="cover-heading">회원 가입을 축하드립니다.</h1>
+						<h1 class="cover-heading">会員加入ができました。</h1>
 						<br>
 						
-						<a href="login_register" class="btn btn-lg btn-primary">
-							로그인
+						<a href="login_register" class="btn btn-lg btn-warning">
+							ログイン
 						</a>
 						
 					</div>										
@@ -41,11 +41,6 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.min.js'/>"></script>
 		
-		<!-- Bootstrap Validator -->
-		<script type="text/javascript" src="<c:url value='/resources/js/validator.js'/>"></script>
-		
-		<!-- Custom javascript -->
-		<script type="text/javascript" src="<c:url value='/resources/js/member.js'/>"></script>
 		
 	</body>
 </html>

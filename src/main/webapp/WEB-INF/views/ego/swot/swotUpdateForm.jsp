@@ -145,7 +145,7 @@
 				</div>
 			</div>
 		</div>
-	<input type="submit" id="button_q" value="修整完了" class="button_1">
+	<input type="submit" id="button_q" value="修正完了" class="button_1">
 </form>
  
  	<!-- Slide-Toggle -->

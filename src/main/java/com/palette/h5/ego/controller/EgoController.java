@@ -379,10 +379,12 @@ public class EgoController {
 		// 섹션의 아이디 및 이름 가져옴
 		String userId = (String) session.getAttribute("loginId");
 		String userName = (String) session.getAttribute("loginName");
+		String userEmail = (String) session.getAttribute("loginEmail");
 
 		// 아이디 이름을 vo에 저장
 		userinfo.setId(userId);
 		userinfo.setName(userName);
+		userinfo.setEmail(userEmail);
 		System.out.println("정보 수정 가자~!!" + userinfo);
 
 		int result = dao.userEdit(userinfo);
@@ -396,7 +398,7 @@ public class EgoController {
 
 		else {
 
-			model.addAttribute("errorMsg", "수정되지 않았습니다");
+			model.addAttribute("errorMsg", "修正できませんでした。");
 
 			logger.info("로그인 실패");
 
