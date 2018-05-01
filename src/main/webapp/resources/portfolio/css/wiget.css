@@ -2,8 +2,9 @@
 
 #wigetBox {
 	float: left;
-	width: 97%;
+	width: 110%;
 	min-height: 12em;
+	text-align: center;
 }
 
 .wigetBox.custom-state-active {
@@ -11,7 +12,7 @@
 }
 
 .wigetBox li {
-	float: left;
+	display: inline-block;
 	width: 48px;
 	/* height: 60px; */
 	/* padding: 0.4em; */
@@ -68,6 +69,8 @@
 	right: 160px;
 	padding: 3px 10px;
 	border-radius: 20px;
+	margin: 0 auto;
+	text-align: center;
 	/* height: 287px; */
 }
 
@@ -104,6 +107,7 @@
 
 .addfile {
 	cursor: pointer;
+	margin-bottom: 25px;
 }
 
 .close {

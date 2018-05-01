@@ -51,14 +51,14 @@
 <style type="text/css">
 	.ui-side1{
 		position: absolute;
-    	left: 57px;
-    	top: 153px;
+    	left: 70px;
+    	top: 160px;
     	width: 50px;
 		display : none;
 	}
 	.ui-side2{
 		position: absolute;
-		left : 47px;
+		left : 49px;
 		top : 0px;
 		display: none;
 	}
