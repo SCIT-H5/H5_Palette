@@ -39,25 +39,25 @@
 		
 		if(hisDate.value == ""){
 			alert("연도을 입력해주세요.");
-			content.focus();
+			hisDate.focus();
 			return false;
 		}
 		
 		if(hisTitle.value == ""){
 			alert("제목을 입력해주세요.");
-			title.focus();
+			hisTitle.focus();
 			return false;
 		}
 		
 		if(hisContent.value == ""){
 			alert("내용을 입력해주세요.");
-			content.focus();
+			hisContent.focus();
 			return false;
 		}
 		
 		if(hisPeriod.value == ""){
 			alert("기간을 입력해주세요.");
-			content.focus();
+			hisPeriod.focus();
 			return false;
 		}
 		
@@ -97,7 +97,7 @@
 							<th class="cell100" style="padding-left: 50px; width:30%;">CONTENT</th>
 							<td class="cell100 row100 body" style="width:70%;"> 
 								<textarea style="width:100%; height: 300px; border-color: #e6e6e6;" 
-									name="hisContent" id="thisContent" placeholder="詳細内訳"></textarea>							
+									name="hisContent" id="hisContent" placeholder="詳細内訳"></textarea>							
 							</td>
 						</tr>
 						<tr class="row100 head" style="font-weight: bold;">

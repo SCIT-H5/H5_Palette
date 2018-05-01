@@ -58,7 +58,7 @@
         var size = ${fn:length(fileList)};
         
         <c:forEach items="${fileList}" var="file">
-    	alert('${file.savedFileName}');
+    	
     	
     	    var data = '${file.savedFileName}';
         	var str = "";
@@ -124,7 +124,9 @@
         
       //업로드한 파일을 목록에서 삭제하기 위해 <span>태그를 클릭 이벤트로 설정
     	$(".uploadedList01").on("click", "span", function(event){
-    	    confirm("ファイルを削除しますか？");
+    		if(!confirm("ファイルを削除しますか？")){
+    	    	return;
+    	    }
     	    var that = $(this); // 여기서 this는 클릭한 span태그
     	    $.ajax({
     	        url: "../../deleteFile01",

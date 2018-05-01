@@ -40,25 +40,25 @@
 			
 			if(hisDate.value == ""){
 				alert("연도을 입력해주세요.");
-				content.focus();
+				hisDate.focus();
 				return false;
 			}
 			
 			if(hisTitle.value == ""){
 				alert("제목을 입력해주세요.");
-				title.focus();
+				hisTitle.focus();
 				return false;
 			}
 			
 			if(hisContent.value == ""){
 				alert("내용을 입력해주세요.");
-				content.focus();
+				hisContent.focus();
 				return false;
 			}
 			
 			if(hisPeriod.value == ""){
 				alert("기간을 입력해주세요.");
-				content.focus();
+				hisPeriod.focus();
 				return false;
 			}
 			
@@ -141,19 +141,17 @@
 	  <div class="content">
 	    <h1>MY HISTORY</h1>
 		    <h2>나의 연혁 관리 페이지</h2>
-<<<<<<< HEAD
-	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
-=======
-<<<<<<< HEAD
+
+	    	
+
 		    <!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   			作成
 			</button>
 	    	<!-- <p><a href="historyWriteForm" target="_blank">나의 연혁 작성하러 가기</a></p> -->
-=======
-	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
->>>>>>> 4-30.6차합병브런치
->>>>>>> 4-28지농점심
+
+	    	
+
 	  </div>
 	</div>
 	
@@ -166,10 +164,10 @@
         
        
       </div>
-      <div class="modal-body">
         <!-- 폼 영역-->
         <form action="historyWrite" method="post" onsubmit="return formCheck();">
-			<input type="hidden" name="hisId" id="hisId" value="${sessionScope.loginId}">
+      		<div class="modal-body">
+				<input type="hidden" name="hisId" id="hisId" value="${sessionScope.loginId}">
 				<div class="table100 ver2 m-b-110" style="width: 70%; left: 15%;">
 					<div class="table100-head">
 					
@@ -190,7 +188,7 @@
 							<th class="cell100" style="padding-left: 30px; width:30%;">CONTENT</th>
 							<td class="cell100 row100 body" style="width:70%;"> 
 								<textarea style="width:100%; height: 300px; border-color: #e6e6e6;" 
-									name="hisContent" id="thisContent" placeholder="詳細内訳"></textarea>							
+									name="hisContent" id="hisContent" placeholder="詳細内訳"></textarea>							
 							</td>
 						</tr>
 						<tr class="row100 head" style="font-weight: bold;">
@@ -217,12 +215,14 @@
   </div>
 </div>
 	</c:if>
+	<c:if test="${hisAll ne '[]'}">
 	<div id="historyMenu" class="historyMenu" style=" width: 13%; margin: auto; cursor: move; font-size: 23px; margin-top: 160px; text-decoration:none !important;"  >
 	 			<p><a href="historyWriteForm" > 나의 연혁 추가하기 </a></p>
 	 		</div>
+			
 	<div class="timeline">
 	
-	 	<c:if test="${hisAll ne '[]'}">
+	 	
 	 		
 	 		
 	 		
@@ -254,9 +254,9 @@
 	   			
 	   			
 	 		</c:forEach>
-	 	</c:if>
+	 	
 	</div>
-	
+	</c:if>
 	
 	<!-- Timelify JavaScript -->
 	<script type="text/javascript" src="<c:url value="/resources/timelify/js/jquery.timelify.js" />" ></script>

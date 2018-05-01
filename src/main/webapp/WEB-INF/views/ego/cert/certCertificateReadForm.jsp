@@ -122,6 +122,7 @@
 				tableresize();
 				tableresizedis();
 				$('bigimg').remove(); 
+				$('.jaa_file').css('display', 'none');
 				
 				//row추가 히든
 				$(".addrowtd").hide();
@@ -157,15 +158,13 @@
 		        }
 				console.log(datatable);
 				
-<<<<<<< HEAD
+
 			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
-=======
-<<<<<<< HEAD
+
 				 $('input[type="text"]').attr("readonly", true);
-=======
+
 			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
->>>>>>> 4-30.6차합병브런치
->>>>>>> 4-28지농점심
+
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
@@ -198,6 +197,7 @@
 	
 		$(document).ready(function() { //업데이트 펑션
 			$("#updatetoggle").click(function() {
+				$('.jaa_file').css('display', 'block');
 				 $('.addrowtd').css('display', 'table-cell');
 		    	  //$(".addrowtd").slideToggle("slow");
 		         $('input[type="text"]').attr("readonly", false);
@@ -267,7 +267,7 @@
 			        dataType:"text",         
 			        success:function(data){   
 			          console.log(data); 
-			          $upfile.css('display', 'none'); 
+			           
 			          $upfile.parent('td').append('<img src="'+data+'" class="cert_img" id="file'+fileIdx+'" width="50px" height="50px">'); 
 			          $('#file'+fileIdx).on('click', function() { 
 			            $('.bigimg').remove(); 
@@ -276,6 +276,7 @@
 			              $(this).remove(); 
 			            }); 
 			          }); 
+			          $upfile.remove();
 			          fileIdx++; 
 			        }, 
 			        error: function(e){       
@@ -302,8 +303,8 @@
 		<div id="edittable2" class="table100 ver2" style="margin-left: 150px;"></div>
 	</section>
 	<div class="divOne">
-		<input type="button" id="updatetoggle" class="button_4" value="수정"/>
-		<input type="button" id="complete" class="button_5" value="완료"/>
+		<input type="button" id="updatetoggle" class="button_4" value="修整"/>
+		<input type="button" id="complete" class="button_5" value="完了"/>
 	</div>
 	
 	<section>

@@ -97,7 +97,7 @@
                         }
                      },
                      row_template : [ 'textarea', 'textarea', 'textarea','textarea', 'textarea' ],
-                    /*  headerCols : [ '区分', '年/学期', '科目', '評点', '備考' ], */
+                    headerCols : [ '区分', '年/学期', '科目', '評点', '備考' ],
                      first_row : false
                   });
       /* 
@@ -235,7 +235,7 @@
 <div id="edittable2"></div>
 
 <div class="btndiv">
-   <button id="updatetoggle" class="button_2 btn-xl">修正</button>
+   <button id="updatetoggle" class="button_2 btn-xl">修整</button>
    <button id="complete" class="button_2 btn-xl">セーブ</button>
 </div>   
 

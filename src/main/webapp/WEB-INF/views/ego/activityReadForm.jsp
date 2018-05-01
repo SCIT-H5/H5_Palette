@@ -48,8 +48,7 @@
 					console.log(jaatable);
 					console.log(tablehtml);
 
-					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시
-						//alert("노데이트");
+					
 
 					if(jaatable === undefined && tablehtml === undefined){ //두개다 널일시						
 
@@ -133,7 +132,7 @@
 				//테이블리사이즈 디스트로이
 				tableresize();
 				tableresizedis();
-	
+				$('.jaa_file').css('display', 'none');
 				$('bigimg').remove();
 				//row추가 히든
 				$(".addrowtd").hide();
@@ -145,7 +144,7 @@
 				} else{
 					datatable = jaatable.getJsonData();					
 				}
-				alert(datatable);
+				
 				if(datatable != "[]"){
 		        	var json = JSON.parse(datatable);
 		            var cnt = 0;
@@ -202,6 +201,7 @@
 	
 		$(document).ready(function() { //업데이트 펑션
 			$("#updatetoggle").click(function() {
+				$('.jaa_file').css('display', 'block');
 				   $('.addrowtd').css('display', 'table-cell');
 			    	  //$(".addrowtd").slideToggle("slow");
 			       $('input[type="text"]').attr("readonly", false);
@@ -280,6 +280,7 @@
 								$(this).remove();
 							});
 						});
+						$upfile.remove();
 						fileIdx++;
 					},
 					error: function(e){			
@@ -305,8 +306,6 @@
 	</section>
 	<div class="divOne">
 
-		<input type="button" id="updatetoggle" class="button_4" value="修正"/>
-		<input type="button" id="complete" class="button_5" value="セーブ"/>
 
 		<input type="button" id="updatetoggle" class="button_4" value="修整"/>
 		<input type="button" id="complete" class="button_5" value="完了"/>

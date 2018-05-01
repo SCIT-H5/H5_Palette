@@ -34,19 +34,19 @@
 		
 		if(hisTitle.value == ""){
 			alert("제목을 입력해주세요.");
-			title.focus();
+			hisTitle.focus();
 			return false;
 		}
 		
 		if(hisContent.value == ""){
 			alert("내용을 입력해주세요.");
-			content.focus();
+			hisContent.focus();
 			return false;
 		}
 		
 		if(hisPeriod.value == ""){
 			alert("기간을 입력해주세요.");
-			content.focus();
+			hisPeriod.focus();
 			return false;
 		}
 		
