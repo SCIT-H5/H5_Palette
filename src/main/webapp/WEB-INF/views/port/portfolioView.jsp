@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@include file="/WEB-INF/views/navi.jsp"%>
 
 <!-- jquery, jquery-ui, 위젯에 필요한 css -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -82,19 +81,20 @@
 </style>
 </head>
 <body>
-
-	<form action="portUpdateForm" method="post" id="upForm">
-		<input type="hidden" name="portNum" value="${port.portNum }">
-		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="update" value="修整">
-	</form>
-	<form action="portDelete" method="post" id="delForm">
-		<input type="hidden" name="portNum" value="${port.portNum }">
-		<input type="hidden" name="portId" value="${sessionScope.loginId }">
-		<input type="button" id="delete" value="削除">
-	</form>
-	<!-- <div id="see"></div>	 -->
-
+	
+	<c:if test="${sessionScope.loginId == port.portId}">
+		<form action="portUpdateForm" method="post" id="upForm">
+			<input type="hidden" name="portNum" value="${port.portNum }">
+			<input type="hidden" name="portId" value="${sessionScope.loginId }">
+			<input type="button" id="update" value="修整">
+		</form>
+		<form action="portDelete" method="post" id="delForm">
+			<input type="hidden" name="portNum" value="${port.portNum }">
+			<input type="hidden" name="portId" value="${sessionScope.loginId }">
+			<input type="button" id="delete" value="削除">
+		</form>
+		
+	</c:if>
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->

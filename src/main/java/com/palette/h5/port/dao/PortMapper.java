@@ -11,6 +11,7 @@ public interface PortMapper {
 	public int portDelete(Portfolio portfolio);
 	public ArrayList<Portfolio> portList(String portId);
 	public Portfolio portSelectOne(Portfolio portfolio);
+	public ArrayList<Portfolio> portOpenList();
 	//리플 작성
 	public int commentwrite(Reply reply);
 	//리플 출력
