@@ -61,12 +61,13 @@
 }
 
 .sidebox {
-	background-color: #F0F0F0;
+	background-color: #e4e6eb63;
 	position: absolute;
-	width: 80px;
+	width: 90px;
 	top: 401px;
 	right: 160px;
 	padding: 3px 10px;
+	border-radius: 20px;
 	/* height: 287px; */
 }
 
@@ -77,6 +78,7 @@
 	position: absolute;
 	top: 330px;
 	left: 0px;
+	border-radius: 20px;
 }
 
 .textEditIcon {

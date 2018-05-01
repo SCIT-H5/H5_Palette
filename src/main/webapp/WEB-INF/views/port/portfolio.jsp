@@ -62,9 +62,6 @@
 		top : 0px;
 		display: none;
 	}
-	.textEditBox {
-		border-radius: 20px;
-	}
 </style>
 <script>
 document.execCommand('styleWithCSS', false, true);
@@ -388,10 +385,9 @@ function createGraph(i) {
 </head>
 <body>
 
-<div class="bg-image-blur" style="border: 1px solid black;">
-					<img src="/h5/resources/img/portfoliomain.png" style="width: 100%;">
-					
-				</div>
+<div class="bg-image-blur">
+	<img src="/h5/resources/img/portfoliomain.png" style="width: 100%;">
+</div>
 <%-- <!-- Navigation -->
     <%@include file="/WEB-INF/views/navi.jsp"%>  --%>
    
@@ -554,7 +550,7 @@ function createGraph(i) {
 	<img src="${pageContext.request.contextPath}/resources/portfolio/img/center_sort.png" class="textEditIcon" id="justifyCenter">
 	<img src="${pageContext.request.contextPath}/resources/portfolio/img/right_sort.png" class="textEditIcon" id="justifyRight">
 	<br>
-	<select id="fontName" style="width: 23%;">
+	<select id="fontName" style="width: 45%;">
 		<option value="">フォント</option>
 		<option value="돋움">돋움</option>
 		<option value="굴림">굴림</option>
@@ -563,7 +559,7 @@ function createGraph(i) {
 		<option value="맑은 고딕">맑은 고딕</option>
 	</select>
     	
-	<select id="fontSize" style="width: 23%;">
+	<select id="fontSize" style="width: 45%;">
 		<option value="">文字サイズ</option>
 		<option value="1">4px</option>
 		<option value="2">8px</option>
@@ -574,12 +570,9 @@ function createGraph(i) {
 		<option value="7">30px</option>
 	</select>
 	<br>
-		
-<<<<<<< HEAD
-	<select id="foreColor" style="width: 23%;">
-=======
-	<select id="foreColor" width="50px">
->>>>>>> 5-1포폴공유,포폴height적용2
+
+	<select id="foreColor" style="width: 45%;">
+
 		<option value="">フォント色</option>
 		<option value="#f00">赤い</option>
 		<option value="#00f">青い</option>
@@ -589,7 +582,7 @@ function createGraph(i) {
 	</select>
 
 		
-	<select id="hiliteColor" style="width: 23%;">
+	<select id="hiliteColor" style="width: 45%;">
 		<option value="">文字背景</option>
 		<option value="#f00">赤い</option>
 		<option value="#00f">青い</option>
