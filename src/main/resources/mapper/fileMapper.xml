@@ -41,10 +41,10 @@
 		insert into
 			cert_scholarship(
 				schId
-				,schField
+				,schFileId
 			) values (
 				#{schId}
-				,#{schField}
+				,#{schFileId}
 			)
 	</insert>
 	
@@ -114,7 +114,7 @@
 		delete
 			file_management
 		where
-			fileDivision = #{fileDivision} and fileUserId = #{fileUserId}
+			fileDivision = #{fileDivision} and fileUserId = #{fileUserId} and file_id = #{file_id}
 	</delete>
 
 

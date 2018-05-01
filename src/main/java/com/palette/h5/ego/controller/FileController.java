@@ -87,7 +87,7 @@ public class FileController {
 	   // 파일의 한글처리 : produces="text/plain;charset=utf-8"
 	   @ResponseBody // view가 아닌 data리턴
 	   @RequestMapping(value="uploadAjax01", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	   public ResponseEntity<String> uploadAjax01(MultipartFile file, HttpSession session) throws Exception {
+	   public ResponseEntity<String> uploadAjax01(MultipartFile file, HttpSession session, Model model) throws Exception {
 		   
 		  logger.info(" CON | certGrad fileupload 시작");
 		   
@@ -121,7 +121,7 @@ public class FileController {
 	      if(uploadCertGrad !=0){
 	    	  logger.info("CON | certGrad table에서 fileupload 실패");
 	      }
-	      
+	      model.addAttribute("file_id", seq);
 	      logger.info(" CON | certGrad fileupload 종료");
 	      return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
 	      // -> 최종적으로 return (new) uploadedFileName;
@@ -174,12 +174,13 @@ public class FileController {
 	    // 파일 삭제 매핑
 	    @ResponseBody // view가 아닌 데이터 리턴
 	    @RequestMapping(value = "deleteFile01", method = RequestMethod.POST)
-	    public ResponseEntity<String> deleteFile01(String fileName, HttpSession session) {
-	    	
+	    public ResponseEntity<String> deleteFile01(String fileName, HttpSession session, int file_id) {
+	    	System.out.println(file_id);
 	    	String fileUserId = (String) session.getAttribute("loginId");
 	    	FileManagement fileData = new FileManagement();
 	    	fileData.setFileUserId(fileUserId);
 	    	fileData.setFileDivision(1);
+	    	fileData.setFile_id(file_id);
 	    	
 	    	int result = dao.deleteFile(fileData);
 	    	
@@ -237,7 +238,7 @@ public class FileController {
 		      
 		      CertScholarship certsch = new CertScholarship();
 		      certsch.setSchId(fileUserId);
-		      certsch.setSchField(seq);
+		      certsch.setSchFileId(seq);
 		      int uploadCertSch = dao.insertCertSch(certsch);
 		      if(uploadCertSch != 0){
 		    	  logger.info("CON | certScholarship table에서 fileupload 실패");
@@ -295,12 +296,13 @@ public class FileController {
 		    // 파일 삭제 매핑
 		    @ResponseBody // view가 아닌 데이터 리턴
 		    @RequestMapping(value = "deleteFile02", method = RequestMethod.POST)
-		    public ResponseEntity<String> deleteFile02(String fileName, HttpSession session) {
-		    	
+		    public ResponseEntity<String> deleteFile02(String fileName, HttpSession session, int file_id) {
+		    	System.out.println(file_id);
 		    	String fileUserId = (String) session.getAttribute("loginId");
 		    	FileManagement fileData = new FileManagement();
 		    	fileData.setFileUserId(fileUserId);
 		    	fileData.setFileDivision(2);
+		    	fileData.setFile_id(file_id);
 		    	
 		    	int result = dao.deleteFile(fileData);
 		    	

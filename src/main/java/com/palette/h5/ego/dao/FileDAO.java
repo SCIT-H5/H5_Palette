@@ -90,7 +90,7 @@ public class FileDAO {
 		
 	}
 	
-	// certSch | certScholarship의 gradField(파일No) 불러오기
+	// certSch | certScholarship의 gradFileId(파일No) 불러오기
 	public ArrayList<CertScholarship> displayCertSch(String schId){
 		
 		logger.info("DAO | CertScholarship schFileId(파일No)불러오기 시작");

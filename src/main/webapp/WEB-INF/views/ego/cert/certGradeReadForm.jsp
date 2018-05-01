@@ -58,7 +58,7 @@
         var size = ${fn:length(fileList)};
         
         <c:forEach items="${fileList}" var="file">
-    	alert('${file.savedFileName}');
+    	//alert('${file.savedFileName}');
     	
     	    var data = '${file.savedFileName}';
         	var str = "";
@@ -71,7 +71,7 @@
                 str = "<div><a href='${path}/h5/displayFile01?fileName="+data+"'>"+getOriginalName(data)+"</a>";
             }
             // 삭제 버튼
-            str += "<span data-src="+data+">[삭제]</span></div>";
+            str += "<span data-src="+data+" num='${file.file_id}'>[삭제]</span></div>";
             $(".uploadedList01").append(str);
         </c:forEach>
         
@@ -103,7 +103,7 @@
                 processData: false,
                 contentType: false,
                 success: function(data){
-                	//alert(data);
+                	alert("${file_id}");
                 	var str = "";
                     // 이미지 파일이면 썸네일 이미지 출력
                     if(checkImageType(data)){ 
@@ -124,6 +124,7 @@
         
       //업로드한 파일을 목록에서 삭제하기 위해 <span>태그를 클릭 이벤트로 설정
     	$(".uploadedList01").on("click", "span", function(event){
+    		alert($(this).attr("num"));
     	    alert("이미지 삭제");
     	    var that = $(this); // 여기서 this는 클릭한 span태그
     	    $.ajax({
@@ -131,7 +132,7 @@
     	        type: "post",
     	        // data: "fileName="+$(this).attr("date-src") = {fileName:$(this).attr("data-src")}
     	        // 태그.attr("속성")
-    	        data: {fileName:$(this).attr("data-src")}, // json방식
+    	        data: {fileName:$(this).attr("data-src"),file_id:$(this).attr("num")}, // json방식
     	        dataType: "text",
     	        success: function(result){
     	            if( result == "deleted" ){
