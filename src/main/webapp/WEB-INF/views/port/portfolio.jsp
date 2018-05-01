@@ -613,7 +613,10 @@ function createGraph(i) {
 	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
 	  </form>
   </c:if>
-  
+  <section>
+		<!-- Navigation -->
+		<%@include file="/WEB-INF/views/footer-text-white.jsp"%>
+	</section>
  
 </body>
 

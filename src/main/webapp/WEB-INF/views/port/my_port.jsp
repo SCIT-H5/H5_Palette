@@ -224,6 +224,11 @@
 				</table>
 				
 	
-</div>				
+</div>	
+
+<section>
+		<!-- Navigation -->
+		<%@include file="/WEB-INF/views/footer-text-white.jsp"%>
+	</section>			
 </body>
 </html>

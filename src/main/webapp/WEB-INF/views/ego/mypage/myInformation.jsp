@@ -6,23 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이 인포메이션</title>
+
+	<!-- jQuery -->
+	
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 	
 	<!-- Navigation -->
 	<%@include file="/WEB-INF/views/navi-font-black.jsp"%>
-<!-- 
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js" />"></script>
+	
+	
 <style type="text/css">
 	.div_one{
-	background-color:#DAD9FF; 
+	/* background-color:#DAD9FF;  */
 	width: 25%;
-	height: 100%;
-	position: absolute;
+	
+	/* position: absolute; */
+	float: left;
 	top:87px;
 	}
 	.div_two{
 	float: right;
 	width: 75%;
-	height: 100%;
-	background-color:#EAEAEA; 
+	
+	/* background-color:#EAEAEA;  */
 	top:110px;
 	}
 	.view_one{
@@ -40,11 +48,9 @@
 	text-align: center;
 	font-size: 30px;
 	}
-	.back{
-		background-color: #BCBCBC;
-	}
+	
 </style>
- -->
+ 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".view_two").hide();
@@ -62,9 +68,18 @@
 
 </head>
 	
-<body class="back">
+<body style="background-color:#ffffe6;">
 
-	<header class="text-center text-black d-flex">
+
+
+<header>
+		<div class="my-auto" >
+			<div class="mx-auto" >
+					<strong style="font-size: 60px;">Your Information</strong>				
+			</div>         
+		</div>      
+	</header>
+	<!-- <header class="text-center text-black d-flex">
 		<div class="my-auto" >
 			<div class="mx-auto" style="text-align: center;">
 				<div class="row" style="left: 40%; top: 9%; display: inline-block; width: 50%; padding: 1em;">   
@@ -76,24 +91,29 @@
 				</div>
 			</div>         
 		</div>      
-	</header> 
+	</header>  -->
 	
-	<section>
+	
 		<div class="div_one">
-			<div class="inforEdit"><a href="#">회원 정보 수정</a></div>
-			<div class="openEdit"><a href="#">공개 범위 설정</a></div>
+			<div class="inforEdit"><a href="#">会員情報修正</a></div>
+			<div class="openEdit"><a href="#">公開範囲設定</a></div>
 		</div>
 		<div class="div_two">
 			<div class="view_one"><%@include file="/WEB-INF/views/ego/mypage/inforEdit.jsp"%></div>
 			<div class="view_two"><%@include file="/WEB-INF/views/ego/mypage/openEdit.jsp"%></div>
 		</div>
-	</section>
+	
 
-	<!-- Footer -->
+	<%-- --%>
+    
+	
+     <section>
+		<!-- Navigation -->
+		<!-- Footer -->
     <%@include file="/WEB-INF/views/footer-text-black.jsp"%>
-    
-	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
-    
+	</section>
+	
+	
+	
 </body>
 </html>

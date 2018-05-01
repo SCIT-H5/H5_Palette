@@ -86,7 +86,7 @@ $(function() {
 <form action="openInfo" method="post" id="openInfoForm">
 	<table class="openTable">
 		<tr>
-			<th colspan="4">공개범위 설정</th>
+			<th colspan="4">公開範囲設定</th>
 			<th colspan="2">ON</th>
 			<th colspan="2">OFF</th>
 			
@@ -94,10 +94,10 @@ $(function() {
 		</tr>
 		<tr>
 			<th colspan="4">
-			<p>포토폴리오 페이지</p>
+			<p>ポートフォリオ 選択</p>
 			<select name="portNum" id="port">
 				<c:forEach items="${portList }" var="list" varStatus="status">
-					<option value="${list.portNum }" portOpen="${list.portOpen }">${status.index+1 }번째포폴</option>
+					<option value="${list.portNum }" portOpen="${list.portOpen }">${status.index+1 }番ポートフォリオ</option>
 				</c:forEach>
 
 			</select>
@@ -112,23 +112,12 @@ $(function() {
 			
 			
 		</tr>
-		<tr>
-			<th colspan="4">자아 분석 페이지</th>
-			
-			<th colspan="2">
-				<input type="radio" name="on_off_two">
-			</th>
-			<th colspan="2">
-				<input type="radio" name="on_off_two">
-			</th>
-			
-			
-		</tr>
+		
 		
 		
 	</table>
 	<br>
-	<input type="button" id="sbtn" value="수정하기">
+	<input type="button" id="sbtn" value="セーブ">
 </form>	
 </div>
 </body>
