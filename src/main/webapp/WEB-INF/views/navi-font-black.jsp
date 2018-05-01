@@ -28,7 +28,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">	
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
+    
+     <style type="text/css">
+    	p, a {
+    		font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    	}
+    </style>	
 </head>
 
 <body id="page-top">
@@ -44,10 +50,10 @@
 	      <div class="collapse navbar1-collapse drop_down" id="navbarResponsive">
 	          <ul class="navbar1-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/main">MAIN PAGE</a>
+	              <a tabindex="-1" class="nav-link" style="font-size: 15px; font-weight: bold; color: black; margin-left: 20px;" href="${pageContext.request.contextPath}/main">MAIN PAGE</a>
 	            </li>
 	            <li class="nav-item" class="drop_down_submenu">
- 				  <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SELF-ANALYSIS</a>
+ 				  <a tabindex="-1" class="nav-link" style="font-size: 15px; font-weight: bold; color: black; margin-left: 20px;" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SELF-ANALYSIS</a>
  				  
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
@@ -92,10 +98,10 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/port/newPort">NEW PORTFOLIO</a>
+	              <a tabindex="-1" class="nav-link" style="font-size: 15px; font-weight: bold; color: black; margin-left: 20px;" href="${pageContext.request.contextPath}/port/newPort">NEW PORTFOLIO</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/port/my_port">MY PORTFOLIO</a>
+	              <a tabindex="-1" class="nav-link" style="font-size: 15px; font-weight: bold; color: black; margin-left: 20px;" href="${pageContext.request.contextPath}/port/my_port">MY PORTFOLIO</a>
 	            </li>  
 	          </ul>
 	        </div>        
