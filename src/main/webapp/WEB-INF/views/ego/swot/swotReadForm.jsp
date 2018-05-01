@@ -67,7 +67,7 @@
 	    <div class="container" id="swottable">
 	    <c:choose>
 			<c:when test="${swotlist == '' || swotlist == null }">
-				<input type="button" id="button_1" class="button_1" value="입력하기" onclick="writeForm()">
+				<input type="button" id="button_1" class="button_1" value="入力する" onclick="writeForm()">
 			</c:when>
 			<c:otherwise>
 				<!-- Strength -->		

@@ -63,7 +63,7 @@ $(function() {
 			dataType:"text",				
 			success:function(data){	
 				console.log(data);
-				alert("수정완료!");
+				alert("修正完了");
 			},
 			error: function(e){			
 				console.log(e);
@@ -117,7 +117,7 @@ $(function() {
 		
 	</table>
 	<br>
-	<input type="button" id="sbtn" value="セーブ">
+	<input type="button" id="sbtn" class="btn btn-primary btn-xl" value="セーブ">
 </form>	
 </div>
 </body>

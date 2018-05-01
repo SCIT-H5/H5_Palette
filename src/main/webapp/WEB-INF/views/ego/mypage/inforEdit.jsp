@@ -74,7 +74,7 @@
 
 <style type="text/css">
 .col-sm-5{
-    margin-left: 225px;
+    margin-left: 330px;
 }
 </style>
 
@@ -132,7 +132,7 @@
 					
 					<div class="form-group has-feedback">
 						<label for="inputEmail" class="sr-only">メール</label> <input
-							type="email" id="email" name="email" data-remote="checkEmail"
+							type="email" id="email" name="email" 
 							class="form-control" value="${loginEmail}"
 							data-error="間違ったメールアドレスです。" required> <span
 							class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -144,22 +144,17 @@
 			</div>
 		</div>
 	</div>
-
-
-
-	<!-- Javascript -->
-        <script src="/resources/assets/js/jquery-1.11.1.min.js"></script>
-        <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/resources/assets/js/scripts.js"></script>
-
+	
 	<!-- Bootstrap Validator -->
 	<script type="text/javascript"
 		src="<c:url value='/resources/js/validator.js'/>"></script>
-
-	<!-- Custom javascript -->
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/member.js'/>"></script>
-
+		
+<!-- 	
+	Javascript
+    <script src="/resources/assets/js/jquery-1.11.1.min.js"></script>    
+    <script src="/resources/assets/js/scripts.js"></script>
+	<script src="/resources/assets/bootstrap/js/bootstrap.js"></script>	
+ -->
 	<!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->

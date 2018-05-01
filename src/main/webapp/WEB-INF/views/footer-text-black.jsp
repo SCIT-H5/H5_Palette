@@ -16,9 +16,9 @@
 
 	<div id="footer_1">
 		<div class="left text-black">
-			<p style="float:left; margin-left: 50px;">This is <strong class="text-red">Palette</strong>, a responsive portfolio site template by <a href="/h5/#contact">H5_Palette</a></p>
+			<p style="float:left; margin-left: 50px; margin-top: 50px;">This is <strong class="text-red">Palette</strong>, a responsive portfolio site template by <a href="/h5/#contact">H5_Palette</a></p>
 							
-			<ul class="copyright" style="text-align: right; margin-right: 50px; float: right;">
+			<ul class="copyright" style="text-align: right; margin-right: 50px; float: right; margin-top: 50px;">
 				<li>&copy; Palette</li><li>Design: <a href="/h5/#contact">H5_Palette</a></li>
 			</ul>
 			

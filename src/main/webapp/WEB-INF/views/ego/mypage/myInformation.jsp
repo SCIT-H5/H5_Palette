@@ -4,16 +4,19 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>마이 인포메이션</title>
 
-	<!-- jQuery -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<title>Palette - My Info</title>
+	
+	
 	
 	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-	
-	<!-- Navigation -->
-	<%@include file="/WEB-INF/views/navi-font-black.jsp"%>
+		
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js" />"></script>
 	
 	
@@ -21,21 +24,20 @@
 	.div_one{
 	/* background-color:#DAD9FF;  */
 	width: 25%;
-	
+	height: 683px;
 	/* position: absolute; */
 	float: left;
 	top:87px;
 	}
 	.div_two{
+	height: 683px;
 	float: right;
 	width: 75%;
 	
 	/* background-color:#EAEAEA;  */
 	top:110px;
 	}
-	.view_one{
 	
-	}
 	.inforEdit{
 	
 	margin-top:250px;
@@ -43,8 +45,9 @@
 	text-align: center;
 	font-size: 30px;
 	}
-	.openEdit{
 	
+	.openEdit{
+		
 	text-align: center;
 	font-size: 30px;
 	}
@@ -69,31 +72,17 @@
 </head>
 	
 <body style="background-color:#ffffe6;">
-
-
-
-<header>
+	<!-- Navigation -->
+	<%@include file="/WEB-INF/views/navi-font-black.jsp"%>
+	
+	<section class="text-center">
 		<div class="my-auto" >
-			<div class="mx-auto" >
-					<strong style="font-size: 60px;">Your Information</strong>				
+			<div class="mx-auto" style="margin-top: 100px; padding-top:0px;">
+				<strong style="font-size: 60px;">Your Information</strong>				
 			</div>         
 		</div>      
-	</header>
-	<!-- <header class="text-center text-black d-flex">
-		<div class="my-auto" >
-			<div class="mx-auto" style="text-align: center;">
-				<div class="row" style="left: 40%; top: 9%; display: inline-block; width: 50%; padding: 1em;">   
-					<div class="col-lg-10 mx-auto">
-						<h1 class="text-uppercase">
-							<strong>Your Information</strong>
-						</h1>
-					</div>   					
-				</div>
-			</div>         
-		</div>      
-	</header>  -->
-	
-	
+	</section>
+
 		<div class="div_one">
 			<div class="inforEdit"><a href="#">会員情報修正</a></div>
 			<div class="openEdit"><a href="#">公開範囲設定</a></div>
@@ -103,14 +92,9 @@
 			<div class="view_two"><%@include file="/WEB-INF/views/ego/mypage/openEdit.jsp"%></div>
 		</div>
 	
-
-	<%-- --%>
-    
-	
-     <section>
-		<!-- Navigation -->
+    <section id="container" style="margin-top: 20px;">
 		<!-- Footer -->
-    <%@include file="/WEB-INF/views/footer-text-black.jsp"%>
+   	 	<%@include file="/WEB-INF/views/footer-text-black.jsp"%>
 	</section>
 	
 	

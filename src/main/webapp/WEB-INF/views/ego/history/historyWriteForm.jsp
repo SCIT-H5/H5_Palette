@@ -38,25 +38,25 @@
 		var hisPeriod = document.getElementById("hisPeriod");
 		
 		if(hisDate.value == ""){
-			alert("연도을 입력해주세요.");
+			alert("年度を入力してください。");
 			hisDate.focus();
 			return false;
 		}
 		
 		if(hisTitle.value == ""){
-			alert("제목을 입력해주세요.");
+			alert("タイトルを入力してください。");
 			hisTitle.focus();
 			return false;
 		}
 		
 		if(hisContent.value == ""){
-			alert("내용을 입력해주세요.");
+			alert("内容を入力してください。");
 			hisContent.focus();
 			return false;
 		}
 		
 		if(hisPeriod.value == ""){
-			alert("기간을 입력해주세요.");
+			alert("期間を入力してください。");
 			hisPeriod.focus();
 			return false;
 		}

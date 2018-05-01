@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
@@ -29,27 +28,26 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">	
 </head>
 
 <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="${pageContext.request.contextPath}/" style="color:black;">PALETTE!</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="navbar1 navbar1-expand-lg navbar1-dark fixed-top" id="mainNav">
+      <div class="container" style="font-weight: bold;">
+        <a class="navbar1-brand js-scroll-trigger" style="color: black; font-size: x-large;" href="${pageContext.request.contextPath}/">PALETTE!</a>
+        <button class="navbar1-toggler navbar1-toggler-right" type="button" data-toggle="collapse dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar1-toggler-icon"></span>
         </button>
         
-	      <div class="collapse navbar-collapse drop_down" id="navbarResponsive">
-	          <ul class="navbar-nav ml-auto drop_down_menu">
+	      <div class="collapse navbar1-collapse drop_down" id="navbarResponsive">
+	          <ul class="navbar1-nav ml-auto drop_down_menu">
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/main" style="color:black;">Main Page</a>
+	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/main">MAIN PAGE</a>
 	            </li>
 	            <li class="nav-item" class="drop_down_submenu">
- 				  <a tabindex="-1" class="nav-link" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm" style="color:black;">Self-Analysis</a>
+ 				  <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" class="drop_down_multi" href="${pageContext.request.contextPath}/ego/swot/swotReadForm">SELF-ANALYSIS</a>
  				  
  				  <!-- 자아 분석 SubMenu dropDown -->
  				  <ul class="drop_down_menu">
@@ -94,29 +92,30 @@
 	        	</ul>
 	            </li>          
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/newPort" style="color:black;">New Portfolio</a>
+	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/port/newPort">NEW PORTFOLIO</a>
 	            </li>         
 	            <li class="nav-item">
-	              <a tabindex="-1" class="nav-link" href="${pageContext.request.contextPath}/port/my_port" style="color:black;">My Portfolio</a>
+	              <a tabindex="-1" class="nav-link" style="font-weight: bold; color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/port/my_port">MY PORTFOLIO</a>
 	            </li>  
 	          </ul>
 	        </div>        
 	        
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-         	<ul class="navbar-nav ml-auto">
+        <div class="collapse navbar1-collapse" id="navbarResponsive">
+         	<ul class="navbar1-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/ego/myInfo" style="color:black;">My Page</a>	               	              	 
+	              <a class="nav-link" style="color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/ego/myInfo">MY PAGE</a>	               	              	 
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/userinfo/logout" style="color:black;">Log-Out</a>
+	              <a class="nav-link" style="color: black; margin-left: 40px;" href="${pageContext.request.contextPath}/userinfo/logout">LOG-OUT</a>
 	            </li>
             </ul>
         </div> 
                  
       </div>
           
-    </nav>
-    
+    </nav>	
+	
+	
 	<!-- Bootstrap core JavaScript -->
     <script src="<c:url value='/resources/vendor/jquery/jquery.js'/>"></script>
     <script src="<c:url value='/resources/vendor/bootstrap/js/bootstrap.bundle.js'/>"></script>
@@ -127,7 +126,7 @@
     <script src="<c:url value='/resources/vendor/magnific-popup/jquery.magnific-popup.js'/>"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="<c:url value='/resources/js/creative.js'/>"></script>	
+    <script src="<c:url value='/resources/js/creative.js'/>"></script>
 </body>
 
 </html>

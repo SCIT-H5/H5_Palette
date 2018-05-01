@@ -140,25 +140,13 @@
 	<div id="box1" class="box">
 	  <div class="content">
 	    <h1>MY HISTORY</h1>
-		    <h2>나의 연혁 관리 페이지</h2>
-
-<<<<<<< HEAD
-	    	
-=======
-	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
->>>>>>> 4-28지농점심
+		    <h4>ヒストリ管理ページ</h4>
 
 		    <!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   			作成
 			</button>
 	    	<!-- <p><a href="historyWriteForm" target="_blank">나의 연혁 작성하러 가기</a></p> -->
-
-<<<<<<< HEAD
-	    	
-=======
-	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
->>>>>>> 4-28지농점심
 
 	  </div>
 	</div>
@@ -225,7 +213,7 @@
 	</c:if>
 	<c:if test="${hisAll ne '[]'}">
 	<div id="historyMenu" class="historyMenu" style=" width: 13%; margin: auto; cursor: move; font-size: 23px; margin-top: 160px; text-decoration:none !important;"  >
-	 			<p><a href="historyWriteForm" > 나의 연혁 추가하기 </a></p>
+	 			<p><a href="historyWriteForm" > 私の沿革追加する </a></p>
 	 		</div>
 			
 	<div class="timeline">
@@ -255,8 +243,8 @@
 					  		<hr>
 					   		<time>${his.hisPeriod }</time><br>
 					   		<hr>
-					   		<p style="text-align:right;"><a href="historyUpdateForm?hisNo=${his.hisNo}">수정</a>&nbsp;
-					   		<a href="historyDeleteOne?hisNo=${his.hisNo}">삭제</a></p>
+					   		<p style="text-align:right;"><a href="historyUpdateForm?hisNo=${his.hisNo}">修正</a>&nbsp;
+					   		<a href="historyDeleteOne?hisNo=${his.hisNo}">削除</a></p>
 			   			</li>
 	   			</ul>
 	   			

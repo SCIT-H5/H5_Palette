@@ -29,20 +29,20 @@
 			var proTitle = document.getElementById('proTitle');
 			
 			if (proTitle.value == "") {
-				alert("프로젝트 명을 입력하세요.");
+				alert("プロジェクトの名を入力してください。");
 				proTitle.focus();
 				proTitle.select();
 				return false;
 			}
 			
 			if (proTerm.value == "") {
-				alert("학기를  입력하세요.");
+				alert("制作年度を入力してください。");
 				proTerm.focus();
 				proTerm.select();
 				return false;
 			}
 			if (proEdu.value == "") {
-				alert("과목명을 입력하세요.");
+				alert("科目名を入力してください。");
 				proEdu.focus();
 				proEdu.select();
 				return false;
@@ -61,7 +61,7 @@
    	
 	<section id="viewList" style="padding-bottom: 80px;">
 	  
-    	<p style="width: 100%; margin-bottom: 30px; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 리스트 작성</p>
+    	<p style="width: 100%; margin-bottom: 30px; text-align: center; font-size: xx-large; font-weight: bold;">プロジェクトリスト作成</p>
 	  	    	
     <form id="projectWrite_One" action="projectWrite_One"  method="POST" enctype="multipart/form-data" onsubmit="return formCheck();">   
 		<!-- 세션에서 아이디 받아오기 -->
@@ -71,38 +71,38 @@
 			<div class="table100-head">
 				<table>					
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">프로젝트 명</th>						
+						<th class="cell100" style="padding-left: 50px; width:30%;">プロジェクト名</th>						
 						<td class="cell100 row100 body" style="width:70%;"> 
-							<input type="text" style="width:100%" name="proTitle" id="proTitle" placeholder="프로젝트 주제입력">
+							<input type="text" style="width:100%" name="proTitle" id="proTitle" placeholder="プロジェクトテーマ入力">
 						</td> 						
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">과목명</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">科目名</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
-							<input type="text" style="width:100%" name="proEdu" id="proEdu" placeholder="과목명 입력">
+							<input type="text" style="width:100%" name="proEdu" id="proEdu" placeholder="科目名入力">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">제작년도</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">制作年度</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
-							<input type="text" style="width:100%" name="proTerm" id="proTerm" placeholder="참여 학기 입력">
+							<input type="text" style="width:100%" name="proTerm" id="proTerm" placeholder="制作年度入力">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">담당교수</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">担当教授</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
-							<input type="text" style="width:100%" name="proProf" id="proProf" placeholder="담당 교수 입력">
+							<input type="text" style="width:100%" name="proProf" id="proProf" placeholder="担当教授入力">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">상세내용</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">詳細内容</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<textarea style="width:100%; height: 300px; border-color: #e6e6e6;" 
-								name="proContent" id="proContent" placeholder="상세내용 입력"></textarea>							
+								name="proContent" id="proContent" placeholder="詳細内容入力"></textarea>							
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">파일첨부</th> 
+						<th class="cell100" style="padding-left: 50px; width:30%;">ファイル添付</th> 
 						<td class="cell100 row100 body" style="width:70%;">
 							<!-- 새로 첨부할 파일 선택 -->
 							<input type="file" name="upload" size="30">
@@ -113,7 +113,7 @@
 			</div>		
 		</div>	
 		<div class="mx-auto" style="text-align: center;">
-	    	<input type="submit" class="text-uppercase text-white btn btn-primary btn-xl" value="작성완료">
+	    	<input type="submit" class="text-uppercase text-white btn btn-primary btn-xl" value="作成完了">
 		</div>
 		</form>
     </section>  

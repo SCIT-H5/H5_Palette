@@ -49,7 +49,7 @@
 						</h1>
 					</div>   
 					<div class="col-lg-8 mx-auto">
-			            <p class="text-faded mb-5">당신이 참여한 프로젝트 리스트를 확인하세요.</p>
+			            <p class="text-faded mb-5">あなたが参加したプロジェクトのリストを確認しましょう。</p>
 			            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#viewList">Show List</a>
 			        </div> 	
 				</div>
@@ -63,9 +63,9 @@
 				<table>
 					<thead>
 						<tr class="row100 head" style="font-weight: bold;">
-							<th class="cell100" style="width:50%; padding-left: 40px;">프로젝트 명</th>
-							<th class="cell100" style="width:35%;">과목명</th>
-							<th class="cell100" style="width:15%; padding-right: 40px;">제작기간</th>
+							<th class="cell100" style="width:50%; padding-left: 40px;">プロジェクト名</th>
+							<th class="cell100" style="width:35%;">科目名</th>
+							<th class="cell100" style="width:15%; padding-right: 40px;">製作期間</th>
 						</tr>
 					</thead>
 				</table>

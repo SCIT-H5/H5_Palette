@@ -83,7 +83,7 @@
 
 	<section id="viewList" style="padding-bottom: 80px;">
 	  
-    	<p style="width: 100%; text-align: center; font-size: xx-large; font-weight: bold;">프로젝트 리스트 수정</p>
+    	<p style="width: 100%; text-align: center; font-size: xx-large; font-weight: bold;">プロジェクトリスト修正</p>
 	  	    	
 		<form id="projectEdit" action="projectEdit" enctype="multipart/form-data" method="post" onsubmit="return formCheck();">	
 		
@@ -97,42 +97,42 @@
 			<div class="table100-head">
 				<table>					
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">프로젝트 명</th>						
+						<th class="cell100" style="padding-left: 50px; width:30%;">プロジェクト名</th>						
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<input type="text" style="width:100%" name="proTitle" id="proTitle" 
-							placeholder="프로젝트 주제입력" value="${result.proTitle}">
+							placeholder="プロジェクトテーマ入力" value="${result.proTitle}">
 						</td> 						
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">과목명</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">科目名</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<input type="text" style="width:100%" name="proEdu" id="proEdu" 
-							placeholder="과목명 입력" value="${result.proEdu}">
+							placeholder="科目名入力" value="${result.proEdu}">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">제작년도</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">制作年度</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<input type="text" style="width:100%" name="proTerm" id="proTerm" 
-							placeholder="참여 학기 입력" value="${result.proTerm}">
+							placeholder="制作年度入力" value="${result.proTerm}">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">담당교수</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">担当教授</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<input type="text" style="width:100%" name="proProf" id="proProf" 
-							placeholder="담당 교수 입력" value="${result.proProf}">
+							placeholder="担当教授入力" value="${result.proProf}">
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">상세내용</th>
+						<th class="cell100" style="padding-left: 50px; width:30%;">詳細内容</th>
 						<td class="cell100 row100 body" style="width:70%;"> 
 							<textarea style="width:100%; height: 300px; border-color: #e6e6e6;" 
-							name="proContent" id="proContent" placeholder="상세내용 입력">${result.proContent}</textarea>
+							name="proContent" id="proContent" placeholder="詳細内容入力">${result.proContent}</textarea>
 						</td>
 					</tr>
 					<tr class="row100 head" style="font-weight: bold;">
-						<th class="cell100" style="padding-left: 50px; width:30%;">파일첨부</th> 
+						<th class="cell100" style="padding-left: 50px; width:30%;">ファイル添付</th> 
 						<td class="cell100 row100 body" style="width:70%;">
 							<!-- 새로 첨부할 파일 선택 -->
 							<input type="file" name="upload" size="30">
