@@ -51,8 +51,18 @@
 					<table>	
 						<tbody>
 							<tr class="row100 body" id="panel1">
+<<<<<<< HEAD
+<<<<<<< HEAD
+								<td class="cell100 column1" id="swot1" name="swotS" contenteditable='true'>
+									<input type="text" id="swotO_S" name="swotS" value="${sessionScope.swotlist.swotS}" placeholder="強みを入力してください。" class="swotS">
+=======
 								<td class="cell100 column1" id="swot1" name="swotS">
 									<input type="text" id="swotO_O" name="swotS" value="${sessionScope.swotlist.swotS}" placeholder="강점을 입력하시오" class="swotS">
+>>>>>>> 4-30.6차합병브런치
+=======
+								<td class="cell100 column1" id="swot1" name="swotS">
+									<input type="text" id="swotO_O" name="swotS" value="${sessionScope.swotlist.swotS}" placeholder="강점을 입력하시오" class="swotS">
+>>>>>>> 4-28지농점심
 								</td>				
 							</tr>
 						</tbody>
@@ -75,8 +85,18 @@
 					<table>
 						<thead>
 							<tr class="row100 body" id="panel2">			
+<<<<<<< HEAD
+<<<<<<< HEAD
+								<td class="cell100 column1" id="swot2"  name="swotW" contenteditable='true'>
+									<input type="text" id="swotO_W" name="swotW" value="${sessionScope.swotlist.swotW}" placeholder="弱みを入力してください。" class="swotW">
+=======
 								<td class="cell100 column1" id="swot2"  name="swotW">
 									<input type="text" id="swotO_O" name="swotW" value="${sessionScope.swotlist.swotW}" placeholder="약점을 입력하시오" class="swotW">
+>>>>>>> 4-30.6차합병브런치
+=======
+								<td class="cell100 column1" id="swot2"  name="swotW">
+									<input type="text" id="swotO_O" name="swotW" value="${sessionScope.swotlist.swotW}" placeholder="약점을 입력하시오" class="swotW">
+>>>>>>> 4-28지농점심
 								</td>				
 							</tr>
 						</thead>
@@ -99,8 +119,16 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel3">
+<<<<<<< HEAD
+<<<<<<< HEAD
+								<td class="cell100 column1" id="swot3" name="swotO" contenteditable='true'>
+									<input type="text" id="swotO_O" name="swotO" value="${sessionScope.swotlist.swotO}" placeholder="機会を入力してください。" class="swotO">
+=======
+=======
+>>>>>>> 4-28지농점심
 								<td class="cell100 column1" id="swot3" name="swotO">
 									<input type="text" id="swotO_O" name="swotO" value="${sessionScope.swotlist.swotO}" placeholder="기회를 입력하시오" class="swotO">
+>>>>>>> 4-30.6차합병브런치
 								</td>				
 							</tr>
 						</thead>
@@ -123,8 +151,16 @@
 		      		<table>
 						<thead>
 						    <tr class="row100 body" id="panel4">
+<<<<<<< HEAD
+<<<<<<< HEAD
+								<td class="cell100 column1" id="swot4" contenteditable='true'>
+									<input type="text" id="swotT_T" name="swotT" value="${sessionScope.swotlist.swotT}" placeholder="脅威を入力してください。" class="swotT">
+=======
+=======
+>>>>>>> 4-28지농점심
 								<td class="cell100 column1" id="swot4">
 									<input type="text" id="swotT_T" name="swotT" value="${sessionScope.swotlist.swotT}" placeholder="위협을 입력하시오" class="swotT">
+>>>>>>> 4-30.6차합병브런치
 								</td>				
 							</tr>		
 						</thead>
@@ -132,7 +168,7 @@
 				</div>
 			</div>
 		</div>
-	<input type="submit" id="button_q" value="수정완료" class="button_1">
+	<input type="submit" id="button_q" value="修整完了" class="button_1">
 </form>
  
  	<!-- Slide-Toggle -->

@@ -81,7 +81,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">${loginId } 님, 환영합니다 :)</p>
+            <p class="text-faded mb-5">${loginId }　様、 ようこそ :)</p>
           </div>
           <div class="col-lg-8 mx-auto">
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">Services</a>
@@ -105,28 +105,33 @@
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-pie-chart text-primary mb-3 sr-icons" id="icon1" onclick="services1()"></i>
               <h3 class="mb-3">Self-Analysis</h3>
-              <p class="text-muted mb-0">지피지기면 백전백승! 우선 자아 분석을 통해 내가 가진 장단점을 알아봐요.</p>
+              <p class="text-muted mb-0">知彼知己、百戦百勝!</p>
+              <p class="text-muted mb-0">自己分析を通じて私がもっている</p>
+              <p class="text-muted mb-0">長短所を確認しましょう！</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons" id="icon2" onclick="services2()"></i>
               <h3 class="mb-3">New Portfolio</h3>
-              <p class="text-muted mb-0">자아 분석을 활용해 새로운 포트폴리오를 작성해보세요.</p>
+              <p class="text-muted mb-0">自己分析を活用し、新しい</p>
+              <p class="text-muted mb-0">ポートフォリオを作りましょう！</p>              
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-file-archive-o text-primary mb-3 sr-icons" id="icon3" onclick="services3()"></i>
               <h3 class="mb-3">My Portfolio</h3>
-              <p class="text-muted mb-0">작성된 포트폴리오를 확인해보세요.</p>
+              <p class="text-muted mb-0">完成できたポートフォリオを</p>
+              <p class="text-muted mb-0">確認しましょう！</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-user-secret text-primary mb-3 sr-icons" id="icon4" onclick="services4()"></i>
               <h3 class="mb-3">My Page</h3>
-              <p class="text-muted mb-0">개인 정보 및 공개범위 설정을 해 보세요.</p>
+              <p class="text-muted mb-0">個人情報や公開範囲設定を</p>
+              <p class="text-muted mb-0">しましょう！</p>
             </div>
           </div>
         </div>

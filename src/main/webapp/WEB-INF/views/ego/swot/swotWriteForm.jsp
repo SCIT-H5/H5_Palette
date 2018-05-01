@@ -49,7 +49,7 @@
 						<tbody>
 							<tr class="row100 body" id="panel1">
 								<td class="cell100 column1" id="swot1">
-									<input type="text" id="swotO_O" name="swotS" value="" placeholder="강점을 입력하시오" class="swotS">
+									<input type="text" id="swotO_O" name="swotS" value="" placeholder="強みを入力してください。" class="swotS">
 								</td>				
 							</tr>
 						</tbody>
@@ -73,7 +73,7 @@
 						<thead>
 							<tr class="row100 body" id="panel2">			
 								<td class="cell100 column1" id="swot2">
-									<input type="text" id="swotO_O" name="swotW" value="" placeholder="약점을 입력하시오" class="swotW">
+									<input type="text" id="swotO_O" name="swotW" value="" placeholder="弱みを入力してください。" class="swotW">
 								</td>				
 							</tr>
 						</thead>
@@ -97,7 +97,7 @@
 						<thead>
 						    <tr class="row100 body" id="panel3">
 								<td class="cell100 column1" id="swot3">
-									<input type="text" id="swotO_O" name="swotO" value="" placeholder="기회를 입력하시오" class="swotO">
+									<input type="text" id="swotO_O" name="swotO" value="" placeholder="機会を入力してください。" class="swotO">
 								</td>				
 							</tr>
 						</thead>
@@ -121,7 +121,7 @@
 						<thead>
 						    <tr class="row100 body" id="panel4">
 								<td class="cell100 column1" id="swot4">
-									<input type="text" id="swotT_T" name="swotT" value="" placeholder="위협을 입력하시오" class="swotT">
+									<input type="text" id="swotT_T" name="swotT" value="" placeholder="脅威を入力してください。" class="swotT">
 								</td>				
 							</tr>		
 						</thead>
@@ -149,7 +149,7 @@
 	</tr>
 </table> -->
 
-<input type="submit" id="button" class="button_1" value="작성하기 ">
+<input type="submit" id="button" class="button_1" value="作成完了">
 
 </form>
  

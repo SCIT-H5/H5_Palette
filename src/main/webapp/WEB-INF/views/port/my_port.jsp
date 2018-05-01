@@ -52,12 +52,12 @@
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
 					if(portId == commentID){
-						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[수정]</a>";
+						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修整]</a>";
 					}
 					str +="</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
 					if(portId == commentID){
-						str +="<a href='javascript:replyDelete("+commentNum+", "+replyportNum+")'>[삭제]</a>";
+						str +="<a href='javascript:replyDelete("+commentNum+", "+replyportNum+")'>[削除]</a>";
 						
 					}
 					str +="</td>";
@@ -85,7 +85,7 @@
 		
 		
 		if (retext.value == '') {
-			alert('내용을 입력하여 주시와요');
+			alert('内容を入力してください。');
 			retext.focus();
 			retext.select();
 			return false;
@@ -106,9 +106,9 @@
 		str += '&nbsp;';
 		str += '<input type="text" name="commentText" value="' + retext + '" style="width:697px;">';
 		str += '&nbsp;';
-		str += '<a href="javascript:replyEdit(document.editForm' + commentNum + ')">[저장]</a>';
+		str += '<a href="javascript:replyEdit(document.editForm' + commentNum + ')">[セーブ]</a>';
 		str += '&nbsp;';
-		str += '<a href="javascript:replyEditCancle(document.getElementById(\'div' + commentNum + '\'))">[취소]</a>';
+		str += '<a href="javascript:replyEditCancle(document.getElementById(\'div' + commentNum + '\'))">[キャンセル]</a>';
 		str += '</form>';
 		div.innerHTML = str;
 		
@@ -121,14 +121,14 @@
 
 	//리플 수정 정보 저장
 	function replyEdit(form) {
-		if (confirm('수정된 내용을 저장하시겠습니까?')) {
+		if (confirm('修整された内容をセーブしますか？')) {
 			form.submit();
 		}
 	}
 
 	//리플 삭제
 	function replyDelete(replynum, boardnum) {
-		if (confirm('리플을 삭제하시겠습니까?')) {
+		if (confirm('コメントを削除しますか？')) {
 			location.href = 'replyDelete?replynum=' + replynum + '&boardnum='
 					+ boardnum;
 		}
@@ -210,11 +210,11 @@
 				<!-- 리플 작성 폼 시작 -->
 					<div id = "replyT" class="replyT">
 						<form id="replyform" action="replyWrite" method="post" onSubmit="return replyFormCheck();">
-							리플내용 :<input type="hidden" name="replyportNum" id="replyportNum" />
+							コメント内容 :<input type="hidden" name="replyportNum" id="replyportNum" />
 			 		
 							<input type="text" name="commentText" id="retext" />
 							
-							<input type="submit" value="확인" />
+							<input type="submit" value="確認" />
 						</form>
 					</div>
 					<!-- /리플 작성 폼 끝 -->

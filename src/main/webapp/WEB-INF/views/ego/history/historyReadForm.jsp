@@ -142,6 +142,9 @@
 	    <h1>MY HISTORY</h1>
 		    <h2>나의 연혁 관리 페이지</h2>
 <<<<<<< HEAD
+	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
+=======
+<<<<<<< HEAD
 		    <!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   			作成
@@ -150,6 +153,7 @@
 =======
 	    	<p><a href="historyWriteForm">나의 연혁 작성하러 가기</a></p>
 >>>>>>> 4-30.6차합병브런치
+>>>>>>> 4-28지농점심
 	  </div>
 	</div>
 	

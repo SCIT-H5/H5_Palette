@@ -10,10 +10,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Palette - Sign In &amp; Sign Up</title>
+        		
+        <!-- Javascript -->      		        
+		<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>        
         
-		<!-- jQuery -->
-		<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
-		
+		<script src="/h5/resources/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/h5/resources/assets/js/scripts.js"></script>
+        
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/bootstrap/css/bootstrap.min.css">
@@ -42,7 +45,7 @@
 				var userPw = document.getElementById('userPw');
 				
 				if (userId.value == '' || userPw.value == '') {
-					alert('ID와 비밀번호를 입력하세요.');
+					alert('IDと暗証番号を入力してください。');
 					return false;
 				}
 				return true;
@@ -65,7 +68,7 @@
                             <h1>Sign-In &amp; Sign-Up</h1>
                             <div class="description">
                             	<p>
-	                            	로그인 및 회원가입
+	                            	ログインと会員加入
                             	</p>
                             </div>
                         </div>
@@ -78,7 +81,7 @@
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
 	                        			<h3>Login to our site</h3>
-	                            		<p>아이디와 패스워드를 입력해주세요.</p>
+	                            		<p>IDと暗証番号を入力してください。</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
@@ -88,11 +91,11 @@
 				                    <form role="form" action="loginForm" method="post" class="login-form" onsubmit="return form_signin();">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="form-username">Username</label>
-				                        	<input type="text" name="userId" placeholder="ID..." class="form-username form-control" id="userId">
+				                        	<input type="text" name="userId" placeholder="ID" class="form-username form-control" id="userId">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="userPw" placeholder="Password..." class="form-password form-control" id="userPw">
+				                        	<input type="password" name="userPw" placeholder="Password" class="form-password form-control" id="userPw">
 				                        </div>
 				                        <div class="errorMsg">
 											<p style="color: red;">${errorMsg}</p>
@@ -112,7 +115,7 @@
                         		<div class="form-top">
 	                        		<div class="form-top-left">
 	                        			<h3>Sign up now</h3>
-	                            		<p>빈 칸을 작성해 주세요.</p>
+	                            		<p>空欄を作成してください。</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-pencil"></i>
@@ -121,53 +124,53 @@
 	                            <div class="form-bottom">
 				                    <form role="form" action="joinForm" method="post" class="form-signin" data-toggle="validator">
 				                    	<div class="form-group has-feedback">
-				                    		<label for="inputId" class="sr-only">아이디</label> 
+				                    		<label for="inputId" class="sr-only">ID</label> 
 											<input type="text" id="id" name="id" data-remote="checkId"
-												class="form-control" placeholder="아이디" pattern="^[_A-z0-9]{1,}$"
+												class="form-control" placeholder="ID" pattern="^[_A-z0-9]{1,}$"
 												required>
 												
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-											<span class="help-block">아이디는 숫자와 영어로만 작성해 주세요.</span>
+											<span class="help-block">IDは数字と英語だけで作成してください。</span>
 											<div id="help-block-id" class="help-block with-errors"></div>
 				                        </div>
 				                        <div class="form-group has-feedback">
-				                        	<label for="inputPassword" class="sr-only">비밀번호</label>
+				                        	<label for="inputPassword" class="sr-only">PW</label>
 											<input type="password" id="password" name="password" pattern="^[_A-z0-9]{1,}$" 
-												class="form-control" placeholder="비밀번호" required>
+												class="form-control" placeholder="暗証番号" required>
 												
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-											<span class="help-block">비밀번호는 숫자와 영어로만 작성해 주세요.</span>
+											<span class="help-block">暗証番号は数字と英語だけで作成してください。</span>
 											<div class="help-block with-errors"></div>
 				                        </div>
 				                        <div class="form-group has-feedback">
-				                        	<label for="inputPasswordCheck" class="sr-only">비밀번호 확인</label>
+				                        	<label for="inputPasswordCheck" class="sr-only">暗証番号確認</label>
 											<input type="password" id="inputPasswordCheck" class="form-control"
-												placeholder="비밀번호 확인" data-match="#password" 
-												data-match-error="비밀번호가 일치하지 않습니다!" required>
+												placeholder="暗証番号確認" data-match="#password" 
+												data-match-error="暗証番号が違います。" required>
 												
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 											<div class="help-block with-errors"></div>
 				                        </div>
 				                        <div class="form-group has-feedback">
-				                        	<label for="inputName" class="sr-only">이름</label> 
+				                        	<label for="inputName" class="sr-only">名前</label> 
 											<input type="text" id="name" name="name"
-												class="form-control" placeholder="이름" required>
+												class="form-control" placeholder="名前" required>
 												
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 											<div class="help-block with-errors"></div>
 				                        </div>
 				                        <div class="form-group has-feedback">
-											<label for="inputEmail" class="sr-only">이메일</label> 
+											<label for="inputEmail" class="sr-only">メールアドレス</label> 
 											<input type="text" id="email" name="email" data-remote="checkEmail" 
-												class="form-control" placeholder="이메일 주소" data-error="잘못된 이메일 주소입니다." 
+												class="form-control" placeholder="メールアドレス" data-error="間違ったメールアドレスです。" 
 												required>
 												
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 											<div class="help-block with-errors"></div>
 										</div>
-				                        <button type="submit" class="btn">회원가입</button>
+				                        <button type="submit" class="btn">会員加入</button>
 				                        <a href="../" class="btn">
-											돌아가기
+											戻る
 										</a>
 				                    </form>
 			                    </div>
@@ -192,14 +195,9 @@
         	</div>
         </footer>
 
-        <!-- Javascript -->
-        <script src="/resources/assets/js/jquery-1.11.1.min.js"></script>
-        <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/resources/assets/js/scripts.js"></script>
-        
-		<!-- Bootstrap Validator -->
-		<script type="text/javascript" src="<c:url value='/resources/js/validator.js'/>"></script>
-				
+        <!-- Bootstrap Validator -->
+		<script type="text/javascript" src="<c:url value='/resources/js/validator.js'/>"></script>				
+		
 		<!-- Custom javascript -->
 		<script type="text/javascript" src="<c:url value='/resources/js/member.js'/>"></script>
         

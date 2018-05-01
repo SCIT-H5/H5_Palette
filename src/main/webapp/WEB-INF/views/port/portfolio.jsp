@@ -427,10 +427,10 @@ function createGraph(i) {
 	<!-- 위젯영역 -->
 	<div id="sidebox" class="sidebox">
 		<c:if test="${port == null }">
-			<input type="button" value="저장" id="savebtn">
+			<input type="button" value="セーブ" id="savebtn">
 		</c:if>
 		<c:if test="${port != null }">
-			<input type="button" value="수정" id="savebtn">
+			<input type="button" value="修整" id="savebtn">
 		</c:if>
 		<ul id="wigetBox" class="wigetBox ui-helper-reset ui-helper-clearfix">
 		  <li class="ui-widget-content ui-corner-tr" value="1">
@@ -551,7 +551,7 @@ function createGraph(i) {
 	<img src="${pageContext.request.contextPath}/resources/portfolio/img/right_sort.png" class="textEditIcon" id="justifyRight">
 	<br>
 	<select id="fontName" width="50px">
-		<option value="">글꼴</option>
+		<option value="">フォント</option>
 		<option value="돋움">돋움</option>
 		<option value="굴림">굴림</option>
 		<option value="궁서">궁서</option>
@@ -560,7 +560,7 @@ function createGraph(i) {
 	</select>
     	
 	<select id="fontSize" width="50px">
-		<option value="">글자크기</option>
+		<option value="">文字サイズ</option>
 		<option value="1">4px</option>
 		<option value="2">8px</option>
 		<option value="3">10px</option>
@@ -572,22 +572,22 @@ function createGraph(i) {
 		
 		
 	<select id="foreColor" width="50px">
-		<option value="">글자 색깔</option>
-		<option value="#f00">빨강</option>
-		<option value="#00f">파랑</option>
-		<option value="#0f0">초록</option>
-		<option value="#ffff00">노랑</option>
-		<option value="#000">검정</option>
+		<option value="">フォント色</option>
+		<option value="#f00">赤い</option>
+		<option value="#00f">青い</option>
+		<option value="#0f0">緑</option>
+		<option value="#ffff00">黄色い</option>
+		<option value="#000">黒い</option>
 	</select>
 
 		
 	<select id="hiliteColor" width="50px">
-		<option value="">글자배경</option>
-		<option value="#f00">빨강</option>
-		<option value="#00f">파랑</option>
-		<option value="#0f0">초록</option>
-		<option value="#ffff00">노랑</option>
-		<option value="#000">검정</option>
+		<option value="">文字背景</option>
+		<option value="#f00">赤い</option>
+		<option value="#00f">青い</option>
+		<option value="#0f0">緑</option>
+		<option value="#ffff00">黄色い</option>
+		<option value="#000">黒い</option>
 	</select>
 </div>
   

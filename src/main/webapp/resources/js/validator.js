@@ -182,10 +182,13 @@
     }
 
     $.each(this.validators, $.proxy(function (key, validator) {
+    	console.log(key);
+    	console.log(validator);
       var error = null
       if ((getValue($el) || $el.attr('required')) &&
           ($el.attr('data-' + key) !== undefined || key == 'native') &&
           (error = validator.call(this, $el))) {
+    	  
          error = getErrorMessage(key) || error
         !~errors.indexOf(error) && errors.push(error)
       }
@@ -193,14 +196,17 @@
 
     if (!errors.length && getValue($el) && $el.attr('data-remote')) {
       this.defer($el, function () {
+    	  
         var data = {}
         data[$el.attr('name')] = getValue($el)
         $.get($el.attr('data-remote'), data)
           .fail(function (jqXHR, textStatus, error) { 
+        	  
         	  if (error == 'Expectation Failed') {
-        		  errors.push('사용중인 아이디입니다.' || error);
+        		  
+        		  errors.push('もう使っているIDです。' || error);
         	  } else if (error == 'Length Required') {
-        		  errors.push('사용중인 이메일입니다.' || error);
+        		  errors.push('もう使っているメールアドレスです。' || error);
         	  }         	  
         	  
           })
@@ -246,7 +252,7 @@
 
     errors = $('<ul/>')
       .addClass('list-unstyled')
-      .append($.map(errors, function (error) { return $('<li/>')[method](error) }))
+      .append($.map(errors, function (error) {  return $('<li/>')[method](error) }))
 
     $block.data('bs.validator.originalContent') === undefined && $block.data('bs.validator.originalContent', $block.html())
     $block.empty().append(errors)

@@ -67,19 +67,19 @@
 		        		<!-- 자격 사항 SubMenu dropDown -->		        		
 		        		<ul class="drop_down_menu">
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certGradeReadForm">졸업 증명</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certGradeReadForm">卒業証明</a>
 			        		</li>
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certLectReadForm">이수 과목</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certLectReadForm">サブジェクト完成</a>
 			        		</li>
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certScholarshipReadForm">장학 내역</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certScholarshipReadForm">奨学内訳</a>
 			        		</li>
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certCertificateReadForm">자격 증명</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certCertificateReadForm">資格証明</a>
 			        		</li>
 			        		<li>
-			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certProjectReadForm">프로젝트 리스트</a>
+			        			<a tabindex="-1" href="${pageContext.request.contextPath}/ego/cert/certProjectReadForm">プロジェクトリスト</a>
 			        		</li>
 			        	</ul>		        		
 		        		

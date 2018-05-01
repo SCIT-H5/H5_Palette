@@ -158,10 +158,14 @@
 				console.log(datatable);
 				
 <<<<<<< HEAD
+			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
+=======
+<<<<<<< HEAD
 				 $('input[type="text"]').attr("readonly", true);
 =======
 			    $('#edittable2').prepend('<input type="hidden" id="fileNum" value="'+fileIdx+'">'); 
 >>>>>>> 4-30.6차합병브런치
+>>>>>>> 4-28지농점심
 				tablehtml = $('#edittable2').html();
 				console.log(tablehtml);
 	
