@@ -25,12 +25,27 @@
 		$(".replyT").hide();
 		$(".reply").hide();
 		$('.portNum').on('click', function() {
+			$(".replyT").hide();
+			$(".reply").hide();
+			var portNum = $(this).attr('value');
+			var portId = '${sessionScope.loginId}';
+			var portHeight = $(this).attr('portHeight');
+			portHeight = Number(portHeight.split('px')[0])+200+'px';
+			$('#mainDiv').css('height', portHeight);
+			$('#portDiv').load('/h5/port/portView?portNum='+portNum+'&portId='+portId);
+		});
+		
+		
+		$('.openPortNum').on('click', function() {
 			$(".replyT").show();
 			$(".reply").show();
 			var portNum = $(this).attr('value');
-			var portId = '${sessionScope.loginId}';
-		$('#portDiv').load('/h5/port/portView?portNum='+portNum+'&portId='+portId);
-		$('#replyportNum').val(portNum);//해당 포폴의 댓글입력시 포폴번호 같이 넘김-히든속성의 벨류로 지정해서 넘김
+			var portId = $(this).attr('portId');
+			var portHeight = $(this).attr('portHeight');
+			portHeight = Number(portHeight.split('px')[0])+200+'px';
+			$('#mainDiv').css('height', portHeight);
+			$('#portDiv').load('/h5/port/portView?portNum='+portNum+'&portId='+portId);
+			$('#replyportNum').val(portNum);//해당 포폴의 댓글입력시 포폴번호 같이 넘김-히든속성의 벨류로 지정해서 넘김
 
 		$.ajax({
 			url : "portReplyList",
@@ -42,21 +57,29 @@
 				var size = obj.length;//저장된 obg의 길이
 				var str;
 				for(var i=0; i<size; i++){
-					
+					var s_id = '${sessionScope.loginId}';
 					var commentID = obj[i].commentID;
 					var commentText = obj[i].commentText;
 					var commentNum = obj[i].commentNum;
+					var commentDate = obj[i].commentDate;
 					var replyportNum = obj[i].replyportNum;
 					//alert(replyportNum);
 					str += "<tr class='row100 head' style='font-weight: bold;'><td class='cell100' style='width:25%; padding-left: 40px;'><b>"+commentID+"</b></td>";
 					str +="<td class='cell100' style='width:25%;'>"+commentText+"</td>";
+<<<<<<< HEAD
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
 					if(portId == commentID){
 						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修正]</a>";
+=======
+					str +="<td class='cell100' style='width: 26%; padding-right: 40px;'>"+commentDate+"</td>";
+					str +="<td class='cell100' style='width:12%%;'>";
+					if(s_id == commentID){
+						str += "<a href='javascript:replyEditForm("+commentNum+", "+replyportNum+","+commentText+")'>[修整]</a>";
+>>>>>>> 5-1포폴공유,포폴height적용
 					}
 					str +="</td>";
 					str +="<td class='cell100' style='width:15%; padding-right: 40px;'>";
-					if(portId == commentID){
+					if(s_id == commentID){
 						str +="<a href='javascript:replyDelete("+commentNum+", "+replyportNum+")'>[削除]</a>";
 						
 					}
@@ -137,7 +160,7 @@
 	
 </script>
 <style type="text/css">
-	.portNum {
+	.portNum, .openPortNum {
 		font-size: 30sp;
 		font-weight: bold;
 		cursor: pointer;
@@ -164,7 +187,7 @@
 	}
 	
 	.reply{
-		    width: 700px;
+		    width: 830px;
     		/* height: 200px; */
     		margin: auto;
    	 		border: 1px solid gray;
@@ -189,24 +212,34 @@
 
 <div>
 	<!-- portfolio list -->
-	<div  style="width: 13%; height: 1000px; position: absolute; margin: 20px; text-align: center; border: 1px solid;">
-	
+	<div  style="width: 16%; height: 1000px; position: absolute; margin-top: 20px; text-align: center; border: 1px solid;">
+		<p style="font-size: 15pt; background-color:#FFFF00; padding:15px;">私のポートフォリオ</p>
 		<c:forEach items="${portList }" var="list" varStatus="status">
+			<span class="portNum" value="${list.portNum }" portHeight="${list.portHeight }">${status.index+1 }番ポートフォリオ</span>
 			<br><br>
-			<span class="portNum" value="${list.portNum }">${status.index+1 }番ポートフォリオ</span>
-			
-			
 		</c:forEach>
+		
+		<p style="font-size: 15pt;  background-color:#FFFF00; margin-top: 160px; padding:15px; font-family: '돋움';">共有ポートフォリオ</p>
+		<c:forEach items="${portOpenList }" var="openList">
+			<span class="openPortNum" value="${openList.portNum }" portId="${openList.portId }" portHeight="${openList.portHeight }">${openList.portId }さまのポートフォリオ</span>
+			<br><br>
+		</c:forEach>
+		
 	</div>
 </div>	
 
-<div style="width:82%; height:1000px; float: right; margin: 20px; background-color: white;">
+<div id="mainDiv" style="width:82%; height:1000px; float: right; margin: 20px; background-color: white;">
 
 	<!-- portfolio view -->
-			<div id="portDiv" class="portDiv" >
+			<div id="portDiv" class="portDiv">
 				<img alt="" src="/h5/resources/portfolio/img/resume.gif" width="100%" height="1000px">
 				
 			</div>	
+				
+				
+				
+	
+</div>		
 				<!-- 리플 작성 폼 시작 -->
 					<div id = "replyT" class="replyT">
 						<form id="replyform" action="replyWrite" method="post" onSubmit="return replyFormCheck();">
@@ -219,8 +252,9 @@
 					</div>
 					<!-- /리플 작성 폼 끝 -->
 				<br>
-				<!-- 리플 목록 출력 시작 -->
+	<!-- 리플 목록 출력 시작 -->
 				<table class="reply">
+<<<<<<< HEAD
 				</table>
 				
 	
@@ -230,5 +264,8 @@
 		<!-- Navigation -->
 		<%@include file="/WEB-INF/views/footer-text-white.jsp"%>
 	</section>			
+=======
+				</table>		
+>>>>>>> 5-1포폴공유,포폴height적용
 </body>
 </html>

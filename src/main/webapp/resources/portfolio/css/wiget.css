@@ -72,11 +72,11 @@
 
 .textEditBox {
 	background-color: #e4e6eb63;
-	width: 390px;
+	width: 250px;
 	padding: 10px;
 	position: absolute;
 	top: 330px;
-	left: 261px;
+	left: 0px;
 }
 
 .textEditIcon {

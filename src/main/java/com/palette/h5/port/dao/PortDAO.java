@@ -99,6 +99,23 @@ public class PortDAO {
 		return port;
 	}
 	
+	
+	public ArrayList<Portfolio> portOpenList() {
+		logger.info("DAO | 공유된 포트폴리오 리스트 불러오기 시작");
+		PortMapper mapper = session.getMapper(PortMapper.class);
+		
+		ArrayList<Portfolio> portList = null;
+		
+		try {
+			portList = mapper.portOpenList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.info("DAO | 공유된 포트폴리오 리스트 불러오기 종료");
+		return portList;
+	}
+	
 	//리플 작성
 	public int commentwrite(Reply reply){
 		int result = 0;

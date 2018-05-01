@@ -12,6 +12,7 @@
 			,portNum
 			,portContent
 			,portModify
+			,portHeight
 			)
 		values
 			(
@@ -19,6 +20,7 @@
 			,portfolio_SEQ.nextval
 			,#{portContent}
 			,#{portModify}
+			,#{portHeight}
 			)
 	</insert>
 	
@@ -29,6 +31,7 @@
 		set
 			portContent = #{portContent}
 			,portModify = #{portModify}
+			,portHeight = #{portHeight}
 		where
 			portNum = #{portNum}
 			and
@@ -67,6 +70,16 @@
 			portNum = #{portNum}
 	</select>
 	
+	<!-- 공유된 포폴리스트 불러오기 -->
+	<select id="portOpenList" resultType="portfolio">
+		select
+			*
+		from
+			portfolio
+		where
+			portOpen=1
+	</select>
+	
 	<!-- 리플 작성하기 -->
 	<insert id="commentwrite" parameterType="reply">
 		insert into port_comment (
@@ -95,7 +108,7 @@
 			port_comment 
 		where
 			replyportNum = #{replyportNum}
-		order by replyportNum desc
+		order by commentDate desc
 	</select>
 	<!--리플 수정하기  -->
 	<update id="commentUpdate" parameterType="reply">

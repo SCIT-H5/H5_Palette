@@ -69,6 +69,8 @@ public class PortController {
 		String portId = (String)session.getAttribute("loginId");
 		ArrayList<Portfolio> portList = dao.portList(portId);
 		model.addAttribute("portList", portList);
+		ArrayList<Portfolio> portOpenList = dao.portOpenList();
+		model.addAttribute("portOpenList", portOpenList);
 		logger.info("내 포트폴리오 이동 완료");
 		
 		return "port/my_port";

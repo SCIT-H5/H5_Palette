@@ -82,6 +82,7 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<form action="portUpdateForm" method="post" id="upForm">
 		<input type="hidden" name="portNum" value="${port.portNum }">
@@ -95,6 +96,22 @@
 	</form>
 	<!-- <div id="see"></div>	 -->
 
+=======
+	
+	<c:if test="${sessionScope.loginId == port.portId}">
+		<form action="portUpdateForm" method="post" id="upForm">
+			<input type="hidden" name="portNum" value="${port.portNum }">
+			<input type="hidden" name="portId" value="${sessionScope.loginId }">
+			<input type="button" id="update" value="修整">
+		</form>
+		<form action="portDelete" method="post" id="delForm">
+			<input type="hidden" name="portNum" value="${port.portNum }">
+			<input type="hidden" name="portId" value="${sessionScope.loginId }">
+			<input type="button" id="delete" value="削除">
+		</form>
+		
+	</c:if>
+>>>>>>> 5-1포폴공유,포폴height적용
 	
 	<div id="see" class="see">
 	<!-- 보여지는 영역 -->

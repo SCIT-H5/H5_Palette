@@ -6,15 +6,18 @@ public class Portfolio {
 	public String portContent;
 	public String portModify;
 	public int portOpen;
+	public String portHeight;
 		
 	public Portfolio() {}
 
-	public Portfolio(String portId, int portNum, String portContent, String portModify, int portOpen) {
+	public Portfolio(String portId, int portNum, String portContent, String portModify, int portOpen,
+			String portHeight) {
 		this.portId = portId;
 		this.portNum = portNum;
 		this.portContent = portContent;
 		this.portModify = portModify;
 		this.portOpen = portOpen;
+		this.portHeight = portHeight;
 	}
 
 	public String getPortId() {
@@ -57,11 +60,21 @@ public class Portfolio {
 		this.portOpen = portOpen;
 	}
 
+	public String getPortHeight() {
+		return portHeight;
+	}
+
+	public void setPortHeight(String portHeight) {
+		this.portHeight = portHeight;
+	}
+
 	@Override
 	public String toString() {
 		return "Portfolio [portId=" + portId + ", portNum=" + portNum + ", portContent=" + portContent + ", portModify="
-				+ portModify + ", portOpen=" + portOpen + "]";
+				+ portModify + ", portOpen=" + portOpen + ", portHeight=" + portHeight + "]";
 	}
-
+	
+	
+	
 	
 }

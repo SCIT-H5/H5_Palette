@@ -169,6 +169,7 @@ $( function() {
 		
 		html = $('#trash').html();	//포트폴리오영역의 html태그 전부 변수에 저장
 		$('#saveDiv2').val(html);	//hidden폼에 html태그 저장(수정용)
+		$('#portHeight').val(height);
 		
 		$('#saveForm').submit();		//전송
 	});
@@ -387,7 +388,7 @@ function createGraph(i) {
 </head>
 <body>
 
-<div class="bg-image-blur" style="">
+<div class="bg-image-blur" style="border: 1px solid black;">
 					<img src="/h5/resources/img/portfoliomain.png" style="width: 100%;">
 					
 				</div>
@@ -421,7 +422,7 @@ function createGraph(i) {
 </div> -->
 <!-- DivTable.com -->
 
-<div class="ui-widget ui-helper-clearfix">
+<div class="ui-widget ui-helper-clearfix" style="margin: 0px;">
  
  	<!-- 포트폴리오 영역 -->
 
@@ -572,7 +573,7 @@ function createGraph(i) {
 		<option value="6">20px</option>
 		<option value="7">30px</option>
 	</select>
-		
+	<br>
 		
 	<select id="foreColor" style="width: 23%;">
 		<option value="">フォント色</option>
@@ -604,6 +605,7 @@ function createGraph(i) {
 	  <form action="portSave" method="post" id="saveForm">
 	  	<input type="hidden" id="saveDiv" name="portContent" value="">
 	  	<input type="hidden" id="saveDiv2" name="portModify" value="">
+	  	<input type="hidden" id="portHeight" name="portHeight" value="">
 	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
 	  </form>
   </c:if>
@@ -612,6 +614,7 @@ function createGraph(i) {
 	  <form action="portUpdate" method="post" id="saveForm">
 	  	<input type="hidden" id="saveDiv" name="portContent" value="">
 	  	<input type="hidden" id="saveDiv2" name="portModify" value="">
+	  	<input type="hidden" id="portHeight" name="portHeight" value="">
 	  	<input type="hidden" name="portNum" value="${port.portNum }">
 	  	<input type="hidden" name="portId" value="${sessionScope.loginId }">
 	  </form>
