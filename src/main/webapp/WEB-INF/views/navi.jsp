@@ -28,7 +28,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/magnific-popup/magnific-popup.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">	
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/creative.css">
+    
+    <style type="text/css">
+    	p, a, b {
+    		font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    	}
+    </style>	
 </head>
 
 <body id="page-top">

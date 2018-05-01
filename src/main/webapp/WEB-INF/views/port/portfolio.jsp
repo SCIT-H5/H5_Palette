@@ -550,7 +550,7 @@ function createGraph(i) {
 	<img src="${pageContext.request.contextPath}/resources/portfolio/img/center_sort.png" class="textEditIcon" id="justifyCenter">
 	<img src="${pageContext.request.contextPath}/resources/portfolio/img/right_sort.png" class="textEditIcon" id="justifyRight">
 	<br>
-	<select id="fontName" style="width: 45%;">
+	<select id="fontName" class="soflow" style="width: 89%; margin-top: 5px;">
 		<option value="">フォント</option>
 		<option value="돋움">돋움</option>
 		<option value="굴림">굴림</option>
@@ -559,7 +559,7 @@ function createGraph(i) {
 		<option value="맑은 고딕">맑은 고딕</option>
 	</select>
     	
-	<select id="fontSize" style="width: 45%;">
+	<select id="fontSize" class="soflow" style="width: 89%;">
 		<option value="">文字サイズ</option>
 		<option value="1">4px</option>
 		<option value="2">8px</option>
@@ -571,7 +571,7 @@ function createGraph(i) {
 	</select>
 	<br>
 
-	<select id="foreColor" style="width: 45%;">
+	<select id="foreColor" class="soflow" style="width: 89%;">
 
 		<option value="">フォント色</option>
 		<option value="#f00">赤い</option>
@@ -582,7 +582,7 @@ function createGraph(i) {
 	</select>
 
 		
-	<select id="hiliteColor" style="width: 45%;">
+	<select id="hiliteColor" class="soflow" style="width: 89%;">
 		<option value="">文字背景</option>
 		<option value="#f00">赤い</option>
 		<option value="#00f">青い</option>
